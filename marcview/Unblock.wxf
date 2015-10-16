@@ -1,0 +1,560 @@
+Save Format v1.3
+@begin Form "yUnblock"
+ Exported 0;
+
+ @begin Object "WDialog"
+  WSCaption 1;
+  WSDlgBorder 1;
+  WSVisible 1;
+  Font "8.MS Sans Serif";
+  Icon "WIcon( WResourceID( MARCView ) )";
+  FormPositionType "Centered";
+  HelpID "20";
+  Text "Unblock";
+  @begin Event "Create"
+   GencodeSrcLine 264;
+   FunctionName "yUnblock::yUnblock_Create";
+  @end;
+  @begin UserFunction "yUnblock()"
+   Compiler 1;
+   GencodeSrcLine 286;
+   FunctionName "yUnblock::yUnblock()";
+  @end;
+  @begin UserFunction "~yUnblock()"
+   Compiler 1;
+   GencodeSrcLine 290;
+   FunctionName "yUnblock::~yUnblock()";
+  @end;
+  ResID 104;
+  DesignName yUnblock;
+  TabIndex 0;
+  DesignRect -1063,96,304,151;
+ @end;
+
+ @begin Object "WLabel"
+  WSSRight 1;
+  WSSNotify 1;
+  WCCSNoMoveY 1;
+  WSChild 1;
+  WSVisible 1;
+  Font "8.MS Sans Serif.Bold";
+  Text "File to unblock";
+  ResID 101;
+  DesignName label_1;
+  TabIndex 0;
+  DesignRect 10,15,60,8;
+ @end;
+
+ @begin Object "WLabel"
+  WSSRight 1;
+  WSSNotify 1;
+  WCCSNoMoveY 1;
+  WSChild 1;
+  WSVisible 1;
+  Font "8.MS Sans Serif.Bold";
+  Text "Output file";
+  ResID 102;
+  DesignName label_2;
+  TabIndex 1;
+  DesignRect 10,30,60,8;
+ @end;
+
+ @begin Object "WTextBox"
+  WTextBoxAutoHScroll 1;
+  WSBorder 1;
+  WSChild 1;
+  WSExClientEdge 1;
+  WSVisible 1;
+  ResID 103;
+  DesignName InfileBox;
+  TabIndex 2;
+  DesignRect 80,12,145,12;
+ @end;
+
+ @begin Object "WTextBox"
+  WTextBoxAutoHScroll 1;
+  WSBorder 1;
+  WSChild 1;
+  WSExClientEdge 1;
+  WSVisible 1;
+  ResID 104;
+  DesignName OutfileBox;
+  TabIndex 3;
+  DesignRect 80,27,145,12;
+ @end;
+
+ @begin Object "WCommandButton"
+  WSChild 1;
+  WSMaximizeBox 1;
+  WSTabStop 1;
+  WSVisible 1;
+  Pressed "0";
+  Text "Browse";
+  @begin Event "Click"
+   GencodeSrcLine 294;
+   FunctionName "yUnblock::BrowseButton_Click";
+  @end;
+  ResID 105;
+  DesignName BrowseButton;
+  TabIndex 4;
+  DesignRect 240,12,50,12;
+ @end;
+
+ @begin Object "WCommandButton"
+  WSChild 1;
+  WSMaximizeBox 1;
+  WSTabStop 1;
+  WSVisible 1;
+  Pressed "0";
+  Text "Help";
+  @begin Event "Click"
+   GencodeSrcLine 321;
+   FunctionName "yUnblock::HelpButton_Click";
+  @end;
+  ResID 106;
+  DesignName HelpButton;
+  TabIndex 5;
+  DesignRect 15,110,50,14;
+ @end;
+
+ @begin Object "WCommandButton"
+  WSChild 1;
+  WSMaximizeBox 1;
+  WSTabStop 1;
+  WSVisible 1;
+  Default "1";
+  Pressed "0";
+  Text "OK";
+  @begin Event "Click"
+   GencodeSrcLine 329;
+   FunctionName "yUnblock::OKButton_Click";
+  @end;
+  ResID 107;
+  DesignName OKButton;
+  TabIndex 6;
+  DesignRect 175,110,50,14;
+ @end;
+
+ @begin Object "WCommandButton"
+  WSChild 1;
+  WSMaximizeBox 1;
+  WSTabStop 1;
+  WSVisible 1;
+  Pressed "0";
+  Text "Cancel";
+  Cancel "1";
+  @begin Event "Click"
+   GencodeSrcLine 440;
+   FunctionName "yUnblock::CancelButton_Click";
+  @end;
+  ResID 108;
+  DesignName CancelButton;
+  TabIndex 7;
+  DesignRect 240,110,50,14;
+ @end;
+
+ @begin Object "WFileDialog"
+  WFDSHideReadOnly 1;
+  WFDSNoChangeDir 1;
+  WFDSEnableHook 1;
+  WFDSExplorer 1;
+  InitialDirectory "WFilePath( \".\" )";
+  ResID 109;
+  DesignName FileDialog;
+  TabIndex 8;
+  DesignRect 260,35,19,17;
+ @end;
+
+ @begin Object "WLabel"
+  WSSLeftNoWordWrap 1;
+  WSSNotify 1;
+  WCCSNoResize 1;
+  WCCSNoParentAlign 1;
+  WSChild 1;
+  Font "12.MS Sans Serif.Bold";
+  ForeColor "WColorBrightRed";
+  Text "!";
+  ResID 110;
+  DesignName InBang;
+  TabIndex 9;
+  DesignRect 230,13,7,11;
+ @end;
+
+ @begin Object "WLabel"
+  WSSLeftNoWordWrap 1;
+  WSSNotify 1;
+  WCCSNoResize 1;
+  WCCSNoParentAlign 1;
+  WSChild 1;
+  Font "12.MS Sans Serif.Bold";
+  ForeColor "WColorBrightRed";
+  Text "!";
+  ResID 111;
+  DesignName OutBang;
+  TabIndex 10;
+  DesignRect 230,28,7,11;
+ @end;
+
+ @begin Object "WLabel"
+  WSSRight 1;
+  WSSNotify 1;
+  WCCSNoMoveY 1;
+  WSChild 1;
+  WSVisible 1;
+  Font "8.MS Sans Serif.Bold";
+  Text "Blocksize";
+  ResID 112;
+  DesignName label_3;
+  TabIndex 11;
+  DesignRect 100,45,75,8;
+ @end;
+
+ @begin Object "WLabel"
+  WSSRight 1;
+  WSSNotify 1;
+  WCCSNoMoveY 1;
+  WSChild 1;
+  WSVisible 1;
+  Font "8.MS Sans Serif.Bold";
+  Text "Block header size";
+  ResID 113;
+  DesignName label_4;
+  TabIndex 12;
+  DesignRect 100,60,75,8;
+ @end;
+
+ @begin Object "WLabel"
+  WSSRight 1;
+  WSSNotify 1;
+  WCCSNoMoveY 1;
+  WSChild 1;
+  WSVisible 1;
+  Font "8.MS Sans Serif.Bold";
+  Text "Blocksize offset";
+  ResID 114;
+  DesignName label_5;
+  TabIndex 13;
+  DesignRect 100,75,75,8;
+ @end;
+
+ @begin Object "WTextBox"
+  WTextBoxAutoHScroll 1;
+  WSBorder 1;
+  WSChild 1;
+  WSExClientEdge 1;
+  WSVisible 1;
+  ResID 115;
+  DesignName BlocksizeBox;
+  TabIndex 14;
+  DesignRect 185,42,40,12;
+ @end;
+
+ @begin Object "WTextBox"
+  WTextBoxAutoHScroll 1;
+  WSBorder 1;
+  WSChild 1;
+  WSExClientEdge 1;
+  WSVisible 1;
+  ResID 116;
+  DesignName HeadersizeBox;
+  TabIndex 15;
+  DesignRect 185,57,40,12;
+ @end;
+
+ @begin Object "WTextBox"
+  WTextBoxAutoHScroll 1;
+  WSBorder 1;
+  WSChild 1;
+  WSExClientEdge 1;
+  WSVisible 1;
+  ResID 117;
+  DesignName OffsetBox;
+  TabIndex 16;
+  DesignRect 185,72,40,12;
+ @end;
+
+ @begin HPPPrefixBlock
+@begin-code HPPPrefix
+
+/*
+Copyright 1992-2009 Systems Planning (www.systemsplanning.com)
+
+Licensed under the Apache License, Version 2.0 (the "License"); 
+you may not use this file except in compliance with the License. 
+You may obtain a copy of the License at 
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software 
+distributed under the License is distributed on an "AS IS" BASIS, 
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. 
+See the License for the specific language governing permissions and 
+limitations under the License.
+*/
+
+// Declarations added here will be included at the top of the .HPP file
+//030309//#include <process.h>	//011103 for html link
+#include "help.hpp"
+
+extern "C" 
+{
+    #include "d:\marc\sp_marc\sp_marc.hpp"
+};
+#include <io.h> //for "access" function
+
+@end-code;
+  GencodeSrcLine 10;
+ @end;
+
+ @begin CPPPrefixBlock
+@begin-code CPPPrefix
+
+// Code added here will be included at the top of the .CPP file
+
+//  Include definitions for resources.
+#include "WRes.h"
+
+@end-code;
+  GencodeSrcLine 10;
+ @end;
+
+ @begin ClassContentsBlock
+@begin-code ClassContents
+
+    public:
+        // add your public instance data here
+    private:
+        // add your private instance data here
+    protected:
+        // add your protected instance data here
+
+@end-code;
+  GencodeSrcLine 100;
+ @end;
+
+@begin-code GeneratedClassContents
+
+        yUnblock();
+        ~yUnblock();
+
+@end-code;
+
+@begin-code Code "yUnblock::yUnblock()"
+
+@@CLASSNAME@::@CLASSNAME@()
+{
+    
+}
+
+@end-code;
+
+@begin-code Code "yUnblock::~yUnblock()"
+
+@@CLASSNAME@::~@CLASSNAME@()
+{
+    
+}
+
+@end-code;
+
+@begin-code Code "yUnblock::yUnblock_Create"
+
+WBool @CLASSNAME@::yUnblock_Create(
+	WObject *         		source,
+	WCreateEventData *		event )
+{
+	InfileBox->SetText 
+			(WAppObject.GetProfileString 
+					("Unblock", "Infile", "", "MARCView.INI"));
+	OutfileBox->SetText 
+			(WAppObject.GetProfileString 
+					("Unblock", "Outfile", "", "MARCView.INI"));
+	BlocksizeBox->SetText 
+			(WAppObject.GetProfileString 
+					("Unblock", "Blocksize", "2080", "MARCView.INI"));
+	HeadersizeBox->SetText 
+			(WAppObject.GetProfileString 
+					("Unblock", "Headersize", "32", "MARCView.INI"));
+	OffsetBox->SetText 
+			(WAppObject.GetProfileString 
+					("Unblock", "BlocksizeOffset", "6", "MARCView.INI"));
+    
+    return FALSE;
+}
+
+@end-code;
+
+@begin-code Code "yUnblock::BrowseButton_Click"
+
+WBool @CLASSNAME@::BrowseButton_Click(
+	WObject *   		source,
+	WEventData *		event )
+{
+    WFilePath infilepath, outfilepath;
+	
+	//040814 get last path from INI
+	WString last_DP = WAppObject.GetProfileString ("RecentFiles", "Folder", "", "MARCView.INI");
+	if (!last_DP.GetEmpty ())
+		FileDialog->SetInitialDirectory (last_DP);
+    
+    if (FileDialog->PromptForOpen ())
+    {
+		infilepath = FileDialog->GetFilePath ();
+		outfilepath = infilepath;
+		outfilepath.SetExtension ("UNB");
+		
+		InfileBox->SetText (infilepath);
+		OutfileBox->SetText (outfilepath);
+		
+		//040814 save path to INI
+		last_DP = infilepath.GetDrive () + infilepath.GetDirectory ();
+		WAppObject.SetProfileString ("RecentFiles", "Folder", last_DP, "MARCView.INI");
+	}
+    
+    return FALSE;
+}
+
+@end-code;
+
+@begin-code Code "yUnblock::HelpButton_Click"
+
+WBool @CLASSNAME@::HelpButton_Click(
+	WObject *   		source,
+	WEventData *		event )
+{
+	yHelp::ShowHelp ("unblock");	
+    
+    return FALSE;
+}
+
+@end-code;
+
+@begin-code Code "yUnblock::OKButton_Click"
+
+WBool @CLASSNAME@::OKButton_Click(
+	WObject *   		source,
+	WEventData *		event )
+{
+	int				i;
+	long 			blockcount, reccount;
+	long&			rblockcount = blockcount;
+	long&			rreccount = reccount;
+	
+    WFilePath       infilepath, outfilepath;
+	long			blocksize, headersize, blocksizeoffset;
+	WString 		s;
+	
+    infilepath = InfileBox->GetText ();
+    outfilepath = OutfileBox->GetText ();
+	blocksize = BlocksizeBox->GetText ().ConvertToLong ();
+	headersize = HeadersizeBox->GetText ().ConvertToLong ();
+	blocksizeoffset = OffsetBox->GetText ().ConvertToLong ();
+    
+	//check files
+	WBool prob = FALSE;
+	if (access (infilepath, 0) == -1)
+	{
+		InBang->SetVisible (TRUE);
+		prob = TRUE;
+	}
+	
+	if (prob)
+	{
+		WMessageBox::Message    (NULL, 
+								WMsgBSOk | WMsgBSIconError,
+								"Problem",
+								"Input file not found");
+		InBang->SetVisible (FALSE);
+		return FALSE;
+	}
+
+	if (access (outfilepath, 0) == 0)
+	{
+		OutBang->SetVisible (TRUE);
+		prob = TRUE;
+	}
+	
+	if (prob)
+	{
+		if (WMessageBox::Message 	
+				(NULL,
+				WMsgBSOkCancel | WMsgBSIconError,
+				"Warning!",
+				"Output file already exists"
+				"\nClick OK to overwrite") 
+				== WMBReturnCancel)
+		{
+			OutBang->SetVisible (FALSE);
+			return FALSE;
+		}
+	}
+		
+	//write settings to ini
+	WAppObject.SetProfileString 
+			("Unblock", "Infile", infilepath.GetText (), "MARCView.INI");
+	WAppObject.SetProfileString 
+			("Unblock", "Outfile", outfilepath.GetText (), "MARCView.INI");
+
+	s.Sprintf ("%lu", blocksize);
+	WAppObject.SetProfileString 
+			("Unblock", "Blocksize", s.GetText (), "MARCView.INI");
+			
+	s.Sprintf ("%lu", headersize);
+	WAppObject.SetProfileString 
+			("Unblock", "Headersize", s.GetText (), "MARCView.INI");
+			
+	s.Sprintf ("%lu", blocksizeoffset);
+	WAppObject.SetProfileString 
+			("Unblock", "BlocksizeOffset", s.GetText (), "MARCView.INI");
+
+	WCursor cursor = SetCursor (WSCWait);
+	
+	//no need to go thru BibRec
+	i = SP_Unblock 
+			((LPCUSTR) "MV98",
+			(LPCUSTR) infilepath.GetText(), 
+			(LPCUSTR) outfilepath.GetText(), 
+			rblockcount,
+			rreccount,
+			blocksize,
+			headersize,
+			blocksizeoffset);
+
+	SetCursor (cursor);
+
+	switch (i)
+	{
+		case 1:	s = "Success"; break;
+		case -4: s = "Unexpected end of file"; break;
+		default: s.Sprintf ("%d", i); break;
+	}
+	
+	WMessageBox::Messagef 	
+			(NULL, 
+			WMsgBSOk | WMsgBSIconInformation,
+			"Unblock complete",
+			"%ld records unblocked from %ld blocks\nStatus: %s",
+			reccount,
+			blockcount,
+			s.GetText ());
+
+	Dismiss( TRUE );
+    
+    return FALSE;
+}
+
+@end-code;
+
+@begin-code Code "yUnblock::CancelButton_Click"
+
+WBool @CLASSNAME@::CancelButton_Click(
+	WObject *   		source,
+	WEventData *		event )
+{
+    Dismiss( FALSE );
+    
+    return FALSE;
+}
+
+@end-code;
+@end;

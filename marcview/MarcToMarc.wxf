@@ -1,0 +1,4413 @@
+Save Format v1.3
+@begin Form "yMarcToMarc"
+ Exported 0;
+
+ @begin Object "WDialog"
+  WSCaption 1;
+  WSDlgBorder 1;
+  WSVisible 1;
+  Font "8.MS Sans Serif.Bold";
+  FormPositionType "Centered";
+  FormAbsTop "176";
+  BackColor "[ 236 236 255 ]";
+  Text "MARConvert";
+  @begin Event "Create"
+   GencodeSrcLine 307;
+   FunctionName "yMarcToMarc::yMarcToMarc_Create";
+  @end;
+  @begin UserFunction "yMarcToMarc()"
+   Compiler 1;
+   GencodeSrcLine 434;
+   FunctionName "yMarcToMarc::yMarcToMarc()";
+  @end;
+  @begin UserFunction "~yMarcToMarc()"
+   Compiler 1;
+   GencodeSrcLine 438;
+   FunctionName "yMarcToMarc::~yMarcToMarc()";
+  @end;
+  ResID 106;
+  DesignName yMarcToMarc;
+  TabIndex 0;
+  DesignRect -1675,196,400,237;
+ @end;
+
+ @begin Object "WPictureBox"
+  WSSIcon 1;
+  WSSNotify 1;
+  WCCSTop 1;
+  WCCSNoMoveY 1;
+  WCCSBottom 1;
+  WSChild 1;
+  WSVisible 1;
+  ResID 101;
+  DesignName Icon;
+  TabIndex 0;
+  DesignRect 9,5,21,25;
+ @end;
+
+ @begin Object "WLabel"
+  WSSLeftNoWordWrap 1;
+  WSSNotify 1;
+  WCCSNoResize 1;
+  WCCSNoParentAlign 1;
+  WSChild 1;
+  WSVisible 1;
+  Font "14.Verdana";
+  ForeColor "WColorBrightBlue";
+  Text "Convert ";
+  AutoSize "1";
+  ResID 102;
+  DesignName Title;
+  TabIndex 1;
+  DesignRect 36,8,46,14;
+ @end;
+
+ @begin Object "WLabel"
+  WSSRight 1;
+  WSSNotify 1;
+  WCCSNoMoveY 1;
+  WSChild 1;
+  WSVisible 1;
+  Text "File to convert";
+  ResID 103;
+  DesignName InfileLabel;
+  TabIndex 2;
+  DesignRect 9,45,70,8;
+ @end;
+
+ @begin Object "WLabel"
+  WSSRight 1;
+  WSSNotify 1;
+  WCCSNoMoveY 1;
+  WSChild 1;
+  WSVisible 1;
+  Text "Output file";
+  ResID 104;
+  DesignName OutfileLabel;
+  TabIndex 3;
+  DesignRect 9,65,70,8;
+ @end;
+
+ @begin Object "WLabel"
+  WSSRight 1;
+  WSSNotify 1;
+  WCCSNoMoveY 1;
+  WSChild 1;
+  WSVisible 1;
+  Text "Report file";
+  ResID 105;
+  DesignName RptfileLabel;
+  TabIndex 4;
+  DesignRect 9,105,70,8;
+ @end;
+
+ @begin Object "WTextBox"
+  WTextBoxAutoHScroll 1;
+  WSBorder 1;
+  WSChild 1;
+  WSExClientEdge 1;
+  WSVisible 1;
+  ResID 106;
+  DesignName InfileBox;
+  TabIndex 5;
+  DesignRect 87,42,240,15;
+ @end;
+
+ @begin Object "WTextBox"
+  WTextBoxAutoHScroll 1;
+  WSBorder 1;
+  WSChild 1;
+  WSExClientEdge 1;
+  WSVisible 1;
+  ResID 107;
+  DesignName OutfileBox;
+  TabIndex 6;
+  DesignRect 87,62,240,16;
+ @end;
+
+ @begin Object "WTextBox"
+  WTextBoxAutoHScroll 1;
+  WSBorder 1;
+  WSChild 1;
+  WSExClientEdge 1;
+  WSVisible 1;
+  ResID 108;
+  DesignName RptfileBox;
+  TabIndex 7;
+  DesignRect 87,102,240,15;
+ @end;
+
+ @begin Object "WLabel"
+  WSSLeftNoWordWrap 1;
+  WSSNotify 1;
+  WCCSNoResize 1;
+  WCCSNoParentAlign 1;
+  WSChild 1;
+  Font "12.MS Sans Serif.Bold";
+  ForeColor "WColorBrightRed";
+  Text "!";
+  ResID 109;
+  DesignName InBang;
+  TabIndex 8;
+  DesignRect 335,40,5,13;
+ @end;
+
+ @begin Object "WLabel"
+  WSSLeftNoWordWrap 1;
+  WSSNotify 1;
+  WCCSNoResize 1;
+  WCCSNoParentAlign 1;
+  WSChild 1;
+  Font "12.MS Sans Serif.Bold";
+  ForeColor "WColorBrightRed";
+  Text "!";
+  ResID 110;
+  DesignName OutBang;
+  TabIndex 9;
+  DesignRect 335,60,6,13;
+ @end;
+
+ @begin Object "WLabel"
+  WSSLeftNoWordWrap 1;
+  WSSNotify 1;
+  WCCSNoResize 1;
+  WCCSNoParentAlign 1;
+  WSChild 1;
+  Font "12.MS Sans Serif.Bold";
+  ForeColor "WColorBrightRed";
+  Text "!";
+  ResID 111;
+  DesignName RptBang;
+  TabIndex 10;
+  DesignRect 335,100,5,11;
+ @end;
+
+ @begin Object "WCommandButton"
+  WSChild 1;
+  WSMaximizeBox 1;
+  WSTabStop 1;
+  WSVisible 1;
+  Pressed "0";
+  Text "Browse";
+  @begin Event "Click"
+   GencodeSrcLine 442;
+   FunctionName "yMarcToMarc::BrowseButton_Click";
+  @end;
+  ResID 112;
+  DesignName BrowseButton;
+  TabIndex 11;
+  DesignRect 345,41,40,15;
+ @end;
+
+ @begin Object "WCommandButton"
+  WSChild 1;
+  WSMaximizeBox 1;
+  WSTabStop 1;
+  WSVisible 1;
+  Pressed "0";
+  Text "Cancel";
+  Cancel "1";
+  @begin Event "Click"
+   GencodeSrcLine 514;
+   FunctionName "yMarcToMarc::CancelButton_Click";
+  @end;
+  ResID 113;
+  DesignName CancelButton;
+  TabIndex 12;
+  DesignRect 345,195,40,15;
+ @end;
+
+ @begin Object "WCommandButton"
+  WSChild 1;
+  WSMaximizeBox 1;
+  WSTabStop 1;
+  WSVisible 1;
+  Default "1";
+  Pressed "0";
+  Text "OK";
+  @begin Event "Click"
+   GencodeSrcLine 522;
+   FunctionName "yMarcToMarc::OKButton_Click";
+  @end;
+  ResID 114;
+  DesignName OKButton;
+  TabIndex 13;
+  DesignRect 295,195,40,15;
+ @end;
+
+ @begin Object "WCommandButton"
+  WSChild 1;
+  WSMaximizeBox 1;
+  WSTabStop 1;
+  WSVisible 1;
+  Pressed "0";
+  Text "Help";
+  @begin Event "Click"
+   GencodeSrcLine 4017;
+   FunctionName "yMarcToMarc::HelpButton_Click";
+  @end;
+  ResID 115;
+  DesignName HelpButton;
+  TabIndex 14;
+  DesignRect 10,195,40,15;
+ @end;
+
+ @begin Object "WLabel"
+  WSSLeftNoWordWrap 1;
+  WSSNotify 1;
+  WCCSNoResize 1;
+  WCCSNoParentAlign 1;
+  WSChild 1;
+  WSVisible 1;
+  Font "8.MS Sans Serif";
+  Text "All values are saved as defaults";
+  AutoSize "1";
+  ResID 116;
+  DesignName SaveMsg;
+  TabIndex 15;
+  DesignRect 150,150,85,8;
+ @end;
+
+ @begin Object "WLabel"
+  WSSCenter 1;
+  WSSNotify 1;
+  WCCSTop 1;
+  WSChild 1;
+  WSVisible 1;
+  Text "[count goes here]";
+  ResID 117;
+  DesignName CountLabel;
+  TabIndex 16;
+  DesignRect 140,170,120,8;
+ @end;
+
+ @begin Object "WFileDialog"
+  WFDSHideReadOnly 1;
+  WFDSNoChangeDir 1;
+  WFDSEnableHook 1;
+  WFDSExplorer 1;
+  InitialDirectory "WFilePath( \"C:\\\" )";
+  ResID 118;
+  DesignName FileDialog;
+  TabIndex 17;
+  DesignRect 360,125,16,17;
+ @end;
+
+ @begin Object "WLabel"
+  WSSRight 1;
+  WSSNotify 1;
+  WCCSNoMoveY 1;
+  WSChild 1;
+  WSVisible 1;
+  Text "Bad record file";
+  ResID 119;
+  DesignName BadfileLabel;
+  TabIndex 18;
+  DesignRect 9,85,70,8;
+ @end;
+
+ @begin Object "WTextBox"
+  WTextBoxAutoHScroll 1;
+  WSBorder 1;
+  WSChild 1;
+  WSExClientEdge 1;
+  WSVisible 1;
+  ResID 120;
+  DesignName BadfileBox;
+  TabIndex 19;
+  DesignRect 87,82,240,15;
+ @end;
+
+ @begin Object "WLabel"
+  WSSLeftNoWordWrap 1;
+  WSSNotify 1;
+  WCCSNoResize 1;
+  WCCSNoParentAlign 1;
+  WSChild 1;
+  Font "12.MS Sans Serif.Bold";
+  ForeColor "WColorBrightRed";
+  Text "!";
+  ResID 121;
+  DesignName BadBang;
+  TabIndex 20;
+  DesignRect 335,80,5,15;
+ @end;
+
+ @begin Object "WLabel"
+  WSSRight 1;
+  WSSNotify 1;
+  WCCSNoMoveY 1;
+  WSChild 1;
+  WSVisible 1;
+  Text "Conversion";
+  ResID 122;
+  DesignName ConversionLabel;
+  TabIndex 21;
+  DesignRect 9,125,70,8;
+ @end;
+
+ @begin Object "WOptionButton"
+  WBSAutoRadioButton 1;
+  WCCSTop 1;
+  WCCSNoParentAlign 1;
+  WSChild 1;
+  WSVisible 1;
+  AutoSize "1";
+  Text "MARC8 to UTF8";
+  ResID 123;
+  DesignName MarcToUtfRadio;
+  TabIndex 22;
+  DesignRect 85,124,65,12;
+ @end;
+
+ @begin Object "WOptionButton"
+  WBSAutoRadioButton 1;
+  WCCSTop 1;
+  WCCSNoParentAlign 1;
+  WSChild 1;
+  WSVisible 1;
+  AutoSize "1";
+  Text "UTF8 to MARC8";
+  ResID 124;
+  DesignName UtfToMarcRadio;
+  TabIndex 23;
+  DesignRect 85,135,65,11;
+ @end;
+
+ @begin HPPPrefixBlock
+@begin-code HPPPrefix
+
+/*
+Copyright 1992-2009 Systems Planning (www.systemsplanning.com)
+
+Licensed under the Apache License, Version 2.0 (the "License"); 
+you may not use this file except in compliance with the License. 
+You may obtain a copy of the License at 
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software 
+distributed under the License is distributed on an "AS IS" BASIS, 
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. 
+See the License for the specific language governing permissions and 
+limitations under the License.
+*/
+
+// Declarations added here will be included at the top of the .HPP file
+extern "C" 
+{
+    #include "d:\marc\sp_marc\sp_marc.hpp"
+	};
+
+#include <io.h> //for "access" function
+#include <stdlib.h>	// for "min" function
+#include "mcclient.hpp"
+#include "help.hpp"
+#include "utility.hpp"	// for yClient enum
+#include "yTrans.hpp"
+#include <direct.h>	// for getcwd
+
+@end-code;
+  GencodeSrcLine 10;
+ @end;
+
+ @begin CPPPrefixBlock
+@begin-code CPPPrefix
+
+// Code added here will be included at the top of the .CPP file
+
+//  Include definitions for resources.
+#include "WRes.h"
+
+@end-code;
+  GencodeSrcLine 10;
+ @end;
+
+ @begin ClassContentsBlock
+@begin-code ClassContents
+
+    public:
+        // add your public instance data here
+		int		BatchConvert (WConsole*, WString, WString, WString, WString, WBool boverwrite=FALSE);
+		int		LoadMaps(WString& rMessage);
+		
+    private:
+        	// add your private instance data here
+		
+		// ini params
+		typedef struct paramtag
+		{
+			WFilePath		infilepath;
+			WFilePath		outfilepath;
+			WFilePath		badfilepath;
+			WFilePath		rptfilepath;
+			yCharSet		charset;
+		}	yIniParams;
+		
+		yIniParams	TheIniParams;
+		
+		void			GetIniParams ();
+		void			WriteIniParams ();
+
+
+		// MAPPING M21 CODES TO UNIMARC CODES
+		
+		typedef struct maptag
+		{
+			WString		m21;
+			WString		uni;
+			maptag*		next;
+		}	yMapNode;
+		
+		yMapNode		CountriesRoot;
+		yMapNode 		NatbibsRoot;
+		yMapNode		RelatorsRoot;
+		yMapNode		SourcesRoot;
+		
+		int	 		LoadMap(WString& rMessage, yMapNode *root, WString path, WString filename);
+		WString		MapLookup(WString&, yMapNode*, WString);
+		
+		
+		yClient		TheClient;
+		yMCClient		MCClient;
+			
+		int			ConvertFile 
+							(FILE* ofile, 
+							FILE* bfile, 
+							FILE* rfile, 
+							long& rcount, 
+							long& rbadcount, 
+							WBool interactive);
+		int	 		ConvertToUNIMARC 
+							(FILE* ofile, 
+							FILE* bfile, 
+							FILE* rfile, 
+							long& rcount, 
+							long& rbadcount, 
+							long& rnodecount, 
+							WBool interactive);
+		int			Convert007(WString& rMessage, WString in, WString& out);
+		int			Convert008(WString&, char, WString, WString&, WString&, WString&, WString&);
+		WString		CreateBlockedFile (FILE*, FILE*, long&, long&, WBool);
+		void			PrintNode (yTrans*, FILE*);
+		void			ShowTree (WString, yTrans*, FILE*);
+		
+    protected:
+        // add your protected instance data here
+
+@end-code;
+  GencodeSrcLine 118;
+ @end;
+
+@begin-code GeneratedClassContents
+
+        yMarcToMarc();
+        ~yMarcToMarc();
+
+@end-code;
+
+@begin-code Code "yMarcToMarc::yMarcToMarc()"
+
+@@CLASSNAME@::@CLASSNAME@()
+{
+    
+}
+
+@end-code;
+
+@begin-code Code "yMarcToMarc::~yMarcToMarc()"
+
+@@CLASSNAME@::~@CLASSNAME@()
+{
+    
+}
+
+@end-code;
+
+@begin-code Code "yMarcToMarc::yMarcToMarc_Create"
+
+WBool @CLASSNAME@::yMarcToMarc_Create(
+	WObject *         		source,
+	WCreateEventData *		event )
+{
+	
+	TheClient = MCClient.TheClient;
+
+	//060115 if a file was being viewed, it couldn't be opened for output
+	SP_CloseFile();
+
+	// defaults
+	ConversionLabel->SetVisible(FALSE);
+	InfileLabel->SetTop(65);
+	OutfileLabel->SetTop(95);
+	BadfileLabel->SetVisible(FALSE);
+	RptfileLabel->SetTop(125);
+	MarcToUtfRadio->SetVisible(FALSE);
+	UtfToMarcRadio->SetVisible(FALSE);
+	InfileBox->SetTop(62);
+	OutfileBox->SetTop(92);
+	BadfileBox->SetVisible(FALSE);
+	RptfileBox->SetTop(122);
+	InBang->SetTop(62);
+	OutBang->SetTop(92);
+	BadBang->SetVisible(FALSE);
+	RptBang->SetTop(122);
+	BrowseButton->SetTop(61);
+
+	// override for specific clients
+	if (TheClient == AAA)
+	{
+		ConversionLabel->SetTop(65);
+		InfileLabel->SetTop(105);
+		OutfileLabel->SetTop(135);
+		BadfileLabel->SetVisible(TRUE);
+		BadfileLabel->SetTop(165);
+		RptfileLabel->SetTop(195);
+		
+		MarcToUtfRadio->SetVisible(TRUE);
+		MarcToUtfRadio->SetTop(65);
+		UtfToMarcRadio->SetVisible(TRUE);
+		UtfToMarcRadio->SetTop(80);
+		InfileBox->SetTop(102);
+		OutfileBox->SetTop(132);
+		BadfileBox->SetVisible(TRUE);
+		BadfileBox->SetTop(162);
+		RptfileBox->SetTop(192);
+		
+		InBang->SetTop(102);
+		OutBang->SetTop(132);
+		BadBang->SetTop(162);
+		RptBang->SetTop(192);
+		
+		BrowseButton->SetTop(101);
+	}
+
+	//061103 modified to hide badfile stuff
+	if (TheClient == CCC)
+	{
+		ConversionLabel->SetTop(65);
+		InfileLabel->SetTop(105);
+		OutfileLabel->SetTop(135);
+		BadfileLabel->SetVisible(FALSE);
+		RptfileLabel->SetTop(165);
+		
+		MarcToUtfRadio->SetVisible(TRUE);
+		MarcToUtfRadio->SetTop(65);
+		UtfToMarcRadio->SetVisible(TRUE);
+		UtfToMarcRadio->SetTop(80);
+		InfileBox->SetTop(102);
+		OutfileBox->SetTop(132);
+		BadfileBox->SetVisible(FALSE);
+		RptfileBox->SetTop(162);
+		
+		InBang->SetTop(102);
+		OutBang->SetTop(132);
+		RptBang->SetTop(162);
+		
+		BrowseButton->SetTop(101);
+		
+		SaveMsg->SetTop(200);
+		CountLabel->SetTop(220);
+		HelpButton->SetTop(220);
+		OKButton->SetTop(220);
+		CancelButton->SetTop(220);
+		SetHeight(300);
+	}
+	
+	else if (TheClient == FFF)
+	{
+		SaveMsg->SetTop(160);
+		CountLabel->SetTop(180);
+		HelpButton->SetTop(210);
+		OKButton->SetTop(210);
+		CancelButton->SetTop(210);
+		SetHeight(280);
+	}
+
+	GetIniParams ();
+	
+	InfileBox->SetText (TheIniParams.infilepath);
+	OutfileBox->SetText (TheIniParams.outfilepath);
+	RptfileBox->SetText (TheIniParams.rptfilepath);
+	BadfileBox->SetText (TheIniParams.badfilepath);
+
+	if ((TheClient == AAA) || (TheClient == CCC))
+	{
+		if (TheIniParams.charset == UTF8)
+			UtfToMarcRadio->SetChecked (TRUE);
+		else if (TheIniParams.charset == ANSEL)
+			MarcToUtfRadio->SetChecked (TRUE);
+	}
+	
+	CountLabel->SetText("");	//so development msg doesn't show
+	
+	WIcon mcicon;
+	mcicon = WIcon(WResourceID(MARConvert));
+	Icon->SetIcon(mcicon);
+	
+	//991025 only way to get icon to display correct size. if done at design time it gets overridden
+	Icon->SetWidth(32);
+	Icon->SetHeight(32);
+	
+	Title->SetText(MCClient.TheDialogHeading);
+    
+    return FALSE;
+}
+
+@end-code;
+
+@begin-code Code "yMarcToMarc::BrowseButton_Click"
+
+WBool @CLASSNAME@::BrowseButton_Click(
+	WObject *   		source,
+	WEventData *		event )
+{
+	WFilePath 	infilepath, outfilepath, badfilepath, rptfilepath;
+	
+	//040814 get last path from INI
+	WString last_DP = WAppObject.GetProfileString ("RecentFiles", "Folder", "", "MARCView.INI");
+	if (!last_DP.GetEmpty ())
+		FileDialog->SetInitialDirectory (last_DP);
+    
+    	if (FileDialog->PromptForOpen ())
+    	{
+		infilepath = FileDialog->GetFilePath ();
+		outfilepath = infilepath;
+		
+		WString extension;
+		// these two can't have a default as they swing both ways
+		if ((TheClient == AAA) || (TheClient == CCC))
+		{
+			if (UtfToMarcRadio->GetChecked() == TRUE)
+				extension = "M8";
+			else if (MarcToUtfRadio->GetChecked() == TRUE)
+				extension = "UTF";
+			// should we allow both radios to be unchecked?
+			else if (TheIniParams.charset == UTF8)
+				extension = "M8";
+			else if (TheIniParams.charset == ANSEL)
+				extension = "UTF";
+		}
+		else
+			extension = WAppObject.GetProfileString("Convert", "Extension", "MRC", "MARCView.INI");
+			
+		if (extension.GetEmpty())
+		{
+			// not in INI, use client default (grandfathered, new ones s u ini)
+			if (TheClient == BBB)
+				extension = "UTF";
+			//GGG project doesn't have interactive mode
+			else if (TheClient == LLL)
+				extension = "BLK";
+			else if (TheClient == QQQ)
+				extension = "M8";
+			
+			WMessageBox::Message    
+					(NULL, 
+					WMsgBSOk | WMsgBSIconError,
+					"Problem",
+					"Missing Extension in MARCView.ini");
+			return FALSE;
+		}
+		outfilepath.SetExtension(extension.GetText());
+
+
+		badfilepath = infilepath;
+		badfilepath.SetExtension("BAD");
+		
+		rptfilepath = infilepath;
+		rptfilepath.SetExtension("RPT");
+		
+		InfileBox->SetText(infilepath);
+		OutfileBox->SetText(outfilepath);
+		BadfileBox->SetText(badfilepath);
+		RptfileBox->SetText(rptfilepath);
+		
+		//040814 save path to INI
+		last_DP = infilepath.GetDrive() + infilepath.GetDirectory();
+		WAppObject.SetProfileString("RecentFiles", "Folder", last_DP, "MARCView.INI");
+    	}
+    
+    	return FALSE;
+}
+
+@end-code;
+
+@begin-code Code "yMarcToMarc::CancelButton_Click"
+
+WBool @CLASSNAME@::CancelButton_Click(
+	WObject *   		source,
+	WEventData *		event )
+{
+    Dismiss( FALSE );
+    
+    return FALSE;
+}
+
+@end-code;
+
+@begin-code Code "yMarcToMarc::OKButton_Click"
+
+//OKButton_Click
+WBool @CLASSNAME@::OKButton_Click(
+	WObject *   		source,
+	WEventData *		event )
+{
+	int			Result = 0;
+	long			count, badcount, nodecount;
+	long&		rcount = count;
+	long&		rbadcount = badcount;
+	long&		rnodecount = nodecount;
+	WString		msg, displaymsg;
+	
+	//060302 added for FFF, could be used more generally
+	WString 		TheMessage;
+	WString& 		rMessage = TheMessage;
+    
+	
+	TheIniParams.infilepath = InfileBox->GetText();
+	TheIniParams.outfilepath = OutfileBox->GetText();
+	TheIniParams.rptfilepath = RptfileBox->GetText();
+	
+	
+	if (MCClient.MCBadFile)
+		TheIniParams.badfilepath = BadfileBox->GetText();
+    
+	
+	//check files
+	WBool prob = FALSE;
+	if (access(TheIniParams.infilepath, 0) == -1)
+	{
+		InBang->SetVisible(TRUE);
+		prob = TRUE;
+	}
+    
+	if (prob)
+	{
+		WMessageBox::Message
+				(NULL, 
+			   	WMsgBSOk | WMsgBSIconError,
+			   	"Problem",
+			   	"Files marked with ! not found");
+		InBang->SetVisible(FALSE);
+		return FALSE;
+	}
+
+	if (access(TheIniParams.outfilepath, 0) == 0)
+	{
+		OutBang->SetVisible(TRUE);
+		prob = TRUE;
+	}
+	
+	
+	if (MCClient.MCBadFile)
+	{
+		if (access(TheIniParams.badfilepath, 0) == 0)
+		{
+			BadBang->SetVisible (TRUE);
+			prob = TRUE;
+		}
+	}
+	
+	
+    if (access(TheIniParams.rptfilepath, 0) == 0)
+    {
+        RptBang->SetVisible (TRUE);
+        prob = TRUE;
+    }
+    
+    if (prob)
+    {
+        if (WMessageBox::Message    
+				(NULL,
+				WMsgBSOkCancel | WMsgBSIconError,
+				"Warning!",
+				"Files marked with ! already exist"
+				"\nClick OK to overwrite")
+			== WMBReturnCancel)
+        {
+            OutBang->SetVisible(FALSE);
+		  if ((TheClient == AAA) || (TheClient == CCC))	// is this MCBadFile?
+	            BadBang->SetVisible(FALSE);
+            RptBang->SetVisible (FALSE);
+            return FALSE;
+        }
+    }
+        
+	
+	// WRITE PARAMS TO INI
+
+	if (UtfToMarcRadio->GetChecked())
+		TheIniParams.charset = UTF8;
+	else if (MarcToUtfRadio->GetChecked())
+		TheIniParams.charset = ANSEL;
+	else 
+		TheIniParams.charset = UNKNOWN;
+
+	WriteIniParams();
+	
+
+	//050116 ck for 0-len file
+	struct stat buf;
+	WString t;
+	stat (TheIniParams.infilepath, &buf);
+	if (buf.st_size == 0L)
+	{
+		t.Sprintf("Sorry, input file %s contains no data", TheIniParams.infilepath.GetText());
+		WMessageBox::Info 
+				(NULL, 
+				"MARConvert Problem", 
+				t);
+		return FALSE;
+	}
+
+
+	//060103 check for output file same as input file -- wipes out input file
+	if 
+		(
+			(TheIniParams.outfilepath == TheIniParams.infilepath) 
+			|| 	
+			(
+				MCClient.MCBadFile 
+				&& 
+				(TheIniParams.badfilepath == TheIniParams.infilepath)
+			) 
+			|| (TheIniParams.rptfilepath == TheIniParams.infilepath)
+		)
+	{
+		t.Sprintf ("Sorry, input file is also specified as an output file", TheIniParams.infilepath.GetText ());
+		WMessageBox::Info 
+				(NULL, 
+				"MARConvert Problem", 
+				t);
+		return FALSE;
+	}
+
+
+	//060104 check for no charset chosen
+	if 	(
+			((TheClient == AAA) || (TheClient == CCC)) 	// because these convert in two directions
+			&& (TheIniParams.charset == UNKNOWN)
+		)
+	{
+		t.Sprintf ("Click a radio button to say which direction to perform the conversion", TheIniParams.infilepath.GetText ());
+		WMessageBox::Info 
+				(NULL, 
+				"MARConvert Problem", 
+				t);
+		return FALSE;
+	}
+
+	
+    	FILE* ofile;
+	FILE* bfile;
+	FILE* rfile;	
+	
+	//050128 need to check return values
+    	if ((rfile = fopen (TheIniParams.rptfilepath.GetText(), "w")) == NULL)
+		msg.Sprintf ("Cannot open report file %s", TheIniParams.rptfilepath.GetText());
+		
+	if (rfile)
+	{
+		if ((ofile = fopen(TheIniParams.outfilepath.GetText(), "w")) == NULL)
+			msg.Sprintf("Cannot open output file %s", TheIniParams.outfilepath.GetText());
+			
+		if (MCClient.MCBadFile)
+		{
+			if ((bfile = fopen(TheIniParams.badfilepath.GetText(), "w")) == NULL)
+				msg.Sprintf("Cannot open bad-record file %s", TheIniParams.badfilepath.GetText());
+		}
+	}
+	
+	if 	(
+			(MCClient.MCBadFile && (!rfile || !ofile || !bfile))
+			|| 
+			(!MCClient.MCBadFile && (!rfile || !ofile))
+		)
+	{
+		WMessageBox::Message
+				(NULL, 
+				WMsgBSOk | WMsgBSIconInformation,
+				"Problem",
+				msg.GetText ());
+	}
+	else
+	{
+		/*070926 now SP_UseFile sets based on client code -- be sure to update SP_UseFile for
+				any new clients who want illegals checked, or who use Codetables
+				
+		//050125 whether to ck for illegal chars
+		int illegals = (TheClient == LLL);
+		
+		//051217 whether to load codetables
+		int codetables = ((TheClient == AAA) || (TheClient == CCC));
+		*/
+	
+		WCursor cursor = SetCursor (WSCWait);
+		CountLabel->SetText("Loading conversion tables");
+		
+		
+		WString mccli = "MC_";
+		mccli.Concat(yMCClient::TheClientCode);
+		Result = SP_UseFile 
+				((LPCUSTR) mccli.GetText(),
+				(LPCUSTR) TheIniParams.infilepath.GetText(), 
+				rcount);	//rcount will be meaningless because file not scanned (array not built)
+				//illegals,		codetables);
+		
+		switch (Result)
+		{
+			//030902 now returns E_PERFECTSUCCESS for a MARC21 or MARCXML file, E_EXCEPTION for a UNIMARC file
+			case E_PERFECTSUCCESS:   //MARC21 or MARCXML file
+				break;
+			case E_EXCEPTION: //UNIMARC file
+				msg = "Opening file: File is a UNIMARC file";
+				break;
+			case E_FILENOTFOUND:    
+				msg = "Opening file: File not found";
+				break;
+			case E_FILENOTOPEN:     
+				msg = "Opening file: File not open";
+				break;
+			case E_UNEXPECTEDEOF:   
+				msg = "Opening file: Unexpected end of file";
+				break;
+			case E_CONVERSION:
+				msg = "Opening file: Character conversion tables missing or corrupted";
+				break;
+			default:                
+				msg.Sprintf ("Opening file: Status code %d", Result);
+				break;
+		}
+	
+		if (Result != E_PERFECTSUCCESS)
+		{
+			WMessageBox::Message
+					(NULL, 
+					WMsgBSOk | WMsgBSIconInformation,
+					"Conversion problem",
+					msg.GetText ());
+			msg.Sprintf ("\n%s\n", msg.GetText ());
+			fputs (msg.GetText (), rfile);
+			return Result;
+		}
+		
+		
+		// load maps
+		if (TheClient == FFF)
+		{
+			Result = LoadMaps(rMessage);
+			if (Result != E_PERFECTSUCCESS)	
+			{
+				WMessageBox::Message
+						(NULL, 
+						WMsgBSOk | WMsgBSIconInformation,
+						"Problem loading maps",
+						rMessage.GetText ());
+				msg.Sprintf("\n%s\n", rMessage.GetText ());
+				fputs(rMessage.GetText (), rfile);
+				return Result;
+			}
+		}
+			
+		
+		CountLabel->SetText("Beginning conversion");
+		
+		msg = yUtility::MakeStartEndMsg(TRUE);
+		fputs(msg.GetText(), rfile);
+	
+		msg.Sprintf("\n\n\tInput file : %s\n"
+				      "\tOutput file: %s\n",
+				TheIniParams.infilepath.GetText(), 
+				TheIniParams.outfilepath.GetText());
+		msg = MCClient.TheDialogHeading + msg;
+		
+		if ((TheClient == AAA) || (TheClient == CCC))	// can convert in two directions
+		{
+			// add msg about charset
+			if (TheIniParams.charset == UTF8)
+				msg.Concat("\tUTF-8 to MARC-8\n");
+			else
+				msg.Concat("\tMARC-8 to UTF-8\n");
+		}
+		
+		fputs(msg.GetText(), rfile);
+
+
+		// PROCESS THE FILE
+		
+		//060301 no longer build a message for the entire file, but print
+		//		at the end of each record -- only ConvertToUNIMARC and ConvertFile done so far
+		if (TheClient == LLL)
+			msg = CreateBlockedFile(ofile, rfile, rcount, rbadcount, TRUE);
+		else if (TheClient == FFF)
+			// bfile has to be in call even if client doesn't use it
+			Result = ConvertToUNIMARC (ofile, bfile, rfile, rcount, rbadcount, rnodecount, TRUE);
+		else
+			// GGG dnh interactive mode, so doesn't come thru here
+			// bfile has to be in call even if client doesn't use it
+			Result = ConvertFile (ofile, bfile, rfile, rcount, rbadcount, TRUE);
+		
+		
+		SetCursor(cursor);
+	
+	
+		if ((TheClient == BBB) || (TheClient == GGG) || (TheClient == LLL))
+				/* not sure why these clients have such a less-informative message
+					-- whether they wanted it, or can't use the one below. in any case,
+					use the one below for all new clients unless they say otherwise */
+		{
+			/*060301 modified to depend on sub printing messages as it goes
+			msg.Sprintf ("--End of run. %s\n%lu records converted\n\n", msg.GetText (), count);*/
+			msg.Sprintf ("--End of run.\n%lu records converted\n\n", count);
+			displaymsg = msg;
+		}
+		else		// namely AAA, CCC, FFF, HHH, and QQQ
+		{
+			if (badcount > 0)
+				displaymsg.Sprintf ("--End of run\n\nPROBLEMS DETECTED\n\n%lu records converted\n\n", count);
+			else
+				displaymsg.Sprintf ("--End of run\n%lu records converted\n\n", count);
+				
+			//060108 we use the "bad record" count even if client isn't using the bad-rec file
+			/*060301 modified to depend on sub printing messages as it goes
+			msg.Sprintf ("%s\n--End of run.\n%lu records converted, %lu bad records", 
+					msg.GetText (),
+					count, 
+					badcount);*/
+			msg.Sprintf ("\n--End of run\n%lu records converted, %lu bad records", 
+					count, 
+					badcount);
+				
+			if (TheClient == FFF)	// to UNIMARC, which uses the complex node-tree
+				msg.Sprintf ("%s\nNodes used: %ld\n\n", 
+						msg.GetText(), 
+						nodecount);
+		}
+		
+		fputs(msg.GetText(), rfile);
+		
+		
+		msg = yUtility::MakeStartEndMsg(FALSE);
+		fputs(msg.GetText(), rfile);
+
+
+		fclose(rfile);
+
+		//final message
+		WMessageBox::Message
+				(NULL, 
+				WMsgBSOk | WMsgBSIconInformation,
+				"Conversion complete",
+				displaymsg.GetText());
+	}
+
+    	SP_CloseFile();
+    	fclose(ofile);
+	fclose(bfile);
+    
+	Dismiss(TRUE);
+	
+	return FALSE;
+}
+//OKButton_Click
+
+
+
+//BatchConvert -- converts a SINGLE file
+//040313 added 5th param -- recheck GGG if revised version sent
+int @CLASSNAME@::BatchConvert 
+		(WConsole* pconsole, 
+		WString infilepath, 
+		WString outfilepath,
+		WString badfilepath,
+		WString rptfilepath,
+		WBool boverwrite)
+{
+	
+	TheClient = MCClient.TheClient;
+		
+	int Result = E_PERFECTSUCCESS;
+	WBool success;
+	WString buffer;
+	
+	long        	count, badcount, nodecount;
+	long&		rcount = count;
+	long&		rbadcount = badcount;
+	long&		rnodecount = nodecount;
+	
+	infilepath.Trim ();
+	outfilepath.Trim ();
+	rptfilepath.Trim ();
+	
+	WString msg, startmsg, displaymsg;
+
+
+	// MULTIPLE clients send the outfilepath and rptfilepath, for SINGLEs we have to construct it
+	if (MCClient.MCBatchFiles == SINGLE)
+	{
+		WFilePath infp = infilepath;
+		if (infp.GetDrive().GetEmpty() && infp.GetDirectory().GetEmpty())
+		{
+			char *cwd;
+			cwd = getcwd (NULL, 0);
+			if (cwd != NULL)
+			{
+				WString temp (cwd);
+				infp.SetDrive(temp.Substring (0, 2));
+				infp.SetDirectory(temp.Substring (2));
+			}
+			free(cwd);
+		}
+
+		// this extension looks like it's for a specific client, sb passed in
+		outfilepath = infp.GetDrive () + infp.GetDirectory () + infp.GetFileName () + ".M8";
+		
+		rptfilepath = infp.GetDrive () + infp.GetDirectory () + infp.GetFileName () + ".RPT";
+
+		startmsg = yUtility::MakeStartEndMsg(TRUE);
+	}	
+	
+	
+	msg.Sprintf("\n%s\n\tInput file : %s\n\tOutput file: %s\n", 
+			MCClient.TheDialogHeading.GetText(), 
+			infilepath.GetText (), 
+			outfilepath.GetText ());
+		
+	if ((TheClient == AAA) || (TheClient == CCC))	// these convert in two directions
+	{
+		// add msg about charset
+		if (MCClient.MCSourceCharset == UTF8)
+			msg.Concat("\tUTF-8 to MARC-8\n");
+		else
+			msg.Concat("\tMARC-8 to UTF-8\n");
+	}
+	
+		
+	if (MCClient.MCBatchFiles == SINGLE)	// don't want to repeat this for each file if multiple
+	{
+		msg.Concat("\n-- See http://www.systemsplanning.com/marc/");
+		msg.Concat(MCClient.TheHelpFile);
+		msg.Concat(" for Help --\n\n");
+	}
+	
+	startmsg.Concat(msg);
+    	cprintf (startmsg.GetText());
+	// can't write to report yet as it isn't open
+
+
+	//see if input file is there
+   	if (access(infilepath, 0) == -1)
+	{
+		msg.Sprintf("--Cannot find %s\n\n", infilepath.GetText());
+		cprintf(msg);
+			
+		//050126 also save for report
+		startmsg.Concat(msg);
+		
+		Result = E_FILENOTFOUND;
+	}
+
+	if (!boverwrite)
+	{
+		if (Result == E_PERFECTSUCCESS)
+		{
+			//see if output file exists
+			if (access(outfilepath, 0) == 0)
+			{
+				cprintf("\nOutput file exists, overwrite? (y/n)\n");
+				success = pconsole->Read(buffer);
+				buffer.ToLowercase ();
+				if (buffer.GetCharacter(0) != 'y')
+				return E_EXCEPTION;
+			}
+		}
+	
+		if (MCClient.MCBatchFiles == SINGLE)	// for multiples we use one report for all files, so the caller checks this
+		{
+			//see if report file exists
+			if (access(rptfilepath, 0) == 0)
+			{
+				cprintf("\nReport file exists, overwrite? (y/n)\n");
+				success = pconsole->Read(buffer);
+				buffer.ToLowercase();
+				if (buffer.GetCharacter(0) != 'y')
+				return E_EXCEPTION;
+			}
+		}
+	}
+	
+	
+    	FILE* rfile;
+		
+
+	//050130 next line crashes if input file is zero-length! even if report has a different name
+	//060119 or maybe the report file wasn't closed from previous file in batch?
+	/*070718 use conditional for mode
+    	if ((rfile = fopen(rptfilepath.GetText(), mode)) == NULL)*/
+    	if ((rfile = fopen(rptfilepath.GetText(), (MCClient.MCBatchFiles == SINGLE) ? "w" : "a")) == NULL)
+		
+	{
+	    	cprintf ("\nCannot create report file %s\n", rptfilepath.GetText());
+		return E_FILENOTOPEN;
+	}
+
+
+	// now we can write the start msg to report
+	fputs(startmsg.GetText(), rfile);
+
+
+	//050126 if there was a previous problem, return
+	if (Result != E_PERFECTSUCCESS)
+	{
+		fclose (rfile);
+		return Result;
+	}
+
+
+	//make output file
+    	FILE* ofile;
+    	if ((ofile = fopen (outfilepath.GetText (), "w")) == NULL)
+	{
+	    	cprintf ("\nCannot create output file %s\n", outfilepath.GetText ());
+		return E_FILENOTOPEN;
+	}
+
+
+	FILE* bfile;
+	
+	if (MCClient.MCBadFile)
+	{
+		if ((bfile = fopen (badfilepath.GetText (), "w")) == NULL)
+		{
+			cprintf ("\nCannot create bad-record file %s\n", badfilepath.GetText ());
+			return E_FILENOTOPEN;
+		}
+	}
+
+
+	//050116 ck for 0-len file
+	struct stat buf;
+	WString t;
+	stat (infilepath, &buf);
+	if (buf.st_size == 0L)
+	{
+	    	msg.Sprintf ("\nSorry, input file %s contains no data", infilepath.GetText ());
+	    	cprintf (msg.GetText ());
+		fputs (msg.GetText (), rfile);
+		fclose (rfile);
+		return E_UNEXPECTEDEOF;
+	}
+
+		
+	/*070926 now SP_UseFile sets based on cli code -- update SP_UseFile if client wants
+			illegals checked or uses Codetables
+			
+	//050125 new param says whether to ck for illegal chars
+	int illegals = (TheClient == LLL);
+		
+	//051217 whether to load codetables
+	int codetables = ((TheClient == AAA) || (TheClient == CCC));
+	*/
+
+	WString mccli = "MC_";
+	mccli.Concat(yMCClient::TheClientCode);
+	Result = SP_UseFile 
+			((LPCUSTR) mccli.GetText(),
+			(LPCUSTR) infilepath.GetText(), 
+			rcount);	//rcount will be meaningless because file not scanned (array not built)
+			//illegals,	codetables);
+	
+	switch (Result)
+	{
+		//030902 now returns E_PERFECTSUCCESS for a MARC21 or MARCXML file, E_EXCEPTION for a UNIMARC file
+		case E_PERFECTSUCCESS:   //MARC21 or MARCXML file
+			break;
+		case E_EXCEPTION: //UNIMARC file
+			msg = "Opening file: File is a UNIMARC file";
+			break;
+		case E_FILENOTFOUND:    
+			msg = "Opening file: File not found";
+			break;
+		case E_FILENOTOPEN:     
+			msg = "Opening file: File not open";
+			break;
+		case E_UNEXPECTEDEOF:   
+			msg = "Opening file: Unexpected end of file";
+			break;
+		case E_CONVERSION:
+			msg = "Opening file: Character conversion tables missing or corrupted";
+			break;
+		default:                
+			msg.Sprintf ("Opening file: Status code %d", Result);
+			break;
+	}
+
+	if (Result != E_PERFECTSUCCESS)
+	{
+		msg.Sprintf ("--%s\n", msg.GetText ());
+		cprintf (msg.GetText ());
+		fputs (msg.GetText (), rfile);
+		goto end;
+	}
+
+
+	// call sub to process a single file
+	//060301 no longer build a message for the entire file, but print
+	//		at the end of each record -- only ConvertToUNIMARC and ConvertFile done so far
+	if (TheClient == LLL)
+		msg = CreateBlockedFile (ofile, rfile, rcount, rbadcount, FALSE);
+	else if (TheClient == FFF)
+		// only AAA and CCC use the bfile at this time, but others have to include it in calls
+		Result = ConvertToUNIMARC (ofile, bfile, rfile, rcount, rbadcount, rnodecount, FALSE);
+	else
+		// only AAA and CCC use the bfile at this time, but others have to include it in calls
+		Result = ConvertFile (ofile, bfile, rfile, rcount, rbadcount, FALSE);
+
+
+	if ((TheClient == AAA) || (TheClient == CCC) || (TheClient == FFF) || (TheClient == QQQ))
+	{
+		if (badcount > 0)
+			displaymsg.Sprintf ("--End of run\n\nPROBLEMS DETECTED\n\n%lu records converted\n\n", count);
+		else
+			displaymsg.Sprintf ("--End of run\n%lu records converted\n\n", count);
+			
+		//060108 we use this "bad record" count even if client isn't using the bad-rec file
+		/*060301 modified to depend on sub printing messages as it goes
+		msg.Sprintf ("%s\n--End of run.\n%lu records converted, %lu bad records\n", 
+				msg.GetText(),
+				count, 
+				badcount);*/
+		msg.Sprintf ("\n--End of run\n%lu records converted, %lu bad records\n", 
+				count, 
+				badcount);
+				
+		if (TheClient == FFF)
+			msg.Sprintf ("%s\nNodes used: %ld\n\n", 
+					msg.GetText(), 
+					nodecount);
+	}
+	else
+	{
+		/*060301 modified to depend on sub printing messages as it goes
+		msg.Sprintf ("--End of run. %s\n%lu records converted\n\n", msg.GetText (), count);*/
+		msg.Sprintf ("--End of run\n%lu records converted\n\n", count);
+		
+		displaymsg = msg;
+	}
+
+
+	// this overwrites the last "Record #" counter to clear the line
+	cprintf ("                                                \r", count);
+	
+	cprintf (displaymsg.GetText ());
+	fputs (msg.GetText (), rfile);
+	
+	
+	// these two use a single report for all files, so setup and end the rpt in MainForm
+	if (MCClient.MCBatchFiles == SINGLE)
+	{
+		/*070720 use sub
+		msg = "\nMARConvert,  ended ";
+		msg.Concat (li.GetFormatDate (WDateFormatShortDatePicture));
+		msg.Concat (" at ");
+		msg.Concat (li.GetFormatTime (WTimeFormatForce24hourFormat));
+		msg = msg.Left (msg.GetLength () - 3);	//strip off " AM" or " PM"
+		msg.Concat ("\n\n");
+		*/
+		msg = yUtility::MakeStartEndMsg(FALSE);
+		fputs(msg.GetText(), rfile);
+		cprintf(msg.GetText());
+	}
+
+
+end:
+	fclose (rfile);
+    	SP_CloseFile ();
+    	fclose (ofile);
+	fclose (bfile);
+
+	return Result;
+}
+//BatchConvert
+
+
+
+//ConvertFile
+int @CLASSNAME@::ConvertFile 
+		(FILE* ofile, 
+		FILE* bfile, 
+		FILE* rfile, 
+		long& rcount, 
+		long& rbadcount, 
+		WBool interactive)
+{
+	int			i, j, k, Result = E_PERFECTSUCCESS, m;
+	long 		count=0, badcount=0;
+	WBool		badrec;
+	
+	long        	reclen, fldlen, recoffset=0, fldoffset;
+	long&		rreclen = reclen;
+	long&		rfldlen = fldlen;
+	long&		roffset = recoffset;
+	LPUSTR      	pResult;
+	LPUSTR     	ptag;
+	WString     	theRecord, newRecord, newLeader, newDirectory, temp;
+	WString		msg, countmsg;
+	WString		TheMessage;
+	WString&		rMessage = TheMessage;
+	WString		field001;	// for report
+	
+	//060104 for creating 066 in UTF-to-MARC conversions
+	WString		field066;
+	WStringArray	escapes;
+	
+	/*
+	// note that we overwrite the file here, so for multiple files only the last one will be saved
+	#ifdef _DEBUG
+	FILE*	fout;
+	fout = fopen ("t_utfconvert.txt", "w");
+	fputc (0xEF, fout);	// utf-8 ...
+	fputc (0xBB, fout);	//    ... 
+	fputc (0xBF, fout);	//... indicator
+	fputs ("\n", fout);
+	fclose (fout);
+	#endif
+	*/
+	
+	
+	// skip recs at start
+	#ifdef _DEBUG	
+	int docount 	= 999999999;		// can't use 0, as we allow for some projects, just use a big number
+	int skiprecs 	= 0;
+	for (int ddddd = 0; ddddd < skiprecs; ddddd++)
+	{
+		//offset can be changed by this call if record preceeded by extra chars
+		i = SP_RecordByOffset (rMessage, roffset, (LPPUSTR) &pResult, rreclen);
+				//we are using i for the results of the record loop, keeping Result for the overall result
+				//	-- this is because the conversion may return E_CONVERSION or E_FUTUREFEATURE, which
+				//			should not abort the loop
+		recoffset += reclen;	//probable offset of next record
+	}
+	#endif	
+	
+	
+	while (TRUE)
+	{
+		badrec = FALSE;
+		field001.Clear();	// in case a rec dnha 001
+		
+		//offset can be changed by this call if record preceeded by extra chars
+		/*060202
+		i = SP_RecordByOffset (roffset, (LPPUSTR) &pResult, rreclen, (LPPSTR) &pValMsg);*/
+		i = SP_RecordByOffset (rMessage, roffset, (LPPUSTR) &pResult, rreclen);
+				//we are using i for the results of the record loop, keeping Result for the overall result
+				//	-- this is because the conversion may return E_CONVERSION or E_FUTUREFEATURE, which
+				//			should not abort the loop
+		recoffset += reclen;	//probable offset of next record
+		
+		if (i < 1)	// end of file or some other problem
+		{
+			//060517 report messages here, return Result
+			if (i < 0)
+			{
+				Result = i;
+				switch (Result)
+				{
+					case E_UNEXPECTEDEOF:   
+						msg = "\n\nFatal problem: Unexpected end of file\n";
+						break;
+					case E_NONMARC:
+						msg = "\n\nFatal problem: Not a legal MARC record\n";
+						break;
+					default:                
+						msg.Sprintf ("\n\nFatal problem: Status code %d\n", Result);
+						break;
+				}
+				fputs (msg.GetText(), rfile);
+			}
+			break;
+		}
+	
+	
+		count++;
+		#ifdef _DEBUG
+		if (count % 1 == 0)
+		#else
+		if (count % 1000 == 0)
+		#endif
+		{
+			if (interactive)
+			{
+				countmsg.Sprintf ("Record %lu", count);
+				CountLabel->SetText (countmsg);
+				//CountLabel->SetLeft ((r.w - CountLabel->GetWidth ()) / 2);
+				Update ();
+			}
+			else
+				cprintf ("\tRecord %lu\r", count);
+		}
+	
+	
+		//unlike Export, we abort run if invalid record found
+		if ((i == 3) || (i < 0))
+		{
+			if (i == 3)
+				msg.Sprintf ("\nRecord %lu is not a valid MARC record\n%s\nConversion must stop\n", 
+						count, 
+						rMessage.GetText());	//pValMsg);
+			else
+				msg.Sprintf ("\nFatal error while reading record %lu (code %d)\nConversion must stop\n", count, i);
+				
+			fputs (msg.GetText(), rfile);	//060511
+			rcount = count;
+			rbadcount = badcount;
+			return E_NONMARC;
+		}
+		
+		
+		theRecord.SetText ((const char*) pResult);
+		newRecord.Clear ();
+		newDirectory.Clear ();
+				
+		fldoffset = 0;
+		j = 1;
+		while (j == 1)	// 2 is never returned from SP_Field
+		{
+			j = SP_Field ((LPUSTR) "xxx", (LPPUSTR) &pResult, rfldlen, (LPPUSTR) &ptag);
+			if (j == 1) 	// 2 is never returned from SP_Field
+			{
+				if (!strcmp ((char const*) ptag, "001"))
+				{
+					field001.SetText((char const*) pResult);
+					field001.Chop(-1);	// chop FT
+					field001.Trim();
+					#ifdef _DEBUG
+					cprintf("\n\t%s\n", field001.GetText());
+					#endif
+				}
+					
+					
+				/*060119 this client also wants 066 dropped from UTF-to-MARC recs, since we are creating
+						another one below
+				//060109 supposed to drop 066 from MARC-to-UTF recs -- at least for this client
+				if (!strcmp ((char const*) ptag, "066") && (TheClient == AAA) && (yMCClient::MCTargetCharset == TOUTF8))
+				*/
+				if (!strcmp ((char const*) ptag, "066") && (TheClient == AAA))
+					continue;
+
+
+				// convert charset -- this may not work with AAA and CCC -- they go in two directions
+				//		but has MCClient been updated based on the user's choice?
+				if (yMCClient::MCSourceCharset == ANSEL)
+					k = SP_ConvertAnsel (rMessage, (LPPUSTR) &pResult, rfldlen, yMCClient::MCTargetCharset);
+				else if (yMCClient::MCSourceCharset == UTF8)
+					k = SP_ConvertUTF8 (rMessage, (LPPUSTR) &pResult, rfldlen, yMCClient::MCTargetCharset);
+
+			
+				if (TheMessage.GetLength())		//070926 why not check k instead?		
+				{
+					/*051231 got a protection error on this, so breaking down
+					msg.Sprintf("%s\n\n\t-- Record %lu, field %s --\n%s", 
+							msg.GetText(),
+							count,
+							ptag,
+							TheMessage.GetText());
+					*/
+					msg.Sprintf("\nRecord %lu (%s) field %s\n", 
+							count,
+							field001.GetText(),
+							ptag);
+					msg += TheMessage;
+					fputs (msg.GetText(), rfile);	//060511
+				}
+
+
+				if (k != E_PERFECTSUCCESS)
+				{
+					badrec = TRUE;
+						
+					if (k != E_CONVERSION)	// conversion messages handled by rMessage in para just above
+					{
+						// others not yet handled by rMessage
+						msg.Sprintf ("\nRecord %lu (%s) field %s\n\tStatus code %d\n", 
+								count,
+								field001.GetText(),
+								ptag,
+								k);
+						fputs (msg.GetText(), rfile);	//060511
+					}
+				}
+				
+				
+				// ADD TO 066 FIELD
+				
+				//060104 we could do this for other clients if they want it
+				if ((TheClient == AAA) && (yMCClient::MCTargetCharset == TOANSEL))
+				{
+					// look for additional charsets for 066
+					temp.Clear();
+					char* escape = strstr((const char*) pResult, "\x1b");
+					while (escape)
+					{
+						//060109 066 not used for these
+						if ((escape[1] != 'p') && (escape[1] != 'b') && (escape[1] != 's') && (escape[1] != 'g'))
+						{
+							temp.Concat(escape[1]);
+							temp.Concat(escape[2]);
+							// we're not currently creating any 4-byte escape sequences
+							temp.Concat(' ');
+						}
+						escape = strstr(escape + 1, "\x1b");
+					}
+					field066.Concat(temp);	// field066 accums for the whole rec
+				}
+				
+				
+				// ADD FIELD TO RECORD
+				
+				newDirectory.Concat ((const char*) ptag);
+				temp.Sprintf ("%04lu", fldlen);
+				newDirectory.Concat (temp);
+				temp.Sprintf ("%05lu", fldoffset);
+				newDirectory.Concat (temp);
+				fldoffset += fldlen;
+				if ((fldlen > 9999) || (fldoffset > 99999))
+				{
+					msg.Sprintf ("\nIllegal fieldlength or offset, record %lu (%s)\n", 
+							count,
+							field001.GetText());
+					cprintf (msg.GetText ());
+					fputs (msg.GetText (), rfile);
+					return E_NONMARC;
+				}
+				newRecord.Concat ((const char*) pResult);
+				
+				
+				// reset for next field
+				TheMessage.Clear();
+			}
+		}	// all fields converted
+		
+		newDirectory.Concat (30);
+		newRecord.Concat (29);
+
+
+		// DEDUP AND COMPLETE 066 
+		
+		//060104 we could do this for other clients if they want it
+		WBool found = FALSE;
+		if ((TheClient == AAA) && (yMCClient::MCTargetCharset == TOANSEL))
+		{
+			field066 = yUtility::DedupString(field066);
+			escapes = field066.Parse();
+			// reset to basic and extended latin
+			field066 = "  \x1f";
+			field066.Concat("a(B\x1f");
+			field066.Concat("b)E");
+			for (m = 0; m < escapes.GetCount(); m++)
+			{
+				// don't add B or E
+				if ((escapes[m] != "(B") && (escapes[m] != ")E"))
+				{
+					field066.Concat("\x1f");
+					field066.Concat("c");
+					field066.Concat(escapes[m]);
+					found = TRUE;
+				}
+			}
+			if (!found)
+				field066.Clear();
+		}
+			
+
+		// complete leader
+		char isutf = (yMCClient::MCTargetCharset == TOUTF8) ? 'a' : ' ';
+		WString leaderpattern = "%05d%s%c%s%05d%s";
+		newLeader.Sprintf (leaderpattern.GetText (), 	
+				newRecord.GetLength () + newDirectory.GetLength () + 24, // 0-4
+				theRecord.Substring (5, 4).GetText (),					// 5-8
+				isutf,												// 9
+				theRecord.Substring (10, 2).GetText (),					// 10-11
+				newDirectory.GetLength () + 24, 						// 12-16
+				theRecord.Substring (17, 7).GetText ());				// 17-23
+				
+			
+			
+		// insert 066
+		//060104 we could do this for other clients if they want it
+		if ((TheClient == AAA) && (yMCClient::MCTargetCharset == TOANSEL) && !field066.GetNull())
+		{
+			// insert the 066
+			yUtility::InsertMARCField (&newLeader, &newDirectory, &newRecord, 66, &field066);
+		}
+		
+		
+		// OUTPUT RECORD
+		
+		//060108 we report bad count for all clients, even if they don't use bad-file
+		if (badrec)
+			badcount++;
+			
+			
+		//061103 use param
+		//if (badrec && ((TheClient == AAA) || (TheClient == CCC)))		// use bad-file
+		if (badrec && MCClient.MCBadFile)		// use bad-file
+		
+		{
+			fputs (newLeader.GetText (), bfile);
+			fputs (newDirectory.GetText (), bfile);
+			fputs (newRecord.GetText (), bfile);
+		}
+		else
+		{
+			fputs (newLeader.GetText (), ofile);
+			fputs (newDirectory.GetText (), ofile);
+			fputs (newRecord.GetText (), ofile);
+		}
+
+
+		// reset for next record
+		field066.Clear();
+		
+		
+		#ifdef _DEBUG	// MtM doesn't support maxnum
+		if (count >= docount)
+			break;
+		#endif
+		
+	}	// end of file
+	
+	rcount = count;
+	rbadcount = badcount;
+	
+	return Result;
+}
+//ConvertFile
+
+
+
+//ConvertToUNIMARC
+int @CLASSNAME@::ConvertToUNIMARC 
+		(FILE* ofile, 
+		FILE* bfile, 
+		FILE* rfile, 
+		long& rcount, 
+		long& rbadcount, 
+		long& rnodecount, 
+		WBool interactive)
+{
+	int			i, j, k, Result = E_PERFECTSUCCESS;
+	int			iConvert;
+	long 		count=0, badcount=0;
+	
+	// these are for the SP_Record and SP_Field subs, not for building the new rec
+	long      	reclen, fldlen, recoffset=0, fldoffset;
+	long&		rreclen = reclen;
+	long&		rfldlen = fldlen;
+	long&		roffset = recoffset;
+	
+	LPUSTR     	ptag;
+	WString		msg, countmsg;
+	WString		TheMessage;
+	WString&		rMessage = TheMessage;
+	WString		field001;
+	
+	yTrans		*root, *t_field, *t_UNI_101, *t_uni_225, *t_temp;
+	
+	// m21_field is the entire field, m21_data is that part we are going to add to the node (cd be
+	//		a subfield, inds, or anything)
+	WString		m21_record, m21_field, m21_leader, m21_data, m21_tag_sfc, m21_tag;
+	
+	WString		uni_leader, uni_dir, uni_tag;
+	WString 		s, fielddata, allfields, lastfield;
+	WBool		isbadrec=FALSE, isfatal=FALSE, done;
+   	long       	unidiroffset=0, unidirfldlen;
+	WString		UNI_100, UNI_101, UNI_102, UNI_105, UNI_006;
+	WString&		rUNI_100 = UNI_100;
+	WString&		rUNI_101 = UNI_101;
+	WString&		rUNI_102 = UNI_102;
+	WString&		rUNI_105 = UNI_105;
+	WString&		rm21_data = m21_data;
+	char			c, m21_sfc, uni_sfc;
+	char			m21_inds[3];	memset(m21_inds, 0, sizeof(m21_inds));
+	char			uni_inds[3];	memset(uni_inds, 0, sizeof(uni_inds));
+	int			tempi;	// temp int for local use
+	WString		temps;	// temp string for local use
+	
+	/* if a m21 600 has a $t, it is not written to uni 600 or 602 but to a 604. The
+			604 has embedded in it the title sfs with a 500 tag,
+			and the author sfs with a 700 tag. in order to use the loop normally,
+			we write the 600/602 sfs to 500/700/720 tags and then get them back 
+			to write the 604. we then delete the 500/700/720 
+		-- likewise a 610 or 611 becomes a 601 if no $t, 604 if has $t */
+	WString		uni_6xx_tag;	// whether this is a 600, 601, or 602
+	WBool		is604;		// whether this is a 600/601/602 with $t
+	yTrans		*t_subj_500=NULL, *t_subj_7xx=NULL;	// store the author and title portions of the 604
+
+	//060509
+	WBool		has1xx;
+	WString		uni_70x_tag;	// whether to write m21 700 to uni 701 or 702 (depending on whether there is a 1xx)
+
+	char			zNSB [2];	//unimarc start/end ...
+	char			zNSE [2];	//... non-filing chars
+	zNSB[0] = 136;
+	zNSB[1] = 0;
+	zNSE[0] = 137;
+	zNSE[1] = 0;
+	
+	//060314 this is re-creating the array provided by SP_MARC
+	char			ConvertArray[zmaxfldlen];
+	LPUSTR    	pResult;
+	WBool		first_sf_written;
+
+		
+	root = new yTrans;
+	#include "UNIMARC_table.cpp";	// the UNI_table
+	
+	// MakeTree can't get the number of nodes because it only gets the pointer
+	i = sizeof(UNI_table) / sizeof(UNI_table[0]);
+	
+	if (!root->MakeTree(NULL, UNI_table, i))
+	{
+		msg = "Problem building Translation Table";
+		fputs (msg.GetText(), rfile);
+		return -1;
+	}
+
+
+	FILE*	debugfile;	// can be made _DEBUG after delivery
+	#ifdef _DEBUG
+	debugfile = fopen("\\marc\\marconvert\\FFF\\debug.txt", "w");
+	ShowTree("MARC21-to-UNIMARC tree", root, debugfile);
+	fclose(debugfile);
+	#endif
+	
+	
+	// skip recs at start
+	#ifdef _DEBUG	
+	int docount 	= 12;		// can't use 0, as we allow for some projects, just use a big number
+	int skiprecs 	= 0;
+	for (int ddddd = 0; ddddd < skiprecs; ddddd++)
+	{
+		//offset can be changed by this call if record preceeded by extra chars
+		i = SP_RecordByOffset (rMessage, roffset, (LPPUSTR) &pResult, rreclen);
+				//we are using i for the results of the record loop, keeping Result for the overall result
+				//	-- this is because the conversion may return E_CONVERSION or E_FUTUREFEATURE, which
+				//			should not abort the loop
+		recoffset += reclen;	//probable offset of next record
+	}
+	#endif	
+	
+	
+	// RECORD LOOP
+	
+	while (TRUE)
+	{
+		i = SP_RecordByOffset (rMessage, roffset, (LPPUSTR) &pResult, rreclen);
+				//we are using i for the results of the record loop, keeping Result for the overall result
+				//	-- this is because the conversion may return E_CONVERSION or E_FUTUREFEATURE, which
+				//			should not abort the loop
+		recoffset += reclen;	//probable offset of next record
+		
+		if (i == 0)	//end of file
+			break;
+	
+		count++;
+		#ifdef _DEBUG
+		if (count % 1 == 0)
+		#else
+		if (count % 100 == 0)
+		#endif
+		{
+			if (interactive)
+			{
+				countmsg.Sprintf ("Record %lu", count);
+				CountLabel->SetText (countmsg);
+				//CountLabel->SetLeft ((r.w - CountLabel->GetWidth ()) / 2);
+				Update ();
+			}
+			else
+				cprintf ("\tRecord %lu\r", count);
+		}
+	
+	
+		// unlike Export, we abort run if invalid record found
+		if ((i == 3) || (i < 0))
+		{
+			if (i == 3)
+				msg.Sprintf("\nRecord %lu\n\tNot a valid MARC record\n\tConversion must stop\n", count);
+			else
+				msg.Sprintf("\nRecord %lu\n\tFatal error while reading record (code %d)\n\tConversion must stop\n", count, i);
+				
+			fputs (msg.GetText (), rfile);
+			rcount = count;
+			rbadcount = badcount;
+			return -1;
+		}
+		
+		m21_record.SetText((char*) pResult);
+		
+		
+		//060329 skip this record if it's a serial -- non-lang material like sheet music seems to work,
+		//		but cartographic and other non-lang matl w get a lot of errors for unmapped flds
+		if ((m21_record.GetCharacter(7) == 'b')
+				|| (m21_record.GetCharacter(7) == 's'))
+		{
+			msg.Sprintf("\nRecord %lu\n\tSerial records not currently handled\n", count);
+			fputs (msg.GetText(), rfile);
+			badcount++;
+			continue;
+		}
+		
+		
+		// FIELD LOOP
+		
+		fldoffset = 0;
+		has1xx = FALSE;
+		j = 1;
+		while (j == 1)	// 2 is never returned from SP_Field
+		{
+			t_uni_225 = NULL;
+			
+			j = SP_Field ((LPUSTR) "xxx", (LPPUSTR) &pResult, rfldlen, (LPPUSTR) &ptag);
+			if (j != 1) 	// 2 is never returned from SP_Field
+				break;
+				
+			m21_tag.SetText((char*) ptag);
+			m21_field.SetText((char*) pResult);
+			uni_tag.Clear();
+			
+			
+			//060419 006 added, computer files only
+			/*060423 if there is an 006, then both it and the 007 go to uni 135. since we
+					encounter the 006 first, we save it and add to it from the 007, then 
+					write it all at once */
+			if (m21_tag == "006")
+			{
+				c = (char) m21_field.GetCharacter(0);
+				if (c == 'm')	// computer file
+					UNI_006 = m21_field.Substring(9, 1);	// type of computer file goes in first byte
+				else
+				{
+					msg.Sprintf("\nRecord %lu (%s) field 006\n\tUnknown character in first byte\n", 
+							count,
+							field001.GetText());
+					fputs(msg.GetText(), rfile);
+					isbadrec = TRUE;
+				}
+			}
+					
+			else if (m21_tag == "007")
+			{
+				c = (char) m21_field.GetCharacter(0);
+				
+				// these are the values we are handling for FFF
+				if ((c == 'c') || (c == 'k') || (c == 's') || (c == 't') || (c == 'v'))
+				{
+					m21_tag_sfc = "007_";
+					m21_tag_sfc.Concat(c);
+					
+					// for 007_c, build on the 006 done previously, by passing it to Convert007
+					if (c == 'c')
+						m21_data = UNI_006;
+					
+					if (Convert007(rMessage, m21_field, rm21_data) == -1)
+					{
+						msg.Sprintf("\nRecord %lu (%s) field 007\n%s", 
+								count,
+								field001.GetText(),
+								rMessage.GetText());
+						fputs (msg.GetText (), rfile);
+						isbadrec = TRUE;
+					}
+					t_field = root->InsertString(m21_tag_sfc, m21_data);
+					t_field->WriteIndicators("  ");
+				}
+				else
+				{
+					msg.Sprintf("\nRecord %lu (%s) field 007\n\tUnknown character in first byte\n", 
+							count,
+							field001.GetText());
+					fputs(msg.GetText(), rfile);
+					isbadrec = TRUE;
+				}
+			}
+			
+			else if (m21_tag == "008")
+			{
+				if (Convert008
+						(rMessage, 
+						(char) m21_record.GetCharacter(9), 
+						m21_field, 
+						rUNI_100, 
+						rUNI_101, 
+						rUNI_102, 
+						rUNI_105) 
+					== -1)
+				{
+					msg.Sprintf("\nRecord %lu (%s) field 008\n%s", 
+							count,
+							field001.GetText(),
+							rMessage.GetText());
+					fputs (msg.GetText (), rfile);
+					isbadrec = TRUE;
+				}
+				
+				// we write the 101 here so that other fields can add to it. other 1xx's
+				//		are written at end of record
+				t_UNI_101 = root->InsertString("ff2", UNI_101);
+				if (!t_field)
+				{
+					msg.Sprintf("\nRecord %lu (%s) field ff2\n\tCould not find in Translation Table\n", 
+							count,
+							field001.GetText());
+					fputs (msg.GetText (), rfile);
+					isbadrec = TRUE;
+				}
+				t_UNI_101->WriteIndicators("  ");
+			}
+			
+			else
+			{
+				if (m21_tag == "001")
+				{
+					field001 = m21_field;
+					field001.Chop(-1);	// chop FT
+					field001.Trim();
+					#ifdef _DEBUG
+					cprintf ("\t\t%s\n", field001.GetText());
+					debugfile = fopen("\\marc\\marconvert\\FFF\\debug.txt", "a");
+					fprintf(debugfile, "\n**********\n\tRecord %ld\t%s\n", count, field001.GetText());
+					fclose(debugfile);
+					#endif
+				}
+				
+
+				// DEFAULT INDICATORS -- COPY FROM M21 TO UNI -- also gets field node
+				
+				// changes to default inds can are calculated and rewritten later
+				// we do this here because we use it to get t_field -- it works even for M21 ctl
+				//		flds because we create ind nodes for them in MakeTree, just dn fill them
+				if (!SP_FieldIsControlField((BYTE*) m21_tag.GetText()))
+				{
+					m21_tag_sfc = m21_tag;
+					m21_tag_sfc.Concat("-");
+					
+					_fstrncpy(m21_inds, (char const*) pResult, 2);
+					
+					m21_data.SetText((char const*) m21_inds);
+					
+					// insert into linked list
+					t_field = NULL;
+					
+					//060424
+					if (m21_tag == "246")
+					{
+						m21_tag.Concat('_');
+						if (m21_inds[1] == ' ')
+							m21_tag.Concat('b');
+						else
+							m21_tag.Concat(m21_inds[1]);
+						
+						m21_tag_sfc = m21_tag;
+						m21_tag_sfc.Concat("-");
+					}
+					
+					//060328 can't do this when we plan to use InsertField, as the presence
+					//		of inds will force a new field
+					if (m21_tag != "040")	// make sure inds added below since they aren't here
+					{
+						t_field = root->InsertString(m21_tag_sfc, m21_data);
+						
+						if (t_field)
+							uni_tag = t_field->targettag;
+						else
+						{
+							msg.Sprintf("\nRecord %lu (%s) field %s\n\tCould not find in Translation Table\n", 
+									count,
+									field001.GetText(),
+									m21_tag_sfc.GetText());
+							fputs (msg.GetText (), rfile);
+							isbadrec = TRUE;
+						}
+					}
+				}
+		
+		
+				// STEPS BEFORE PROCESSING FIELD
+
+
+				// if we encounter a 600 we have to see if it gets written to 600 or 602
+				//	-- depends on ind2 being 3=family name or not
+				is604 = FALSE;
+				uni_6xx_tag.Clear();
+				uni_70x_tag.Clear();
+				if (m21_tag == "600")
+				{
+					if (m21_field.GetCharacter(0) == '3')	// 1st ind
+						uni_6xx_tag = "602";	// will be used in sfs to change m21_tag_sfc
+					else
+						uni_6xx_tag = "600";
+					
+					// whether 600 or 602, if $t use 604 instead
+					m21_data = m21_field;
+					temps = "x";
+					temps.SetCharacter(0, 31);
+					temps.Concat("t");
+					if (m21_data.Position(temps) != NOT_FOUND)
+						is604 = TRUE;
+				}
+				else if ((m21_tag == "610") || (m21_tag == "611"))
+				{
+					uni_6xx_tag = "601";
+					// if $t use 604 instead
+					m21_data = m21_field;
+					temps = "x";
+					temps.SetCharacter(0, 31);
+					temps.Concat("t");
+					if (m21_data.Position(temps) != NOT_FOUND)
+						is604 = TRUE;
+				}
+				
+				//060509 for m21 700, normally write to uni 700 or 701, but write
+				//		to uni 702 if there is no m21 1xx
+				//	-- assumes m21 1xx will occur before the 700 field
+				else if (m21_tag.GetCharacter(0) == '1')
+				{
+					has1xx = TRUE;
+				}
+				else if (m21_tag == "700")
+				{
+					uni_70x_tag = (has1xx) ? "701" : "702";
+				}
+				
+				
+				// SUBFIELD LOOP
+				
+				k = 1;
+				first_sf_written = FALSE;
+				while (k == 1)
+				{
+					k = SP_Subfield('*', (LPPUSTR) &pResult, rfldlen, &m21_sfc, NOCONVERSION);
+					if (k != 1)
+						break;
+				
+					if (uni_6xx_tag == "602")
+						m21_tag_sfc.SetText("602");	// dummy used in mapping
+						
+					//060509 likewise for 70x
+					else if (uni_70x_tag == "702")
+						m21_tag_sfc.SetText("702");	// dummy used in mapping
+
+					else
+						m21_tag_sfc = m21_tag;
+					
+					
+					if (!SP_FieldIsControlField((BYTE*) ptag))
+						m21_tag_sfc.Concat(m21_sfc);
+					m21_data.SetText((char const*) pResult);
+					
+				
+					#ifdef _DEBUG
+					//cprintf("\t%s\n", m21_tag_sfc.GetText());
+					#endif
+					
+					
+					// EXCEPTIONS -- if "done" is set, no need to InsertString later
+					done = FALSE;
+					
+					// relators
+					if (m21_tag_sfc.GetCharacter(3) == '4')
+					{
+						m21_data = MapLookup(rMessage, &RelatorsRoot, m21_data);
+						if (m21_data.GetNull())
+						{
+							rMessage = rMessage.Substring(0, rMessage.GetLength() - 1);
+							rMessage.Concat(" (relators)\n");
+							msg.Sprintf("\nRecord %lu (%s) field %s\n%s", 
+									count,
+									field001.GetText(),
+									m21_tag_sfc.GetText(),
+									rMessage.GetText());
+							fputs(msg.GetText(), rfile);
+							isbadrec = TRUE;
+						}
+					}
+					else if (m21_tag_sfc == "0152")
+					{	
+						// not tested, none in FFF
+						m21_data = MapLookup(rMessage, &NatbibsRoot, m21_data);
+						if (m21_data.GetNull())
+						{
+							rMessage = rMessage.Substring(0, rMessage.GetLength() - 1);
+							rMessage.Concat(" (national bibliographies)\n");
+							msg.Sprintf("\nRecord %lu (%s) field %s\n%s", 
+									count,
+									field001.GetText(),
+									m21_tag_sfc.GetText(),
+									rMessage.GetText());
+							fputs(msg.GetText(), rfile);
+							isbadrec = TRUE;
+						}
+					}					
+					else if (m21_tag_sfc == "020a")
+					{
+						tempi = m21_data.Position(")");
+						if (tempi != NOT_FOUND)
+							m21_data.Truncate(tempi);
+						
+						tempi = m21_data.Position(" (");
+						if (tempi == NOT_FOUND)
+						{
+							t_field = root->InsertString("020a", m21_data);
+							if (!t_field)
+							{
+								msg.Sprintf("\nRecord %lu (%s) field 020a\n\tCould not find in Translation Table\n", 
+										count,
+										field001.GetText());
+								fputs (msg.GetText (), rfile);
+								isbadrec = TRUE;
+							}
+						}
+						else
+						{
+							// first add $a
+							temps = m21_data.Substring(0, tempi);
+							t_field = root->InsertString("020a", temps);
+							if (!t_field)
+							{
+								msg.Sprintf("\nRecord %lu (%s) field 020a\n\tCould not find in Translation Table\n", 
+										count,
+										field001.GetText());
+								fputs (msg.GetText (), rfile);
+								isbadrec = TRUE;
+							}
+							// now add $b before $d
+							temps = m21_data.Substring(tempi + 2);
+							t_field->InsertSubfield('b', 'd', temps);
+						}
+						
+						done = TRUE;
+					}
+					
+					else if ((m21_tag_sfc == "040a") || (m21_tag_sfc == "040c") || (m21_tag_sfc == "040d"))
+					{
+						t_field = root->InsertField("040a", m21_data);	// this forces 040$abcd into new 801$b
+						if (m21_tag_sfc.GetCharacter(3) == 'a')
+							t_field->WriteIndicators(" 0");
+						else if (m21_tag_sfc.GetCharacter(3) == 'c')
+							t_field->WriteIndicators(" 1");
+						else if (m21_tag_sfc.GetCharacter(3) == 'd')
+							t_field->WriteIndicators(" 2");
+						done = TRUE;
+					}
+					
+					else if (m21_tag_sfc == "041a")
+					{
+						// each 3-letter code gets its own $a, except the first which came from the 008
+						for (tempi = 3; tempi < m21_data.GetLength(); tempi += 3)
+							t_UNI_101->InsertSubfield('a', 'b', m21_data.Substring(tempi, 3));
+							
+						uni_inds[0] = m21_inds[0];	// translation indicator
+						uni_inds[1] = ' ';
+						t_UNI_101->WriteIndicators(uni_inds);
+						
+						done = TRUE;
+					}
+					
+					else if (m21_tag_sfc == "041h")
+					{
+						t_UNI_101->InsertSubfield('c', ' ', m21_data);
+						
+						done = TRUE;
+					}
+					
+					else if ((m21_tag_sfc == "100a") 
+							|| (m21_tag_sfc == "600a") 
+							|| (m21_tag_sfc == "700a")
+							|| (m21_tag_sfc == "702a"))	// although there is no m21 702, we set it to 702 above
+													//		in some cases
+					{
+						// ind1 == 0 not tested
+						
+						if (m21_inds[0] == '1')	// first ind: surname
+						{
+							tempi = m21_data.Position(", ");
+							if (tempi != NOT_FOUND)
+							{
+								// we save a pointer to the node for all x00's, but we don't use it for anything
+								//		except for 600's
+								t_subj_7xx = root->InsertString(m21_tag_sfc, m21_data.Substring(0, tempi));
+								if (!t_subj_7xx)
+								{
+									msg.Sprintf("\nRecord %lu (%s) field %s\n\tCould not find in Translation Table\n", 
+											count,
+											field001.GetText(),
+											m21_tag_sfc.GetText());
+									fputs (msg.GetText (), rfile);
+									isbadrec = TRUE;
+								}
+								// this saves the pointer to the usual place as well
+								t_field = t_subj_7xx->InsertSubfield('b', 'g', m21_data.Substring(tempi + 2));
+								done = TRUE;
+							}
+						}
+						
+						/*060330 believe not needed since m21_tag_sfc is 602 now for these
+						// do the same as previous para
+						else if (m21_inds[0] == '3')	// first ind: family name
+						{
+							t_subj_7xx = root->InsertField(m21_tag_sfc, m21_data);
+							if (!t_subj_7xx)
+							{
+								msg.Sprintf("\nRecord %lu (%s) field %s\n\tCould not find in Translation Table\n", 
+										count,
+										field001.GetText(),
+										m21_tag_sfc.GetText());
+								fputs (msg.GetText (), rfile);
+								isbadrec = TRUE;
+							}
+							t_field = t_subj_7xx;
+							
+							done = TRUE;
+						}
+						*/
+					}
+					else if (m21_tag_sfc == "245a")
+					{
+						// remove trailing / from $a
+						tempi = m21_data.Position("/");
+						if (tempi == m21_data.GetLength() - 1)
+							m21_data.Truncate(tempi);
+							
+						// remove trailing " =" from $a
+						tempi = m21_data.Position(" =");
+						if (tempi == m21_data.GetLength() - 2)
+							m21_data.Truncate(tempi);
+					}
+					else if (m21_tag_sfc == "245b")
+					{
+						// extract parallel titles -- not tested
+						/*060906 this dn work for two reasons: it puts the main title into
+								$d, and the "last one" code puts any subtitle into $d
+								(instead of $e)
+						tempi = m21_data.Position(" = ");
+						while (tempi != NOT_FOUND)
+						{
+							t_field->InsertSubfield('d', 'e', m21_data.Substring(0, tempi));
+							m21_data = m21_data.Substring(tempi + 3);
+							tempi = m21_data.Position(" = ");
+							done = TRUE;
+						}
+						// last one
+						t_field->InsertSubfield('d', 'e', m21_data);
+						done = TRUE;
+						*/
+						/* if the $b contains one or more parallel titles, the three chars
+								immediately before the $b are " = "; however, these may
+								not necessarily be in the $a, as the $b can come after 
+								other sfs
+							-- therefore we look in the entire title for " = ", and if 
+								found, treat the $b as one or more parallel titles
+							-- multiple parallel titles in the $b are separated by " = ",
+								but this is absent if there is only one parallel title
+						*/
+						tempi = m21_field.Position(" = ");	// ck entire field
+						if (tempi != NOT_FOUND)
+						{
+							tempi = m21_data.Position(" = ");	// ck subfield
+							while (tempi != NOT_FOUND)
+							{
+								t_field->InsertSubfield('d', 'e', m21_data.Substring(0, tempi));
+								m21_data = m21_data.Substring(tempi + 3);
+								tempi = m21_data.Position(" = ");
+							}
+							// last one
+							t_field->InsertSubfield('d', 'e', m21_data);
+							done = TRUE;
+						}
+						// if no parallel title, done is FALSE, use mapping
+					}
+						
+					else if ((m21_tag_sfc == "260a") || (m21_tag_sfc == "260e"))
+					{
+						// $a needs to be split into a and b,
+						//		$e into e and f -- not tested
+					}
+					else if (m21_tag_sfc == "505a")
+					{
+						// each contents item goes to its own $a
+						tempi = m21_data.Position(" -- ");
+						while (tempi != NOT_FOUND)
+						{
+							t_field->InsertSubfield('a', ' ', m21_data.Substring(0, tempi));
+							m21_data = m21_data.Substring(tempi + 4);
+							tempi = m21_data.Position(" -- ");
+						}
+						// last one
+						t_field->InsertSubfield('a', ' ', m21_data);
+						done = TRUE;
+					}
+					
+					else if ((m21_tag_sfc == "600t") || (m21_tag_sfc == "610t") || (m21_tag_sfc == "611t"))
+					{
+						t_subj_500 = root->InsertString("500_t", m21_data.Substring(0, tempi));
+						if (!t_subj_500)
+						{
+							msg.Sprintf("\nRecord %lu (%s) field 500_t\n\tCould not find in Translation Table\n", 
+									count,
+									field001.GetText());
+							fputs (msg.GetText (), rfile);
+							isbadrec = TRUE;
+						}
+						done = TRUE;
+					}
+					
+					// here we look at the $2, elsewhere we look at the ind2
+					//	-- we assume the record is coded correctly with ind2=7 if $2 exists
+					//	-- also assumes the $2 follows $t, so we have a value for t_subj_500
+					else if ((m21_tag_sfc.GetCharacter(0) == '6') && (m21_tag_sfc.GetCharacter(3) == '2'))
+					{
+						m21_data = MapLookup(rMessage, &SourcesRoot, m21_data);
+						if (m21_data.GetNull())
+						{
+							rMessage = rMessage.Substring(0, rMessage.GetLength() - 1);
+							rMessage.Concat(" (sources)\n");
+							msg.Sprintf("\nRecord %lu (%s) field %s\n%s", 
+									count,
+									field001.GetText(),
+									m21_tag_sfc.GetText(),
+									rMessage.GetText());
+							fputs(msg.GetText(), rfile);
+							isbadrec = TRUE;
+						}
+						else
+						{
+							if (is604)
+								t_subj_500->InsertSubfield('2', ' ', m21_data);
+							else
+								t_field->InsertSubfield('2', ' ', m21_data);
+						}
+						
+						done = TRUE;
+					}
+					
+					// 600-611 $x, $y, $z where $t exists
+					else if 
+						(
+							is604
+							&&
+							(
+								(m21_tag == "600")	
+								|| (m21_tag == "610")	
+								|| (m21_tag == "611")
+							)
+							&& 
+							(
+								(m21_sfc == 'x') 
+								|| (m21_sfc == 'y') 
+								|| (m21_sfc == 'z')
+							)
+						)
+					{
+						temps = "500_";
+						temps.Concat(m21_sfc);
+						t_subj_500 = root->InsertString(temps, m21_data.Substring(0, tempi));
+						if (!t_subj_500)
+						{
+							msg.Sprintf("\nRecord %lu (%s) field %s\n\tCould not find in Translation Table\n", 
+									count,
+									field001.GetText(),
+									temps.GetText());
+							fputs (msg.GetText (), rfile);
+							isbadrec = TRUE;
+						}
+						done = TRUE;
+					}
+					
+					// this is for all 604 sfs except a, t, x, y, and z which are handled above
+					else if
+						(
+							is604
+							&&
+							(
+								(m21_tag == "600")	
+								|| (m21_tag == "610")	
+								|| (m21_tag == "611")
+							)
+						)
+					{
+						// override map to created fields that will then be embedded in 604
+						if (uni_6xx_tag == "600")
+							temps = "700";
+						else if (uni_6xx_tag == "602")
+							temps = "720";
+						else
+							temps = "710";
+						temps.Concat(m21_sfc);
+						t_subj_7xx = root->InsertString(temps, m21_data);
+						if (!t_subj_7xx)
+						{
+							msg.Sprintf("\nRecord %lu (%s) field %s\n\tCould not find in Translation Table\n", 
+									count,
+									field001.GetText(),
+									temps.GetText());
+							fputs (msg.GetText (), rfile);
+							isbadrec = TRUE;
+						}
+							
+						done = TRUE;
+					}
+
+					// look for nonfiling-characters indicator
+					c = '0';
+					if ((m21_tag_sfc == "130a")
+							|| (m21_tag_sfc == "630a")
+							|| (m21_tag_sfc == "730a")
+							|| (m21_tag_sfc == "740a"))
+						// tags using 1st ind
+						c = m21_inds[0];
+					else if ((m21_tag_sfc == "222a")
+							|| (m21_tag_sfc == "240a")
+							|| (m21_tag_sfc == "242a")
+							|| (m21_tag_sfc == "243a")
+							|| (m21_tag_sfc == "245a"))
+						// tags using 2d ind
+						c = m21_inds[1];
+					if (c != '0')
+					{
+						c -= 48;	// convert char to int
+						m21_data = zNSB 
+								+ m21_data.Substring(0, c)
+								+ zNSE
+								+ m21_data.Substring(c);
+					}
+					
+					
+					// END OF EXCEPTIONS
+					
+					
+					// insert into linked list, capturing the field pointer
+					if (!done)
+					{
+						/*060318 we don't have a way to express which sfs are repeatable, so 
+								this forces a repeating sf to go into the existing field;
+								otherwise it would create a new field
+							-- also used just to insert a non-repeatable sf into the current field */
+						//060420 generic approach to non-repeatable fields -- note that
+						//		they are added in the order encountered
+						if 
+							(
+								(
+									(m21_tag.GetCharacter(0) == '1') 
+									|| (m21_tag.Substring(0, 3) == "246") 
+									|| (m21_tag == "260") 
+									|| (m21_tag == "300") 
+									|| (m21_tag == "440") 
+									|| (m21_tag.GetCharacter(0) == '6') 
+									|| (m21_tag.GetCharacter(0) == '7') 
+								)
+								&& first_sf_written	
+								
+								// these go into 517a, per TT
+								&& (m21_tag_sfc != "700t")
+								&& (m21_tag_sfc != "702t")
+								&& (m21_tag_sfc != "710t")
+								&& (m21_tag_sfc != "711t")
+							)
+						{
+							// find target sf in tree just to get the code
+							t_temp = root->FindNodeFromSourcelabel(m21_tag_sfc);
+							if (t_temp)
+							{
+								uni_sfc = (char) t_temp->targetsfs[0];
+								
+								//t_field is the node for the indicators for this field
+								t_field->InsertSubfield(uni_sfc, ' ', m21_data);
+							}
+							else
+							{
+								msg.Sprintf("\nRecord %lu (%s) field %s\n\tCould not find in Translation Table\n", 
+										count,
+										field001.GetText(),
+										m21_tag_sfc.GetText());
+								fputs (msg.GetText (), rfile);
+								isbadrec = TRUE;
+							}
+						}
+							
+						else
+							t_field = root->InsertString(m21_tag_sfc, m21_data);
+							
+						if (!t_field)
+						{
+							msg.Sprintf("\nRecord %lu (%s) field %s\n\tCould not find in Translation Table\n", 
+									count,
+									field001.GetText(),
+									m21_tag_sfc.GetText());
+							fputs (msg.GetText (), rfile);
+							isbadrec = TRUE;
+						}
+					}
+					
+					
+					// UPDATE INDICATORS
+					
+					done = TRUE;	// we now use this as an indication of whether we need to write inds
+					
+					// these field have blank inds in UNI
+					if 
+						(
+								(m21_tag_sfc == "050a") 
+							|| 	(m21_tag_sfc == "060a")
+							|| 	(m21_tag_sfc == "082a")
+							|| 	(m21_tag_sfc == "602a")
+							|| 	(m21_tag_sfc == "630a")
+						)
+					{
+						uni_inds[0] = ' ';
+						uni_inds[1] = ' ';
+						done = FALSE;
+					}
+					
+					//060906 these have blank 2d inds
+					else if ((uni_tag.Substring(0, 3) == "606") 
+							|| (uni_tag.Substring(0, 3) == "607"))
+					{
+						uni_inds[0] = m21_inds[0];
+						uni_inds[1] = ' ';
+						done = FALSE;
+					}
+					
+					// all uni notes except 321 and 327 have blank inds
+					else if (uni_tag.GetCharacter(0) == '3')
+					{
+						if (uni_tag == "321a") 
+						{
+							if (m21_tag_sfc == "510a")
+							{
+								// not tested
+								if (m21_inds[0] <= '2')
+									uni_inds[0] = '0';
+								else
+									uni_inds[0] = '1';
+							}
+						}
+						else if (uni_tag == "327a")
+						{
+							if (m21_tag_sfc == "505a")
+							{
+								// not tested
+								if (m21_inds[0] == '0')
+									uni_inds[0] = '1';
+								else
+									uni_inds[0] = '0';
+							}
+						}
+						else
+						{
+							uni_inds[0] = ' ';
+							uni_inds[1] = ' ';
+						}
+						
+						done = FALSE;
+					}
+					
+					//060510 added 702a for 700s with no 1xx
+					else if ((m21_tag_sfc == "100a") || (m21_tag_sfc == "600a")
+							|| (m21_tag_sfc == "700a") || (m21_tag_sfc == "702a"))
+					{
+						uni_inds[0] = ' ';
+						if (m21_inds[0] == '0')
+							uni_inds[1] = '0';
+						else
+							uni_inds[1] = '1';
+						
+						if (is604)
+							t_subj_7xx->WriteIndicators(uni_inds);
+						else
+							t_field->WriteIndicators(uni_inds);
+						done = TRUE;
+					}
+					
+					else if ((m21_tag_sfc == "110a") || (m21_tag_sfc == "610a") || (m21_tag_sfc == "710a"))
+					{
+						// uni 1st ind is 0 for corp names, 1 for meeting names
+						uni_inds[0] = '0';
+						// m21 1st ind goes to uni 2d ind
+						uni_inds[1] = m21_inds[0];
+						if (is604)
+							t_subj_7xx->WriteIndicators(uni_inds);
+						else
+							t_field->WriteIndicators(uni_inds);
+						done = TRUE;
+					}
+					
+					else if ((m21_tag_sfc == "111a") || (m21_tag_sfc == "611a")  || (m21_tag_sfc == "711a"))
+					{
+						// uni 1st ind is 0 for corp names, 1 for meeting names
+						uni_inds[0] = '1';
+						// m21 1st ind goes to uni 2d ind
+						uni_inds[1] = m21_inds[0];
+						if (is604)
+							t_subj_7xx->WriteIndicators(uni_inds);
+						else
+							t_field->WriteIndicators(uni_inds);
+						done = TRUE;
+					}
+					
+					else if (m21_tag_sfc == "245a")
+					{
+						uni_inds[0] = m21_inds[0];
+						uni_inds[1] = ' ';
+						done = FALSE;
+					}
+					
+					else if (m21_tag_sfc.Substring(0, 4) == "246_")	// see TT for explanation
+					{
+						if ((m21_inds[0] == '0') || (m21_inds[0] == '2'))
+							uni_inds[0] = '0';
+						else
+							uni_inds[0] = '1';
+							
+						uni_inds[1] = ' ';
+						done = FALSE;
+					}
+					
+					else if (m21_tag_sfc == "440a")
+					{
+						uni_inds[0] = '2';	// means data same as in uni 410
+						uni_inds[1] = ' ';
+						t_uni_225 = t_field;
+						done = FALSE;
+					}
+					
+					else if (m21_tag_sfc == "490a")
+					{
+						uni_inds[0] = '1';	// means no uni 410
+						uni_inds[1] = ' ';
+						done = FALSE;
+					}
+					
+					// can't use uni_tag for this as it is holding the uni_tag
+					//		for the 7xxa, and the 7xxt goes elsewhere
+					else if ((m21_tag_sfc == "700t")
+							|| (m21_tag_sfc == "702t")
+							|| (m21_tag_sfc == "710t")
+							|| (m21_tag_sfc == "711t"))
+					{
+						uni_inds[0] = '1';	// trace title -- just an assumption
+						uni_inds[1] = ' ';
+						done = FALSE;
+					}
+					
+					else if (m21_tag_sfc == "730a")
+					{
+						uni_inds[0] = '1';
+						uni_inds[1] = '0';
+						done = FALSE;
+					}
+					
+					else if (m21_tag_sfc == "740a")
+					{
+						//060331 not strictly accurate; m21 format shows ' ' for no info, '2' to make analytic
+						//		-- but some test recs have '1'
+						if (m21_inds[0] == ' ')
+							uni_inds[0] = '0';
+						else
+							uni_inds[0] = '1';
+						uni_inds[1] = ' ';
+						done = FALSE;
+					}
+					
+					if (!done && t_field)
+					{
+						// this sub returns the inds node, if needed
+						if (!t_field->WriteIndicators(uni_inds))
+						{
+							msg.Sprintf("\nRecord %lu (%s) field %s\n\tCould not find indicator node\n", 
+									count,
+									field001.GetText(),
+									ptag);
+							fputs (msg.GetText (), rfile);
+							isbadrec = TRUE;
+						}
+					}
+					
+					// END OF INDICATORS
+					
+					first_sf_written = TRUE;
+					
+				}	// subfield loop
+			}	// not control field
+					
+					
+			// SOURCES -- we do this at the end of the field because for 604's we need to wait
+			//		until t_subj_500 has been created
+			
+			// here we look at the indicator, elsewhere we look at the $2
+			//	-- we assume the record is coded correctly with ind2=7 if $2 exists
+			if (m21_tag_sfc.GetCharacter(0) == '6')
+			{
+				temps.Clear();
+				if (m21_inds[1] == '0')			temps = "lc";
+				else if (m21_inds[1] == '1')		temps = "lcch";
+				else if (m21_inds[1] == '2')		temps = "mesh";
+				else if (m21_inds[1] == '3')		temps = "nal";
+				//else if (m21_inds[1] == '4') -- don't want to put "other" into uni
+				else if (m21_inds[1] == '5')		temps = "cae";
+				else if (m21_inds[1] == '6')		temps = "caf";
+				// if 7, then source is specified in $2
+				
+				if (!temps.GetEmpty())
+				{
+					if (is604)
+						t_subj_500->FillSubfield('2', temps);
+					else
+						t_field->FillSubfield('2', temps);
+				}
+			}
+			
+			
+			//060611 060 (QQQ class number)
+			if (m21_tag_sfc == "060a")
+			{
+				t_field->FillSubfield('2', "usnlm");
+			}
+
+
+			// MAKE UNI EMBEDDED FIELDS -- for this we need the entire source field
+			
+			// series
+			if (t_uni_225)
+			{
+				temps = t_uni_225->GetField();
+				if (!temps.GetEmpty())
+				{
+					temps = "225" + temps;
+					t_field = root->InsertString("4101", temps);	// see map for explanation
+					if (!t_field)
+					{
+						msg.Sprintf("\nRecord %lu (%s) field 4101\n\tCould not find in Translation Table\n", 
+								count,
+								field001.GetText());
+						fputs (msg.GetText (), rfile);
+						isbadrec = TRUE;
+					}
+					t_field->WriteIndicators(" 1");
+				}
+			}
+
+			// subject
+			if (is604)
+			{
+				temps = t_subj_500->GetField();
+				WString temp2 = t_subj_7xx->GetField();
+				if (!temps.GetEmpty())
+				{
+					temps = "500" + temps;
+					WString temp3;
+					if (uni_6xx_tag == "600")
+						temp3 = "700";
+					else if (uni_6xx_tag == "602")
+						temp3 = "720";
+					else if (uni_6xx_tag == "601")
+						temp3 = "710";
+					temps.Concat(zmarcsubterm);
+					temps.Concat('1');
+					temps.Concat(temp3);
+					temps.Concat(t_subj_7xx->GetField());
+					t_field = root->InsertString("6041", temps);	// see map for explanation
+					if (!t_field)
+					{
+						msg.Sprintf("\nRecord %lu (%s) field 6041\n\tCould not find in Translation Table\n", 
+								count,
+								field001.GetText());
+						fputs (msg.GetText (), rfile);
+						isbadrec = TRUE;
+					}
+					t_field->WriteIndicators("  ");
+	
+					/*
+					#ifdef _DEBUG
+					FILE*	debugfile;
+					if ((debugfile = fopen("\\marc\\marconvert\\FFF\\debug.txt", "a")) != NULL)
+					{
+						ShowTree("tree after adding 604", root, debugfile);
+						fclose(debugfile);
+					}
+					#endif
+					*/
+					
+					t_subj_500->ClearTree(yTrans::FIELD);
+					t_subj_7xx->ClearTree(yTrans::FIELD);
+				}
+			}
+	
+			/*
+			#ifdef _DEBUG
+			if (m21_tag == "650")
+			{
+				if ((debugfile = fopen("\\marc\\marconvert\\FFF\\debug.txt", "a")) != NULL)
+				{
+					WString tttt;
+					tttt.Sprintf("Record %ld, after %s", count, m21_tag_sfc.GetText());
+					ShowTree(tttt, root, debugfile);
+					fclose(debugfile);
+				}
+			}
+			#endif
+			*/
+						
+		}	// field loop
+		
+				
+		// since the M21 008 converts to four UNI fields, we have to use 
+		//		fake M21 tags in the TT (nonnumeric to avoid collisions)
+		t_field = root->InsertString("ff1", UNI_100);
+		if (!t_field)
+		{
+			msg.Sprintf("\nRecord %lu (%s) field ff1\n\tCould not find in Translation Table\n", 
+					count,
+					field001.GetText());
+			fputs (msg.GetText (), rfile);
+			isbadrec = TRUE;
+		}
+		t_field->WriteIndicators("  ");
+		
+		// UNI_101 one is written above
+		
+		t_field = root->InsertString("ff3", UNI_102);
+		if (!t_field)
+		{
+			msg.Sprintf("\nRecord %lu (%s) field ff3\n\tCould not find in Translation Table\n", 
+					count,
+					field001.GetText());
+			fputs (msg.GetText (), rfile);
+			isbadrec = TRUE;
+		}
+		t_field->WriteIndicators("  ");
+		
+		t_field = root->InsertString("ff4", UNI_105);
+		if (!t_field)
+		{
+			msg.Sprintf("\nRecord %lu (%s) field ff4\n\tCould not find in Translation Table\n", 
+					count,
+					field001.GetText());
+			fputs (msg.GetText (), rfile);
+			isbadrec = TRUE;
+		}
+		t_field->WriteIndicators("  ");
+		
+		// 106 is optional for regular printed material
+
+		
+		// MAKE LEADER
+		
+		uni_leader = m21_record.Substring(0, 24);
+		
+		// byte 6, type of record
+		c = (char) uni_leader.GetCharacter(6);
+		if (c == 'm') c = 'l';
+		else if (c == 'o') c = 'r';
+		else if (c == 'p') c = 'r';
+		else if (c == 't') c = 'b';
+		uni_leader.SetCharacter(6, c);
+		
+		// byte 7, bib level
+		c = (char) uni_leader.GetCharacter(7);
+		if (c == 'b') c = 'a';
+		else if (c == 'd') c = 'a';
+		else if (c == 'i') c = 'a';
+		uni_leader.SetCharacter(7, c);
+		
+		uni_leader.SetCharacter(8, ' ');		// byte 8, hier relationship, blank = undefined
+		uni_leader.SetCharacter(9, ' ');		// byte 9 is undefined
+		
+		// byte 17, encoding level
+		c = (char) uni_leader.GetCharacter(17);
+		if (c == '2') c = '3';
+		else if (c == '4') c = '3';
+		else if (c == '5') c = '3';
+		else if (c == '7') c = '3';
+		else if (c == '8') c = '2';
+		else if (c == 'u') c = '3';	// unknown, no corresponding code in UNI
+		else if (c == 'z') c = '3';	// not applicable, no corresponding code in UNI
+		uni_leader.SetCharacter(17, c);
+		
+		// byte 18, descr cat form
+		/* c = uni_leader.GetCharacter(18);
+		if (c == ' ') c = 'n';
+		else if (c == 'a') c = ' ';
+		else if (c == 'i') c = ' ';
+		else if (c == 'u') c = 'i';	// no corresponding UNI code
+		uni_leader.SetCharacter(18, c); */
+		uni_leader.SetCharacter(18, 'i');	// indicates pure ISBD may not obtain -- since we are not punctuation experts
+		
+		uni_leader.SetCharacter(19, ' ');	// undefined
+		
+		uni_leader.SetCharacter(23, ' ');	// undefined
+		
+		t_field = root->InsertString("LDR", uni_leader);
+		if (!t_field)
+		{
+			msg.Sprintf("\nRecord %lu (%s) field LDR\n\tCould not find in Translation Table\n", 
+					count,
+					field001.GetText());
+			fputs (msg.GetText (), rfile);
+			isbadrec = TRUE;
+		}
+			
+
+		// ASSEMBLE MARC RECORD
+		
+		allfields.Clear();
+		t_field = root;
+		lastfield.Clear();
+
+		while (t_field)
+		{
+			
+			// START NEW FIELD
+			
+			//991130 permit nonnumeric tags -- not dependent on state of Settings
+			//		-- assumes nonnumeric tags are NOT control fields
+			
+			// keep in mind that non-control fields must always have a sfc in the TT
+			fielddata = t_field->GetField();
+			
+			
+			//**** INDICATORS MUST NOT BE NULL, OR THE SFS WILL NOT BE CHECKED ****//
+			
+			/*060314 because of the way 700s are handled (and maybe some strange cataloging),
+					we can end up with the same 701 twice in a row. checking lastfield
+					prevents the second one from being output */
+			if (!fielddata.GetEmpty() && (fielddata != lastfield))
+			{
+				lastfield = fielddata;	// do this before char conversion
+				
+				if (t_field->targettag == "LDR")
+					uni_leader = fielddata;	//save to output later
+				else
+				{
+					// CONVERT CHARSET
+					
+					/* shouldn't manipulate the char* since it is actually the WString's text
+					pConvertString = fielddata.GetText();
+						--060314 changed to using array instead of pointer */
+					strcpy(ConvertArray, (char*) fielddata.GetText());
+					
+					// warning "string array may not produce intended result" is OK here
+					pResult = (LPUSTR) &ConvertArray;
+					
+					iConvert = SP_ConvertAnsel (rMessage, &pResult, rfldlen, TOUNIMARC);
+					fielddata.SetText((char const*) pResult);
+					
+					if (iConvert == -1)
+					{
+						// this msg will show up once per field! but it is usually a mistake we made
+						isbadrec = TRUE;
+						msg.Sprintf
+								("Record %lu (%s)\n%s", 
+								count, 
+								field001.GetText(), 
+								TheMessage.GetText());
+						fputs (msg.GetText (), rfile);
+					}
+					else if (iConvert < 1)
+					{
+						isbadrec = TRUE;
+						msg.Sprintf
+								("\nRecord %lu (%s) field %s\n%s\n", 
+								count,
+								field001.GetText(),
+								t_field->targettag.GetText(),
+								TheMessage.GetText());
+						fputs (msg.GetText (), rfile);
+					}
+
+
+					// add field to directory and allfields
+					if (!fielddata.GetEmpty())
+					{
+						fielddata.Concat (zmarcfldterm);
+						
+						//make dir entry
+						uni_dir.Concat(t_field->targettag);
+						unidirfldlen = fielddata.GetLength();
+						s.Sprintf("%04ld", unidirfldlen);
+						uni_dir.Concat(s);
+						s.Sprintf("%05ld", unidiroffset);
+						uni_dir.Concat(s);
+						
+						unidiroffset += unidirfldlen;
+						if ((unidirfldlen > 9999) || (unidiroffset > 99999))
+						{
+							msg.Sprintf 
+									("\nRecord %lu (%s)\n\tProblem with MARC field length or offset", 
+									count,
+									field001.GetText());
+							fputs (msg.GetText (), rfile);
+							isbadrec = TRUE;
+							isfatal = TRUE;
+							break;
+						}
+							
+						//add to data string
+						allfields.Concat (fielddata);
+					}
+				}
+				
+				fielddata.Clear();
+			}
+			
+			t_field = t_field->nextfield;
+		}
+		
+		
+		//output record length
+		s.Sprintf ("00000%ld", uni_dir.GetLength () + unidiroffset + 26);
+		if (s.ConvertToLong () > 99999)
+		{
+			msg.Sprintf
+					("\nRecord %lu (%s)\n\tProblem with MARC record length\n", 
+					count,
+					field001.GetText());
+			fputs (msg.GetText (), rfile);
+			isbadrec = TRUE;
+			isfatal = TRUE;
+		}
+		
+		
+		if (isfatal)
+			break;
+
+
+		// WRITE MARC RECORD
+		
+		if (isbadrec)
+			badcount++;
+			
+		/*060228 not currently using bfile
+		FILE* fff = (isbadrec) ? bfile : ofile; */
+		FILE* fff = ofile;
+		
+		fputs (s.Right (5).GetText (), fff);	//check return value
+		
+		//output leader after reclen up to baseaddr
+		fputs (uni_leader.Substring (5, 7).GetText (), fff);	//check return value
+		
+		//output baseaddr
+		s.Sprintf ("00000%ld", uni_dir.GetLength () +  25);
+		fputs (s.Right (5).GetText (), fff);	//check return value
+		
+		//output leader after baseaddr
+		fputs (uni_leader.Right (7).GetText (), fff);	//check return value
+		
+		//output dir
+		fputs (uni_dir.GetText (), fff);	//check return value
+		fputc (zmarcfldterm, fff);	//check return value
+		
+		//output fields
+		fputs (allfields.GetText (), fff);
+		fputc (zmarcrecterm, fff);	//check return value
+		
+		
+		#ifdef _DEBUG	// MtM doesn't support maxnum
+		if (count >= docount)
+			break;
+		#endif
+	
+		
+		#ifdef _DEBUG
+		debugfile = fopen("\\marc\\marconvert\\FFF\\debug.txt", "a");
+		WString ffff;
+		ffff.Sprintf ("Tree at end of record %ld:", count);
+		ShowTree(ffff, root, debugfile);
+		fclose(debugfile);
+		#endif
+			
+
+		//initialize for next record
+		uni_dir.Clear();
+		unidirfldlen=0;
+		unidiroffset=0;
+		isbadrec = FALSE;
+		root->ClearTree();
+		field001.Clear();	// in case a rec dnha 001
+		msg.Clear();
+		TheMessage.Clear();
+		UNI_100.Clear();
+		UNI_101.Clear();
+		UNI_102.Clear();
+		UNI_105.Clear();
+		
+	}	// end of file
+
+	
+	#ifdef _DEBUG
+	debugfile = fopen("\\marc\\marconvert\\FFF\\debug.txt", "a");
+	WString ffff;
+	ShowTree("Tree at end of run:", root, debugfile);
+	fclose(debugfile);
+	#endif
+	
+
+	// we don't currently use the return value
+	long nodes = root->DeleteTree();
+	
+	
+	/*060314 debug log looks better if this ISN'T done
+	//060314 delete lookup maps
+	yMapNode	*t_map = (&CountriesRoot)->next;
+	yMapNode	*t_map2;
+	while (t_map)
+	{
+		t_map2 = t_map->next;
+		delete t_map;
+		t_map = t_map2;
+	}
+	t_map = (&NatbibsRoot)->next;
+	while (t_map)
+	{
+		t_map2 = t_map->next;
+		delete t_map;
+		t_map = t_map2;
+	}
+	t_map = SourcesRoot.next;
+	while (t_map)
+	{
+		t_map2 = t_map->next;
+		delete t_map;
+		t_map = t_map2;
+	}*/
+	
+	
+	rcount = count;
+	rbadcount = badcount;
+	rnodecount = nodes;
+	
+	return Result;
+}
+//ConvertToUNIMARC
+
+
+
+//Convert007 -- MARC21 to UNIMARC
+//	-- bytes are read from m21 in order needed for output to uni
+int @CLASSNAME@::Convert007(WString& rMessage, WString in, WString& out)
+{
+	int Result = E_PERFECTSUCCESS;
+	
+	out.Clear();
+	
+	char c = (char) in.GetCharacter(0);
+	char m21, uni;
+	
+	if (c == 'c')
+	{
+		if (in.GetLength() < 15)	// data bytes plus fld terminator
+		{
+			rMessage = "\tToo few bytes\n";
+			return -1;
+		}
+			
+		// first byte of the uni 135 has already been made from the m21 006 field
+		
+		// the uni 135 uses the same codes in the same positions as the m21 007_c
+		//		(except of course the first byte)
+		out.Concat(in.Substring(1));
+	}
+	
+	else if (c == 'k')
+	{
+		if (in.GetLength() < 7)	// data bytes plus fld terminator
+		{
+			rMessage = "\tToo few bytes\n";
+			return -1;
+		}
+			
+		// 01 specific format
+		m21 = (char) in.GetCharacter(1);
+		if 	   (m21 == 'c') uni = 'a';
+		else if (m21 == 'd') uni = 'b';
+		else if (m21 == 'e') uni = 'c';
+		else if (m21 == 'f') uni = 'd';
+		else if (m21 == 'g') uni = 'e';
+		else if (m21 == 'h') uni = 'f';
+		else if (m21 == 'i') uni = 'h';
+		else if (m21 == 'j') uni = 'i';
+		else if (m21 == 'l') uni = 'k';
+		else uni = 'z';
+		out.Concat(uni);
+		
+		// 02 undefined
+		
+		// 04 support
+		m21 = (char) in.GetCharacter(4);
+		if 	   (m21 == 'h') uni = 'g';
+		else if (m21 == 'm') uni = 'v';
+		else if (m21 == 'o') uni = 'i';
+		else if (m21 == 'p') uni = 'j';
+		else if (m21 == 'q') uni = 'k';
+		else if (m21 == 'r') uni = 'l';
+		else if (m21 == 's') uni = 'm';
+		else if (m21 == 't') uni = 'n';
+		else uni = m21;
+		out.Concat(uni);
+		
+		// 05 secondary support
+		m21 = (char) in.GetCharacter(5);
+		if 	   (m21 == 'h') uni = 'g';
+		else if (m21 == 'm') uni = 'v';
+		else if (m21 == 'o') uni = 'i';
+		else if (m21 == 'p') uni = 'j';
+		else if (m21 == 'q') uni = 'k';
+		else if (m21 == 'r') uni = 'l';
+		else if (m21 == 's') uni = 'm';
+		else if (m21 == 't') uni = 'n';
+		else if (m21 == ' ') uni = 'y';
+		else uni = m21;
+		out.Concat(uni);
+		
+		// 03 color
+		m21 = (char) in.GetCharacter(5);
+		if 	   (m21 == 'h') uni = 'd';
+		else if (m21 == 'm') uni = 'v';
+		else uni = m21;
+		out.Concat(uni);
+		
+		// remaining uni bytes not used in m21
+		out.Concat("              ");
+	}
+	
+	else if (c == 's')
+	{
+		if (in.GetLength() < 15)	// data bytes plus fld terminator
+		{
+			rMessage = "\tToo few bytes\n";
+			return -1;
+		}
+			
+		// 01 specific format
+		m21 = (char) in.GetCharacter(1);
+		if 	   (m21 == 'd') uni = 'a';
+		else if (m21 == 't') uni = 'b';
+		else if (m21 == 's') uni = 'c';
+		else if (m21 == 'g') uni = 'd';
+		else if (m21 == 'w') uni = 'e';
+		else if (m21 == 'e') uni = 'f';
+		else if (m21 == 'q') uni = 'g';
+		else if (m21 == 'i') uni = 'h';
+		else uni = m21;
+		out.Concat(uni);
+		
+		// 02 undefined
+		
+		// 03 speed
+		m21 = (char) in.GetCharacter(3);
+		if 	   (m21 == 'i') uni = 'f';
+		else if (m21 == 'l') uni = 'k';
+		else if (m21 == 'k') uni = 'l';
+		else if (m21 == 'o') uni = 'n';
+		else if (m21 == 'p') uni = 'o';
+		else if (m21 == 'r') uni = 'p';
+		else if (m21 == 'u') uni = 'x';
+		else uni = m21;
+		out.Concat(uni);
+		
+		// 04 channels
+		m21 = (char) in.GetCharacter(4);
+		if 	   (m21 == 'm') uni = 'a';
+		else if (m21 == 'q') uni = 'c';
+		else if (m21 == 's') uni = 'b';
+		else uni = m21;
+		out.Concat(uni);
+		
+		// 05 grooves
+		m21 = (char) in.GetCharacter(5);
+		if 	   (m21 == 'm') uni = 'b';
+		else if (m21 == 'n') uni = 'x';
+		else if (m21 == 's') uni = 'a';
+		else uni = m21;
+		out.Concat(uni);
+		
+		// 06 dimensions
+		m21 = (char) in.GetCharacter(6);
+		if 	   (m21 == 'g') uni = 'h';
+		else if (m21 == 'n') uni = 'x';
+		else uni = m21;
+		out.Concat(uni);
+		
+		// 07 tape width
+		m21 = (char) in.GetCharacter(7);
+		if 	   	(m21 == 'm') uni = 'a';
+		else if 	(m21 == 'o') uni = 'b';
+		else if 	(m21 == 'p') uni = 'c';
+		else if 	(m21 == 'l') uni = 'd';
+		else if 	(m21 == 'n') uni = 'x';
+		else uni = m21;
+		out.Concat(uni);
+		
+		// 08 tape config
+		m21 = (char) in.GetCharacter(8);
+		if 	   	(m21 == 'n') uni = 'x';
+		else uni = m21;
+		out.Concat(uni);
+		
+		// next 6 uni bytes not needed
+		out.Concat("      ");
+		
+		// 13 recording techniqe
+		m21 = (char) in.GetCharacter(13);
+		if 	   	(m21 == 'b') uni = 'x';
+		else if 	(m21 == 'd') uni = 'c';
+		else if 	(m21 == 'e') uni = 'x';
+		else uni = m21;
+		out.Concat(uni);
+		
+		// 12 playback
+		m21 = (char) in.GetCharacter(12);
+		if 	   	(m21 == 'c') uni = 'f';
+		else if 	(m21 == 'd') uni = 'c';
+		else if 	(m21 == 'e') uni = 'd';
+		else if 	(m21 == 'f') uni = 'e';
+		else if 	(m21 == 'n') uni = 'x';
+		else uni = m21;
+		out.Concat(uni);
+		
+		// add the uni $b
+		out.Concat(zmarcsubterm);
+		out.Concat('b');
+		
+		// 09 physical kind
+		m21 = (char) in.GetCharacter(9);
+		if 	   	(m21 == 'a') uni = 'c';
+		else if 	(m21 == 'b') uni = 'd';
+		else if 	(m21 == 'd') uni = 'e';
+		else if 	(m21 == 'i') uni = 'a';
+		else if 	(m21 == 'm') uni = 'b';
+		else if 	(m21 == 'n') uni = 'x';
+		else if 	(m21 == 'r') uni = 'f';
+		else if 	(m21 == 's') uni = 'g';
+		else if 	(m21 == 't') uni = 'h';
+		else uni = m21;
+		out.Concat(uni);
+		
+		// 10 kind of material -- uni doesn't record this except unknown, n/a, or other
+		m21 = (char) in.GetCharacter(10);
+		if 	   	(m21 == 'a') uni = 'a';
+		else if 	(m21 == 'b') uni = 'z';
+		else if 	(m21 == 'c') uni = 'j';
+		else if 	(m21 == 'g') uni = 'z';
+		else if 	(m21 == 'i') uni = 'z';
+		else if 	(m21 == 'l') uni = 'b';
+		else if 	(m21 == 'm') uni = 'e';
+		else if 	(m21 == 'p') uni = 'd';
+		else if 	(m21 == 'r') uni = 'z';
+		else if 	(m21 == 's') uni = 'c';
+		else if 	(m21 == 'w') uni = 'g';
+		else uni = m21;
+		out.Concat(uni);
+		
+		// 11 cutting
+		m21 = (char) in.GetCharacter(11);
+		if 	   	(m21 == 'h') uni = 'b';
+		else if 	(m21 == 'i') uni = 'a';
+		else if 	(m21 == 'n') uni = 'x';
+		else uni = m21;
+		out.Concat(uni);
+	}
+	
+	else if (c == 't')
+	{
+		if (in.GetLength() < 3)	// data bytes plus fld terminator
+		{
+			rMessage = "\tToo few bytes\n";
+			return -1;
+		}
+		
+		// 01 specific format
+		m21 = (char) in.GetCharacter(1);
+		if 	   (m21 == 'a') uni = 'r';
+		else if (m21 == 'b') uni = 'd';
+		else if (m21 == 'c') uni = 'f';
+		else if (m21 == 'd') uni = 'z';
+		else if (m21 == 'u') uni = 'z';
+		else uni = m21;
+		out.Concat(uni);
+	}
+	
+	else if (c == 'v')
+	{
+		if (in.GetLength() < 10)	// data bytes plus fld terminator
+		{
+			rMessage = "\tToo few bytes\n";
+			return -1;
+		}
+			
+		// first byte of uni 115 is 'v' for videorecording. the 115 is also
+		//		used for other formats that FFF dnh
+		out = "v";
+		
+		// uni 115/01-03 is the length, from the 008/18-20, but FFF dnh
+		out.Concat("   ");
+		
+		// 03 color
+		m21 = (char) in.GetCharacter(3);
+		if 	   	(m21 == 'b') uni = 'a';
+		else if 	(m21 == 'c') uni = 'b';
+		else if 	(m21 == 'm') uni = 'c';
+		else if 	(m21 == 'n') uni = 'u';
+		else uni = m21;
+		out.Concat(uni);
+
+		// 05 sound
+		m21 = (char) in.GetCharacter(5);
+		if 	   	(m21 == ' ') uni = 'y';
+		else uni = m21;
+		out.Concat(uni);
+		
+		// 06 sound medium
+		m21 = (char) in.GetCharacter(6);
+		if 	   	(m21 == ' ') uni = 'x';
+		else uni = m21;
+		out.Concat(uni);
+
+		// 07 dimensions
+		m21 = (char) in.GetCharacter(7);
+		if 	   	(m21 == 'm') uni = 'n';
+		else if 	(m21 == 'r') uni = 'z';
+		else if 	(m21 == 'u') uni = 'z';
+		else uni = m21;
+		out.Concat(uni);
+		
+		// form of release -- n/a for video
+		out.Concat('x');
+		
+		// technique -- comes from 008/34
+		out.Concat('u');
+		
+		// presentation format -- n/a for vide
+		out.Concat('x');
+		
+		// accompanying material
+		out.Concat("    ");
+		
+		// 01 form of release for videos
+		m21 = (char) in.GetCharacter(1);
+		if 	   	(m21 == 'c') uni = 'a';
+		else if 	(m21 == 'd') uni = 'b';
+		else if 	(m21 == 'f') uni = 'c';
+		else if 	(m21 == 'r') uni = 'd';
+		else uni = 'z';
+		out.Concat(uni);
+		
+		// 04 presentation format for videos
+		m21 = (char) in.GetCharacter(4);
+		if 	   	(m21 == 'a') uni = 'a';
+		else if 	(m21 == 'b') uni = 'b';
+		else if 	(m21 == 'c') uni = 'c';
+		else if 	(m21 == 'd') uni = 'd';
+		else if 	(m21 == 'e') uni = 'e';
+		else if 	(m21 == 'f') uni = 'f';
+		else if 	(m21 == 'g') uni = 'g';
+		else if 	(m21 == 'h') uni = 'h';
+		else uni = 'z';
+		out.Concat(uni);
+		
+		// emulsion -- n/a for videos
+		out.Concat('x');
+		
+		// broadcast std -- not used in m21; since there is no "unknown" value, we are making one up
+		out.Concat('u');
+		
+		// add the uni $b -- it dn apply to videos, so we just add 15 spaces
+		out.Concat(zmarcsubterm);
+		out.Concat("b               ");
+	}
+	
+	// other values of c do not call this sub
+	
+	return Result;
+}
+//Convert007
+
+
+
+//Convert008 -- MARC21 to UNIMARC
+int @CLASSNAME@::Convert008
+		(WString& rMessage, 
+		char leader09,
+		WString m21_008, 
+		WString& UNI_100, 
+		WString& UNI_101, 
+		WString& UNI_102, 
+		WString& UNI_105)
+{
+	int		Result = E_PERFECTSUCCESS;
+	WString	temp;
+	int		i;
+	char m21, uni;
+	
+	/*
+	//{"008", "100, 101, 102, 105, 106, 110, 115, 120, 125, 126, 128, and 135"},	// OCLC mapping
+	{"008/00-05", 	"100/00-07"},	// need to add century
+	{"008/06", 	"100/08"},	// codes need to be converted
+	{"008/07-10", 	"100/09-12"},
+	{"008/11-14", 	"100/13-16"},
+	{"008/15-17", 	"102a"},
+	{"008/18-21", 	"105/00-03"},	// some codes need to be converted
+	{"008/22", 	"100/17-19"},	// codes need to be converted
+	{"008/23", 	"106/00"},	// some codes need to be converted
+	{"008/24-27", 	"105/04-07"},	// codes need to be converted
+	{"008/28", 	"100/20"},	// codes need to be converted
+	{"008/29", 	"105/08"},
+	{"008/30", 	"105/09"},
+	{"008/31", 	"105/10"},
+	//{"008/32", 	""},			// 008/32 is undefined
+	{"008/33", 	"105/11"},	// codes need to be converted
+	{"008/34", 	"105/12"},	// some codes need to be converted
+	//{"008/35-37", 	"101"},	// note sure needed, see after doing 040
+	{"008/38", 	"100/21"},	// also 100/25, come back to this later
+	//{"008/39", 	""},			// haven't found a place for this yet
+	*/
+	
+	// 00-05 date entered. goes to 100/00-07
+	if (m21_008.Substring(0, 2).ConvertToInteger() <= 10)
+		UNI_100 = "20";
+	else
+		UNI_100 = "19";
+	UNI_100.Concat(m21_008.Substring(0, 6));
+	
+	// 06 type of pub date. goes to 100/08
+	m21 = (char) m21_008.GetCharacter(6);
+	if (m21 == 'c') uni = 'a';
+	else if (m21 == 'd') uni = 'b';
+	else if (m21 == 'u') uni = 'c';
+	else if (m21 == 's') uni = 'd';
+	else if (m21 == 'r') uni = 'e';
+	else if (m21 == 'q') uni = 'f';
+	else if (m21 == 'm') uni = 'g';
+	else if (m21 == 't') uni = 'h';
+	else if (m21 == 'p') uni = 'i';
+	else if (m21 == 'e') uni = 'j';
+	else uni = m21;
+	UNI_100.Concat(uni);
+
+	// 07-14 dates. goes to 100/09-16
+	UNI_100.Concat(m21_008.Substring(7, 8));
+	
+	// 15-17 country code. goes to 102/00-02
+	temp = MapLookup(rMessage, &CountriesRoot, m21_008.Substring(15, 3));
+	if (temp.GetNull())
+	{
+		// see if 3-letter code for UK, US, Can
+		if (m21_008.GetCharacter(17) == 'k')
+			temp = "UK";
+		else if (m21_008.GetCharacter(17) == 'u')
+			temp = "US";
+		else if (m21_008.GetCharacter(17) == 'c')
+			temp = "CA";
+		else
+		{
+			rMessage = rMessage.Substring(0, rMessage.GetLength() - 1);
+			rMessage.Concat(" (countries)\n");
+			Result = -1;
+		}
+	}
+	if (!temp.GetNull())
+		UNI_102 = temp;
+	
+	// 18-21 illustrations. goes to 105/00-03
+	UNI_105 = m21_008.Substring(18, 4);
+
+	// 22 target audience. goes to 100/17-19, so we pad with two blanks
+	m21 = (char) m21_008.GetCharacter(22);
+	if (m21 == 'a') uni = 'b';
+	else if (m21 == 'b') uni = 'c';
+	else if (m21 == 'j') uni = 'a';
+	else if (m21 == 'c') uni = 'd';
+	else if (m21 == 'd') uni = 'e';
+	else if (m21 == 'e') uni = 'k';
+	else if (m21 == 'g') uni = 'm';
+	else if (m21 == ' ') uni = 'u';
+	else uni = m21;
+	UNI_100.Concat(uni);
+	UNI_100.Concat("  ");
+
+	/* 106 is optional for regular printed material
+	// 23 form. goes to 106/00
+	m21 = (char) m21_008.GetCharacter(23);
+	if (m21 == ' ') uni = 'y';
+	else uni = m21;
+	UNI_106 = uni;
+	*/
+
+	//24-27 nature of contents. goes to 105/04-07
+	for (i = 24; i <= 27; i++)
+	{
+		m21 = (char) m21_008.GetCharacter(i);
+		if (m21 == 'b') uni = 'a';
+		else if (m21 == 'c') uni = 'b';
+		else if (m21 == 'i') uni = 'c';
+		else if (m21 == 'a') uni = 'd';
+		else if (m21 == 'd') uni = 'e';
+		else if (m21 == 'e') uni = 'f';
+		else if (m21 == 'r') uni = 'g';
+		else if (m21 == 'y') uni = 'h';
+		else if (m21 == 's') uni = 'i';
+		else if (m21 == 'p') uni = 'j';
+		else if (m21 == 'l') uni = 'n';
+		else if (m21 == 't') uni = 'p';
+		else if (m21 == 'n') uni = 'r';
+		else uni = m21;
+		UNI_105.Concat(uni);
+	}
+	
+	// 28 gov pub. goes to 100/20
+	m21 = (char) m21_008.GetCharacter(28);
+	if (m21 == 'f') uni = 'a';
+	else if (m21 == 's') uni = 'b';
+	else if (m21 == 'l') uni = 'c';	// l in m21 could be either c or d in uni
+	else if (m21 == 'c') uni = 'e';
+	else if (m21 == 'i') uni = 'f';
+	else if (m21 == 'o') uni = 'h';
+	else if (m21 == ' ') uni = 'y';
+	else uni = m21;
+	UNI_100.Concat(uni);
+
+	// 29-31 conf pub, festschrift, index. goes to 105/08-10
+	UNI_105.Concat(m21_008.Substring(29, 3));
+	
+	// 32 undefined
+	
+	// 33 lit form. goes to 005/11. cannot be mapped so we just add a fill char
+	UNI_105.Concat("|");
+	
+	// 34 bio. goes to 005/12
+	m21 = (char) m21_008.GetCharacter(34);
+	if (m21 == ' ') uni = 'y';
+	else uni = m21;
+	UNI_105.Concat(uni);
+
+	// 35-37 language. goes to first 101$a. trim
+	UNI_101 = m21_008.Substring(35, 3);
+	UNI_101.Trim();
+	
+	// 38 modified rec. goes to 100/21
+	m21 = (char) m21_008.GetCharacter(38);
+	if (m21 == ' ') uni = '0';
+	else uni = '1';
+	UNI_100.Concat(uni);
+
+	// 39 cat source. ignored
+	
+	// 100/22-24 language of cataloging
+	UNI_100.Concat("eng");
+	
+	// 100/25 transliteration code
+	UNI_100.Concat("y");	// no translit -- no way to map from 008/38
+	
+	// 100/26-33 char sets
+	if (leader09 == ' ')
+		UNI_100.Concat("0103    ");	// meaning basic and extended latin
+	else if (leader09 == 'a')
+		UNI_100.Concat("50      ");	// meaning unicode
+	else 
+		UNI_100.Concat("        ");	// meaning who knows?
+	
+	// 100/34-35 script of title
+	UNI_100.Concat("ba");	// meaning Latin
+	
+	
+	return Result;
+}
+//Convert008
+
+
+
+//LoadMaps -- loads maps (linked-lists) for M21-to-UNIMARC conversion
+int @CLASSNAME@::LoadMaps(WString& rMessage)
+{
+	int Result = LoadMap(rMessage, &CountriesRoot, WAppObject.GetProgramPath(), "countries.txt");
+	if (Result == E_PERFECTSUCCESS)
+		Result = LoadMap(rMessage, &NatbibsRoot, WAppObject.GetProgramPath(), "natbibs.txt");
+	if (Result == E_PERFECTSUCCESS)
+		Result = LoadMap(rMessage, &RelatorsRoot, WAppObject.GetProgramPath(), "relators.txt");
+	if (Result == E_PERFECTSUCCESS)
+		Result = LoadMap(rMessage, &SourcesRoot, WAppObject.GetProgramPath(), "sources.txt");
+	return Result;
+}
+//LoadMaps
+
+
+
+//LoadMap
+int @CLASSNAME@::LoadMap(WString& rMessage, yMapNode *root, WString path, WString filename)
+{
+	yMapNode 		*thisnode, *tempnode;
+	FILE* 		mapfile;
+	char 		t_line [80];
+	WString 		t_string;
+	WStringArray	tlinearray;
+	
+	// country codes
+	WString file_PNE = path;
+	#ifdef _DEBUG
+	file_PNE = "d:\\marc\\marconvert\\FFF\\";
+	#endif
+	file_PNE.Concat(filename);
+	if ((mapfile = fopen (file_PNE.GetText (), "r")) == NULL)
+	{
+		rMessage.Sprintf ("\tCannot open mapping file '%s'", file_PNE.GetText());
+		return -1;
+	}
+		
+	//read in first line and ignore
+	fgets (t_line, sizeof (t_line), mapfile);
+
+	root->next = NULL;
+	thisnode = root;
+	while (!feof (mapfile))
+	{
+		fgets (t_line, sizeof (t_line), mapfile);
+		if (t_line [0] == '/')	//not really required
+			break;	//last node "next" will be NULL
+		t_string = t_line;
+		tlinearray = t_string.Parse ("\t\r\n ");
+	
+		if (tlinearray.GetCount () > 0) //if 0, eof
+		{
+			if (tlinearray.GetCount () == 1)
+			{
+				rMessage.Sprintf 
+						("\tCannot continue. Map file has only one column in this line: %s", 
+						t_string.GetText());
+				return -1;
+			}
+			else
+			{
+				//ignore lines with only - in first column. user left them there for documentation
+				thisnode->m21 = tlinearray[0];
+				thisnode->uni = tlinearray[1];
+				
+				tempnode = new(yMapNode);
+				tempnode->next = NULL;  //sentinel
+				thisnode->next = (yMapNode*) tempnode;
+				thisnode = tempnode;
+			}
+		}
+	}
+	fclose (mapfile);
+	
+	return 1;
+}
+//LoadMap
+
+
+
+//MapLookup
+WString @CLASSNAME@::MapLookup(WString& rMessage, yMapNode* root, WString m21)
+{
+	if (!root)
+	{
+		rMessage.Sprintf 
+				("\tMap for '%s' not found\n", 
+				m21.GetText());
+		return NULL;
+	}
+	
+	yMapNode* thisnode;
+	
+	//060307 we trim the incoming one as some m21 codes have trailing spaces
+	m21.Trim();
+	
+	//060425 remove trailing .
+	if (m21.GetCharacter(m21.GetLength() - 1) == '.')
+		m21.Truncate(m21.GetLength() - 1);
+	
+	thisnode = root;
+	while (thisnode->next)
+	{
+		if (m21 == thisnode->m21)
+			return thisnode->uni;
+		
+		thisnode = (yMapNode*) thisnode->next;
+	}
+	
+	// not found
+	rMessage.Sprintf 
+			("\tMARC21 code '%s' not found\n", 
+			m21.GetText());
+	return NULL;
+}
+//MapLookup
+
+
+
+//CreateBlockedFile
+WString @CLASSNAME@::CreateBlockedFile (FILE* ofile, FILE* rfile, long& rcount, long& rbadcount, WBool interactive)
+{
+	int			Result = E_PERFECTSUCCESS;
+	int			j, k;
+	long 		reccount = 0, badcount = 0, blockcount = 0;
+	
+	long        	reclen, recoffset=0, fldlen;
+	long&		rreclen = reclen;
+	long&		roffset = recoffset;
+	long&		rfldlen = fldlen;
+	LPUSTR      	pResult;
+	
+	/*060202
+	LPSTR		pValMsg;*/
+	WString		TheMessage;
+	WString&		rMessage = TheMessage;
+	
+	LPUSTR     	ptag;
+	WString		msg, countmsg;
+	
+	#define BLOCKSIZE 2048
+	char 		theblock [BLOCKSIZE + 1];	// add 1 for \0
+	memset (theblock, 32, BLOCKSIZE);		// blank fill
+	memset (theblock + BLOCKSIZE, 0, 1);	// trailing 0
+	int			segind, seglen, blockleft = BLOCKSIZE;	// segment indicator and length, bytes remaining in block
+	long			recleft, recindex;	// bytes left to write in record, index into rec
+	int			blockindex;
+	WString		cseglen;
+
+	#ifdef _DEBUG
+	char		scw [6];		// segment control word
+	FILE*	fout;
+	fout = fopen ("blocks.txt", "w");
+	fputs ("    #      Offset    Result   reclen   segind   seglen   blkcnt   blkstart\n", fout);
+	#endif
+	
+	while (Result > 0)
+	{
+		/*060202
+		Result = SP_RecordByOffset (roffset, (LPPUSTR) &pResult, rreclen, (LPPSTR) &pValMsg);*/
+		Result = SP_RecordByOffset (rMessage, roffset, (LPPUSTR) &pResult, rreclen);
+				
+		#ifdef _DEBUG
+		fprintf (fout, "%5d   ", reccount + 1);
+		fprintf (fout, "%9d   ", recoffset);
+		fprintf (fout, "     %2d   ", Result);
+		fprintf (fout, " %05d   ", reclen);
+		fputc ('\n', fout);
+		#endif
+		
+		// reclen will be wrong if Result < 1 or > 2
+		recoffset += reclen;	//probable offset of next record
+		
+		if (Result == 0)	//end of file
+			break;
+	
+	
+		//050125 handle errors for LLL -- 0 and 1 are OK
+		if ((TheClient == LLL) && ((Result > 1) || (Result < 0)))
+		{
+			if (Result > 1)
+			{
+				k = E_PERFECTSUCCESS;
+				
+				// minor record problem, skip and go on
+				if (Result == 2)
+				{
+					// find control number -- SP_Subfield returns it without the fld terminator
+					j = SP_Field ((LPUSTR) "001", (LPPUSTR) &pResult, rfldlen, (LPPUSTR) &ptag);
+					j = SP_Subfield ('*', (LPPUSTR) &pResult, rfldlen, " ", NOCONVERSION);
+					
+					//050219 use msg returned from SP_Val
+					//msg.Sprintf ("Illegal character in record %ld (%s)\n", reccount + 1, pResult);
+					msg.Sprintf ("Illegal character, record %ld (%s)\n", reccount + 1, pResult);
+				}
+				
+				else // Result == 3, severe, can't find control num, skip and go on
+				{
+					//050219 better msg
+					//msg.Sprintf ("Severe format problem in record %lu (code %d)\n", reccount + 1, Result);
+					/*060202
+					msg.Sprintf ("%s, record %lu. One or more records skipped. Record numbers may be wrong.\n", (char*) pValMsg, reccount + 1);
+					if (!strcmp ((char*) pValMsg, "Record Terminator missing"))	*/
+					msg.Sprintf ("%s, record %lu. One or more records skipped. Record numbers may be wrong.\n", 
+							rMessage.GetText(), 
+							reccount + 1);
+					if (rMessage == "Record Terminator missing\n")
+					
+					{
+						// we need to subtract the erroneous reclen to get back to the offset of the bad rec
+						recoffset -= reclen;
+						k = SP_NextRecordOffset (roffset);	
+						if (k != E_PERFECTSUCCESS)
+						{
+							switch (k)
+							{
+								// we don't end the processing if a fatal error found, because we have
+								//		to complete the current block
+								
+								case E_FILENOTFOUND:    
+									msg = "\n\nFatal problem: File not found\n";
+									break;
+								case E_FILENOTOPEN:     
+									msg = "\n\nFatal problem: File not open\n";
+									break;
+								case E_UNEXPECTEDEOF:   
+									msg = "\n\nFatal problem: Unexpected end of file\n";
+									break;
+								case E_NONMARC:
+									msg = "\n\nFatal problem: Not a legal MARC record\n";
+									break;
+								default:                
+									msg.Sprintf ("\n\nFatal problem: Status code %d\n", Result);
+									break;
+							}
+						}
+					}
+				}
+				
+				fputs (msg.GetText (), rfile);
+				msg.Clear ();		// so it doesn't end up in the report twice
+				reccount++;
+				badcount++;
+				
+				if (k == E_PERFECTSUCCESS)
+					continue;
+			}
+			else
+			{
+				switch (Result)
+				{
+					// we don't end the processing if a fatal error found, because we have
+					//		to complete the current block
+					
+					case E_FILENOTFOUND:    
+						msg = "\n\nFatal problem: File not found\n";
+						break;
+					case E_FILENOTOPEN:     
+						msg = "\n\nFatal problem: File not open\n";
+						break;
+					case E_UNEXPECTEDEOF:   
+						msg = "\n\nFatal problem: Unexpected end of file\n";
+						break;
+					case E_NONMARC:
+						msg = "\n\nFatal problem: Not a legal MARC record\n";
+						break;
+					default:                
+						msg.Sprintf ("\n\nFatal problem: Status code %d\n", Result);
+						break;
+				}
+				
+				// major problem, need to reset reclen left from prev rec
+				reclen = 0;
+			}
+		}
+		
+		
+		// update counter
+		if (reclen > 0)
+		{
+			// record should be OK
+			reccount++;
+			//040415 new "interactive" param allows us to generate progress count
+			if (reccount % 1000 == 0)
+			{
+				if (interactive)
+				{
+					countmsg.Sprintf ("Record %lu", reccount);
+					CountLabel->SetText (countmsg);
+					Update ();
+				}
+				else
+				{
+					cprintf ("\tRecord %lu\r", reccount);
+				}
+			}
+		}
+
+ 
+ 		// MAIN LOOP
+		
+		recleft = reclen;
+		while (recleft > 0)
+		{
+			if (blockleft < 6)
+			{
+				#ifdef _DEBUG
+				fputs ("                                                        ", fout);
+				strncpy (scw, theblock, 5);
+				memset (scw + 5, 0, 1);
+				fprintf (fout, "%2d   ", blockcount + 1);
+				fprintf (fout, "%5s   ", scw);
+				fputc ('\n', fout);
+				fputs (theblock, fout);
+				#endif
+				fputs (theblock, ofile);
+				memset (theblock, 32, BLOCKSIZE);
+				blockleft = BLOCKSIZE;
+				blockcount++;
+			}
+			
+			// calc segment indicator
+			if (recleft == reclen)		// then we are starting this record in this block
+			{
+				if (blockleft >= recleft + 5)	// we add 5 because we have to have room for the segment word
+					segind = 48;	// character for 0
+				else 
+					segind = 49;	// character for 1
+			}
+			else
+			{
+				if (blockleft >= recleft + 5)	// we add 5 because we have to have room for the segment word
+					segind = 51;	// character for 3
+				else 
+					segind = 50;	// character for 2
+			}
+				
+			// calc segment length
+			seglen = __min (blockleft, recleft + 5);
+
+			// write to the block
+			blockindex = BLOCKSIZE - blockleft;
+			memset (theblock + blockindex, segind, 1);
+			
+			cseglen.Sprintf ("%04d", seglen);
+			memcpy (theblock + blockindex + 1, cseglen.GetText (), 4);
+			
+			#ifdef _DEBUG
+			fputs ("                                       ", fout);
+			fprintf (fout, "%c   ", segind);
+			fprintf (fout, "  %04d   ", seglen);
+			fputc ('\n', fout);
+			#endif
+			
+			recindex = reclen - recleft;
+			_fmemcpy (theblock + blockindex + 5, pResult + recindex, seglen - 5);
+			blockindex += seglen;
+			
+			// update indexes
+			blockleft -= seglen;
+			recleft -= seglen - 5;
+		}
+	}
+	
+	//last block
+	#ifdef _DEBUG
+	fputs ("                                                        ", fout);
+	strncpy (scw, theblock, 5);
+	memset (scw + 5, 0, 1);
+	fprintf (fout, "%2d   ", blockcount + 1);
+	fprintf (fout, "%5s   ", scw);
+	fputc ('\n', fout);
+	fputs (theblock, fout);
+	#endif
+
+	fputs (theblock, ofile);
+	blockcount++;
+	
+	#ifdef _DEBUG
+	fclose (fout);
+	#endif
+
+	rcount = reccount;
+	rbadcount = badcount;
+
+	msg.Sprintf ("%s\n%lu blocks created", msg.GetText (), blockcount);
+	return msg;
+}
+//CreateBlockedFile
+
+
+
+//GetIniParams
+void @CLASSNAME@::GetIniParams ()
+{
+	WString s;
+	TheIniParams.infilepath = WAppObject.GetProfileString 
+			("Convert", "Infile", "", "MARCView.INI");
+	TheIniParams.outfilepath = WAppObject.GetProfileString 
+			("Convert", "Outfile", "", "MARCView.INI");
+	TheIniParams.rptfilepath = WAppObject.GetProfileString 
+			("Convert", "Rptfile", "", "MARCView.INI");
+	TheIniParams.badfilepath = WAppObject.GetProfileString 
+			("Convert", "Badfile", "", "MARCView.INI");
+
+	s = WAppObject.GetProfileString 
+			("Convert", "CharSet", "None", "MARCView.INI");
+	if (s == "UTF8")
+		TheIniParams.charset = UTF8;
+	else if (s == "MARC8")
+		TheIniParams.charset = ANSEL;
+	else 
+		TheIniParams.charset = UNKNOWN;
+}
+//GetIniParams
+
+@end-code;
+
+@begin-code Code "yMarcToMarc::HelpButton_Click"
+
+//HelpButton_Click
+WBool @CLASSNAME@::HelpButton_Click(
+	WObject *   		source,
+	WEventData *		event )
+{
+    yHelp::ShowHelp ("convert");
+    
+    return FALSE;
+}
+//HelpButton_Click
+
+
+
+//WriteIniParams
+void @CLASSNAME@::WriteIniParams ()
+{
+	WAppObject.SetProfileString 
+			("Convert", "Infile", TheIniParams.infilepath.GetText (), "MARCView.INI");
+	WAppObject.SetProfileString 
+			("Convert", "Outfile", TheIniParams.outfilepath.GetText (), "MARCView.INI");
+	WAppObject.SetProfileString 
+			("Convert", "Rptfile", TheIniParams.rptfilepath.GetText (), "MARCView.INI");
+	WAppObject.SetProfileString 
+			("Convert", "Badfile", TheIniParams.badfilepath.GetText (), "MARCView.INI");
+
+	if ((TheClient == AAA) || (TheClient == CCC))	// we also have to set the MCClient charsets as processing depends on them
+	{
+		if (TheIniParams.charset == UTF8)
+		{
+			WAppObject.SetProfileString 
+					("Convert", "CharSet", "UTF8", "MARCView.INI");
+			yMCClient::MCSourceCharset = UTF8;
+			yMCClient::MCTargetCharset = TOANSEL;
+		}
+		else if (TheIniParams.charset == ANSEL)
+		{
+			WAppObject.SetProfileString 
+					("Convert", "CharSet", "MARC8", "MARCView.INI");
+			yMCClient::MCSourceCharset = ANSEL;
+			yMCClient::MCTargetCharset = TOUTF8;
+		}
+		else 
+		{
+			WAppObject.SetProfileString 
+					("Convert", "CharSet", "", "MARCView.INI");
+			yMCClient::MCSourceCharset = UNKNOWN;
+			yMCClient::MCTargetCharset = NOCONVERSION;
+		}
+	}
+}
+//WriteIniParams
+
+
+
+
+//ShowTree -- debugging
+void @CLASSNAME@::ShowTree (WString msg, yTrans* root, FILE* f)
+{
+	yTrans	*t_field, *t_sub, *t_seg;
+	
+	/* fields in a yTrans
+	yNodeType		type;
+	WString		tag;
+	WString		subs;
+	int			segment;
+	WBool		constant;
+	WString		label;		//this stores column 2 of the TT
+	WString		attachment;
+	WString		string;		//this holds data as we build it for this node
+	yTrans*		thisfield;
+	yTrans*		nextfield;
+	yTrans*		nextsf;
+	yTrans*		nextseg;
+	yTIndex*		indexnode;
+	*/
+	
+	fputs ("\n\n", f);
+	fputs (msg.GetText (), f);
+	fputs ("\n\n", f);
+	// need two tabs after a pointer because they are 8 long (same as a tab)
+	fputs ("address    type\ttag\tsubs\tseg\tconst\tlabel\tadded\tstring\tthisfld\t\tnextfld\t\tnextsub\t\tnextseg\t\tindexnode", f);
+	fputs ("\n\n", f);
+	
+	t_field = root;
+	while (t_field)
+	{
+		PrintNode (t_field, f);
+			
+		t_sub = t_field->nextsf;
+		while (t_sub)
+		{
+			PrintNode (t_sub, f);
+			
+			t_seg = t_sub->nextseg;
+			while (t_seg)
+			{
+				PrintNode (t_seg, f);
+				t_seg = t_seg->nextseg;
+			}
+		
+			t_sub = t_sub->nextsf;
+		}
+		
+		t_seg = t_field->nextseg;
+		while (t_seg)
+		{
+			PrintNode (t_seg, f);
+			t_seg = t_seg->nextseg;
+		}
+		
+		t_field = t_field->nextfield;
+	}
+	
+	long nodecount = root->DeleteTree(TRUE);	// TRUE means count only
+	fprintf (f, "\nNodecount: %ld\n", nodecount);
+}
+//ShowTree
+
+
+
+//PrintNode -- debugging
+void @CLASSNAME@::PrintNode (yTrans* trans, FILE* f)
+{
+	/* fields in a yTrans
+	yNodeType		type;
+	WString		tag;
+	WString		subs;
+	int			segment;
+	WBool		constant;
+	WString		label;		//this stores column 2 of the TT
+	WString		attachment;
+	WString		string;		//this holds data as we build it for this node
+	yTrans*		thisfield;
+	yTrans*		nextfield;
+	yTrans*		nextsf;
+	yTrans*		nextseg;
+	yTIndex*		indexnode;
+	*/
+	
+	WString output;
+		
+	output.Sprintf
+			("%p   %d\t%s\t%s\t%d\t%d\t%s\t%s\t%s\t%p\t%p\t%p\t%p\t%p\n",
+			trans,
+			trans->type,
+			trans->targettag.GetText (),
+			trans->targetsfs.GetText (),
+			trans->targetsegment,
+			trans->constant,
+			trans->sourcelabel.Substring (0, 7).GetText (),
+			trans->attachment.Substring (0, 7).GetText (),
+			trans->string.Substring (0, 7).GetText (),
+			trans->thisfield,
+			trans->nextfield,
+			trans->nextsf,
+			trans->nextseg,
+			trans->indexnode);
+	fputs (output.GetText (), f);
+}
+//PrintNode
+
+@end-code;
+@end;

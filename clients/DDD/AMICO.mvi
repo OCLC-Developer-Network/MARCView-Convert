@@ -1,0 +1,35 @@
+DDD Amico Translation Table
+FieldSep	T
+LDR		"LLLLLnkm  22BBBBBn  4500"
+007		"ke ca "
+007		"cr |||||||||||"
+008&1		"DDDDDD"
+008&2		"s19uu    xx nnn            sneng d"
+035a		AID
+040a		"removed"
+040c		"removed"
+090b		"Amico record"
+100-		"1 "
+100a		CRN
+245-		"10"
+245a		OTN		"+++$h[slide]"
+260c		OCT
+300a		OMD
+300c		MET
+500a		ALY		"Amico Library: +++"
+511a		CRT
+535a		OON
+535b		OOP
+541e		OOA
+545a		CRC
+655-		" 7"
+655a		OTY		"+++$2aat"
+774-		"18"
+774t		RID
+774n		RIR
+774o		RIL
+845u		ORL		"+++$zConnect to rights and reproduction policy"
+000		CDT
+000		OOC
+000		RIP
+//

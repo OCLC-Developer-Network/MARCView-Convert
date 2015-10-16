@@ -1,0 +1,228 @@
+Save Format v1.3
+@begin Form "yGotoDialog"
+ Exported 0;
+
+ @begin Object "WDialog"
+  WSCaption 1;
+  WSDlgBorder 1;
+  WSVisible 1;
+  Font "8.MS Sans Serif";
+  Icon "WIcon( WResourceID( MARCView ) )";
+  FormPositionType "Centered";
+  FormAbsTop "20";
+  FormAbsLeft "8";
+  Text "Enter Record Number";
+  @begin Event "Create"
+   GencodeSrcLine 168;
+   FunctionName "yGotoDialog::yGotoDialog_Create";
+  @end;
+  @begin UserFunction "yGotoDialog()"
+   Compiler 1;
+   GencodeSrcLine 175;
+   FunctionName "yGotoDialog::yGotoDialog()";
+  @end;
+  @begin UserFunction "~yGotoDialog()"
+   Compiler 1;
+   GencodeSrcLine 178;
+   FunctionName "yGotoDialog::~yGotoDialog()";
+  @end;
+  ResID 102;
+  DesignName yGotoDialog;
+  TabIndex 0;
+  DesignRect -741,258,214,114;
+ @end;
+
+ @begin Object "WLabel"
+  WSSLeftNoWordWrap 1;
+  WSSNotify 1;
+  WCCSNoResize 1;
+  WCCSNoParentAlign 1;
+  WSChild 1;
+  WSMinimizeBox 1;
+  WSGroup 1;
+  WSVisible 1;
+  Font "10.MS Sans Serif.Bold";
+  Text "Enter the number of the record to view";
+  AutoSize "1";
+  ResID 101;
+  DesignName label_1;
+  TabIndex 0;
+  DesignRect 25,15,174,10;
+ @end;
+
+ @begin Object "WMaskedTextBox"
+  WTextBoxCenter 1;
+  WTextBoxAutoHScroll 1;
+  WCCSTop 1;
+  WSBorder 1;
+  WSChild 1;
+  WSMaximizeBox 1;
+  WSTabStop 1;
+  WSExClientEdge 1;
+  WSVisible 1;
+  InputMask "########";
+  UseCurrentDate "0";
+  TextLimit "8";
+  OutputFormat "";
+  PromptChar "32";
+  ResID 102;
+  DesignName GotoEntry;
+  TabIndex 1;
+  DesignRect 65,40,80,15;
+ @end;
+
+ @begin Object "WCommandButton"
+  WSChild 1;
+  WSMaximizeBox 1;
+  WSTabStop 1;
+  WSVisible 1;
+  Default "1";
+  Pressed "0";
+  Text "OK";
+  @begin Event "Click"
+   GencodeSrcLine 181;
+   FunctionName "yGotoDialog::OKButton_Click";
+  @end;
+  ResID 103;
+  DesignName OKButton;
+  TabIndex 2;
+  DesignRect 40,70,60,15;
+ @end;
+
+ @begin Object "WCommandButton"
+  WSChild 1;
+  WSMaximizeBox 1;
+  WSTabStop 1;
+  WSVisible 1;
+  Pressed "0";
+  Text "Cancel";
+  Cancel "1";
+  @begin Event "Click"
+   GencodeSrcLine 194;
+   FunctionName "yGotoDialog::CancelButton_Click";
+  @end;
+  ResID 104;
+  DesignName CancelButton;
+  TabIndex 3;
+  DesignRect 110,70,60,15;
+ @end;
+
+ @begin HPPPrefixBlock
+@begin-code HPPPrefix
+
+/*
+Copyright 1992-2009 Systems Planning (www.systemsplanning.com)
+
+Licensed under the Apache License, Version 2.0 (the "License"); 
+you may not use this file except in compliance with the License. 
+You may obtain a copy of the License at 
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software 
+distributed under the License is distributed on an "AS IS" BASIS, 
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. 
+See the License for the specific language governing permissions and 
+limitations under the License.
+*/
+
+// Declarations added here will be included at the top of the .HPP file
+
+@end-code;
+  GencodeSrcLine 11;
+ @end;
+
+ @begin CPPPrefixBlock
+@begin-code CPPPrefix
+
+// Code added here will be included at the top of the .CPP file
+
+//  Include definitions for resources.
+#include "WRes.h"
+
+@end-code;
+  GencodeSrcLine 10;
+ @end;
+
+ @begin ClassContentsBlock
+@begin-code ClassContents
+
+    public:
+        // add your public instance data here
+		long 		num;
+		
+    private:
+        // add your private instance data here
+    protected:
+        // add your protected instance data here
+
+@end-code;
+  GencodeSrcLine 66;
+ @end;
+
+@begin-code GeneratedClassContents
+
+        yGotoDialog();
+        ~yGotoDialog();
+
+@end-code;
+
+@begin-code Code "yGotoDialog::yGotoDialog()"
+
+@@CLASSNAME@::@CLASSNAME@()
+{
+}
+
+@end-code;
+
+@begin-code Code "yGotoDialog::~yGotoDialog()"
+
+@@CLASSNAME@::~@CLASSNAME@()
+{
+}
+
+@end-code;
+
+@begin-code Code "yGotoDialog::yGotoDialog_Create"
+
+WBool @CLASSNAME@::yGotoDialog_Create(
+	WObject *         		source,
+	WCreateEventData *		event )
+{
+   
+    return FALSE;
+}
+
+@end-code;
+
+@begin-code Code "yGotoDialog::OKButton_Click"
+
+WBool @CLASSNAME@::OKButton_Click(
+	WObject *   		source,
+	WEventData *		event )
+{
+	WString s;
+	
+    	s = GotoEntry->GetText();
+	num = s.ConvertToLong ();
+	
+	Dismiss (1);
+    
+    return FALSE;
+}
+
+@end-code;
+
+@begin-code Code "yGotoDialog::CancelButton_Click"
+
+WBool @CLASSNAME@::CancelButton_Click(
+	WObject *   		source,
+	WEventData *		event )
+{
+    Dismiss (0);
+    
+    return FALSE;
+}
+
+@end-code;
+@end;

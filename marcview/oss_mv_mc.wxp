@@ -1,0 +1,16 @@
+Save Format v1.3
+@begin Project
+ LastResID 107;
+ TargetFile "marcview.wxt";
+ TargetFile "..\\sp_marc\\sp_marc.wxt";
+
+ @begin TargetDependency
+  TargetDepTarget "..\\OPENSOURCE\\marcview\\marcview.wxt";
+  TargetDepDependent "..\\OPENSOURCE\\sp_marc\\sp_marc.wxt";
+ @end;
+
+ @begin TargetDependency
+  TargetDepTarget "marcview.wxt";
+  TargetDepDependent "..\\sp_marc\\sp_marc.wxt";
+ @end;
+@end;

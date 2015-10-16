@@ -1,0 +1,1786 @@
+Save Format v1.3
+@begin ClassFile "yTrans"
+ Exported 0;
+
+@begin-code BaseClassList
+
+public WObject
+
+@end-code;
+
+ @begin UserFunction "yTrans ()"
+  GencodeSrcLine 15;
+  FunctionName "yTrans::yTrans ()";
+ @end;
+
+ @begin UserFunction "Prototype for yTrans ()"
+  Private 1;
+  GencodeSrcLine 90;
+  FunctionName "yTrans::Prototype for yTrans ()";
+ @end;
+
+ @begin UserFunction "~yTrans()"
+  Private 1;
+  GencodeSrcLine 87;
+  FunctionName "yTrans::~yTrans()";
+ @end;
+
+ @begin UserFunction "Prototype for ~yTrans()"
+  Private 1;
+  GencodeSrcLine 127;
+  FunctionName "yTrans::Prototype for ~yTrans()";
+ @end;
+
+ @begin HPPPrefixBlock
+@begin-code HPPPrefix
+
+/*
+Copyright 1992-2009 Systems Planning (www.systemsplanning.com)
+
+Licensed under the Apache License, Version 2.0 (the "License"); 
+you may not use this file except in compliance with the License. 
+You may obtain a copy of the License at 
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software 
+distributed under the License is distributed on an "AS IS" BASIS, 
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. 
+See the License for the specific language governing permissions and 
+limitations under the License.
+*/
+
+//030211 this is only for import, as export has a yTrans structure
+//			defined in yExport
+//060226 now used for MtM UNIMARC conversion
+
+extern "C" 
+{
+    #include "d:\marc\sp_marc\sp_marc.hpp"
+};
+
+
+// Declarations added here will be included at the top of the .HPP file
+#include "MCclient.hpp"
+#include "yTIndex.hpp"
+#include "Utility.hpp"	// for yClient enum
+
+@end-code;
+  GencodeSrcLine 11;
+ @end;
+
+ @begin CPPPrefixBlock
+@begin-code CPPPrefix
+
+// Code added here will be included at the top of the .CPP file
+
+//  Include definitions for resources.
+#include "WRes.h"
+
+@end-code;
+  GencodeSrcLine 11;
+ @end;
+
+ @begin ClassContentsBlock
+@begin-code ClassContents
+
+    public:
+		typedef enum {UNKNOWN=0, FIELD, SUB, SEG} yNodeType;	//050311
+	
+		//060226 for MARC21 to UNIMARC conversion
+		typedef struct unimarctag
+		{
+			char*	MARC21;
+			char*	UNIMARC;
+			char*	attachment;
+		}	yUNIMARC;
+	
+		//translation node
+		yNodeType		type;
+		WString		targettag;
+		WString		targetsfs;	// believe this is a string to accomodate byte-ranges,
+								//		since it wouldn't make sense to have more than
+								//		one sfc
+		int			targetsegment;
+		WBool		constant;
+		WString		sourcelabel;	//this stores column 2 of the TT
+		WString		attachment;
+		WString		string;		//this holds data as we build it for this node
+		yTrans*		thisfield;	//050312
+		yTrans*		nextfield;
+		yTrans*		nextsf;
+		yTrans*		nextseg;
+		yTIndex*		indexnode;
+
+    private:
+        // add your private instance data here
+		yMCClient		MCClient;
+		void 		MakeNode
+							(yTrans** pptrans, 
+							yTrans** ppt_trans,
+							yTrans** ppt_thisfield,
+							yTrans** ppt_lastfield,
+							yTrans** ppt_lastsub,
+							yTrans** ppt_lastseg,
+							WString first, 
+							WString second, 
+							WString third=NULL,
+							WBool force=0);
+		
+    protected:
+		// add your protected instance data here
+
+@end-code;
+  GencodeSrcLine 45;
+ @end;
+
+@begin-code GeneratedClassContents
+
+
+@end-code;
+
+@begin-code Code "yTrans::yTrans ()"
+
+	
+/*static*/		yTIndex		*indexroot;
+/*static*/	 	yTIndex		*index;
+/*static*/		yTIndex		*t_index;
+
+static		yClient		TheClient;
+
+//050313 prevent adding more than one 1xx
+static		WBool		has1xx = FALSE;
+
+
+#ifdef _DEBUG
+@@CLASSNAME@	*theroot;
+#endif
+
+@@CLASSNAME@::@CLASSNAME@()
+{
+	type = UNKNOWN;	// until set
+	targetsegment = 0;
+	constant = FALSE;
+	thisfield = NULL;
+	nextfield = NULL;
+	nextseg = NULL;
+	nextsf = NULL;
+	indexnode = NULL;
+}
+
+
+@@CLASSNAME@::@CLASSNAME@ (@CLASSNAME@* old)	//copy constructor
+{
+	/*
+	if (!old)
+		WMessageBox::Info
+			(NULL, 
+			"Null passed to copy ctor",
+			"");
+	*/
+
+	type = old->type;
+	targettag = old->targettag;
+	targetsfs = old->targetsfs;
+	targetsegment = old->targetsegment;
+	sourcelabel = old->sourcelabel;
+	attachment = old->attachment;
+	constant = old->constant;
+	indexnode = old->indexnode;
+		
+	if (old->constant)
+		string = old->string;
+	
+	thisfield = NULL;
+	nextfield = NULL;
+	nextseg = NULL;
+	nextsf = NULL;
+	
+	#ifdef _DEBUG
+	if (sourcelabel.GetEmpty())
+	{
+		FILE*	debugfile;
+		WString	debugstring;
+		
+		debugstring.Sprintf("\ncopying node with no sourcelabel %s%s\n", 
+				this->targettag.GetText(), 
+				this->targetsfs.GetText());
+		if ((debugfile = fopen("\\marc\\marconvert\\FFF\\debug.txt", "a")) != NULL)
+		{
+			fputs (debugstring.GetText(), debugfile);
+			fclose(debugfile);
+		}
+	}
+	#endif
+}
+
+@end-code;
+
+@begin-code Code "yTrans::Prototype for yTrans ()"
+
+	public:
+		@@CLASSNAME@ ();
+		@@CLASSNAME@ (@CLASSNAME@*);		//copy constructor
+
+		WString		Assemble				(WBool iscontrolfield, WString subfielddata);
+		void			ClearTree 			(yNodeType type=UNKNOWN);
+		@@CLASSNAME@*		CopyBranch 			(WBool);
+		long			DeleteTree			(WBool countonly=FALSE);
+		@@CLASSNAME@*		FillSubfield			(char, WString);	//060327
+		@@CLASSNAME@*		FindFieldNodeFromTarget	(WString);
+		@@CLASSNAME@*		FindNodeFromSourcelabel	(WString);
+		WString		GetField				();
+		
+		
+		/*060307 new subs to give more control than InsertString. If successful, Import could 
+				also use them. 
+			-- for all three of these, "loc" can be a tag, tag/seg, tag/sub, or tag/sub/seg */
+			
+		/* forces a new instance of a field even though the "sourcefield" may be a sf
+			-- method of the root node -- always inserted in numerical order */
+		@@CLASSNAME@*		InsertField		(WString sourcefield, WString sourcedata);
+		
+		/* we specify where to insert the new sf bec sfs are not always in
+				alphanumeric order -- new inserted in front of old
+			-- to insert a new sub in the current field, call this method for that field.
+			-- to insert a new field with a sub, use InsertField */
+		@@CLASSNAME@*		InsertSubfield		(char loc, char oldsf, WString data);
+		
+		/* method of the subfield node -- has new feature of being able to 
+				define a seg not in TT -- added in numerical order */
+		//@CLASSNAME@*		InsertSegment		(WString loc, WString data);
+		
+		
+		@@CLASSNAME@*		InsertString 		(WString, WString);
+		WBool		MakeTree 			(FILE* tfile=NULL, yUNIMARC* UNI_table=NULL, int UNI_nodes=NULL);
+		@@CLASSNAME@*		WriteIndicators	(WString);
+		
+
+@end-code;
+
+@begin-code Code "yTrans::~yTrans()"
+
+@@CLASSNAME@::~@CLASSNAME@ ()
+{
+	/* debug log didn't complain without these 
+	delete tag;
+	delete subs;
+	delete label;
+	delete addedtext;
+	delete string;
+	*/
+}
+
+
+//Assemble -- incorporates Attachment if any -- moved from MtM, which copied it from Import, then refactored
+//000612 modified to add sfd and sfc if subfielddata empty, not otherwise -- handles any number
+//		of empty segments
+/*060311
+WString @CLASSNAME@::Assemble (@CLASSNAME@ *curr, WBool iscontrolfield, WString subfielddata)*/
+WString @CLASSNAME@::Assemble (WBool iscontrolfield, WString subfielddata)
+{
+	@@CLASSNAME@* curr = this;	// convenience
+	
+	int		i;
+	WBool	needs_sfc = 
+					!iscontrolfield &&
+					(	((subfielddata.GetLength () == 0) && (curr->targetsfs != "-"))
+					||
+						((subfielddata.GetLength () == 2) && (subfielddata.GetCharacter (0) != zmarcsubterm))	
+					);
+
+	// if user forgot +++, we just add the field without the attachment
+	WBool	valid_attachment = 
+					!curr->attachment.GetEmpty() &&
+					(curr->attachment.Position("+++") != NOT_FOUND);
+		
+		
+	// note: always Concat because subfielddata may have contents from earlier segments
+	
+	if (iscontrolfield)
+	{
+		if (valid_attachment)
+			subfielddata.Concat (curr->attachment.Substring (0, i) + curr->string + curr->attachment.Substring (i + 3));
+		else
+			subfielddata.Concat (curr->string);
+	}
+	
+	else		// not control field
+	{
+		if (valid_attachment)
+		{
+			int sfcstart = 0;
+			//000603 handle indicators (preceded by -)
+			if (curr->attachment.GetCharacter (0) == '-')
+			{
+				subfielddata.Concat (curr->attachment.Substring (1, 2));
+				sfcstart = 3;
+			}
+			
+			// now look for what might be after the inds
+			
+			if (curr->attachment.Position ("$") == sfcstart)
+			{
+				/* attachment contains subfield to precede this one
+					-- only meaningful in first or only segment of current subfield, altho this is not checked
+					-- only meaningful if +++ is at end of attachment, also not checked */
+				
+				//add ->attachment
+				subfielddata.Concat (zmarcsubterm);
+				subfielddata.Concat (curr->attachment.Substring (sfcstart + 1, curr->attachment.GetLength () - (sfcstart + 4)));
+				
+				//now add this field's stuff
+				subfielddata.Concat (zmarcsubterm);
+				subfielddata.Concat (curr->targetsfs);
+				subfielddata.Concat (curr->string);
+			}
+			else if (curr->attachment.Position ("+++$") == 0)
+			{
+				/* attachment contains subfield to follow this one
+					-- only meaningful in last or only segment of current subfield, altho this is not checked */
+				
+				//add this field
+				if (needs_sfc)
+				{
+					subfielddata.Concat (zmarcsubterm);
+					subfielddata.Concat (curr->targetsfs);
+				}
+				
+				subfielddata.Concat (curr->string);
+				
+				//add attachment
+				subfielddata.Concat (zmarcsubterm);
+				subfielddata.Concat (curr->attachment.Substring (4, curr->attachment.GetLength () - 4));
+			}
+			else		// no $
+			{
+				if (needs_sfc)
+				{
+					subfielddata.Concat (zmarcsubterm);
+					subfielddata.Concat (curr->targetsfs);
+				}
+				
+				subfielddata.Concat (curr->attachment.Substring (0, i) + curr->string + curr->attachment.Substring (i + 3));
+			}
+		}
+		else
+		{
+			if (needs_sfc)
+			{
+				subfielddata.Concat (zmarcsubterm);
+				subfielddata.Concat (curr->targetsfs);
+			}
+				
+			subfielddata.Concat (curr->string);
+		}
+	}
+	
+	return subfielddata;
+}
+//Assemble
+
+
+
+//ClearTree -- deletes all strings, doesn't remove any nodes or pointers or change type
+//060318 new yNodeType param is UNKNOWN to clear entire tree from root, or FIELD to clear one field and all its
+//		subs and segs
+void @CLASSNAME@::ClearTree(yNodeType type)
+{
+	// not developed for SUB and SEG -- is it meaningful to clear one seg or sub?
+	if ((type != UNKNOWN) && (type != FIELD))
+		return;
+		
+	@@CLASSNAME@	*t_trans, *t_sf, *t_seg;
+	
+	/*
+	#ifdef _DEBUG
+	FILE*	debugfile;
+	WString	debugstring;
+	
+	debugstring.Sprintf("\nentering ClearTree with root node %s%s\n", 
+			this->tag.GetText(), 
+			this->subs.GetText());
+	if ((debugfile = fopen("\\marc\\marconvert\\FFF\\debug.txt", "a")) != NULL)
+	{
+		fputs (debugstring.GetText(), debugfile);
+		fclose(debugfile);
+	}
+	#endif
+	*/
+	
+	t_trans = this;
+
+	while (t_trans)
+	{
+		/*
+		#ifdef _DEBUG
+		debugstring.Sprintf("\ndeleting string in %s%s: %s\n", 
+				t_trans->tag.GetText(), 
+				t_trans->subs.GetText(),
+				t_trans->string.GetText());
+		if ((debugfile = fopen("\\marc\\marconvert\\FFF\\debug.txt", "a")) != NULL)
+		{
+			fputs (debugstring.GetText(), debugfile);
+			fclose(debugfile);
+		}
+		#endif
+		*/
+		
+		if (!t_trans->constant)
+			t_trans->string.Clear();
+
+		t_seg = t_trans;
+		while (t_seg->nextseg)
+		{
+			t_seg = t_seg->nextseg;
+			
+			/*
+			#ifdef _DEBUG
+			debugstring.Sprintf("\ndeleting string in %s%s: %s\n", 
+					t_seg->tag.GetText(), 
+					t_seg->subs.GetText(),
+					t_seg->string.GetText());
+			if ((debugfile = fopen("\\marc\\marconvert\\FFF\\debug.txt", "a")) != NULL)
+			{
+				fputs (debugstring.GetText(), debugfile);
+				fclose(debugfile);
+			}
+			#endif
+			*/
+			
+			if (!t_seg->constant)
+				t_seg->string.Clear();
+		}
+			
+		t_sf = t_trans;
+		while (t_sf->nextsf)
+		{
+			t_sf = t_sf->nextsf;
+			
+			/*
+			#ifdef _DEBUG
+			debugstring.Sprintf("\ndeleting string in %s%s: %s\n", 
+					t_sf->tag.GetText(), 
+					t_sf->subs.GetText(),
+					t_sf->string.GetText());
+			if ((debugfile = fopen("\\marc\\marconvert\\FFF\\debug.txt", "a")) != NULL)
+			{
+				fputs (debugstring.GetText(), debugfile);
+				fclose(debugfile);
+			}
+			#endif
+			*/
+			
+			if (!t_sf->constant)
+				t_sf->string.Clear();
+
+			t_seg = t_sf;
+			while (t_seg->nextseg)
+			{
+				t_seg = t_seg->nextseg;
+			
+				/*
+				#ifdef _DEBUG
+				debugstring.Sprintf("\ndeleting string in %s%s: %s\n", 
+						t_seg->tag.GetText(), 
+						t_seg->subs.GetText(),
+						t_seg->string.GetText());
+				if ((debugfile = fopen("\\marc\\marconvert\\FFF\\debug.txt", "a")) != NULL)
+				{
+					fputs (debugstring.GetText(), debugfile);
+					fclose(debugfile);
+				}
+				#endif
+				*/
+				
+				if (!t_seg->constant)
+					t_seg->string.Clear();
+			}
+		}
+		
+		if (type == UNKNOWN)
+			t_trans = t_trans->nextfield;
+		else
+			t_trans = NULL;
+	}
+	
+	//reset index
+	index = indexroot;
+	while (((yTIndex*)index)->next)
+	{
+		index->currtrans = index->firsttrans;
+		index = index->next;
+	}
+	
+	//050313 reset 
+	has1xx = FALSE;
+}
+//ClearTree
+
+
+
+//CopyBranch
+// the root of the branch to be copied can be either a field node or a subfield node
+// the new node is inserted AFTER the current node
+@@CLASSNAME@* @CLASSNAME@::CopyBranch (WBool isfield)
+{
+	@@CLASSNAME@	*newT, *t_oldseg, *t_newseg, *t_oldfield, *t_oldsub, *t_newsub, *t_temp, *t_thisfield;
+
+	// make new node
+	/*050312 now we copy the entire field as the default, used to copy just the subfield
+	newT = new @CLASSNAME@ (this);*/
+	/*
+	if (!thisfield)
+		WMessageBox::Info
+			(NULL, 
+			"Null being passed to copy ctor in CopyBranch",
+			"");
+	*/
+	t_oldfield = this->thisfield;
+	newT = new @CLASSNAME@ (t_oldfield);
+	
+		
+	// link it into chain
+	if (isfield)
+	{
+		//050312
+		t_thisfield = newT;
+		newT->thisfield = t_thisfield;
+		
+		newT->nextfield = t_oldfield->nextfield;
+		t_oldfield->nextfield = newT;
+	}
+	else
+	{
+		//050312
+		t_thisfield = this->thisfield;
+		newT->thisfield = t_thisfield;
+		
+		newT->nextsf = t_oldfield->nextsf;	// not sure about this
+		t_oldfield->nextsf = newT;			// or this
+	}
+	
+	// update index -- assumes index pointer not moved since call
+	t_oldfield->indexnode->currtrans = newT;
+	
+	// copy segments from this node to new node
+	t_oldseg = t_oldfield;		//old chain
+	t_newseg = newT;			//new chain
+	while (t_oldseg->nextseg)	//for main node
+	{
+		t_oldseg = t_oldseg->nextseg;	//next node to copy
+		t_temp = new @CLASSNAME@ (t_oldseg);
+		t_temp->thisfield = t_thisfield;
+		t_newseg->nextseg = t_temp;
+		t_newseg = t_temp;	//ready for next addition
+		
+		//update index
+		t_oldseg->indexnode->currtrans = t_newseg;
+		t_temp->indexnode->currtrans = t_newseg;
+	}
+	
+	// copy subs if this node is a field
+	if (isfield)
+	{
+		t_oldsub = t_oldfield;
+		t_newsub = newT;
+		while (t_oldsub->nextsf)
+		{
+			t_oldsub = t_oldsub->nextsf;	//next node to copy
+			t_temp = new @CLASSNAME@ (t_oldsub);
+			t_temp->thisfield = t_thisfield;
+			t_newsub->nextsf = t_temp;
+			t_newsub = t_temp;	//ready for next addition
+
+			//update index
+			t_oldsub->indexnode->currtrans = t_newsub;
+			t_temp->indexnode->currtrans = t_newsub;
+			
+			// copy segs of each sub
+			t_oldseg = t_oldsub;	//old chain
+			t_newseg = t_newsub;	//new chain
+			while (t_oldseg->nextseg)	//for main node
+			{
+				t_oldseg = t_oldseg->nextseg;	//next node to copy
+				t_temp = new @CLASSNAME@ (t_oldseg);
+				t_temp->thisfield = t_thisfield;
+				t_newseg->nextseg = t_temp;
+				t_newseg = t_temp;	//ready for next addition
+
+				//update index
+				t_oldseg->indexnode->currtrans = t_newseg;
+				t_temp->indexnode->currtrans = t_newseg;
+			}
+		}
+	}
+	
+	/*050312 now that we copy the entire field, we need to find the node which required the copy,
+			so we can return it*/
+	t_temp = newT->indexnode->currtrans;
+	//run thru matching nodes that have already been used
+	while (t_temp &&
+			(t_temp->type != this->type) ||
+			(t_temp->targettag != this->targettag) ||
+			(t_temp->targetsfs != this->targetsfs) ||
+			(t_temp->targetsegment != this->targetsegment) ||
+			(t_temp->sourcelabel != this->sourcelabel))
+	{
+		t_temp = t_temp->indexnode->next->currtrans;
+	}
+	
+	if (!t_temp)
+		WMessageBox::Info
+			(NULL, 
+			"Returning NULL from CopyBranch",
+			"");
+	
+	return t_temp;	//050312 newT
+}
+//CopyBranch
+
+
+
+//DeleteTree -- a function of the root node, but I guess it could be used for a branch also
+//060327 adding param=TRUE means count only, don't delete
+long @CLASSNAME@::DeleteTree(WBool countonly)
+{
+	@@CLASSNAME@		*t_trans, *t_field, *t_sf, *t_seg;
+	long 		ii = 0;		// count of nodes deleted (see Import for purpose)
+	
+	t_field = this;	// the root
+	while (t_field)
+	{
+		t_seg = t_field->nextseg;
+		while (t_seg)
+		{
+			t_trans = t_seg->nextseg;
+			if (!countonly)
+				delete t_seg;
+			t_seg = t_trans;
+			ii++;
+		}
+			
+		t_sf = t_field->nextsf;
+		while (t_sf)
+		{
+			t_seg = t_sf->nextseg;
+			while (t_seg)
+			{
+				t_trans = t_seg->nextseg;
+				if (!countonly)
+					delete t_seg;
+				t_seg = t_trans;
+				ii++;
+			}
+		
+			t_trans = t_sf->nextsf;
+			if (!countonly)
+				delete t_sf;
+			t_sf = t_trans;
+			ii++;
+		}
+		
+		t_trans = t_field->nextfield;
+		if (!countonly)
+			delete t_field;
+		t_field = t_trans;
+		ii++;
+	}
+	
+	return ii;
+}
+//DeleteTree
+
+
+
+//FillSubfield -- doesn't check if the sf string is empty or not
+@@CLASSNAME@* @CLASSNAME@::FillSubfield(char sfc, WString data)
+{
+	@@CLASSNAME@* t_trans = this;		// field node for the sf to be filled
+	
+	while (t_trans && (t_trans->targetsfs[0] != sfc))
+		t_trans = t_trans->nextsf;
+		
+	if (t_trans)
+		t_trans->string = data;
+	
+	return t_trans;	// either the node we filled or NULL
+}
+//FillSubfield
+
+
+
+//FindFieldNodeFromTarget -- finds ***first*** node with given tag
+@@CLASSNAME@* @CLASSNAME@::FindFieldNodeFromTarget(WString tag)
+{
+	@@CLASSNAME@* t_trans = this;		// this is the root
+	
+	while (t_trans && (t_trans->targettag != tag))
+		t_trans = t_trans->nextfield;
+	
+	return t_trans;	// either the node we want or NULL
+}
+//FindFieldNodeFromTarget
+
+
+
+//FindNodeFromSourcelabel
+@@CLASSNAME@* @CLASSNAME@::FindNodeFromSourcelabel(WString source)
+{
+	@@CLASSNAME@* t_trans = NULL;
+	
+	index = indexroot;
+	while (index->next != NULL)
+	{
+		//000603 made comparison case-insensitive
+		if (!WString::Compare (index->label, source, FALSE))
+		{
+			t_trans = index->currtrans;
+			break;
+		}
+		
+		index = index->next;	//keep looking to see if this input is used in more than one MARC field
+	}
+
+	return t_trans;	// either the node we want or NULL
+}
+//FindNodeFromSourcelabel
+
+
+
+//GetField -- assembles a single MARC field into one string
+WString @CLASSNAME@::GetField()
+{
+	if (!this)
+		return NULL;
+		
+	WString		fielddata, subfielddata;
+	@@CLASSNAME@ 		*t_sf, *t_seg;
+	WBool		sub_has_var, iscontrolfield;
+	int			minfldlen, minsflen;
+	
+	// actually these lengths are not the min, but we compare as >
+	//		rather than >=. prob should change for clarity
+	if (SP_FieldIsControlField((BYTE*) targettag.GetText()))
+	{
+		iscontrolfield = TRUE;
+		minfldlen = 0;
+		minsflen = 0;
+	}
+	else
+	{
+		iscontrolfield = FALSE;
+		minfldlen = 4;		// inds and sfc
+		minsflen = 2;		// sfd and sfc, or inds
+	}
+	
+	t_sf = this;
+	
+	while (t_sf)
+	{
+		sub_has_var = FALSE;
+		subfielddata.Clear();
+		
+		t_seg = t_sf;
+		
+		while (t_seg)
+		{
+			//000613 -- if there are segments, make sure at least one segment has a var field (see log)
+			if ((t_seg->targetsegment == 0) || 
+					(!t_seg->constant && !t_seg->string.GetEmpty ()))
+				sub_has_var = TRUE;
+			
+			// write the results
+			if (!t_seg->string.GetEmpty ())
+				/*060311
+				subfielddata = Assemble(t_seg, iscontrolfield, subfielddata);*/
+				subfielddata = t_seg->Assemble(iscontrolfield, subfielddata);
+			
+			t_seg = t_seg->nextseg;
+		}
+		
+		//050130 second term added to allow inds
+		if ((subfielddata.GetLength() > minsflen) || (t_sf->targetsfs == "-"))
+		{
+			if (sub_has_var)
+				fielddata.Concat(subfielddata);
+		}
+			
+		t_sf = t_sf->nextsf;
+	}
+	
+	if (fielddata.GetLength() > minfldlen)
+		return fielddata;
+	else
+		return NULL;
+}
+//GetField
+
+
+
+//InsertField -- uses a new instance of a field, altho data is probably for a sf
+//	-- find the first unused instance, if any, and uses it. if none, creates one
+@@CLASSNAME@* @CLASSNAME@::InsertField (WString sourcefield, WString sourcedata)
+{
+	/* example: we come in with m21 040a and looking for 801b, but each 801b is in a
+			separate 801 instance. so we have to scan the existing 801b's but 
+			advance a field at a time */
+			
+	@@CLASSNAME@	*trans, *t_trans, *t_sf, *t_seg;
+	WBool	done=FALSE, used;
+	
+	index = indexroot;
+	
+	sourcefield.Trim ();
+	
+	// scan the index looking for sourcefield
+	while (index->next != NULL)
+	{
+		if (!WString::Compare (index->label, sourcefield, FALSE))	// case-insensitive
+		{
+			trans = index->currtrans;	// next available instance
+			t_trans = trans;		// what we're looking for
+			
+			//981015 ignore 000 targettags
+			if (trans->targettag == "000")
+				return NULL;
+			
+			trans = trans->thisfield;	// different from InsertString
+			
+			/* trans is now the field node.
+				-- we don't want to find the first field-instance with this sf usused, because other sfs
+						for this field-instance may be used. instead we are forcing a new field-instance.
+						so we look at the entire field and if any of it is used we move on */
+			// loop thru fields
+			while (trans)
+			{
+				if (trans->targettag != t_trans->targettag)
+					break;	// no more instances
+					
+				// loop thru subfields
+				used = FALSE;
+				t_sf = trans;
+				while (t_sf)
+				{
+					if (!t_sf->string.GetEmpty())
+					{
+						used = TRUE;	// some sf in this field has been used, look at next field
+						break;
+					}
+					t_sf = t_sf->nextsf;
+				}
+				
+				if (!used)	// we found an empty field
+					break;
+				trans = trans->nextfield;
+			}
+			
+			// make sure our node is for the field we want, otherwise we need to make a new one
+			if (trans && (trans->targettag == t_trans->targettag))
+			{
+				// find the right subfield
+				t_sf = trans;
+				while (t_sf)
+				{
+					if (t_sf->targetsfs == t_trans->targetsfs)
+						break;
+					t_sf = t_sf->nextsf;
+				}
+				t_sf->string = sourcedata;
+				done = TRUE;
+				
+				// if reusing node from earlier record, need to update indexes
+				if (t_sf->indexnode->currtrans != t_sf)
+				{
+					// do main node
+					if (!t_trans->constant)
+						t_trans->indexnode->currtrans = t_trans;
+						
+					t_seg = trans->nextseg;
+					while (t_seg)
+					{
+						if (!t_seg->constant)
+							t_seg->indexnode->currtrans = t_seg;
+						t_seg = t_seg->nextseg;
+					}
+						
+					// do subs also
+					t_sf = trans->nextsf;
+					while (t_sf)	
+					{
+						if (!t_sf->constant)
+							t_sf->indexnode->currtrans = t_sf;
+							
+						t_seg = t_sf->nextseg;
+						while (t_seg)
+						{
+							if (!t_seg->constant)
+								t_seg->indexnode->currtrans = t_seg;
+							t_seg = t_seg->nextseg;
+						}
+						
+						t_sf = t_sf->nextsf;
+					}
+				}
+			}
+			
+			else		// make new instance
+			{
+				// we always copy the whole field's branch
+				trans = t_trans->CopyBranch(TRUE);
+				trans->string = sourcedata;
+				done = TRUE;
+			}
+		}
+		
+		// for InsertField we break after the first use (c.f. InsertString)
+		if (done)
+			break;
+		
+		index = index->next;
+	}
+	
+	return trans->thisfield;
+}
+//InsertField
+
+
+
+//InsertString
+//the root is used to call this -- but irrelevant
+//000603 making case irrelevant in checking fieldnames (in trans->sourcelabel)
+@@CLASSNAME@* @CLASSNAME@::InsertString (WString sourcefield, WString sourcedata)
+{
+	@@CLASSNAME@		*trans, *t_trans, *t_sf, *t_seg;
+	WBool		found=FALSE, isfield;	// see below for isfield note
+	
+	#ifdef _DEBUG
+	FILE*	debugfile;
+	WString	debugstring;
+	long		nodecount;
+	#endif				
+	
+	index = indexroot;
+	
+	sourcefield.Trim ();
+	
+	// scan the index looking for sourcefield
+	while (index->next != NULL)
+	{
+		//000603 made comparison case-insensitive
+		if (!WString::Compare (index->label, sourcefield, FALSE))
+		{
+			//050313 if this is a 1xx and we have one, keep looking
+			//050920 doesn't apply to SSS where we do it manually
+			//060301 doesn't apply to UNIMARC (FFF)
+			if ((TheClient != SSS) && (TheClient != FFF) && 
+					(index->currtrans->targettag.GetCharacter (0) == '1'))
+			{
+				if (has1xx)
+				{
+					sourcefield = "MC_7" + index->currtrans->targettag.Substring (1) + index->currtrans->targetsfs;
+					if ((TheClient == EEE) && (sourcefield == "MC_700a"))
+						sourcefield = "M700";	// they have this one, and can't map two fields to same MARC element
+					continue;
+				}
+				else
+					has1xx = TRUE;
+			}
+			
+			found = TRUE;
+			
+			trans = index->currtrans;
+			
+			//981015 ignore 000 targettags
+			if (trans->targettag == "000")
+				goto ignore;
+			
+			t_trans = trans;
+			
+			// isfield means "is the node found (not the new one) at the field level?"
+			isfield = (trans->type == FIELD);
+			
+			//run thru matching nodes that have already been used
+			while 
+				(
+					trans &&
+					(trans->type == t_trans->type) &&
+					!trans->string.GetEmpty() && 
+					(trans->targettag == t_trans->targettag) &&
+					(trans->targetsfs == t_trans->targetsfs) &&
+					(trans->targetsegment == t_trans->targetsegment) &&
+					(trans->sourcelabel == t_trans->sourcelabel)
+				)
+			{
+				t_trans = trans;
+				if (isfield)
+					trans = trans->nextfield;
+				else
+					trans = trans->nextsf;
+				// can't dup a branch from segment node
+			}
+			
+			//if node matches type, tag, subs, segment, and label, and is not yet used ...
+			if 
+				(
+					trans &&
+					(trans->type == t_trans->type) &&
+					trans->string.GetEmpty() && 
+					(trans->targettag == t_trans->targettag) &&
+					(trans->targetsfs == t_trans->targetsfs) &&
+					(trans->targetsegment == t_trans->targetsegment) &&
+					(trans->sourcelabel == t_trans->sourcelabel)
+				)
+			{
+				/*
+				#ifdef _DEBUG
+				nodecount = DeleteTree(TRUE);	// true means count only
+				debugstring.Sprintf("\nreusing node for %s%s -- nodecount: %ld\n", 
+						t_trans->tag.GetText(), 
+						t_trans->subs.GetText(),
+						nodecount);
+				if ((debugfile = fopen("\\marc\\marconvert\\FFF\\debug.txt", "a")) != NULL)
+				{
+					fputs (debugstring.GetText(), debugfile);
+					fclose(debugfile);
+				}
+				#endif
+				*/
+				
+				trans->string = sourcedata;
+				
+				//980913 if reusing node from earlier record, need to update indexes
+				if (trans->indexnode->currtrans != trans)
+				{
+					//do main node
+					if (!t_trans->constant)
+						t_trans->indexnode->currtrans = t_trans;
+						
+					t_seg = trans->nextseg;
+					while (t_seg)
+					{
+						if (!t_seg->constant)
+							t_seg->indexnode->currtrans = t_seg;
+						t_seg = t_seg->nextseg;
+					}
+						
+					if (isfield)	// then do subs also
+					{
+						t_sf = trans->nextsf;
+						while (t_sf)	
+						{
+							if (!t_sf->constant)
+								t_sf->indexnode->currtrans = t_sf;
+								
+							t_seg = t_sf->nextseg;
+							while (t_seg)
+							{
+								if (!t_seg->constant)
+									t_seg->indexnode->currtrans = t_seg;
+								t_seg = t_seg->nextseg;
+							}
+							
+							t_sf = t_sf->nextsf;
+						}
+					}
+				}
+			}
+			
+			else
+			{
+				#ifdef _DEBUG
+				//if (t_trans->tag == "606")
+				//{
+					nodecount = DeleteTree(TRUE);	// true means count only
+					debugstring.Sprintf("\nInsertString: before copying branch for %s%s -- %s -- nodecount: %ld\n", 
+							t_trans->targettag.GetText(), 
+							t_trans->targetsfs.GetText(),
+							sourcedata.GetText(),
+							nodecount);
+					if ((debugfile = fopen("\\marc\\marconvert\\FFF\\debug.txt", "a")) != NULL)
+					{
+						fputs (debugstring.GetText(), debugfile);
+						fclose(debugfile);
+					}
+				//}
+				#endif
+				
+				// all instances of this node-type have already been used, add a new node
+				//050312 we always copy the whole field's branch
+/**/				trans = t_trans->CopyBranch(TRUE);
+				trans->string = sourcedata;
+				
+				#ifdef _DEBUG
+				//if (t_trans->tag == "606")
+				//{
+					nodecount = DeleteTree(TRUE);	// true means count only
+					debugstring.Sprintf("\nInsertString: after copying branch for %s%s -- %s -- nodecount: %ld\n", 
+							t_trans->targettag.GetText(), 
+							t_trans->targetsfs.GetText(),
+							sourcedata.GetText(),
+							nodecount);
+					if ((debugfile = fopen("\\marc\\marconvert\\FFF\\debug.txt", "a")) != NULL)
+					{
+						fputs (debugstring.GetText(), debugfile);
+						fclose(debugfile);
+					}
+				//}
+				#endif
+			}
+		}
+		
+		index = index->next;	//keep looking to see if this input is used in more than one MARC field
+	}
+	
+	
+ignore:
+	
+	if (found)	// found is TRUE even if target is "000", we just don't fill it. i wonder why we dn ret FALSE?
+		return trans->thisfield;
+	else
+	{
+		/*060311 if not found and was sf or inds, see if there is a 000-node for
+				the entire field -- that is, we use "016 -> 000" to indicate that
+				no sfs in the 016 are wanted. saves having to make a node for
+				each 016 sfc 
+			-- this makes sense only for M21-to-UNIMARC, not for Import, which 
+					is why we check for a numeric sourcefield */
+		if (sourcefield.GetLength() > 3)
+		{
+			sourcefield.Truncate(3);
+			
+			// need to test this line with Import
+			if (sourcefield.ConvertToInteger() == 0)	// we want to look for numerics only
+				return FALSE;
+				
+			index = indexroot;
+			while (index->next != NULL)
+			{
+				if (!WString::Compare (index->label, sourcefield, FALSE)
+						&& (index->currtrans->targettag == "000"))
+					return index->currtrans;
+				
+				index = index->next;
+			}
+		}
+				
+		return FALSE;
+	}
+}
+//InsertString
+
+
+
+//InsertSubfield
+/* oldsf is the subfield code that the new one should be inserted BEFORE. if
+		oldsf is a space, then the new one goes at the end of the field */
+//060328 now reuses a sf if available, only makes new one if none avail
+//060420 now if oldsf is a space, the new one goes in alpha order
+@@CLASSNAME@* @CLASSNAME@::InsertSubfield(char loc, char oldsf, WString sourcedata)
+{
+	if (!this)	// causes warning that condition is always true, but it isn't! (same in other subs)
+		return NULL;
+		
+	@@CLASSNAME@	*t_trans = this;
+	@@CLASSNAME@	*newT = new @CLASSNAME@;
+	
+	#ifdef _DEBUG
+	long		nodecount;
+	WString	debugstring;
+	FILE*	debugfile;
+	#endif
+	
+	
+	//060328 we first scan the sfs to see if there is an empty one we can use. 
+	//		we use the first empty one we come to
+	while (t_trans)
+	{
+		if ((t_trans->targetsfs[0] == loc) && t_trans->string.GetEmpty())
+			break;
+		t_trans = t_trans->nextsf;
+	}
+		
+	if (t_trans)	// if not drop thru and make one
+	{
+		#ifdef _DEBUG
+		debugstring.Sprintf("\nInsertSubfield: found empty node for %s%s -- %s\n", 
+				t_trans->targettag.GetText(), 
+				t_trans->targetsfs.GetText(),
+				sourcedata.GetText());
+		if ((debugfile = fopen("\\marc\\marconvert\\FFF\\debug.txt", "a")) != NULL)
+		{
+			fputs (debugstring.GetText(), debugfile);
+			fclose(debugfile);
+		}
+		#endif
+		
+		t_trans->string = sourcedata;
+		return t_trans;
+	}
+		
+	
+	// we didn't find an empty one, so now we look for where to insert one
+	t_trans = this;	// reset to start of field
+	
+	/*060420 if oldsf is space, insert new one in alpha order
+	while (t_trans->nextsf && (t_trans->nextsf->targetsfs[0] != oldsf))
+		t_trans = t_trans->nextsf;
+	*/
+	if (oldsf == ' ')
+	{
+		while (t_trans->nextsf && (t_trans->nextsf->targetsfs[0] <= loc))
+			t_trans = t_trans->nextsf;
+	}
+	else
+	{
+		while (t_trans->nextsf && (t_trans->nextsf->targetsfs[0] != oldsf))
+			t_trans = t_trans->nextsf;
+	}
+	
+	// altho the oldsf param is the sf code we insert BEFORE, t_trans is now the one we insert AFTER
+	newT->type = SUB;			// by definition, since we inserting a subfield
+	newT->targettag = t_trans->targettag;	// by definition, since we inserting a subfield
+	newT->targetsfs.SetText(&loc);
+	newT->string.SetText(sourcedata);
+	newT->thisfield = t_trans->thisfield;
+	// nextfield is NULL except for the first sub in the field, which
+	//		this can't be by definition (see declarations above)
+	newT->nextsf = t_trans->nextsf;
+	t_trans->nextsf = newT;
+	
+	
+	#ifdef _DEBUG
+	nodecount = DeleteTree(TRUE);	// true means count only
+	debugstring.Sprintf("\nInsertSubfield: creating new node in for %s%s -- %s -- nodecount: %ld\n", 
+			newT->targettag.GetText(), 
+			newT->targetsfs.GetText(),
+			sourcedata.GetText(),
+			nodecount);
+	if ((debugfile = fopen("\\marc\\marconvert\\FFF\\debug.txt", "a")) != NULL)
+	{
+		fputs (debugstring.GetText(), debugfile);
+		fclose(debugfile);
+	}
+	#endif
+
+
+	// update index -- have to see if an index node exists for this tag/sub
+	WString newlabel;
+	newlabel.SetText(newT->targettag);
+	newlabel.Concat(loc);
+	
+	index = indexroot;
+	while (index->next && (index->label != newlabel))
+		index = index->next;
+		
+	/* can't just see if index is NULL because for some reason the last node
+			is a NULL node
+	if (index)	// found*/
+	if (index->label == newlabel)	// found
+	{
+		index->currtrans = newT;
+		newT->indexnode = index;
+	}
+	else	// not found
+	{
+		t_index = new yTIndex;		// new NULL last node
+		index->next = t_index;
+		index->firsttrans = newT;
+		index->currtrans = newT;
+		newT->indexnode = index;
+	}
+
+	return newT;	// will the new node go out of scope?
+}
+//InsertSubfield
+
+
+
+//MySort
+int WCMDEF MySort (const WString* s1, const WString* s2)
+{
+	return WString::Compare (*s1, *s2);
+}
+//MySort
+
+
+
+//MakeNode
+void @CLASSNAME@::MakeNode
+		(@CLASSNAME@** pptrans, 
+		@@CLASSNAME@** ppt_trans,
+		@@CLASSNAME@** ppt_thisfield,
+		@@CLASSNAME@** ppt_lastfield,
+		@@CLASSNAME@** ppt_lastsub,
+		@@CLASSNAME@** ppt_lastseg,
+		WString first, 
+		WString second, 
+		WString third,
+		WBool force)
+{
+	
+	// column 1
+	(*pptrans)->targettag = first.Left(3);
+	int j = first.Position("&");
+	if (j == NOT_FOUND)
+	{
+		(*pptrans)->targetsfs = first.Substring(3);
+		(*pptrans)->targetsegment = 0;
+	}
+	else
+	{
+		(*pptrans)->targetsfs = first.Substring(3, j-3);
+		(*pptrans)->targetsegment = first.Substring(j+1).ConvertToInteger();
+	}
+	
+	if (second[0] == '"')	// this is a constant string
+	
+	{
+		(*pptrans)->constant = TRUE;
+		(*pptrans)->string = second.Substring(1, second.GetLength() - 2);	//strips dbl quotes before saving
+	}
+	
+	else
+	{
+		(*pptrans)->constant = FALSE;
+		(*pptrans)->string.Clear();
+	}
+	
+	#if _DEBUG
+	int rrr;
+	if (first == "512n")
+	{
+		rrr = 444;
+	}
+	#endif
+	
+	// update index. 050312 for constants also
+	(*pptrans)->indexnode = index;
+	index->label = second;
+	index->firsttrans = *pptrans;
+	index->currtrans = *pptrans;
+	t_index = new yTIndex;
+	/*060308 sb handled by ctor
+	t_index->next = NULL;
+	*/
+	index->next = t_index;
+	index = t_index;
+	
+	(*pptrans)->sourcelabel = second;
+	
+	
+	//column 3
+	if (!third.GetNull())
+	{
+		//000417 remove quotes (which are now mandatory for addedtext) but leave +++ in place
+		(*pptrans)->attachment = third.Substring (1, third.GetLength () - 2);
+	}
+	
+	
+	/*040310 removed for DDD import, need to solve another way if needed for some future client
+	//000613 constants not allowed as first seg of a subfield -- it's a problem with repeating fields
+	if (!trans->subs.GetEmpty () && (trans->targetsegment == 1) && trans->constant)
+	{
+		WMessageBox::Messagef    (NULL, 
+								WMsgBSOk | WMsgBSIconInformation,
+								"Problem!",
+								"Constant not allowed as first segment of a subfield (field %s, subfield %s)",
+										trans->tag.GetText (), trans->subs.GetText ());
+		return FALSE;
+	}
+	//000827 constants not allowed as first subfield of a field -- it's a problem with repeating fields
+	/ *000913 doesn't allow any constants if followed by another subfield -- now it is illegal to start
+			a non-control field with a constant, even if that's all the field contains
+	if ((trans->tag == t_trans->tag) && t_trans->constant)* /
+	if (!trans->subs.GetEmpty () && (trans->tag != t_trans->tag) && trans->constant)
+	{
+		WMessageBox::Messagef    (NULL, 
+								WMsgBSOk | WMsgBSIconInformation,
+								"Problem!",
+								"Constant not allowed as first subfield of a field (field %s)",
+										trans->tag.GetText ());
+		return FALSE;
+	}
+	*/
+	
+	
+	/*060424 this is wrong -- see comments above each para
+	// if the tag differs from the last node constructed ...
+	if (force || ((*pptrans)->targettag != (*ppt_trans)->targettag))
+	{
+		(*ppt_lastfield)->nextfield = *pptrans;
+		*ppt_lastfield = *pptrans;
+		*ppt_lastsub = *pptrans;
+		*ppt_lastseg = *pptrans;
+		(*pptrans)->type = FIELD;
+		*ppt_thisfield = *pptrans;
+	}
+	// if the sfc differs from the last node constructed ...
+	else if ((*pptrans)->targetsfs != (*ppt_trans)->targetsfs)
+	{
+		(*ppt_lastsub)->nextsf = *pptrans;
+		*ppt_lastsub = *pptrans;
+		*ppt_lastseg = *pptrans;
+		(*pptrans)->type = SUB;
+	}
+	// if the seg differs from the last node constructed ...
+	else if ((*pptrans)->targetsegment > 0)
+	{
+		(*ppt_lastseg)->nextseg = *pptrans;
+		*ppt_lastseg = *pptrans;
+		(*pptrans)->type = SEG;
+	}
+	// ... which means a second mapping to the same sf creates a new FIELD!!
+	else
+	{
+		(*ppt_lastfield)->nextfield = *pptrans;
+		*ppt_lastfield = *pptrans;
+		*ppt_lastsub = *pptrans;
+		*ppt_lastseg = *pptrans;
+		(*pptrans)->type = FIELD;
+		*ppt_thisfield = *pptrans;
+	}
+	*/
+	yNodeType		node_to_make = UNKNOWN;
+	if (force || ((*pptrans)->targettag != (*ppt_trans)->targettag))
+	{
+		node_to_make = FIELD;
+	}
+	else
+	{
+		if ((*pptrans)->targetsegment > 0)
+			node_to_make = SEG;
+		else
+			node_to_make = SUB;
+	}
+	
+	if (node_to_make == FIELD)
+	{
+		(*ppt_lastfield)->nextfield = *pptrans;
+		*ppt_lastfield = *pptrans;
+		*ppt_lastsub = *pptrans;
+		*ppt_lastseg = *pptrans;
+		(*pptrans)->type = FIELD;
+		*ppt_thisfield = *pptrans;
+	}
+	else if (node_to_make == SUB)
+	{
+		(*ppt_lastsub)->nextsf = *pptrans;
+		*ppt_lastsub = *pptrans;
+		*ppt_lastseg = *pptrans;
+		(*pptrans)->type = SUB;
+	}
+	else if (node_to_make == SEG)
+	{
+		(*ppt_lastseg)->nextseg = *pptrans;
+		*ppt_lastseg = *pptrans;
+		(*pptrans)->type = SEG;
+	}
+	else
+		return;	// problem -- but no way to return it
+	//060424 end
+	
+	
+	//050312 store pointer to this node's field (so we can find field for subs and segs)
+	(*pptrans)->thisfield = *ppt_thisfield;
+	
+	*ppt_trans = *pptrans;
+	*pptrans = new @CLASSNAME@;
+}
+//MakeNode
+
+
+
+//MakeTree
+//called once per import file, for root
+WBool @CLASSNAME@::MakeTree (FILE* tfile, yUNIMARC* UNI_table, int UNI_nodes)
+{
+	TheClient = MCClient.TheClient;
+
+
+	#define MAXFIELDLEN		10000	// for fgets
+	char 				t_line [MAXFIELDLEN];
+	WString 				t_string;
+	WStringArray 			tlinearray;
+	@@CLASSNAME@				*trans, *t_trans, *t_lastfield, *t_lastsub, *t_lastseg, *t_thisfield;
+
+	// RRR
+	WString				thistag, theseinds, thissfc, thistaginds, thistagsfc, prevtaginds, prevtagsfc;
+	
+	// FFF
+	WString attach;
+	
+	trans = this;		//the root
+	t_trans = this;	//this will trail trans
+	t_thisfield = this;	//050312
+	t_lastfield = this;
+	t_lastsub = this;
+	t_lastseg = this;
+	indexroot = new yTIndex ();
+	//indexroot->next = NULL;	//041015 so we can scan it for RRR
+	index = indexroot;
+	
+
+    //READ TRANSLATION TABLE -- first few lines read in main program to get other params
+	
+	/*000605 not sure when/if this was true. seems to work whether the 1st 2 lines ar for the
+	same field or not
+	// assumes first two lines are for different segments of the same field, different segments
+	//	-- since the first field is the leader, this seems safe as long as leader values calculated
+	*/
+	
+	if (TheClient == RRR)
+	{
+		// TT not used. instead we scan the input file looking for all combinations of tag/sfc (and inds)
+		//	-- then the vector is sorted and deduped to build nodes
+		// this sorting technique was found on the power++ newsgroup
+		WSortableVector<WString> strvec;
+		while (!feof (tfile))
+		{
+			fgets (t_line, sizeof (t_line), tfile);
+			if (feof (tfile))
+				break;	// last node's "next" will be NULL
+			t_string = t_line;
+			tlinearray = t_string.Parse ("\t\r\n", TRUE, NULL);	//991114 columns of TT must be delimited by tabs or eol only
+			if (tlinearray.GetCount () > 2)		// ignore data continuation lines
+					// since fgets does not discard the newline char, a continuation
+					// line will always have two elements. maybe we could discard the
+					// new line char after reading, but would require testing with
+					// normal TTs
+			{
+				thistag = tlinearray [0];
+				
+				// inds
+				theseinds = tlinearray [1];
+				theseinds.Trim ();
+				if (!theseinds.GetEmpty ())
+				{
+					thistaginds = thistag;
+					thistaginds.Concat ("-");
+					strvec.Append (new WString (thistaginds));
+				}
+				
+				// sfc
+				thissfc = tlinearray [2];
+				thissfc.Trim ();
+				thistagsfc = thistag;
+				thistagsfc.Concat (thissfc);
+				strvec.Append (new WString (thistagsfc));
+			}
+		}
+		strvec.Sort (MySort);
+		WString prev, temp;
+		for (int i = 0; i < strvec.GetCount (); i++)
+		{
+			if (*strvec[i] != prev)
+			{
+				temp = *strvec[i];
+				trans->targettag = temp.Substring (0, 3);
+				trans->targetsfs = temp.Substring (3, 1);
+				trans->targetsegment = 0;
+				trans->constant = FALSE;
+				trans->sourcelabel = temp;
+				trans->string.Clear ();
+				
+				// update index
+				trans->indexnode = index;
+				index->label = temp;
+				index->firsttrans = trans;
+				index->currtrans = trans;
+				t_index = new yTIndex;
+				index->next = t_index;
+				index = t_index;
+				
+				//pointers
+				if (trans->targettag != t_trans->targettag)
+				{
+					t_lastfield->nextfield = trans;
+					t_lastfield = trans;
+					t_lastsub = trans;
+					t_lastseg = trans;
+					trans->type = FIELD;
+				}
+				else if (trans->targetsfs != t_trans->targetsfs)
+				{
+					t_lastsub->nextsf = trans;
+					t_lastsub = trans;
+					t_lastseg = trans;
+					trans->type = SUB;
+				}
+				else if (trans->targetsegment > 0)
+				{
+					t_lastseg->nextseg = trans;
+					t_lastseg = trans;
+					trans->type = SEG;
+				}
+				else
+				{
+					t_lastfield->nextfield = trans;
+					t_lastfield = trans;
+					t_lastsub = trans;
+					t_lastseg = trans;
+					trans->type = FIELD;
+				}
+				
+				t_trans = trans;
+				trans = new @CLASSNAME@;
+			}
+			prev = *strvec[i];
+		}
+		strvec.Clear (TRUE);
+	}
+	
+	else if (MCClient.TheClient == FFF)	// uses UNIMARC table
+	{
+		/* what we have is a 3-dimensional array of char*. first col is the MARC tag (which
+				may include sfc). second col is the UNIMARC tag or tags.
+			-- since MakeNode expects the target field first, we switch these in the call below 
+			third col is the attachment */
+		
+		//060312 it's critical that lastm21 be initialized this way for 
+		//		call to MakeNode
+		/*060424 different init for lastm21
+		WString lastm21 = "LDR-", lastuni = "xxx", m21, uni;*/
+		WString lastm21 = "xxxx", lastuni = "xxx", m21, uni;
+		
+		for (int j = 0; j < UNI_nodes; j++)
+		{
+			m21 = UNI_table[j].MARC21;
+			if (m21.Substring(0, 3) == "246")
+				m21.Truncate(5);
+			else
+				m21.Truncate(3);
+
+			uni = UNI_table[j].UNIMARC;
+			uni.Truncate(3);
+			
+			//060303 force a node for indicators -- even for control fields
+			if ((m21 != lastm21) || (uni != lastuni))
+			{
+				uni.Concat("-");
+				m21.Concat("-");
+				
+				MakeNode
+						(&trans, 
+						&t_trans,
+						&t_thisfield,
+						&t_lastfield,
+						&t_lastsub,
+						&t_lastseg,
+						uni,
+						m21,
+						NULL,
+						(m21 != lastm21));	// means force a new field if m21 differs from previous
+						
+				lastm21 = m21;
+				if (lastm21.Substring(0, 3) == "246")
+					lastm21.Truncate(5);
+				else
+					lastm21.Truncate(3);
+					
+				lastuni = uni;
+				lastuni.Truncate(3);
+			}
+			
+			/* in normal TT's, attachments are in double quotes that MakeNode
+					removes. this isn't true for UNIMARC TT. so we add dummy
+					chars here */
+			attach.Clear();
+			if (UNI_table[j].attachment)
+			{
+				attach = "x";
+				attach.Concat(UNI_table[j].attachment);
+				attach.Concat("x");
+			}
+			
+			MakeNode
+					(&trans, 
+					&t_trans,
+					&t_thisfield,
+					&t_lastfield,
+					&t_lastsub,
+					&t_lastseg,
+					UNI_table[j].UNIMARC,
+					UNI_table[j].MARC21,
+					attach.GetText());
+		}
+	}
+	
+	else 	// all other clients
+	{
+		while (!feof (tfile))
+		{
+			fgets (t_line, sizeof (t_line), tfile);
+			if (feof (tfile) || (t_line [0] == '/'))
+				break;	// last node's "next" will be NULL
+			t_string = t_line;
+			tlinearray = t_string.Parse ("\t\r\n", TRUE, NULL);	//991114 columns of TT must be delimited by tabs or eol only
+			if (tlinearray.GetCount () > 0)		// if 0, eof
+			{
+				if (tlinearray.GetCount () < 2)
+				{
+					WMessageBox::Messagef    
+							(NULL, 
+							WMsgBSOk | WMsgBSIconInformation,
+							"Problem!",
+							"Incomplete line '%s' in Translation Table",
+									tlinearray [0].GetText ());
+					return FALSE;
+				}
+				
+				if (tlinearray.GetCount () > 2)
+					MakeNode
+							(&trans, 
+							&t_trans,
+							&t_thisfield,
+							&t_lastfield,
+							&t_lastsub,
+							&t_lastseg,
+							tlinearray[0], 
+							tlinearray[1], 
+							tlinearray[2]);
+				else
+					MakeNode
+							(&trans, 
+							&t_trans,
+							&t_thisfield,
+							&t_lastfield,
+							&t_lastsub,
+							&t_lastseg,
+							tlinearray[0], 
+							tlinearray[1]);
+			}
+		}
+	}
+	
+	return TRUE;
+}
+//MakeTree
+
+
+
+//WriteIndicators -- returns the indicators node
+// if inds not first subfield, return FALSE -- this allows this sub
+//		to be called by any node in the field
+@@CLASSNAME@* @CLASSNAME@::WriteIndicators(WString inds)
+{
+	if (!this)
+		return NULL;
+		
+	@@CLASSNAME@ *t_trans = this->thisfield;
+	if (t_trans->targetsfs != "-")
+		return NULL;
+		
+	t_trans->string = inds;
+	return t_trans;
+}
+//WriteIndicators
+
+@end-code;
+
+@begin-code Code "yTrans::Prototype for ~yTrans()"
+
+        ~@CLASSNAME@();
+
+@end-code;
+@end;

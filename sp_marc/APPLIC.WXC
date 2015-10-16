@@ -1,0 +1,173 @@
+Save Format v1.3
+@begin ClassFile "ApplicationClass"
+ Exported 0;
+
+@begin-code BaseClassList
+
+public WDLLApplication
+
+@end-code;
+
+ @begin UserFunction "ApplicationClass()"
+  Compiler 1;
+  GencodeFunction 1;
+  GencodeSrcLine 15;
+  FunctionName "ApplicationClass::ApplicationClass()";
+ @end;
+
+ @begin UserFunction "~ApplicationClass()"
+  Compiler 1;
+  GencodeFunction 1;
+  GencodeSrcLine 29;
+  FunctionName "ApplicationClass::~ApplicationClass()";
+ @end;
+
+ @begin UserFunction "ProcessAttachHandler( WObject *, WProcessAttachEventData *event )"
+  Compiler 1;
+  GencodeSrcLine 32;
+  FunctionName "ApplicationClass::ProcessAttachHandler( WObject *, WProcessAttachEventData *event )";
+ @end;
+
+ @begin UserFunction "ProcessDetachHandler( WObject *, WProcessDetachEventData *event )"
+  Compiler 1;
+  GencodeSrcLine 36;
+  FunctionName "ApplicationClass::ProcessDetachHandler( WObject *, WProcessDetachEventData *event )";
+ @end;
+
+ @begin UserFunction "ThreadAttachHandler( WObject *, WThreadAttachEventData *event )"
+  Compiler 1;
+  GencodeSrcLine 40;
+  FunctionName "ApplicationClass::ThreadAttachHandler( WObject *, WThreadAttachEventData *event )";
+ @end;
+
+ @begin UserFunction "ThreadDetachHandler( WObject *, WThreadDetachEventData *event )"
+  Compiler 1;
+  GencodeSrcLine 44;
+  FunctionName "ApplicationClass::ThreadDetachHandler( WObject *, WThreadDetachEventData *event )";
+ @end;
+
+ @begin HPPPrefixBlock
+@begin-code HPPPrefix
+
+/*
+Copyright 1992-2009 Systems Planning (www.systemsplanning.com)
+
+Licensed under the Apache License, Version 2.0 (the "License"); 
+you may not use this file except in compliance with the License. 
+You may obtain a copy of the License at 
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software 
+distributed under the License is distributed on an "AS IS" BASIS, 
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. 
+See the License for the specific language governing permissions and 
+limitations under the License.
+*/
+
+// Declarations added here will be included at the top of the .HPP file
+
+@end-code;
+  GencodeSrcLine 11;
+ @end;
+
+ @begin CPPPrefixBlock
+@begin-code CPPPrefix
+
+// Code added here will be included at the top of the .CPP file
+
+//  Include definitions for resources.
+#include "WRes.h"
+
+@end-code;
+  GencodeSrcLine 11;
+ @end;
+
+ @begin ClassContentsBlock
+@begin-code ClassContents
+
+    public:
+        // add your public instance data here
+    private:
+        // add your private instance data here
+    protected:
+        // add your protected instance data here
+
+@end-code;
+  GencodeSrcLine 38;
+ @end;
+
+@begin-code GeneratedClassContents
+
+        ApplicationClass();
+        ~ApplicationClass();
+        WBool ProcessAttachHandler( WObject *, WProcessAttachEventData *event );
+        WBool ProcessDetachHandler( WObject *, WProcessDetachEventData *event );
+        WBool ThreadAttachHandler( WObject *, WThreadAttachEventData *event );
+        WBool ThreadDetachHandler( WObject *, WThreadDetachEventData *event );
+
+@end-code;
+
+@begin-code Code "ApplicationClass::ApplicationClass()"
+
+@@CLASSNAME@::@CLASSNAME@()
+{
+    SetEventHandler( WProcessAttachEvent, this,
+        (WEventHandler) ProcessAttachHandler );
+
+    SetEventHandler( WProcessDetachEvent, this,
+        (WEventHandler) ProcessDetachHandler );
+
+    SetEventHandler( WThreadAttachEvent, this,
+        (WEventHandler) ThreadAttachHandler );
+
+    SetEventHandler( WThreadDetachEvent, this,
+        (WEventHandler) ThreadDetachHandler );
+}
+
+@end-code;
+
+@begin-code Code "ApplicationClass::~ApplicationClass()"
+
+@@CLASSNAME@::~@CLASSNAME@()
+{
+}
+
+@end-code;
+
+@begin-code Code "ApplicationClass::ProcessAttachHandler( WObject *, WProcessAttachEventData *event )"
+
+WBool @CLASSNAME@::ProcessAttachHandler( WObject *, WProcessAttachEventData *event )
+{
+    return FALSE;
+}
+
+@end-code;
+
+@begin-code Code "ApplicationClass::ProcessDetachHandler( WObject *, WProcessDetachEventData *event )"
+
+WBool @CLASSNAME@::ProcessDetachHandler( WObject *, WProcessDetachEventData *event )
+{
+    return FALSE;
+}
+
+@end-code;
+
+@begin-code Code "ApplicationClass::ThreadAttachHandler( WObject *, WThreadAttachEventData *event )"
+
+WBool @CLASSNAME@::ThreadAttachHandler( WObject *, WThreadAttachEventData *event )
+{
+    return FALSE;
+}
+
+@end-code;
+
+@begin-code Code "ApplicationClass::ThreadDetachHandler( WObject *, WThreadDetachEventData *event )"
+
+WBool @CLASSNAME@::ThreadDetachHandler( WObject *, WThreadDetachEventData *event )
+{
+    return FALSE;
+}
+
+@end-code;
+@end;

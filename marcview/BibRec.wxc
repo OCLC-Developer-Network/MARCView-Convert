@@ -1,0 +1,1366 @@
+Save Format v1.3
+@begin ClassFile "yBibRec"
+ Exported 0;
+
+@begin-code BaseClassList
+
+public WObject
+
+@end-code;
+
+ @begin UserFunction "yBibRec()"
+  GencodeSrcLine 18;
+  FunctionName "yBibRec::yBibRec()";
+ @end;
+
+ @begin UserFunction "Prototype for yBibRec()"
+  Private 1;
+  GencodeSrcLine 66;
+  FunctionName "yBibRec::Prototype for yBibRec()";
+ @end;
+
+ @begin UserFunction "~yBibRec()"
+  GencodeSrcLine 22;
+  FunctionName "yBibRec::~yBibRec()";
+ @end;
+
+ @begin UserFunction "Prototype for ~yBibRec()"
+  Private 1;
+  GencodeSrcLine 68;
+  FunctionName "yBibRec::Prototype for ~yBibRec()";
+ @end;
+
+ @begin UserFunction "DisplayRecord (WRichTextBox*)"
+  GencodeSrcLine 1090;
+  FunctionName "yBibRec::DisplayRecord (WRichTextBox*)";
+ @end;
+
+ @begin UserFunction "Prototype for DisplayRecord (WRichTextBox*)"
+  Private 1;
+  GencodeSrcLine 70;
+  FunctionName "yBibRec::Prototype for DisplayRecord (WRichTextBox*)";
+ @end;
+
+ @begin HPPPrefixBlock
+@begin-code HPPPrefix
+
+/*
+Copyright 1992-2009 Systems Planning (www.systemsplanning.com)
+
+Licensed under the Apache License, Version 2.0 (the "License"); 
+you may not use this file except in compliance with the License. 
+You may obtain a copy of the License at 
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software 
+distributed under the License is distributed on an "AS IS" BASIS, 
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. 
+See the License for the specific language governing permissions and 
+limitations under the License.
+*/
+
+//970906 changes to make a new hexview for each record instead of one for entire file
+
+// Declarations added here will be included at the top of the .HPP file
+
+extern "C" 
+{
+    #include "d:\marc\sp_marc\sp_marc.hpp"
+};
+#include <io.h> //for "access" function
+#include "marctomarc.hpp"	//converts ANSEL MARC to UTF-8 MARC
+#include "utility.hpp"
+#include "applic.hpp"
+#include "main.hpp"
+
+@end-code;
+  GencodeSrcLine 11;
+ @end;
+
+ @begin CPPPrefixBlock
+@begin-code CPPPrefix
+
+/*	SP_MARC returns pointer to original data. caller is 
+	responsible for copying to workarea*/
+	
+// Code added here will be included at the top of the .CPP file
+
+//  Include definitions for resources.
+#include "WRes.h"
+
+@end-code;
+  GencodeSrcLine 11;
+ @end;
+
+ @begin ClassContentsBlock
+@begin-code ClassContents
+
+    public:
+		yUtility::yFindData		FindData;
+		
+    private:
+        // add your private instance data here
+        	BOOL   			bMARC;
+        	long    			CurrRec;
+        	long   	 		NumRecs;
+		long				SavedCurrentNumber;
+		SP_prefs_rt		MARCprefs;
+		WString			theField;
+		WString			theRecord;
+		long				TheRecLen;	//040725 no longer used, as XML requires the physical reclen
+		WString			theTag;
+
+		//970224 these save having to access the ones in Settings
+		//	no other options used by bibrec
+		WBool			UserWantsHilite;
+		WBool			SubfieldNewline;
+		
+    protected:
+        // add your protected instance data here
+
+@end-code;
+  GencodeSrcLine 44;
+ @end;
+
+@begin-code GeneratedClassContents
+
+
+@end-code;
+
+@begin-code Code "yBibRec::yBibRec()"
+
+@@CLASSNAME@::@CLASSNAME@ ()
+{
+    bMARC = TRUE;
+}
+
+@end-code;
+
+@begin-code Code "yBibRec::Prototype for yBibRec()"
+
+    public:
+        @@CLASSNAME@();
+
+@end-code;
+
+@begin-code Code "yBibRec::~yBibRec()"
+
+@@CLASSNAME@::~@CLASSNAME@ ()
+{
+	SP_Terminate ();
+}
+
+
+
+//DisplayRecord
+int @CLASSNAME@::DisplayRecord (WRichTextBox* precwin)
+{
+	char			sfd [3];	//warning messages when assigning to this using SetCharacter
+	long			j;
+	WString	 	indent;
+	WStringArray	subs;
+	WString		msg;
+	WString		CRLF = "\r\n";
+	int			i;
+	LPUSTR		pResult;
+	LPUSTR		ptag;
+	long			len;
+	long&		rlen = len;
+	int			Result;
+	WIntArray	tabs;
+	tabs.SetCount (1);
+	tabs [0] = .75;
+	char			zNSB [2];	//unimarc start/end ...
+	char			zNSE [2];	//... non-filing chars
+	int			nsb, nse;	//unimarc start/end non-filing positions
+	
+	TheMessage.Clear();
+	WString&		rMessage = TheMessage;
+
+
+	zNSB [0] = 136;
+	zNSB [1] = 0;
+	zNSE [0] = 137;
+	zNSE [1] = 0;
+	
+	WParagraphFormat para;
+	para.align = WPALeft;
+	para.startIndent = 0;
+	para.subsequentIndent = .75;
+	para.rightIndent = 0;
+	para.tabStopsArray = tabs;
+	para.bullet = FALSE;
+	precwin->SetParagraphFormat (para);	
+
+
+	//031103 no matter what charset the record starts in, if it displays in latin we use visible codes ...
+	//040118 ... and we always display in Latin, because we can't do anything else in Optima
+	sfd [0] = 135;	//double dagger
+	sfd [1] = 0;
+	sfd [2] = 0;
+
+
+	WCharacterFormat normal = precwin->GetCharacterFormat ();
+	normal.autoColor = TRUE;	//TRUE means use system default color
+	
+	WCharacterFormat bluefmt = precwin->GetCharacterFormat ();
+	bluefmt.autoColor = FALSE;	//means use the color we set
+	bluefmt.bold = TRUE;
+	bluefmt.color = WColorBrightBlue;
+	
+	WCharacterFormat linkfmt = precwin->GetCharacterFormat ();
+	linkfmt.autoColor = FALSE;	//means use the color we set
+	linkfmt.bold = TRUE;
+	linkfmt.color = WColorBrightBlue;
+	linkfmt.underline = TRUE;
+	
+	WCharacterFormat redfmt = precwin->GetCharacterFormat ();
+	redfmt.autoColor = FALSE;	//means use the color we set
+	redfmt.bold = TRUE;
+	redfmt.color = WColorBrightRed;
+
+	//030820 unimarc non-filing chars
+	WCharacterFormat greenboldfmt = precwin->GetCharacterFormat ();
+	greenboldfmt.autoColor = FALSE;	//FALSE means we will set the color, TRUE means use system default color
+	greenboldfmt.bold = TRUE;
+	greenboldfmt.color = WColorGreen;
+	
+	/*051229 Optima can't set a bgcolor for a single char of a richedit box
+	//051229 escape codes
+	WCharacterFormat reversebluefmt = precwin->GetCharacterFormat ();
+	reversebluefmt.autoColor = FALSE;	//means use the color we set
+	reversebluefmt.bold = TRUE;
+	reversebluefmt.color = WColorWhite;
+	*/
+	//051229 highlight escape chars
+	WCharacterFormat greenfmt = precwin->GetCharacterFormat ();
+	greenfmt.autoColor = FALSE;	//FALSE means we will set the color, TRUE means use system default color
+	greenfmt.color = WColorGreen;
+	
+	if (SubfieldNewline)
+		indent = CRLF + "\t";
+	else
+		indent = "";
+
+	//WString junk = 0xff + 0xfe;
+	
+	
+	//040720 handle XML leader
+	WString theLeader;
+	if ((SP_RecordFormat () == MARCXMLBIB) || (SP_RecordFormat () == MARCXMLAUTH))
+	{
+		int i = theRecord.Position ("leader>");
+		if (i == NOT_FOUND)
+			return E_NONMARC;
+
+		theLeader = theRecord.Substring (i + 7, 24);
+	}
+	else
+		theLeader = theRecord.Substring (0, 24);
+		
+
+	//spaces are to line up tabs with those in flds below
+	//040720 used to work off theRecord, now off theLeader
+	
+	/*
+	if (Application->TheRelease == "4.0")
+	{
+		//060423 show ldr as a string with button for details
+		precwin->SetCharacterFormat (linkfmt, WCFCurrentSelection);
+		precwin->AppendText ("Ldr");
+		precwin->SetCharacterFormat (normal, WCFCurrentSelection);
+		precwin->AppendText ("\t" + theLeader + CRLF);
+	}
+	else
+	{
+		*/
+		precwin->AppendText ("Len\t" + theLeader.Substring (0, 5) + CRLF);
+		precwin->AppendText ("Sta\t" + theLeader.Substring (5, 1) + CRLF);
+		precwin->AppendText ("Typ\t" + theLeader.Substring (6, 1) + CRLF);
+		precwin->AppendText ("Lev\t" + theLeader.Substring (7, 1) + CRLF);
+		
+		if ((SP_RecordFormat () == UNIMARCBIB) || (SP_RecordFormat () == UNIMARCAUTH))
+		{
+			//UNIMARC -- byte 08 means "Hierarchical level", and 09 not used
+			precwin->AppendText ("Hie\t" + theLeader.Substring (8, 1) + CRLF);
+		}
+		else
+		{
+			precwin->AppendText ("Ctl\t" + theLeader.Substring (8, 1) + CRLF);
+			precwin->AppendText ("Chr\t" + theLeader.Substring (9, 1) + CRLF);
+		}
+		
+		precwin->AppendText ("Enc\t" + theLeader.Substring (17, 1) + CRLF);
+		precwin->AppendText ("Cat\t" + theLeader.Substring (18, 1) + CRLF);
+		precwin->AppendText ("Rel\t" + theLeader.Substring (19, 1) + CRLF);
+	//}
+	
+
+	// NOW DO FIELDS
+
+	SP_ResetRecord ();
+	do
+	{
+		i = SP_Field ((LPUSTR) "xxx", (LPPUSTR) &pResult, rlen, (LPPUSTR) &ptag);
+		
+		if (i == E_PERFECTSUCCESS)
+		{
+			if ((SP_RecordFormat () == MARC21BIB) || (SP_RecordFormat () == MARC21AUTH))
+			{
+				if ((MARCprefs.charset == ANSEL) ||
+						((MARCprefs.charset == LEADER) && (theRecord.GetCharacter (9) == ' ')))
+				{
+					i = SP_ConvertAnsel (rMessage, (LPPUSTR) &pResult, rlen, TOLATIN, 1);	// 1 means convertchars
+				}
+				else if ((MARCprefs.charset == UTF8) ||
+						((MARCprefs.charset == LEADER) && (theRecord.GetCharacter (9) == 'a')))
+				{
+					i = SP_ConvertUTF8 (rMessage, (LPPUSTR) &pResult, rlen, TOLATIN, 1);	// 1 means convertchars
+				}
+				
+				//030202 need to convert sfc and ft to visible codes even if latin-to-latin
+				else if (MARCprefs.charset == LATIN)
+				{
+					#ifdef _DEBUG
+					i = SP_ConvertLatin (rMessage, (LPPUSTR) &pResult, rlen, TOLATIN, 1);
+					#else
+					i = SP_LatinToLatin ((LPPUSTR) &pResult);
+					#endif
+				}
+			}
+			else if ((SP_RecordFormat () == UNIMARCBIB) || (SP_RecordFormat () == UNIMARCAUTH))
+			{
+				//030907 UNIMARC doesn't use leader byte for charset
+				i = SP_ConvertUnimarc (rMessage, (LPPUSTR) &pResult, rlen, TOLATIN, 1);	// 1 means convertchars
+			}
+			else if ((SP_RecordFormat () == MARCXMLBIB) || (SP_RecordFormat () == MARCXMLAUTH))
+			{
+				i = SP_ConvertUTF8 (rMessage, (LPPUSTR) &pResult, rlen, TOLATIN, 1);	// 1 means convertchars
+			}
+		}
+		
+		
+		/*051229 char-conversion problems are no longer fatal
+		if (i > 0)	//if field exists and no conversion problems*/
+		if ((i > 0) || (i == E_CONVERSION))
+		{
+			i = 1;	//051229 so that E_CONVERSION won't break the loop
+			
+			theTag.SetText ((char*) ptag);
+			theField.SetText ((const char*) pResult);
+
+			//put tag
+			precwin->AppendText (theTag + "  ");
+
+			sfd [1] = 0;	//erase sfc
+			
+			subs = theField.Parse (sfd, TRUE, NULL);
+			
+			if (subs.GetCount () == 1)	//control field
+			{
+				//put entire field -- two spaces are to line up tabs with non-control flds
+				precwin->AppendText ("\t" + theField);
+			}
+			else 
+			{
+				//indicators
+				if (subs [0].GetCharacter (0) == ' ')
+					precwin->AppendText (".");
+				else
+					precwin->AppendText (theField.Substring (0, 1));
+					
+				if (subs [0].GetCharacter (1) == ' ')
+					precwin->AppendText (".");
+				else
+					precwin->AppendText (theField.Substring (1, 1));
+					
+				precwin->AppendText ("\t" + subs [0].Substring (2));
+				
+				//all subfields
+				for (j = 1; j < subs.GetCount (); j++)
+				{
+					sfd [1] = (char) subs [j].GetCharacter (0);
+					precwin->SetCharacterFormat (bluefmt, WCFCurrentSelection);
+					if ((j > 1) && SubfieldNewline)
+						precwin->AppendText (indent + sfd);
+					else
+						precwin->AppendText (sfd);
+					precwin->SetCharacterFormat (normal, WCFCurrentSelection);
+
+					//000209 display field in red if has RT -- extend to other anomalies as needed
+					if (subs [j].Position ("\x1D") != NOT_FOUND)
+					{
+						precwin->SetCharacterFormat (redfmt, WCFCurrentSelection);
+						precwin->AppendText (subs [j].Substring (1));
+						precwin->SetCharacterFormat (normal, WCFCurrentSelection);	//for next sf or fld
+					}
+					else
+					{
+						//030820 to see if unimarc, look for non-filing characters
+						nsb = subs [j].Position (zNSB);
+						nse = subs [j].Position (zNSE);
+						if (nsb == NOT_FOUND)
+						{
+							//not UNIMARC
+							precwin->SetCharacterFormat (normal, WCFCurrentSelection);
+							precwin->AppendText (subs [j].Substring (1));
+						}
+						else
+						{
+							//UNIMARC
+							if (nse == NOT_FOUND)	//no end marker
+								nse = subs [j].GetLength () - 1;	//remainder of sf
+							subs [j].SetCharacter (nsb, '{');
+							subs [j].SetCharacter (nse, '}');
+							//before the non-filing
+							precwin->SetCharacterFormat (normal, WCFCurrentSelection);
+							precwin->AppendText (subs [j].Substring (1, nsb - 1));
+							//the non-filing (+ 1 to include the nsb/nse delimiters)
+							precwin->SetCharacterFormat (greenboldfmt, WCFCurrentSelection);
+							precwin->AppendText (subs [j].Substring (nsb, nse - nsb + 1));
+							//after the non-filing
+							precwin->SetCharacterFormat (normal, WCFCurrentSelection);
+							precwin->AppendText (subs [j].Substring (nse + 1));
+						}
+					}
+				}
+			}
+			precwin->AppendText (CRLF);
+		}
+		else
+		{
+			Result = i;
+			switch (i)
+			{
+				case E_EXCEPTION:	//no further fields
+					break;
+				case E_GENERAL:		//nonnumeric tag, user has been alerted in ReadRecord
+					i = 0;			//to prevent msg
+					break;
+				case E_UNEXPECTEDEOF:
+					msg = "File may be truncated";
+					break;
+				case E_NONMARC:
+					msg = "Not a MARC record";
+					break;
+				case E_NOMEMORY:
+					msg = "Out of memory";
+					break;
+				/*051229 no longer considering this an error
+				case E_CONVERSION:
+					msg = "Character conversion problem";
+					break;
+				*/
+				default:                
+					msg = "Unknown error";
+					break;
+			}
+			if (i < 0)
+				WMessageBox::Info( NULL, "Problem in DisplayRecord", msg);
+		}
+	} while (i > 0);
+
+
+	//051229 highlight escape codes
+	WString temp;
+	temp.SetText (precwin->GetText ());
+	WRange range;
+	char c;	// convenience
+	i = 0;
+	do
+	{
+		range.start = temp.Position ("\x1B", i);
+		if (range.start >= 0)
+		{
+			c = (char) temp.GetCharacter(range.start+1);
+			if ((c == 'p') || (c == 'b') || (c == 'g') || (c == 's'))
+				range.end = range.start + 2;
+			else
+				range.end = range.start + 3;
+			i = range.end;
+			precwin->SetEditSelection(range);
+			precwin->SetCharacterFormat(greenfmt, WCFCurrentSelection);
+		}
+	} while (range.start >= 0);
+	//unselect all
+	range.start = -1;
+	precwin->SetEditSelection (range);
+
+
+	//060103 we use \x1c for a non-Latin1 UTF8 char, show them in green
+	temp.SetText (precwin->GetText ());
+	i = 0;
+	do
+	{
+		range.start = temp.Position ("\x1C", i);
+		range.end = range.start + 1;
+		if (range.start >= 0)
+		{
+			i = range.end;
+			precwin->SetEditSelection(range);
+			precwin->SetCharacterFormat(greenboldfmt, WCFCurrentSelection);
+		}
+	} while (range.start >= 0);
+	//unselect all
+	range.start = -1;
+	precwin->SetEditSelection (range);
+
+
+	/*970201 this highlights each instance of the search 	word in the record, except it 
+				can't highlight the word if it contains diacriticals*/
+	if (UserWantsHilite)
+	{
+		//030103 if no term but we do have a tag or sfc in the search ...
+		if (FindData.term.GetEmpty () &&
+				(!FindData.tag.GetEmpty () || !FindData.sfc.GetEmpty ()))
+		{
+			i = E_FUTUREFEATURE;
+			return i;
+		}
+		else 
+		
+		//... remainder as before
+		if (!FindData.term.GetEmpty ())
+		{
+			WString temp;
+			temp.SetText (precwin->GetText ());
+			
+			WRange range;
+			
+			i = 0;
+			do
+			{
+				range.start = temp.Position (FindData.term.GetText (), i, !FindData.casesensitive);
+				range.end = range.start + FindData.term.GetSize ();
+				if (range.start >= 0)
+				{
+					i = range.end;
+					precwin->SetEditSelection (range);
+					precwin->SetCharacterFormat (redfmt, WCFCurrentSelection);
+				}
+			} while (range.start >= 0);
+			
+			//unselect all
+			range.start = -1;
+			precwin->SetEditSelection (range);
+	
+			if (i == 0)	//none found
+			{
+				i = E_FUTUREFEATURE;
+				return i;
+			}
+		}
+	}
+	
+	//000209 for non-fatal val errs (fatal ones are shown by Main::Display
+	/*
+	if (TheValMsg.GetLength () > 0)
+		WMessageBox::Info (NULL, "MARCView", TheValMsg.GetText ());*/
+	#ifdef _DEBUG	//060202 no longer want to bother user with these
+	if (TheMessage.GetLength() > 0)
+		WMessageBox::Info (NULL, "Debug Message", TheMessage.GetText ());
+	#endif
+	
+	return 1;	//return 1 even if i == 0
+}
+//DisplayRecord
+
+
+
+//FillGrid -- adds a single record to the Navigation Grid
+//050201 now we pass in the recnum so we can use it for marcsql
+int @CLASSNAME@::FillGrid (WGrid* pgrid, long rownum, long recnum, WStringArray cols)
+{
+	char			sfc;
+	int			i;
+	long			ii;
+	int			Result = E_PERFECTSUCCESS;
+	int			iTag;
+	WString		s;
+	LPUSTR		pResult;
+	LPUSTR		ptag;
+	long			len;
+	long&		rlen = len;
+	
+	//for unimarc
+	WString		sResult;
+	WBool		unimarc = ((GetRecordFormat () == UNIMARCBIB) || (GetRecordFormat () == UNIMARCAUTH));
+
+
+	//add $ -- will be 4th char if user supplies no sfc, which tells SP_Subfield
+	//		to get entire field. if user does supply sfc, that is used instead
+	for (i = 0; i < cols.GetCount (); i++)
+	{
+		cols [i] += '$';
+	}
+	
+	//fill 1st col -- record sequence number
+	/*050201 modified for marcsql
+	s.Sprintf ("%lu", CurrRec);
+	pgrid->SetText (CurrRec-1, 0, s);
+	*/
+	s.Sprintf ("%lu", recnum);
+	pgrid->SetText (rownum - 1, 0, s);
+	
+	
+	for (i = 0; i < cols.GetCount (); i++)
+	{
+		if (cols [i].GetLength () > 3)	// if we don't have a 3-char tag, forget it
+		{
+			SP_ResetRecord ();
+			s = cols [i].Left (3);
+			iTag = s.ConvertToInteger ();
+			ii = SP_Field ((LPUSTR) s.GetText (), (LPPUSTR) &pResult, rlen, (LPPUSTR) &ptag);
+			
+			//we reuse SP_Subfield even if entire field if needed, in order to perform char conversion
+			//030907 it also removes inds, sfds, sfcs, and ft
+			if (ii == E_PERFECTSUCCESS)
+				ii = SP_Subfield ((BYTE) cols [i].GetCharacter (3), (LPPUSTR) &pResult, rlen, &sfc, TOLATIN);
+			
+			//060107 try to use field even if conversion error
+			if (ii == E_CONVERSION)
+				ii = E_PERFECTSUCCESS;
+				
+			if (ii == E_PERFECTSUCCESS)
+			{
+				sResult.SetText ((const char*) pResult);
+				if (unimarc)
+				{
+					sResult = yUtility::CleanString (sResult, 136, '{');
+					sResult = yUtility::CleanString (sResult, 137, '}');
+				}
+				pgrid->SetText (rownum - 1, i + 1, sResult);
+			}
+			else
+				pgrid->SetText (rownum - 1, i + 1, "");
+				
+			if (ii < 0)
+				return ii;
+		}
+		else		//because even deleting all rows in grid doesn't wipe out data from previous file
+			pgrid->SetText (rownum - 1, i + 1, "");
+	}
+
+	return Result;
+}
+//FillGrid
+
+
+
+//Find
+//looks for term in single record
+/*040725 we noticed that (1) searching specifying a subfield and tag=xxx is MANY times faster than
+		(2) searching specifying a subfield but no tag. since case 2 also has the anomaly that it
+		can find the data only at the start of the subfield, we now supply tag=xxx for case 2, converting
+		it to case 1, thus eliminating the anomaly and speeding up the search by many times.
+  	-- likewise, the same holds true when neither tag nor sfc is specified. searching for a value with tag=xxx 
+		is much faster than searching without a tag. thus we supply tag=xxx if none specified. this means the 
+		leader and directory are no longer searched if no tag is specified. the leader can be searched by 
+		specifying it as the tag, but the directory can no longer be searched at all. 
+	-- the reason for this speedup is unclear. i thought it was that the entire record need not have its
+		chars converted, but if you search for a value with tag=xxx, it could be most of the record. but 
+		the speedup is about 100x */		
+int @CLASSNAME@::Find (yUtility::yFindData* pfinddata)
+{
+	LPUSTR		pResult;
+	long			i, j, k;
+	LPUSTR		ptag;
+	WString 		data;
+	long			len;
+
+	long&		rlen = len;
+	long			badchar;
+	long&		rbadchar = badchar;
+	int			bLeader = 0;			// set to 1 if this is a leader search
+	int			Result = E_EXCEPTION;	// not found
+	TheMessage.Clear();					// global
+	WString&		rMessage = TheMessage;
+	
+	// saved for highlighting in Display -- the one passed in is the FindDialog one
+	//	-- these 5 might be repld by one, but not during debugging
+	FindData.term = pfinddata->term;
+	FindData.tag = pfinddata->tag;
+	FindData.sfc = pfinddata->sfc;
+	FindData.ind1 = pfinddata->ind1;
+	FindData.ind2 = pfinddata->ind2;
+	FindData.casesensitive = pfinddata->casesensitive;
+	FindData.exactmatch = pfinddata->exactmatch;
+
+	// this is the value used for the comparison -- which may be cleared
+	//		if a specific field looked at is a control field
+	char			sfc;
+
+	//060421 if user specifies a control field, ignore sfc and inds
+	//	-- the second term is in case user specifies 0xx or 00x (since non-num tags are NOT control in the sub)
+	/*080327 second term is wrong, since 040 can have sfs -- in fact this entire para htb moved below
+	after SP_Field
+	if (SP_FieldIsControlField((BYTE*) FindData.tag.GetText()) 
+			|| (FindData.tag.GetCharacter(0) == '0'))
+	{
+		FindData.sfc.Clear();
+		FindData.ind1.Clear();
+		FindData.ind2.Clear();
+	}
+	*/
+	
+	//060422 if user specifies no tag, ignore indicator values (policy)
+	if (FindData.tag.GetEmpty())
+	{
+		FindData.ind1.Clear();
+		FindData.ind2.Clear();
+	}
+	
+
+	sfc = 0;
+	if (!FindData.sfc.GetEmpty())
+		sfc = (BYTE) FindData.sfc.GetCharacter(0);
+	
+	
+	//040725
+	if (FindData.tag.GetEmpty())	//see notes above
+		FindData.tag = "xxx";
+		
+		
+	SP_ResetRecord ();
+
+
+	//060420 begin refactoring
+	WBool found = FALSE;	// found means we found the content designators
+	WBool finished = FALSE;	// used to break outer loop from inner 
+	//040725 tag is never empty now
+	while (!finished)
+	{
+		i = SP_Field ((LPUSTR) FindData.tag.GetText(), (LPPUSTR) &pResult, rlen, (LPPUSTR) &ptag);
+		
+		if (len < 0)
+			bLeader = 1;
+			
+		if (i != E_PERFECTSUCCESS)		//field not found
+		{
+			Result = i;
+			break;
+		}
+		
+		
+		//080327 moved here from above loop, since it's impossible to clear sfs and inds until we
+		//		know which field we are looking at (because wildcards mean we can't be deterministic)
+		//	-- also we are modifying the local copy, not the user's specification
+		if (SP_FieldIsControlField((BYTE*) ptag))
+		{
+			sfc = 0;
+		}
+		else
+		{
+			//060421 -- check inds
+			if (!FindData.ind1.GetEmpty() && (pResult[0] != FindData.ind1.GetCharacter(0)))
+				continue;
+			if (!FindData.ind2.GetEmpty() && (pResult[1] != FindData.ind2.GetCharacter(0)))
+				continue;
+		}	
+		
+		/*
+		#ifdef _DEBUG
+		WMessageBox::Info 
+		(NULL, 
+		"Next field", 
+		"Tag found: %s",
+		ptag);
+		#endif
+		*/
+
+		while (!finished)
+		{
+			/*
+			#ifdef _DEBUG
+			WMessageBox::Info 
+			(NULL, 
+			"Subfield to find", 
+			"sfc: %c",
+			sfc);
+			#endif
+			*/
+			
+			if (sfc)	// search specified sfc
+			{
+				j = SP_Subfield(sfc, (LPPUSTR) &pResult, rlen, &sfc, NOCONVERSION);
+				found = (j == E_PERFECTSUCCESS);
+				
+				/*
+				#ifdef _DEBUG
+				WMessageBox::Info 
+				(NULL, 
+				"Result of SP_Subfield", 
+				"j=%d, found=%d",
+				j, found);
+				#endif
+				*/
+			}
+			else
+				found = TRUE;
+				
+			if (!found)	// ran out of subfields
+			{
+				Result = j;
+				break;
+			}
+		
+			// found, and searching for field/sf regardless of contents
+			if (FindData.term.GetEmpty())
+			{
+				Result = E_PERFECTSUCCESS;
+				finished = TRUE;
+				break;
+			}
+		
+			// found, and user specified term
+		
+			// CONVERT TO PLAIN FOR SEARCHING
+			// 	-- we do not do anything with return value from conversion, as it
+			//		wouldn't help the user during a search
+			
+			if ((SP_RecordFormat() == MARC21BIB) || (SP_RecordFormat() == MARC21AUTH))
+			{
+				if ((MARCprefs.charset == ANSEL) ||
+						((MARCprefs.charset == LEADER) && (theRecord.GetCharacter (9) == ' ')))
+					k = SP_ConvertAnsel (rMessage, (LPPUSTR) &pResult, rlen, TOPLAIN);
+					
+				else if ((MARCprefs.charset == UTF8) ||
+						((MARCprefs.charset == LEADER) && (theRecord.GetCharacter (9) == 'a')))
+					k = SP_ConvertUTF8 (rMessage, (LPPUSTR) &pResult, rlen, TOPLAIN);
+				
+				else if (MARCprefs.charset == LATIN)
+					k = SP_ConvertLatin (rMessage, (LPPUSTR) &pResult, rlen, TOPLAIN);
+			}
+			
+			else if ((SP_RecordFormat () == UNIMARCBIB) || (SP_RecordFormat () == UNIMARCAUTH))
+				k = SP_ConvertUnimarc (rMessage, (LPPUSTR) &pResult, rlen, TOPLAIN);
+				
+			else if ((SP_RecordFormat () == MARCXMLBIB) || (SP_RecordFormat () == MARCXMLAUTH))
+				k = SP_ConvertUTF8 (rMessage, (LPPUSTR) &pResult, rlen, TOPLAIN);
+
+
+			data.SetText ((const char*) pResult);
+			
+			/*
+			#ifdef _DEBUG
+			WMessageBox::Info 
+			(NULL, 
+			"Data to look at", 
+			"Data: %s",
+			data.GetText());
+			#endif
+			*/
+			
+			if 
+				(
+					(data.Position(FindData.term, 0, !FindData.casesensitive) != NOT_FOUND) 
+					&&
+					(
+						!FindData.exactmatch 
+						||
+						(
+							FindData.exactmatch 
+							&& (data.GetLength() == FindData.term.GetLength())
+						)
+					)
+				)
+			{
+				/*
+				#ifdef _DEBUG
+				WMessageBox::Info 
+				(NULL, 
+				"Found match", 
+				"Data: %s",
+				data.GetText());
+				#endif
+				*/
+				
+				Result = E_PERFECTSUCCESS;
+				finished = TRUE;
+				break;
+			}
+			
+			// if no sfc was specified, we're finished with this field
+			if (!sfc)
+				break;
+		}
+		
+		if (bLeader)	// it was a leader search, no point in looking further
+			break;
+	}
+	//060420 end refactoring
+
+
+	#ifdef _DEBUG	//060420 refactored above to add ind searching
+	SP_ResetRecord ();
+	int DebugResult = E_EXCEPTION;	// not found
+	//040725 tag is never empty now
+	if (FindData.sfc.GetEmpty())		// no subfield code
+	{
+		do
+		{
+			i = SP_Field ((LPUSTR) FindData.tag.GetText (), (LPPUSTR) &pResult, rlen, (LPPUSTR) &ptag);
+			
+			if (len < 0)
+				bLeader = 1;
+				
+			if (i != E_PERFECTSUCCESS)		//field not found
+			{
+				DebugResult = i;
+				break;
+			}
+			else if (FindData.term.GetEmpty ())	//user is searching for tag only, regardless of contents
+			{
+				DebugResult = E_PERFECTSUCCESS;
+				break;
+			}
+			else
+			{
+				// CONVERT TO PLAIN FOR SEARCHING
+				// 	-- we do not do anything with return value from conversion, as it
+				//		wouldn't help the user during a search
+				
+				if ((SP_RecordFormat () == MARC21BIB) || (SP_RecordFormat () == MARC21AUTH))
+				{
+					if ((MARCprefs.charset == ANSEL) ||
+							((MARCprefs.charset == LEADER) && (theRecord.GetCharacter (9) == ' ')))
+					{
+						k = SP_ConvertAnsel (rMessage, (LPPUSTR) &pResult, rlen, TOPLAIN);
+					}	
+					else if ((MARCprefs.charset == UTF8) ||
+							((MARCprefs.charset == LEADER) && (theRecord.GetCharacter (9) == 'a')))
+					{
+						k = SP_ConvertUTF8 (rMessage, (LPPUSTR) &pResult, rlen, TOPLAIN);
+					}
+					
+					//otherwise presumably already in latin
+					//050208 yes, but we need it in plain
+					else if (MARCprefs.charset == LATIN)
+					{
+						k = SP_ConvertLatin (rMessage, (LPPUSTR) &pResult, rlen, TOPLAIN);
+					}
+				}
+				
+				else if ((SP_RecordFormat () == UNIMARCBIB) || (SP_RecordFormat () == UNIMARCAUTH))
+					k = SP_ConvertUnimarc (rMessage, (LPPUSTR) &pResult, rlen, TOPLAIN);
+					
+				else if ((SP_RecordFormat () == MARCXMLBIB) || (SP_RecordFormat () == MARCXMLAUTH))
+				{
+					k = SP_ConvertUTF8 (rMessage, (LPPUSTR) &pResult, rlen, TOPLAIN);
+				}
+				
+				data.SetText ((const char *) pResult);
+				
+				if 
+					(
+						(data.Position (FindData.term, 0, !FindData.casesensitive) != NOT_FOUND) 
+						&&
+						(
+							!FindData.exactmatch 
+							||
+							(
+								FindData.exactmatch 
+								&& (data.GetLength () == FindData.term.GetLength ())
+							)
+						)
+					)
+				{
+					DebugResult = E_PERFECTSUCCESS;
+					break;
+				}
+			}
+			
+			if (bLeader)	//it was a leader search
+				break;
+				
+		} while (i > 0);
+	}
+	
+	else		// both tag and sfc
+	{
+		do
+		{
+			i = SP_Field ((LPUSTR) FindData.tag.GetText (), (LPPUSTR) &pResult, rlen, (LPPUSTR) &ptag);
+			
+			if (i != E_PERFECTSUCCESS)	//field not found
+			{
+				DebugResult = i;
+				break;
+			}
+			else 
+			{
+				do
+				{
+					j = SP_Subfield (sfc, (LPPUSTR) &pResult, rlen, &sfc, NOCONVERSION);
+					if (j == E_PERFECTSUCCESS)	//subfield found
+					{
+						if (FindData.term.GetEmpty ())	//searching for field/sf regardless of contents
+						{
+							DebugResult = E_PERFECTSUCCESS;
+							i = -99;	//to break outer loop
+							break;
+						}
+						
+						// CONVERT TO PLAIN FOR SEARCHING
+						// 	-- we do not do anything with return value from conversion, as it
+						//		wouldn't help the user during a search
+						
+						if ((SP_RecordFormat () == MARC21BIB) || (SP_RecordFormat () == MARC21AUTH))
+						{
+							if ((MARCprefs.charset == ANSEL) ||
+									((MARCprefs.charset == LEADER) && (theRecord.GetCharacter (9) == ' ')))
+							{
+								k = SP_ConvertAnsel (rMessage, (LPPUSTR) &pResult, rlen, TOPLAIN);
+							}
+							else if ((MARCprefs.charset == UTF8) ||
+									((MARCprefs.charset == LEADER) && (theRecord.GetCharacter (9) == 'a')))
+							{
+								k = SP_ConvertUTF8 (rMessage, (LPPUSTR) &pResult, rlen, TOPLAIN);
+							}
+
+							//otherwise presumably already in latin
+							//050730 yes, but we need it in plain
+							else if (MARCprefs.charset == LATIN)
+							{
+								k = SP_ConvertLatin (rMessage, (LPPUSTR) &pResult, rlen, TOPLAIN);
+							}
+						}
+				
+						else if ((SP_RecordFormat () == UNIMARCBIB) || (SP_RecordFormat () == UNIMARCAUTH))
+							k = SP_ConvertUnimarc (rMessage, (LPPUSTR) &pResult, rlen, TOPLAIN);
+							
+						else if ((SP_RecordFormat () == MARCXMLBIB) || (SP_RecordFormat () == MARCXMLAUTH))
+						{
+							k = SP_ConvertUTF8 (rMessage, (LPPUSTR) &pResult, rlen, TOPLAIN);
+						}
+						
+						data.SetText ((const char *) pResult);
+						
+						if 
+							(
+								(data.Position (FindData.term, 0, !FindData.casesensitive) != NOT_FOUND) 
+								&&
+								(
+									!FindData.exactmatch 
+									|| 
+									(
+										FindData.exactmatch 
+										&& (data.GetLength () == FindData.term.GetLength ())
+									)
+								)
+							)
+						{
+							DebugResult = E_PERFECTSUCCESS;
+							i = -99;	//to break outer loop
+							break;
+						}
+					}
+				} while (j > 0);
+			}
+		} while (i > 0);
+	}
+	
+	if ((Result != DebugResult)
+			&& FindData.ind1.GetEmpty()
+			&& FindData.ind2.GetEmpty())
+	{
+		WMessageBox::Messagef
+				(NULL, 
+				WMsgBSOk | WMsgBSIconError,
+				"Discrepancy", 
+				"Old Result: %d\nNew Result: %d\n%s",
+				DebugResult,
+				Result,
+				theRecord.GetText());
+	}
+	#endif
+	
+	
+	return Result;
+}
+//Find
+
+
+
+int @CLASSNAME@::FirstRecord ()
+{
+	CurrRec = 1;
+	return ReadRecord (CurrRec);
+}
+
+
+
+void @CLASSNAME@::GetCurrentNum (long& rcur, long& rnum)
+{
+	rcur = CurrRec;
+	rnum = NumRecs;
+}
+
+
+
+//GetFileInfo
+// passes info back to MainForm -- used exclusively for Hexview
+void @CLASSNAME@::GetFileInfo (long& rpos, long& rlen, long& rnum)
+{
+	rpos = SP_RecordOffset (CurrRec);
+	
+	/*040725 for Hexview we want the physical length of the rec, not the logical
+	rlen = TheRecLen;*/
+	rlen = SP_PhysicalRecordLength (CurrRec);
+		
+	rnum = CurrRec;
+}
+//GetFileInfo
+
+
+
+
+int @CLASSNAME@::GetRecordFormat()
+{
+	return SP_RecordFormat();
+}
+
+
+
+int @CLASSNAME@::LastRecord()
+{
+	CurrRec = NumRecs;
+	return ReadRecord(CurrRec);
+}
+
+
+
+int @CLASSNAME@::NextRecord()
+{
+	if (CurrRec < NumRecs)
+	{
+		CurrRec++;
+		return ReadRecord (CurrRec);
+    }
+	return 0;
+}
+
+
+
+int @CLASSNAME@::PrevRecord ()
+{
+	if (CurrRec > 1)
+	{
+		CurrRec--;
+		return ReadRecord (CurrRec);
+    }
+	return 0;	//not currently used
+}
+
+
+//ReadRecord
+int @CLASSNAME@::ReadRecord (long recnum)
+{
+	int			i;
+	WString		msg;
+	LPUSTR		pResult;
+	//060202//LPSTR		pValMsg;
+	
+	long&		rlen = TheRecLen;
+
+	//970131 to reset for new record
+	FindData.term.SetText ("");
+	FindData.tag.SetText ("");
+	FindData.sfc.SetText ("");
+
+    	if ((recnum > NumRecs) || (recnum < 1))
+	{
+		/*060202
+		TheValMsg.SetText ("Sorry, no record with that number");*/
+		TheMessage.SetText("Sorry, no record with that number\n");
+		
+		return 0;
+	}
+		
+	CurrRec = recnum;
+	TheMessage.Clear();		//060202
+	/*060202
+	i = SP_Record (CurrRec, (LPPUSTR) &pResult, (LPPSTR) &pValMsg);*/
+	WString& rMessage = TheMessage;	// apparently can't decl a ref globally
+	i = SP_Record (rMessage, CurrRec, (LPPUSTR) &pResult);
+
+	/*060202
+	TheValMsg.Clear ();*/
+	
+	/*060202 now handled by rMessage
+	// message
+	if ((i > 1) || (i < 0))
+		TheValMsg.SetText ((const char*) pValMsg);
+	*/
+	
+	// record OK or minor val errors
+	if ((i == 1) || (i == 2))
+		theRecord.SetText ((const char*) pResult);
+       
+	return i;	//eye
+}
+//ReadRecord
+
+
+long @CLASSNAME@::RestoreCurrentNumber ()
+{
+	CurrRec = SavedCurrentNumber;
+	return CurrRec;
+}
+
+long @CLASSNAME@::SaveCurrentNumber ()
+{
+	SavedCurrentNumber = CurrRec;
+	return CurrRec;
+}
+
+@end-code;
+
+@begin-code Code "yBibRec::Prototype for ~yBibRec()"
+
+    public:
+        ~@CLASSNAME@();
+
+@end-code;
+
+@begin-code Code "yBibRec::DisplayRecord (WRichTextBox*)"
+
+void @CLASSNAME@::SetPreferences 
+			(WBool 	nonnumtags,
+			WString	charsetin,
+			WBool 	hilite,
+			WBool 	subfieldnewline,
+            	WLong 	maxrecs)
+{
+	if (nonnumtags)
+		MARCprefs.nonnumerictags = 1;
+	else
+		MARCprefs.nonnumerictags = 0;
+		
+	//030907 for UNIMARC, we override the setting when displayed, but don't save in INI (so no code reqd)
+	if (!WString::Compare (charsetin, "ANSEL"))
+		MARCprefs.charset = ANSEL;
+	else	 if (!WString::Compare (charsetin, "LATIN"))
+		MARCprefs.charset = LATIN;
+	else if (!WString::Compare (charsetin, "UTF8"))
+		MARCprefs.charset = UTF8;
+	else /*060115 use LEADER as default
+			if (!WString::Compare (charsetin, "LEADER"))*/
+		MARCprefs.charset = LEADER;
+
+	UserWantsHilite = hilite;
+	SubfieldNewline = subfieldnewline;
+        
+    	MARCprefs.maxrecords = maxrecs;
+    
+	SP_SetPreferences (MARCprefs);
+}
+
+
+int @CLASSNAME@::VerifyFile (WString filename, WString* pmsg)
+{
+	long			count;
+	long&		rcount = count;
+	
+    int         i;
+    int         Result;
+    
+    i = SP_UseFile 
+				((LPCUSTR) "MV98",
+				(LPCUSTR) filename.GetText(), 
+				rcount);
+	
+    switch (i)
+    {
+		//030902 now returns E_PERFECTSUCCESS for a MARC21 file, E_EXCEPTION for a UniMARC file
+        case E_PERFECTSUCCESS:   
+            *pmsg = "";
+            Result = 1;
+            break;
+        case E_EXCEPTION:       
+            *pmsg = "";   //normal EOF. actually i believe this now means the file is UNIMARC
+            Result = 1;
+            break;
+        case E_FILENOTFOUND:    
+            *pmsg = "File not found or in use by another application";
+            Result = -1;
+            break;
+        case E_FILENOTOPEN:     
+            *pmsg = "File not open";
+            Result = -1;
+            break;
+        case E_UNEXPECTEDEOF:
+			/*050127 use std msg -- didn't work
+            pmsg->Sprintf ("%s in record %lu", yUtility::errortexts [i + 11].GetText (), count+1);*/
+			
+            pmsg->Sprintf ("Unexpected end of file in record %lu", count+1);
+            if (count > 0)
+                Result = 0;
+            else
+                Result = -1;
+            break;
+        case E_NONMARC:         
+            pmsg->Sprintf ("Record %lu is not a valid MARC record", count+1);
+            if (count > 0)
+                Result = 0;
+            else
+                Result = -1;
+            break;
+        case E_MORETHANMAX:     
+            pmsg->Sprintf ("Maximum records exceeded");
+            Result = 0;
+            break;
+        case E_SECURITY:     
+            *pmsg = "Illegal use of SP_MARC";
+            Result = -1;
+            break;
+		case E_BLOCKED:
+			*pmsg = "This may be a blocked or Unicode UCS-16 file";
+			Result = 0;
+			break;
+		case E_CONVERSION:
+			*pmsg = "Character conversion problem";
+			Result = 0;
+			break;
+        default:                
+			*pmsg = "Unknown error";
+			Result = -1;
+   	         break;
+    }
+
+    CurrRec = 0;    //permits getting 1st rec using a next-record call
+    NumRecs = count;
+
+    return Result;
+}
+
+@end-code;
+
+@begin-code Code "yBibRec::Prototype for DisplayRecord (WRichTextBox*)"
+
+    public:
+		int			DisplayRecord (WRichTextBox*);
+		int			FillGrid (WGrid*, long, long, WStringArray);
+		int			Find (yUtility::yFindData*);
+        	int			FirstRecord ();
+		void			GetCurrentNum (long&, long&);
+		void			GetFileInfo (long&, long&, long&);
+		int			GetRecordFormat ();
+		int			LastRecord ();
+		int			NextRecord ();
+		int			PrevRecord ();
+		int			ReadRecord (long);
+		long			RestoreCurrentNumber ();
+		long			SaveCurrentNumber ();
+		void			SetPreferences (WBool, WString, WBool, WBool, WLong);
+        	int			VerifyFile (WString, WString*);
+			
+		/*060202
+		WString		TheValMsg;*/
+		WString		TheMessage;	// compiler doesn't like the ref declared as global,
+								// 		so it's declared in subs
+		
+
+@end-code;
+@end;

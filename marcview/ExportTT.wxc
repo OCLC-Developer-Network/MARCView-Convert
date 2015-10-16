@@ -1,0 +1,710 @@
+Save Format v1.3
+@begin ClassFile "yExportTT"
+ Exported 0;
+
+@begin-code BaseClassList
+
+public WObject
+
+@end-code;
+
+ @begin UserFunction "yExportTT()"
+  GencodeSrcLine 19;
+  FunctionName "yExportTT::yExportTT()";
+ @end;
+
+ @begin UserFunction "Prototype for yExportTT()"
+  Private 1;
+  GencodeSrcLine 73;
+  FunctionName "yExportTT::Prototype for yExportTT()";
+ @end;
+
+ @begin UserFunction "~yExportTT()"
+  GencodeSrcLine 23;
+  FunctionName "yExportTT::~yExportTT()";
+ @end;
+
+ @begin UserFunction "Prototype for ~yExportTT()"
+  Private 1;
+  GencodeSrcLine 75;
+  FunctionName "yExportTT::Prototype for ~yExportTT()";
+ @end;
+
+ @begin HPPPrefixBlock
+@begin-code HPPPrefix
+
+/*
+Copyright 1992-2009 Systems Planning (www.systemsplanning.com)
+
+Licensed under the Apache License, Version 2.0 (the "License"); 
+you may not use this file except in compliance with the License. 
+You may obtain a copy of the License at 
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software 
+distributed under the License is distributed on an "AS IS" BASIS, 
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. 
+See the License for the specific language governing permissions and 
+limitations under the License.
+*/
+
+// Declarations added here will be included at the top of the .HPP file
+
+@end-code;
+  GencodeSrcLine 11;
+ @end;
+
+ @begin CPPPrefixBlock
+@begin-code CPPPrefix
+
+// Code added here will be included at the top of the .CPP file
+
+//  Include definitions for resources.
+#include "WRes.h"
+#include "MCClient.hpp"
+#include "Utility.hpp"
+
+#include "d:\marc\marcview\vwcl\collections\VSORTEDSTRINGLINKEDLIST.hpp"
+
+@end-code;
+  GencodeSrcLine 11;
+ @end;
+
+ @begin ClassContentsBlock
+@begin-code ClassContents
+
+    private:
+		
+    protected:
+
+    public:
+		// export translation node (import's is different)
+		typedef struct transtag
+		{
+			WString		tag;
+			WString		subs;
+			WString		target;
+			WString		target_datatype;
+			int			detail;		//070919 see doc for why this is an int
+			int			outputfile;	//070919 which output file to write this var to
+			WString		constant;
+			WString		subfieldsep;
+			WString		repeatsep;
+			WString		data;
+			void*		next;
+		}	yTrans;
+
+		yTrans*	ReadTT(FILE*, WBool col3_is_datatype=FALSE);
+		void		Cleanup();
+		yTrans*	FindNode(WString, WString);
+		WString	GetFieldSep();
+		WBool	GetIsDelimited();
+		WString	GetLabelSep();
+		WString	GetRecordSep();
+		WString	GetSubfieldSep();
+		WStringArray GetComplexFilenames(WString, WBool special=0);
+		WString	MakeHeaderRow(WString, WString);
+		void		WriteNodes();	// debugging
+		
+    private:
+		yTrans*	Root;
+		WString	FieldSep, LabelSep, RecordSep, SubfieldSep;
+		WBool	IsDelimited;
+		
+		//070721 stores names of output files if COMPLEX
+		WStringArray	OutputFiles;
+		
+
+@end-code;
+  GencodeSrcLine 32;
+ @end;
+
+@begin-code GeneratedClassContents
+
+
+@end-code;
+
+@begin-code Code "yExportTT::yExportTT()"
+
+@@CLASSNAME@::@CLASSNAME@()
+{
+    
+}
+
+@end-code;
+
+@begin-code Code "yExportTT::Prototype for yExportTT()"
+
+    public:
+        @@CLASSNAME@();
+
+@end-code;
+
+@begin-code Code "yExportTT::~yExportTT()"
+
+@@CLASSNAME@::~@CLASSNAME@()
+{
+    
+}
+
+
+
+//ReadTT
+@@CLASSNAME@::yTrans* @CLASSNAME@::ReadTT(FILE* tfile, WBool col3_is_datatype)
+{
+	WString clientcode = WAppObject.GetProfileString("Client", "ClientCode", "", "MARCView.INI");
+
+	char t_line[80];
+	WString t_string;
+	WStringArray tlinearray;
+	
+	//read in first line and ignore
+	fgets(t_line, sizeof(t_line), tfile);
+	
+	//980902 next two or three lines of TT are separators
+	fgets(t_line, sizeof(t_line), tfile);
+	t_string = t_line;
+	tlinearray = t_string.Parse("\t\r\n ");
+	
+	//000605 see if output should be delimited
+	if (t_string.Position("FieldSep", 0, TRUE) != NOT_FOUND)
+	{
+		IsDelimited = TRUE;
+		FieldSep = tlinearray[1];
+	}
+	else
+	{
+		IsDelimited = FALSE;
+		LabelSep = tlinearray [1];
+	}
+	
+	if (IsDelimited)
+	{
+		RecordSep = "\n";	// not an option for delimited
+		
+		fgets (t_line, sizeof (t_line), tfile);
+		t_string = t_line;
+		tlinearray = t_string.Parse ("\t\r\n ");
+		SubfieldSep = tlinearray [1];
+	}
+	else
+	{
+		fgets (t_line, sizeof (t_line), tfile);
+		t_string = t_line;
+		tlinearray = t_string.Parse ("\t\r\n ");
+		RecordSep = tlinearray [1];
+	
+		fgets (t_line, sizeof (t_line), tfile);
+		t_string = t_line;
+		tlinearray = t_string.Parse ("\t\r\n ");
+		SubfieldSep = tlinearray [1];
+	}
+	
+
+	//now convert Ts and Ns
+	if (IsDelimited)
+	{
+		FieldSep = yUtility::CleanString(FieldSep, "T", "\t");
+		FieldSep = yUtility::CleanString(FieldSep, "N", "\n");
+	}
+	
+	else
+	{
+		LabelSep = yUtility::CleanString(LabelSep, "T", "\t");
+		LabelSep = yUtility::CleanString(LabelSep, "N", "\n");
+		RecordSep = yUtility::CleanString(RecordSep, "T", "\t");
+		RecordSep = yUtility::CleanString(RecordSep, "N", "\n");
+	}
+	
+	//for both kinds
+	SubfieldSep = yUtility::CleanString(SubfieldSep, "T", "\t");
+	SubfieldSep = yUtility::CleanString(SubfieldSep, "N", "\n");
+	
+
+	yTrans *trans, *temp;
+	Root = new(yTrans);
+	Root->next = NULL;
+	trans = Root;
+	int detailsequence = 1;
+	
+	while (!feof(tfile))
+	{
+		fgets(t_line, sizeof(t_line), tfile);
+		if (t_line [0] == '/')
+			break;	//last node "next" will be NULL
+		t_string = t_line;
+		tlinearray = t_string.Parse("\t\r\n ");
+	
+		if (tlinearray.GetCount() > 0) // if 0, eof
+		{
+			//070921 handling dummy lines here to avoid complications			
+			//if column 2 is -, it means ignore this MARC tag (do not translate)
+			if (tlinearray[1] == "-")
+			{
+				trans->tag = tlinearray[0].Left(3);
+				trans->subs = tlinearray[0].Substring(3);	// no $ between
+
+				temp = new (yTrans);
+				temp->next = NULL;  //sentinel
+				trans->next = (yTrans*)temp;
+				trans = temp;
+				
+				continue;
+			}
+			
+			
+			// we require two columns at least
+			/*070830 we require three if col3_is_datatype
+			if (tlinearray.GetCount() == 1)*/
+			if 
+			(
+				(col3_is_datatype && (tlinearray.GetCount() == 2))
+				||
+				(!col3_is_datatype && (tlinearray.GetCount() == 1))
+			)
+			
+			{
+				WString msg;
+				msg.Sprintf
+						("Not enough columns in Translation Table in this line: %s", 
+						t_string.GetText());
+				WMessageBox::Message
+						(NULL, 
+						WMsgBSOk | WMsgBSIconStop,
+						"Problem",
+						msg.GetText());
+				fclose(tfile);
+				return NULL;	//070830
+			}
+			else
+			{
+				if (col3_is_datatype 
+						&& (tlinearray[2] != "text") 
+						&& (tlinearray[2] != "num")
+						&& (tlinearray[2] != "date"))
+				{
+					WMessageBox::Message
+							(NULL, 
+							WMsgBSOk | WMsgBSIconStop,
+							"Problem",
+							"Incorrect target data-type in Translation Table");
+					fclose(tfile);
+					return NULL;
+				}
+				
+				
+				//041102 for lines with only - in first column we check column 3 -- 
+				//		if empty, we save the constant, otherwise the line is a placeholder for delimited output
+				if (tlinearray[0] == "-")
+				{
+					/*041105 we now allow empty constant column -- note that for JJJ lines like this were used for
+								documentation, so we have to work around that if JJJ ever revised*/
+								
+					trans->tag = "-";
+					trans->subs.Clear();
+					trans->target = tlinearray[1];
+					if (col3_is_datatype)
+					{
+						trans->target_datatype = tlinearray[2];
+						if (tlinearray.GetCount() > 3)
+							trans->constant = tlinearray[3];
+					}
+					else
+					{
+						trans->target_datatype.Clear();
+						if (tlinearray.GetCount() > 2)
+							trans->constant = tlinearray[2];
+					}
+				}
+				else
+				{
+					//070919
+					if (tlinearray[0].GetCharacter(0) == '*')
+					{
+						trans->detail = detailsequence;
+						detailsequence++;
+						trans->tag = tlinearray[0].Substring(1, 3);
+						trans->subs = tlinearray[0].Substring(4);	// no $ between
+					}
+					else
+					{
+						trans->detail = 0;
+						trans->tag = tlinearray[0].Left(3);
+						trans->subs = tlinearray[0].Substring(3);	// no $ between
+					}
+					
+					// default sfsep
+					trans->subfieldsep = SubfieldSep;
+											
+					//non-default sfsep
+					if (clientcode == "JJJ")
+					{
+						if (!WString::Compare (trans->tag, "110") ||
+								!WString::Compare (trans->tag, "111") ||
+								!WString::Compare (trans->tag, "440") ||
+								!WString::Compare (trans->tag, "490") ||
+								!WString::Compare (trans->tag, "830"))
+							trans->subfieldsep = ", ";
+					}
+				
+					
+					// repeatsep -- not in TT at present
+					if (clientcode == "JJJ")
+					{
+						if (!WString::Compare (trans->tag, "111") || 
+								!WString::Compare (trans->tag, "711"))
+							trans->subfieldsep = " ";
+					}
+					else if (clientcode == "KKK")
+					{
+						//****** 070930 how come no repeatsep for other fields?
+						
+						if (trans->tag == "655")
+							trans->repeatsep = ",";
+					}
+					else
+						trans->repeatsep = "; ";	// default repeatsep
+	
+	
+					/*070921 dummy processing moved to top of loop
+					//if column 2 is -, it means ignore this MARC tag (do not translate)
+					if (tlinearray[1] != "-")	// if it is NOT "-" ...*/
+						trans->target = tlinearray[1];		// ... set the target
+					
+					
+					/*070721 before refactoring, this collected the fieldnames for 1st row of delimited output
+					if (clientcode != "KKK")	// too hard to output fieldname line to three files
+					{
+						if (IsDelimited)	//output fieldname
+							output.Concat (IntoQuotes (trans->target) + FieldSep);
+					}
+					*/
+					
+					if (col3_is_datatype)
+					{
+						trans->target_datatype = tlinearray[2];
+						if ((tlinearray.GetCount() > 3) && !tlinearray[3].GetEmpty())
+							trans->constant = tlinearray[3];
+					}
+					else
+					{
+						trans->target_datatype.Clear();
+						if ((tlinearray.GetCount() > 2) && !tlinearray[2].GetEmpty())
+							trans->constant = tlinearray[2];
+					}
+				}
+			
+				trans->data.Clear ();
+
+				temp = new (yTrans);
+				temp->next = NULL;  //sentinel
+				trans->next = (yTrans*) temp;
+				trans = temp;
+			}
+		}
+	}
+	
+	
+	//070919 add which output file each nodes writes to
+	WStringArray files = GetComplexFilenames("");	// extension isn't important for this loop
+	WString filename;
+	trans = Root;
+	while (trans->next)		// checking next avoids last NULL node
+	{
+		// filenames in array end in . so we leave the . on for the comparison
+		/*070921 now GCF dn add the dot if no extension
+		filename = trans->target.Substring(0, trans->target.Position(".") + 1);*/
+		filename = trans->target.Substring(0, trans->target.Position("."));
+		for (int i = 0; i < files.GetCount(); i++)
+		{
+			if (filename == files[i])
+			{
+				trans->outputfile = i;
+				break;
+			}
+		}
+		
+		trans = (yTrans*) trans->next;
+	}
+	
+	
+	//070721 contrary to policy. opener should also close. we close it here
+	//		just so it's not open during entire run. actually, this sub
+	//		should also open it.
+	fclose (tfile);
+
+	#ifdef _DEBUG
+	WriteNodes();
+	#endif
+	
+	return Root;
+}
+//ReadTT
+
+
+
+//Cleanup
+void @CLASSNAME@::Cleanup()
+{
+	@@CLASSNAME@::yTrans* temp;
+	@@CLASSNAME@::yTrans* trans = Root;
+	while (trans)
+	{
+		/* debug log doesn't complain, so i guess automatically freed when parent is
+		delete trans->tag;
+		delete trans->subs;
+		delete trans->target;
+		delete trans->constant;
+		*/
+	
+		temp = (@CLASSNAME@::yTrans*)trans->next;
+		delete trans;
+		trans = temp;
+	}
+}
+//Cleanup
+
+
+
+//FindNode
+@@CLASSNAME@::yTrans* @CLASSNAME@::FindNode(WString tag, WString subs)
+{
+	// no index, so just scan
+	yTrans* trans = Root;
+	while (trans->next)		// checking next avoids last NULL node
+	{
+		if ((trans->tag == tag) && (trans->subs == subs))
+			return trans;
+		
+		trans = (yTrans*) trans->next;
+	}
+
+	return NULL;
+}
+//FindNode
+
+
+
+//GetComplexFilenames
+WStringArray @CLASSNAME@::GetComplexFilenames(WString extension, WBool special)
+{
+	/* VSortedStringLinkedList manages a linked list of sorted strings.
+		****** unlike how we use it elsewhere, here it is unsorted so
+		that the first file in the TT will be 0 */
+	VSortedStringLinkedList filenames (0x0014);
+	
+	WStringArray ss;
+	yTrans* trans = Root;
+	while (trans)
+	{
+			/*WMessageBox::Message
+					(NULL, 
+					WMsgBSOk | WMsgBSIconStop,
+					"trans target",
+					trans->target.GetText());*/
+		ss = trans->target.Parse(".");
+		if (ss.GetCount() > 1)
+		{
+			/*WMessageBox::Message
+					(NULL, 
+					WMsgBSOk | WMsgBSIconStop,
+					"ss 0 inside getcount loop",
+					ss[0].GetText());*/
+			filenames.Add(ss[0]);
+		}
+
+		trans = (@CLASSNAME@::yTrans*)trans->next;
+	}
+	
+	// dnk how to reset, so use new array
+	WStringArray tt;
+	tt.SetCount(20);
+	
+	int count = 0;
+	VLinkedListStringItem*	pItem = filenames.GetFirstItem();
+	while (pItem)
+	{
+		/*WMessageBox::Message
+					(NULL, 
+					WMsgBSOk | WMsgBSIconStop,
+					"pitem string",
+					pItem->String());*/
+		tt[count] = pItem->String();
+		/*	WMessageBox::Message
+					(NULL, 
+					WMsgBSOk | WMsgBSIconStop,
+					"next tt",
+					tt[count].GetText());*/
+		count++;
+		pItem = pItem->GetNextItem();
+	}
+	
+	/*	WString s;
+		s.Sprintf("count: %d", tt.GetCount());
+			WMessageBox::Message
+					(NULL, 
+					WMsgBSOk | WMsgBSIconStop,
+					"count of tt",
+					s.GetText());*/
+
+	for (int i = 0; i < tt.GetCount(); i++)
+	{
+		// adjust the count to the actual number of filenames
+		if (tt[i].GetEmpty())
+		{
+			tt.SetCount(i);
+			break;
+		}
+		else
+		{
+			//070921 no dot if no extension
+			if (extension.GetLength() > 1)
+				tt[i] += "." + extension;
+		}
+	}
+	
+	if (special)	// add for MMM bib-rec run only
+	{
+		// VAR_FIELDS2 is not in TT but we need an output file for it
+		//	-- we add it for every run but caller removes it for order-rec run
+		tt.SetCount(tt.GetCount() + 1);
+		tt[tt.GetCount() - 1] = "VAR_FIELDS2.";
+		
+		WString ext = WAppObject.GetProfileString ("Export", "Extension", "txt", "MARCView.INI");
+		tt[tt.GetCount() - 1] += extension;
+	}
+
+	return tt;
+}
+//GetComplexFilenames
+
+
+
+//GetFieldSep
+WString @CLASSNAME@::GetFieldSep()
+{
+	return FieldSep;
+}
+//GetFieldSep
+
+
+
+//GetIsDelimited
+WBool @CLASSNAME@::GetIsDelimited()
+{
+	return IsDelimited;
+}
+//GetIsDelimited
+
+
+
+//GetLabelSep
+WString @CLASSNAME@::GetLabelSep()
+{
+	return LabelSep;
+}
+//GetLabelSep
+
+
+
+//GetRecordSep
+WString @CLASSNAME@::GetRecordSep()
+{
+	return RecordSep;
+}
+//GetRecordSep
+
+
+
+//GetSubfieldSep
+WString @CLASSNAME@::GetSubfieldSep()
+{
+	return SubfieldSep;
+}
+//GetSubfieldSep
+
+
+
+//MakeHeaderRow
+WString @CLASSNAME@::MakeHeaderRow(WString filename, WString quotechar)
+{
+	// drop . and extension
+	filename = filename.Substring(0, filename.Position("."));
+	
+	WString s, t;
+
+	WString clientcode = WAppObject.GetProfileString("Client", "ClientCode", "", "MARCView.INI");
+	
+	if (!Root)
+	{
+		WMessageBox::Info (NULL, "Problem", "No root node");
+		return "";
+	}
+	
+	yTrans* trans = Root;
+	while (trans->next)		// checking next avoids writing last NULL node
+	{
+		// PPP has both 100s and 700s map to same table, so avoid dup hdrs
+		if ((clientcode != "PPP") || (trans->tag != "700"))
+		{
+			t = trans->target.Substring(0, trans->target.Position("."));
+			if (t == filename)
+			{
+				if (!s.GetEmpty())
+					s.Concat(GetFieldSep());
+				s.Concat	(quotechar
+						+ trans->target.Substring(trans->target.Position(".") + 1)
+						+ quotechar);
+			}
+		}
+		
+		trans = (yTrans*) trans->next;
+	}
+	
+	s.Concat(GetRecordSep());
+	
+	return s;
+}
+//MakeHeaderRow
+
+
+
+//WriteNodes
+void @CLASSNAME@::WriteNodes()
+{
+	FILE* debugfile;
+	if ((debugfile = fopen("debug.txt", "a")) == NULL)
+		WMessageBox::Info (NULL, NULL, "Problem opening debug.txt");
+	
+	fputs("tag\tsubs\ttarget\ttype\tdetail\toutput\tconstant\tsfsep\trepeatsep\tdata\n", debugfile);
+	yTrans* trans = Root;
+	while (trans->next)		// checking next avoids writing last NULL node
+	{
+		fprintf(debugfile, "%s\t%s\t%s\t%s\t%d\t%d\t%s\t%s\t%s\t%s\n",
+				trans->tag.GetText(),
+				trans->subs.GetText(),
+				trans->target.GetText(),
+				trans->target_datatype.GetText(),
+				trans->detail,
+				trans->outputfile,
+				trans->constant.GetText(),
+				trans->subfieldsep.GetText(),
+				trans->repeatsep.GetText(),
+				trans->data.GetText());
+		trans = (yTrans*) trans->next;
+	}
+
+	fclose(debugfile);
+}
+//WriteNodes
+
+@end-code;
+
+@begin-code Code "yExportTT::Prototype for ~yExportTT()"
+
+    public:
+        ~@CLASSNAME@();
+
+@end-code;
+@end;

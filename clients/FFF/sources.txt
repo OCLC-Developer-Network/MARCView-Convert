@@ -1,0 +1,7 @@
+MARC21 to UNIMARC sources conversion
+agrovoc	agrovoc
+bicssc	bic
+gsafd	gsafd
+lcsh	lc
+ram	rameau
+/

@@ -1,0 +1,1110 @@
+Save Format v1.3
+@begin Target
+
+ @begin TargetInfo
+  TargetInfoVersion 38;
+  TargetPchState 2;
+  @begin TargetTwinFilesBlock
+   @begin TargetTwinFilesList
+   @end;
+   @begin TargetTwinFilesList
+   @end;
+  @end;
+  @begin IDE_Target
+   IDE_Target_Name "sp_marc.dll";
+   IDE_Target_UserData "";
+   @begin IDE_FileList
+    @begin IDE_File
+     IDE_File_FileName "Release\\wpch.cpp";
+     IDE_File_FileType 9;
+     IDE_File_Index 1;
+    @end;
+    @begin IDE_File
+     IDE_File_FileName "Release\\DLLR01.obj";
+     IDE_File_FileType 3;
+     IDE_File_Index 2;
+    @end;
+    @begin IDE_File
+     IDE_File_FileName "Release\\sp_marc.dll";
+     IDE_File_FileType 5;
+     IDE_File_Index 3;
+    @end;
+    @begin IDE_File
+     IDE_File_FileName "Release\\WRes.rc";
+     IDE_File_FileType 6;
+     IDE_File_Index 4;
+    @end;
+    @begin IDE_File
+     IDE_File_FileName "Release\\WRes.res";
+     IDE_File_FileType 7;
+     IDE_File_Index 5;
+    @end;
+    @begin IDE_File
+     IDE_File_FileName "Release\\main.cpp";
+     IDE_File_FileType 2;
+     IDE_File_Index 6;
+    @end;
+    @begin IDE_File
+     IDE_File_FileName "Release\\main.obj";
+     IDE_File_FileType 3;
+     IDE_File_Index 7;
+    @end;
+    @begin IDE_File
+     IDE_File_FileName "Release\\applic.cpp";
+     IDE_File_FileType 2;
+     IDE_File_Index 8;
+    @end;
+    @begin IDE_File
+     IDE_File_FileName "Release\\applic.obj";
+     IDE_File_FileType 3;
+     IDE_File_Index 9;
+    @end;
+    @begin IDE_File
+     IDE_File_FileName "Symbols.cpp";
+     IDE_File_FileType 2;
+     IDE_File_Index 10;
+    @end;
+    @begin IDE_File
+     IDE_File_FileName "Release\\Symbols.obj";
+     IDE_File_FileType 3;
+     IDE_File_Index 11;
+    @end;
+    @begin IDE_File
+     IDE_File_FileName "Sp_marc.cpp";
+     IDE_File_FileType 2;
+     IDE_File_Index 12;
+    @end;
+    @begin IDE_File
+     IDE_File_FileName "Release\\Sp_marc.obj";
+     IDE_File_FileType 3;
+     IDE_File_Index 13;
+    @end;
+    @begin IDE_File
+     IDE_File_FileName "sp_val.cpp";
+     IDE_File_FileType 2;
+     IDE_File_Index 14;
+    @end;
+    @begin IDE_File
+     IDE_File_FileName "Release\\sp_val.obj";
+     IDE_File_FileType 3;
+     IDE_File_Index 15;
+    @end;
+   @end;
+   @begin IDE_DependTree
+    @begin IDE_Depend
+     IDE_Depend_Index 1;
+     IDE_Depend_File 1;
+     IDE_Depend_Priority -1;
+     IDE_Depend_Always_UpToDate 0;
+     IDE_Depend_Userdata "pch";
+     IDE_Depend_Uplink 2;
+    @end;
+    @begin IDE_Depend
+     IDE_Depend_Rule 3;
+     IDE_Depend_Index 2;
+     IDE_Depend_File 2;
+     IDE_Depend_Priority 1;
+     IDE_Depend_Always_UpToDate 0;
+     IDE_Depend_Userdata "";
+     IDE_Depend_Uplink 3;
+     @begin IDE_Downlinks
+      IDE_Downlink_Item 1;
+     @end;
+    @end;
+    @begin IDE_Depend
+     IDE_Depend_Rule 4;
+     IDE_Depend_Index 3;
+     IDE_Depend_File 3;
+     IDE_Depend_Priority 1;
+     IDE_Depend_Always_UpToDate 0;
+     IDE_Depend_Userdata "";
+     @begin IDE_Downlinks
+      IDE_Downlink_Item 2;
+      IDE_Downlink_Item 15;
+      IDE_Downlink_Item 13;
+      IDE_Downlink_Item 11;
+      IDE_Downlink_Item 9;
+      IDE_Downlink_Item 7;
+      IDE_Downlink_Item 5;
+     @end;
+     @begin IDE_Commands
+      @begin IDE_Command
+       IDE_Command_Tool "WLINK";
+       IDE_Command_Options "Debug All OPtion INCremental='$^*.ilk' OPtion NOCaseexact LIBPath '$(optima_dir)\\lib;$(optima_dir)\\components;$(optima_dir)\\w32sdk\\lib386\\nt' $(__WCMsyslib__) wcmepa$(__WcmDevVer__).lib,user32.lib,kernel32.lib,gdi32.lib,comctl32.lib,comdlg32.lib,"+
+"ole32.lib,oleaut32.lib,uuid.lib,vfw32.lib,oledlg.lib,user32.lib,kernel32.lib,gdi32.lib,comctl32.lib,comdlg32.lib,ole32.lib,oleaut32.lib,uuid.lib,vfw32.lib,oledlg.lib,user32.lib,kernel32.lib,gdi32.lib,comctl32.lib,comdlg32.lib,ole32.lib,oleaut32.lib,uuid.lib,vfw32.lib,oledlg.lib $(__WCMEntSysLib__) wceepa$(__WcmEntVer__).lib $(__WCMProSysLib__) wcpepa$(__WcmProVer__).lib option symfile option osname='Windows NT' format windows nt dll run win=4.0";
+       IDE_Command_Def_Opt "debug all option symfile option incremental='$^*.ilk' option osname='Windows NT' libpath '$(optima_dir)\\lib;$(optima_dir)\\components;$(optima_dir)\\w32sdk\\lib386\\nt' format windows nt dll run win=4.0 $(__WCMsyslib__) wcmdpa$(__WcmDevVer__).lib $(_"+
+"_WCMProSysLib__) wcpdpa$(__WcmProVer__).lib $(__WCMEntSysLib__) wcedpa$(__WcmEntVer__).lib";
+      @end;
+     @end;
+    @end;
+    @begin IDE_Depend
+     IDE_Depend_Index 4;
+     IDE_Depend_File 4;
+     IDE_Depend_Priority 65535;
+     IDE_Depend_Always_UpToDate 0;
+     IDE_Depend_Userdata "resource";
+     IDE_Depend_Uplink 5;
+    @end;
+    @begin IDE_Depend
+     IDE_Depend_Rule 5;
+     IDE_Depend_Index 5;
+     IDE_Depend_File 5;
+     IDE_Depend_Priority 65535;
+     IDE_Depend_Always_UpToDate 0;
+     IDE_Depend_Userdata "";
+     IDE_Depend_Uplink 3;
+     @begin IDE_Downlinks
+      IDE_Downlink_Item 4;
+     @end;
+    @end;
+    @begin IDE_Depend
+     IDE_Depend_Index 6;
+     IDE_Depend_File 6;
+     IDE_Depend_Priority 65535;
+     IDE_Depend_Always_UpToDate 0;
+     IDE_Depend_Userdata "";
+     IDE_Depend_Uplink 7;
+    @end;
+    @begin IDE_Depend
+     IDE_Depend_Rule 2;
+     IDE_Depend_Index 7;
+     IDE_Depend_File 7;
+     IDE_Depend_Priority 65535;
+     IDE_Depend_Always_UpToDate 0;
+     IDE_Depend_Userdata "";
+     IDE_Depend_Uplink 3;
+     @begin IDE_Downlinks
+      IDE_Downlink_Item 6;
+     @end;
+    @end;
+    @begin IDE_Depend
+     IDE_Depend_Index 8;
+     IDE_Depend_File 8;
+     IDE_Depend_Priority 65535;
+     IDE_Depend_Always_UpToDate 0;
+     IDE_Depend_Userdata "class";
+     IDE_Depend_Uplink 9;
+    @end;
+    @begin IDE_Depend
+     IDE_Depend_Rule 2;
+     IDE_Depend_Index 9;
+     IDE_Depend_File 9;
+     IDE_Depend_Priority 65535;
+     IDE_Depend_Always_UpToDate 0;
+     IDE_Depend_Userdata "";
+     IDE_Depend_Uplink 3;
+     @begin IDE_Downlinks
+      IDE_Downlink_Item 8;
+     @end;
+    @end;
+    @begin IDE_Depend
+     IDE_Depend_Index 10;
+     IDE_Depend_File 10;
+     IDE_Depend_Priority 65535;
+     IDE_Depend_Always_UpToDate 0;
+     IDE_Depend_Userdata "generic";
+     IDE_Depend_Uplink 11;
+    @end;
+    @begin IDE_Depend
+     IDE_Depend_Rule 2;
+     IDE_Depend_Index 11;
+     IDE_Depend_File 11;
+     IDE_Depend_Priority 65535;
+     IDE_Depend_Always_UpToDate 0;
+     IDE_Depend_Userdata "";
+     IDE_Depend_Uplink 3;
+     @begin IDE_Downlinks
+      IDE_Downlink_Item 10;
+     @end;
+    @end;
+    @begin IDE_Depend
+     IDE_Depend_Index 12;
+     IDE_Depend_File 12;
+     IDE_Depend_Priority 65535;
+     IDE_Depend_Always_UpToDate 0;
+     IDE_Depend_Userdata "generic";
+     IDE_Depend_Uplink 13;
+    @end;
+    @begin IDE_Depend
+     IDE_Depend_Rule 2;
+     IDE_Depend_Index 13;
+     IDE_Depend_File 13;
+     IDE_Depend_Priority 65535;
+     IDE_Depend_Always_UpToDate 0;
+     IDE_Depend_Userdata "";
+     IDE_Depend_Uplink 3;
+     @begin IDE_Downlinks
+      IDE_Downlink_Item 12;
+     @end;
+    @end;
+    @begin IDE_Depend
+     IDE_Depend_Index 14;
+     IDE_Depend_File 14;
+     IDE_Depend_Priority 65535;
+     IDE_Depend_Always_UpToDate 0;
+     IDE_Depend_Userdata "generic";
+     IDE_Depend_Uplink 15;
+    @end;
+    @begin IDE_Depend
+     IDE_Depend_Rule 2;
+     IDE_Depend_Index 15;
+     IDE_Depend_File 15;
+     IDE_Depend_Priority 65535;
+     IDE_Depend_Always_UpToDate 0;
+     IDE_Depend_Userdata "";
+     IDE_Depend_Uplink 3;
+     @begin IDE_Downlinks
+      IDE_Downlink_Item 14;
+     @end;
+    @end;
+   @end;
+   IDE_Target_RootNode 3;
+   @begin IDE_Target_Tmplt
+    @begin IDE_Template
+     @begin IDE_Base
+      @begin IDE_CfgBase
+       IDE_CfgBase_Name "Release";
+       IDE_CfgBase_Description "Win32 - DLL - Release";
+      @end;
+     @end;
+     @begin IDE_Rules
+      @begin IDE_BldRle
+       @begin IDE_BldRle_Base
+        @begin IDE_CfgBase
+         IDE_CfgBase_Name "CToObj";
+        @end;
+       @end;
+       IDE_BldRle_Target "Obj";
+       IDE_BldRle_Editor "NT.WCC.DLL";
+       IDE_BldRle_Index 1;
+       IDE_BldRle_Priority -1;
+       @begin IDE_BldRle_Platform
+        @begin IDE_Platform
+         IDE_Platform_Mask -1;
+        @end;
+       @end;
+       @begin IDE_BldRle_Cmds
+        @begin IDE_Command
+         IDE_Command_Tool "WCC386";
+         IDE_Command_Options "\"$[@\" /fr -fo=\"$^@\" /ef /dNDEBUG /d_WIN32 /d_DBCS /d1 /bd /bm /fpi /fp5 /mf /w4 /e25 /5r /bt=nt /zq /zp4 /ei /OXTREL+ -i=\"$^:;$^:..;$^:..\\release;$(optima_dir)\\hpp;$(optima_dir)\\h;$(optima_dir)\\h\\sys;$(optima_dir)\\w32sdk\\h;$(optima_dir)\\w"+
+"32sdk\\h\\nt\"";
+         IDE_Command_Def_Opt "\"$[@\" /fr -fo=\"$^@\" /ef /dNDEBUG /d_WIN32 /d_DBCS /d1 /bd /bm /fpi /fp5 /mf /w4 /e25 /5r /bt=nt /zq /zp4 /ei /OXTREL+ -i=\"$^:;$^:..;$^:..\\release;$(optima_dir)\\hpp;$(optima_dir)\\h;$(optima_dir)\\h\\sys;$(optima_dir)\\w32sdk\\h;$(optima_dir)\\w"+
+"32sdk\\h\\nt\"";
+        @end;
+       @end;
+       @begin IDE_BldRle_Srcs
+        IDE_BldRle_Src_Item "C";
+       @end;
+       IDE_BldRle_Many_To_One 0;
+       IDE_BldRle_Autodep 1;
+      @end;
+      @begin IDE_BldRle
+       @begin IDE_BldRle_Base
+        @begin IDE_CfgBase
+         IDE_CfgBase_Name "CPPToObj";
+        @end;
+       @end;
+       IDE_BldRle_Target "Obj";
+       IDE_BldRle_Editor "NT.WPP.DLL";
+       IDE_BldRle_Index 2;
+       IDE_BldRle_Priority -1;
+       @begin IDE_BldRle_Platform
+        @begin IDE_Platform
+         IDE_Platform_Mask -1;
+        @end;
+       @end;
+       @begin IDE_BldRle_Cmds
+        @begin IDE_Command
+         IDE_Command_Tool "WPP386";
+         IDE_Command_Options "\"$[@\" /dNDEBUG /fo=\"$^@\" /ef  /er /d1 /fr /bd /bm /fpi /fp5 /mf /w4 /e25 /5r /bt=nt /zp4 /ei /wcd=726 /fhd /fh=\"$+@\"  /rod=$(read_only_dirs) /d_WIN32 /d_DBCS -i=\"$^:;$^:..;$^:..\\release;$(optima_dir)\\hpp;$(optima_dir)\\h;$(optima_dir)\\h\\sys"+
+";$(optima_dir)\\components;$(optima_dir)\\w32sdk\\h;$(optima_dir)\\w32sdk\\h\\nt\" -OXTREL+ /fhr";
+         IDE_Command_Def_Opt "\"$[@\" /dNDEBUG /fo=\"$^@\" /ef /fhr! /er /d1 /fr /bd /bm /fpi /fp5 /mf /w4 /e25 /5r /bt=nt /zp4 /ei /wcd=726 /fhd /fh=\"$+@\"  /rod=$(read_only_dirs) /d_WIN32 /d_DBCS -i=\"$^:;$^:..;$^:..\\release;$(optima_dir)\\hpp;$(optima_dir)\\h;$(optima_dir)\\h"+
+"\\sys;$(optima_dir)\\components;$(optima_dir)\\w32sdk\\h;$(optima_dir)\\w32sdk\\h\\nt\" -OXTREL+";
+        @end;
+       @end;
+       @begin IDE_BldRle_Srcs
+        IDE_BldRle_Src_Item "CPP";
+       @end;
+       IDE_BldRle_Many_To_One 0;
+       IDE_BldRle_Autodep 1;
+      @end;
+      @begin IDE_BldRle
+       @begin IDE_BldRle_Base
+        @begin IDE_CfgBase
+         IDE_CfgBase_Name "WClassToObj";
+        @end;
+       @end;
+       IDE_BldRle_Target "Obj";
+       IDE_BldRle_Editor "NT.WPCH.DLL";
+       IDE_BldRle_Index 3;
+       IDE_BldRle_Priority 1;
+       @begin IDE_BldRle_Platform
+        @begin IDE_Platform
+         IDE_Platform_Mask -1;
+        @end;
+       @end;
+       @begin IDE_BldRle_Cmds
+        @begin IDE_Command
+         IDE_Command_Tool "WPP386";
+         IDE_Command_Options "\"$[@\" /dNDEBUG /fo=\"$^@\" /ef /d1 /fr /bd /bm /fpi /fp5 /mf /w4 /e25 /5r /bt=nt /zp4 /ei /wcd=726 /fhd /fh=\"$+@\" /fhw /rod=$(read_only_dirs) /d_WIN32 /d_DBCS -i=\"$^:;$^:..;$^:..\\release;$(optima_dir)\\hpp;$(optima_dir)\\h;$(optima_dir)\\h\\sys;"+
+"$(optima_dir)\\components;$(optima_dir)\\w32sdk\\h;$(optima_dir)\\w32sdk\\h\\nt\" -OXTREL+";
+         IDE_Command_Def_Opt "\"$[@\" /dNDEBUG /fo=\"$^@\" /ef /d1 /fr /bd /bm /fpi /fp5 /mf /w4 /e25 /5r /bt=nt /zp4 /ei /wcd=726 /fhd /fh=\"$+@\" /fhw /rod=$(read_only_dirs) /d_WIN32 /d_DBCS -i=\"$^:;$^:..;$^:..\\release;$(optima_dir)\\hpp;$(optima_dir)\\h;$(optima_dir)\\h\\sys;"+
+"$(optima_dir)\\components;$(optima_dir)\\w32sdk\\h;$(optima_dir)\\w32sdk\\h\\nt\" -OXTREL+";
+        @end;
+       @end;
+       @begin IDE_BldRle_Srcs
+        IDE_BldRle_Src_Item "WClass";
+       @end;
+       IDE_BldRle_Many_To_One 0;
+       IDE_BldRle_Autodep 1;
+      @end;
+      @begin IDE_BldRle
+       @begin IDE_BldRle_Base
+        @begin IDE_CfgBase
+         IDE_CfgBase_Name "LinkIt";
+        @end;
+       @end;
+       IDE_BldRle_Target "DLL";
+       IDE_BldRle_Editor "NT.WLINK.DLL";
+       IDE_BldRle_Index 4;
+       IDE_BldRle_Priority -1;
+       @begin IDE_BldRle_Platform
+        @begin IDE_Platform
+         IDE_Platform_Mask -1;
+        @end;
+       @end;
+       @begin IDE_BldRle_Cmds
+        @begin IDE_Command
+         IDE_Command_Tool "WLINK";
+         IDE_Command_Options "Debug All OPtion INCremental='$^*.ilk' OPtion NOCaseexact LIBPath '$(optima_dir)\\lib;$(optima_dir)\\components;$(optima_dir)\\w32sdk\\lib386\\nt' $(__WCMsyslib__) wcmepa$(__WcmDevVer__).lib,user32.lib,kernel32.lib,gdi32.lib,comctl32.lib,comdlg32.lib,"+
+"ole32.lib,oleaut32.lib,uuid.lib,vfw32.lib,oledlg.lib $(__WCMEntSysLib__) wceepa$(__WcmEntVer__).lib $(__WCMProSysLib__) wcpepa$(__WcmProVer__).lib option symfile option osname='Windows NT' format windows nt dll run win=4.0";
+         IDE_Command_Def_Opt "debug all option symfile option incremental='$^*.ilk' option osname='Windows NT' libpath '$(optima_dir)\\lib;$(optima_dir)\\components;$(optima_dir)\\w32sdk\\lib386\\nt' format windows nt dll run win=4.0 $(__WCMsyslib__) wcmdpa$(__WcmDevVer__).lib $(_"+
+"_WCMProSysLib__) wcpdpa$(__WcmProVer__).lib $(__WCMEntSysLib__) wcedpa$(__WcmEntVer__).lib";
+        @end;
+       @end;
+       @begin IDE_BldRle_InitCmds
+        @begin IDE_Command
+         IDE_Command_Tool "WLINK";
+         IDE_Command_Options "debug all option symfile option incremental='$^*.ilk' option osname='Windows NT' libpath '$(optima_dir)\\lib;$(optima_dir)\\components;$(optima_dir)\\w32sdk\\lib386\\nt' format windows nt dll run win=4.0 $(__WCMsyslib__) wcmdpa$(__WcmDevVer__).lib $(_"+
+"_WCMProSysLib__) wcpdpa$(__WcmProVer__).lib $(__WCMEntSysLib__) wcedpa$(__WcmEntVer__).lib";
+         IDE_Command_Def_Opt "debug all option symfile option incremental='$^*.ilk' option osname='Windows NT' libpath '$(optima_dir)\\lib;$(optima_dir)\\components;$(optima_dir)\\w32sdk\\lib386\\nt' format windows nt dll run win=4.0 $(__WCMsyslib__) wcmdpa$(__WcmDevVer__).lib $(_"+
+"_WCMProSysLib__) wcpdpa$(__WcmProVer__).lib $(__WCMEntSysLib__) wcedpa$(__WcmEntVer__).lib";
+        @end;
+       @end;
+       @begin IDE_BldRle_Srcs
+        IDE_BldRle_Src_Item "Res";
+        IDE_BldRle_Src_Item "Lib";
+        IDE_BldRle_Src_Item "Obj";
+        IDE_BldRle_Src_Item "Exe";
+       @end;
+       IDE_BldRle_Many_To_One 1;
+       IDE_BldRle_Autodep 0;
+      @end;
+      @begin IDE_BldRle
+       @begin IDE_BldRle_Base
+        @begin IDE_CfgBase
+         IDE_CfgBase_Name "Resource";
+        @end;
+       @end;
+       IDE_BldRle_Target "Res";
+       IDE_BldRle_Editor "NT.WRC";
+       IDE_BldRle_Index 5;
+       IDE_BldRle_Priority -1;
+       @begin IDE_BldRle_Platform
+        @begin IDE_Platform
+         IDE_Platform_Mask -1;
+        @end;
+       @end;
+       @begin IDE_BldRle_Cmds
+        @begin IDE_Command
+         IDE_Command_Tool "WRC";
+         IDE_Command_Options "\"$[@\" /fo=\"$^@\" -bt=nt -ad -r /dNDEBUG -d__WATCOMC__ -i=\"$^:;$^:..;$^:..\\release;$(optima_dir)\\rc;$(optima_dir)\\h;$(optima_dir)\\hpp;$(optima_dir)\\w32sdk\\h;$(optima_dir)\\w32sdk\\h\\nt\" -q";
+         IDE_Command_Def_Opt "\"$[@\" /fo=\"$^@\" -bt=nt -ad -r /dNDEBUG -d__WATCOMC__ -i=\"$^:;$^:..;$^:..\\release;$(optima_dir)\\rc;$(optima_dir)\\h;$(optima_dir)\\hpp;$(optima_dir)\\w32sdk\\h;$(optima_dir)\\w32sdk\\h\\nt\" -q";
+        @end;
+       @end;
+       @begin IDE_BldRle_Srcs
+        IDE_BldRle_Src_Item "RC";
+       @end;
+       IDE_BldRle_Many_To_One 0;
+       IDE_BldRle_Autodep 1;
+      @end;
+      @begin IDE_BldRle
+       @begin IDE_BldRle_Base
+        @begin IDE_CfgBase
+         IDE_CfgBase_Name "DllToLib";
+        @end;
+       @end;
+       IDE_BldRle_Target "Lib";
+       IDE_BldRle_Editor "NT.IMPLIB";
+       IDE_BldRle_Index 6;
+       IDE_BldRle_Priority -1;
+       @begin IDE_BldRle_Platform
+        @begin IDE_Platform
+         IDE_Platform_Mask -1;
+        @end;
+       @end;
+       @begin IDE_BldRle_Cmds
+        @begin IDE_Command
+         IDE_Command_Tool "WLIB";
+         IDE_Command_Options "-b -n \"$^@\" +\"$[@\" ";
+         IDE_Command_Def_Opt "-b -n \"$^@\" +\"$[@\" ";
+        @end;
+       @end;
+       @begin IDE_BldRle_Srcs
+        IDE_BldRle_Src_Item "DLL";
+       @end;
+       IDE_BldRle_Many_To_One 0;
+       IDE_BldRle_Autodep 0;
+      @end;
+     @end;
+     @begin IDE_FileTypes
+      @begin IDE_FileTyp
+       IDE_FileTyp_Name "C";
+       @begin IDE_FileTyp_Exts
+        IDE_FileTyp_Ext_Item ".c";
+       @end;
+       IDE_FileTyp_Index 1;
+       IDE_FileTyp_Def_Dir "Release\\";
+      @end;
+      @begin IDE_FileTyp
+       IDE_FileTyp_Name "CPP";
+       @begin IDE_FileTyp_Exts
+        IDE_FileTyp_Ext_Item ".cpp";
+       @end;
+       IDE_FileTyp_Index 2;
+       IDE_FileTyp_Def_Dir "Release\\";
+      @end;
+      @begin IDE_FileTyp
+       IDE_FileTyp_Name "Obj";
+       @begin IDE_FileTyp_Exts
+        IDE_FileTyp_Ext_Item ".obj";
+       @end;
+       IDE_FileTyp_Index 3;
+       IDE_FileTyp_Def_Dir "Release\\";
+      @end;
+      @begin IDE_FileTyp
+       IDE_FileTyp_Name "Lib";
+       @begin IDE_FileTyp_Exts
+        IDE_FileTyp_Ext_Item ".lib";
+       @end;
+       IDE_FileTyp_Index 4;
+       IDE_FileTyp_Def_Dir "Release\\";
+      @end;
+      @begin IDE_FileTyp
+       IDE_FileTyp_Name "DLL";
+       @begin IDE_FileTyp_Exts
+        IDE_FileTyp_Ext_Item ".dll";
+       @end;
+       IDE_FileTyp_Index 5;
+       IDE_FileTyp_Def_Dir "Release\\";
+      @end;
+      @begin IDE_FileTyp
+       IDE_FileTyp_Name "RC";
+       @begin IDE_FileTyp_Exts
+        IDE_FileTyp_Ext_Item ".rc";
+       @end;
+       IDE_FileTyp_Index 6;
+       IDE_FileTyp_Def_Dir "Release\\";
+      @end;
+      @begin IDE_FileTyp
+       IDE_FileTyp_Name "Res";
+       @begin IDE_FileTyp_Exts
+        IDE_FileTyp_Ext_Item ".res";
+       @end;
+       IDE_FileTyp_Index 7;
+       IDE_FileTyp_Def_Dir "Release\\";
+      @end;
+      @begin IDE_FileTyp
+       IDE_FileTyp_Name "Exe";
+       @begin IDE_FileTyp_Exts
+        IDE_FileTyp_Ext_Item ".exe";
+       @end;
+       IDE_FileTyp_Index 8;
+       IDE_FileTyp_Def_Dir "Release\\";
+      @end;
+      @begin IDE_FileTyp
+       IDE_FileTyp_Name "WClass";
+       @begin IDE_FileTyp_Exts
+        IDE_FileTyp_Ext_Item "wpch.cpp";
+       @end;
+       IDE_FileTyp_Index 9;
+       IDE_FileTyp_Def_Dir "Release\\";
+      @end;
+     @end;
+     IDE_IsRunable 0;
+     IDE_IsCharMode 0;
+     IDE_IsDll 1;
+     IDE_IsLib 0;
+     IDE_IsJava 0;
+     IDE_IsJavaApplet 0;
+     IDE_Defext ".dll";
+     IDE_DefName "dll";
+     IDE_Pch_name "DLLR01";
+    @end;
+   @end;
+  @end;
+  @begin IDE_Target
+   IDE_Target_Name "sp_marc.dll";
+   IDE_Target_UserData "";
+   @begin IDE_FileList
+    @begin IDE_File
+     IDE_File_FileName "Release\\wpch.cpp";
+     IDE_File_FileType 9;
+     IDE_File_Index 1;
+    @end;
+    @begin IDE_File
+     IDE_File_FileName "Debug\\DLLD01.obj";
+     IDE_File_FileType 3;
+     IDE_File_Index 2;
+    @end;
+    @begin IDE_File
+     IDE_File_FileName "Debug\\sp_marc.dll";
+     IDE_File_FileType 5;
+     IDE_File_Index 3;
+    @end;
+    @begin IDE_File
+     IDE_File_FileName "Release\\WRes.rc";
+     IDE_File_FileType 6;
+     IDE_File_Index 4;
+    @end;
+    @begin IDE_File
+     IDE_File_FileName "Debug\\WRes.res";
+     IDE_File_FileType 7;
+     IDE_File_Index 5;
+    @end;
+    @begin IDE_File
+     IDE_File_FileName "Release\\main.cpp";
+     IDE_File_FileType 2;
+     IDE_File_Index 6;
+    @end;
+    @begin IDE_File
+     IDE_File_FileName "Debug\\main.obj";
+     IDE_File_FileType 3;
+     IDE_File_Index 7;
+    @end;
+    @begin IDE_File
+     IDE_File_FileName "Release\\applic.cpp";
+     IDE_File_FileType 2;
+     IDE_File_Index 8;
+    @end;
+    @begin IDE_File
+     IDE_File_FileName "Debug\\applic.obj";
+     IDE_File_FileType 3;
+     IDE_File_Index 9;
+    @end;
+    @begin IDE_File
+     IDE_File_FileName "Symbols.cpp";
+     IDE_File_FileType 2;
+     IDE_File_Index 10;
+    @end;
+    @begin IDE_File
+     IDE_File_FileName "Debug\\Symbols.obj";
+     IDE_File_FileType 3;
+     IDE_File_Index 11;
+    @end;
+    @begin IDE_File
+     IDE_File_FileName "Sp_marc.cpp";
+     IDE_File_FileType 2;
+     IDE_File_Index 12;
+    @end;
+    @begin IDE_File
+     IDE_File_FileName "Debug\\Sp_marc.obj";
+     IDE_File_FileType 3;
+     IDE_File_Index 13;
+    @end;
+    @begin IDE_File
+     IDE_File_FileName "sp_val.cpp";
+     IDE_File_FileType 2;
+     IDE_File_Index 14;
+    @end;
+    @begin IDE_File
+     IDE_File_FileName "Debug\\sp_val.obj";
+     IDE_File_FileType 3;
+     IDE_File_Index 15;
+    @end;
+   @end;
+   @begin IDE_DependTree
+    @begin IDE_Depend
+     IDE_Depend_Index 1;
+     IDE_Depend_File 1;
+     IDE_Depend_Priority -1;
+     IDE_Depend_Always_UpToDate 0;
+     IDE_Depend_Userdata "pch";
+     IDE_Depend_Uplink 2;
+    @end;
+    @begin IDE_Depend
+     IDE_Depend_Rule 3;
+     IDE_Depend_Index 2;
+     IDE_Depend_File 2;
+     IDE_Depend_Priority 1;
+     IDE_Depend_Always_UpToDate 0;
+     IDE_Depend_Userdata "";
+     IDE_Depend_Uplink 3;
+     @begin IDE_Downlinks
+      IDE_Downlink_Item 1;
+     @end;
+    @end;
+    @begin IDE_Depend
+     IDE_Depend_Rule 4;
+     IDE_Depend_Index 3;
+     IDE_Depend_File 3;
+     IDE_Depend_Priority 1;
+     IDE_Depend_Always_UpToDate 0;
+     IDE_Depend_Userdata "";
+     @begin IDE_Downlinks
+      IDE_Downlink_Item 2;
+      IDE_Downlink_Item 15;
+      IDE_Downlink_Item 13;
+      IDE_Downlink_Item 11;
+      IDE_Downlink_Item 9;
+      IDE_Downlink_Item 7;
+      IDE_Downlink_Item 5;
+     @end;
+     @begin IDE_Commands
+      @begin IDE_Command
+       IDE_Command_Tool "WLINK";
+       IDE_Command_Options "Debug Dwarf OPtion INCremental='$^*.ilk' OPtion NOCaseexact LIBPath '$(optima_dir)\\lib;$(optima_dir)\\components;$(optima_dir)\\w32sdk\\lib386\\nt' $(__WCMsyslib__) wcmeda$(__WcmDevVer__).lib,user32.lib,kernel32.lib,gdi32.lib,comctl32.lib,comdlg32.li"+
+"b,ole32.lib,oleaut32.lib,uuid.lib,vfw32.lib,oledlg.lib $(__WCMEntSysLib__) wceeda$(__WcmEntVer__).lib $(__WCMProSysLib__) wcpeda$(__WcmProVer__).lib option osname='Windows NT' format windows nt dll run win=4.0";
+       IDE_Command_Def_Opt "debug dwarf option incremental='$^*.ilk' option osname='Windows NT' libpath '$(optima_dir)\\lib;$(optima_dir)\\components;$(optima_dir)\\w32sdk\\lib386\\nt' format windows nt dll run win=4.0 $(__WCMsyslib__) wcmdda$(__WcmDevVer__).lib $(__WCMProSysLib"+
+"__) wcpdda$(__WcmProVer__).lib $(__WCMEntSysLib__) wcedda$(__WcmEntVer__).lib";
+      @end;
+     @end;
+    @end;
+    @begin IDE_Depend
+     IDE_Depend_Index 4;
+     IDE_Depend_File 4;
+     IDE_Depend_Priority 65535;
+     IDE_Depend_Always_UpToDate 0;
+     IDE_Depend_Userdata "resource";
+     IDE_Depend_Uplink 5;
+    @end;
+    @begin IDE_Depend
+     IDE_Depend_Rule 5;
+     IDE_Depend_Index 5;
+     IDE_Depend_File 5;
+     IDE_Depend_Priority 65535;
+     IDE_Depend_Always_UpToDate 0;
+     IDE_Depend_Userdata "";
+     IDE_Depend_Uplink 3;
+     @begin IDE_Downlinks
+      IDE_Downlink_Item 4;
+     @end;
+    @end;
+    @begin IDE_Depend
+     IDE_Depend_Index 6;
+     IDE_Depend_File 6;
+     IDE_Depend_Priority 65535;
+     IDE_Depend_Always_UpToDate 0;
+     IDE_Depend_Userdata "generic";
+     IDE_Depend_Uplink 7;
+    @end;
+    @begin IDE_Depend
+     IDE_Depend_Rule 2;
+     IDE_Depend_Index 7;
+     IDE_Depend_File 7;
+     IDE_Depend_Priority 65535;
+     IDE_Depend_Always_UpToDate 0;
+     IDE_Depend_Userdata "";
+     IDE_Depend_Uplink 3;
+     @begin IDE_Downlinks
+      IDE_Downlink_Item 6;
+     @end;
+    @end;
+    @begin IDE_Depend
+     IDE_Depend_Index 8;
+     IDE_Depend_File 8;
+     IDE_Depend_Priority 65535;
+     IDE_Depend_Always_UpToDate 0;
+     IDE_Depend_Userdata "class";
+     IDE_Depend_Uplink 9;
+    @end;
+    @begin IDE_Depend
+     IDE_Depend_Rule 2;
+     IDE_Depend_Index 9;
+     IDE_Depend_File 9;
+     IDE_Depend_Priority 65535;
+     IDE_Depend_Always_UpToDate 0;
+     IDE_Depend_Userdata "";
+     IDE_Depend_Uplink 3;
+     @begin IDE_Downlinks
+      IDE_Downlink_Item 8;
+     @end;
+    @end;
+    @begin IDE_Depend
+     IDE_Depend_Index 10;
+     IDE_Depend_File 10;
+     IDE_Depend_Priority 65535;
+     IDE_Depend_Always_UpToDate 0;
+     IDE_Depend_Userdata "generic";
+     IDE_Depend_Uplink 11;
+    @end;
+    @begin IDE_Depend
+     IDE_Depend_Rule 2;
+     IDE_Depend_Index 11;
+     IDE_Depend_File 11;
+     IDE_Depend_Priority 65535;
+     IDE_Depend_Always_UpToDate 0;
+     IDE_Depend_Userdata "";
+     IDE_Depend_Uplink 3;
+     @begin IDE_Downlinks
+      IDE_Downlink_Item 10;
+     @end;
+    @end;
+    @begin IDE_Depend
+     IDE_Depend_Index 12;
+     IDE_Depend_File 12;
+     IDE_Depend_Priority 65535;
+     IDE_Depend_Always_UpToDate 0;
+     IDE_Depend_Userdata "generic";
+     IDE_Depend_Uplink 13;
+    @end;
+    @begin IDE_Depend
+     IDE_Depend_Rule 2;
+     IDE_Depend_Index 13;
+     IDE_Depend_File 13;
+     IDE_Depend_Priority 65535;
+     IDE_Depend_Always_UpToDate 0;
+     IDE_Depend_Userdata "";
+     IDE_Depend_Uplink 3;
+     @begin IDE_Downlinks
+      IDE_Downlink_Item 12;
+     @end;
+     @begin IDE_Commands
+      @begin IDE_Command
+       IDE_Command_Tool "WPP386";
+       IDE_Command_Options "-i=\"$^:;$^:..;$^:..\\release;$(optima_dir)\\hpp;$(optima_dir)\\h;$(optima_dir)\\h\\sys;$(optima_dir)\\components;$(optima_dir)\\w32sdk\\h;$(optima_dir)\\w32sdk\\h\\nt\" -d_DBCS -d_DEBUG -d_WIN32 -S -D2 -W4 \"$[@\" /fo=\"$^@\" /ef /er /fr /bd /bm /fpi"+
+" /fp5 /mf /e25 /5r /bt=nt /zp4 /ei /wcd=726 /fhd /fh=\"$+@\" /rod=$(read_only_dirs) /fhr";
+       IDE_Command_Def_Opt "\"$[@\" /fo=\"$^@\" /ef /s /fhr! /er /fr /bd /bm /fpi /fp5 /mf /w4 /e25 /5r /bt=nt /zp4 /ei /wcd=726 /fhd /fh=\"$+@\"  /d2 /rod=$(read_only_dirs) /d_WIN32 /d_DBCS /d_DEBUG -i=\"$^:;$^:..;$^:..\\release;$(optima_dir)\\hpp;$(optima_dir)\\h;$(optima_dir)"+
+"\\h\\sys;$(optima_dir)\\components;$(optima_dir)\\w32sdk\\h;$(optima_dir)\\w32sdk\\h\\nt\"";
+      @end;
+     @end;
+    @end;
+    @begin IDE_Depend
+     IDE_Depend_Index 14;
+     IDE_Depend_File 14;
+     IDE_Depend_Priority 65535;
+     IDE_Depend_Always_UpToDate 0;
+     IDE_Depend_Userdata "generic";
+     IDE_Depend_Uplink 15;
+    @end;
+    @begin IDE_Depend
+     IDE_Depend_Rule 2;
+     IDE_Depend_Index 15;
+     IDE_Depend_File 15;
+     IDE_Depend_Priority 65535;
+     IDE_Depend_Always_UpToDate 0;
+     IDE_Depend_Userdata "";
+     IDE_Depend_Uplink 3;
+     @begin IDE_Downlinks
+      IDE_Downlink_Item 14;
+     @end;
+    @end;
+   @end;
+   IDE_Target_RootNode 3;
+   @begin IDE_Target_Tmplt
+    @begin IDE_Template
+     @begin IDE_Base
+      @begin IDE_CfgBase
+       IDE_CfgBase_Name "Debug";
+       IDE_CfgBase_Description "Win32 - DLL - Debug";
+      @end;
+     @end;
+     @begin IDE_Rules
+      @begin IDE_BldRle
+       @begin IDE_BldRle_Base
+        @begin IDE_CfgBase
+         IDE_CfgBase_Name "CToObj";
+        @end;
+       @end;
+       IDE_BldRle_Target "Obj";
+       IDE_BldRle_Editor "NT.WCC.DLL";
+       IDE_BldRle_Index 1;
+       IDE_BldRle_Priority -1;
+       @begin IDE_BldRle_Platform
+        @begin IDE_Platform
+         IDE_Platform_Mask -1;
+        @end;
+       @end;
+       @begin IDE_BldRle_Cmds
+        @begin IDE_Command
+         IDE_Command_Tool "WCC386";
+         IDE_Command_Options "-i=\"$^:;$^:..;$^:..\\release;$(optima_dir)\\hpp;$(optima_dir)\\h;$(optima_dir)\\h\\sys;$(optima_dir)\\w32sdk\\h;$(optima_dir)\\w32sdk\\h\\nt\" -d_DBCS -d_DEBUG -d_WIN32 -S -D2 -W4 -WE \"$[@\" /ef /fr /bd /bm /fpi /fp5 -fo=\"$^@\" /mf /e25 /5r /bt=nt "+
+"/zq /zp4 /ei";
+         IDE_Command_Def_Opt "\"$[@\" /ef /s /fr /bd /bm /fpi /fp5 -fo=\"$^@\" /mf /w4 /e25 /5r /bt=nt /zq /zp4 /ei /d2 /d_DEBUG /d_WIN32 /d_DBCS -i=\"$^:;$^:..;$^:..\\release;$(optima_dir)\\hpp;$(optima_dir)\\h;$(optima_dir)\\h\\sys;$(optima_dir)\\w32sdk\\h;$(optima_dir)\\w32sdk\\"+
+"h\\nt\"";
+        @end;
+       @end;
+       @begin IDE_BldRle_InitCmds
+        @begin IDE_Command
+         IDE_Command_Tool "WCC386";
+         IDE_Command_Options "\"$[@\" /ef /s /fr /bd /bm /fpi /fp5 -fo=\"$^@\" /mf /w4 /e25 /5r /bt=nt /zq /zp4 /ei /d2 /d_DEBUG /d_WIN32 /d_DBCS -i=\"$^:;$^:..;$^:..\\release;$(optima_dir)\\hpp;$(optima_dir)\\h;$(optima_dir)\\h\\sys;$(optima_dir)\\w32sdk\\h;$(optima_dir)\\w32sdk\\"+
+"h\\nt\"";
+         IDE_Command_Def_Opt "\"$[@\" /ef /s /fr /bd /bm /fpi /fp5 -fo=\"$^@\" /mf /w4 /e25 /5r /bt=nt /zq /zp4 /ei /d2 /d_DEBUG /d_WIN32 /d_DBCS -i=\"$^:;$^:..;$^:..\\release;$(optima_dir)\\hpp;$(optima_dir)\\h;$(optima_dir)\\h\\sys;$(optima_dir)\\w32sdk\\h;$(optima_dir)\\w32sdk\\"+
+"h\\nt\"";
+        @end;
+       @end;
+       @begin IDE_BldRle_Srcs
+        IDE_BldRle_Src_Item "C";
+       @end;
+       IDE_BldRle_Many_To_One 0;
+       IDE_BldRle_Autodep 1;
+      @end;
+      @begin IDE_BldRle
+       @begin IDE_BldRle_Base
+        @begin IDE_CfgBase
+         IDE_CfgBase_Name "CPPToObj";
+        @end;
+       @end;
+       IDE_BldRle_Target "Obj";
+       IDE_BldRle_Editor "NT.WPP.DLL";
+       IDE_BldRle_Index 2;
+       IDE_BldRle_Priority -1;
+       @begin IDE_BldRle_Platform
+        @begin IDE_Platform
+         IDE_Platform_Mask -1;
+        @end;
+       @end;
+       @begin IDE_BldRle_Cmds
+        @begin IDE_Command
+         IDE_Command_Tool "WPP386";
+         IDE_Command_Options "-i=\"$^:;$^:..;$^:..\\release;$(optima_dir)\\hpp;$(optima_dir)\\h;$(optima_dir)\\h\\sys;$(optima_dir)\\components;$(optima_dir)\\w32sdk\\h;$(optima_dir)\\w32sdk\\h\\nt\" -d_DBCS -d_DEBUG -d_WIN32 -S -D2 -W4 -WE \"$[@\" /fo=\"$^@\" /ef  /er /fr /bd /bm"+
+" /fpi /fp5 /mf /e25 /5r /bt=nt /zp4 /ei /wcd=726 /fhd /fh=\"$+@\" /rod=$(read_only_dirs) /fhr";
+         IDE_Command_Def_Opt "\"$[@\" /fo=\"$^@\" /ef /s /fhr! /er /fr /bd /bm /fpi /fp5 /mf /w4 /e25 /5r /bt=nt /zp4 /ei /wcd=726 /fhd /fh=\"$+@\"  /d2 /rod=$(read_only_dirs) /d_WIN32 /d_DBCS /d_DEBUG -i=\"$^:;$^:..;$^:..\\release;$(optima_dir)\\hpp;$(optima_dir)\\h;$(optima_dir)"+
+"\\h\\sys;$(optima_dir)\\components;$(optima_dir)\\w32sdk\\h;$(optima_dir)\\w32sdk\\h\\nt\"";
+        @end;
+       @end;
+       @begin IDE_BldRle_InitCmds
+        @begin IDE_Command
+         IDE_Command_Tool "WPP386";
+         IDE_Command_Options "\"$[@\" /fo=\"$^@\" /ef /s /fhr! /er /fr /bd /bm /fpi /fp5 /mf /w4 /e25 /5r /bt=nt /zp4 /ei /wcd=726 /fhd /fh=\"$+@\"  /d2 /rod=$(read_only_dirs) /d_WIN32 /d_DBCS /d_DEBUG -i=\"$^:;$^:..;$^:..\\release;$(optima_dir)\\hpp;$(optima_dir)\\h;$(optima_dir)"+
+"\\h\\sys;$(optima_dir)\\components;$(optima_dir)\\w32sdk\\h;$(optima_dir)\\w32sdk\\h\\nt\"";
+         IDE_Command_Def_Opt "\"$[@\" /fo=\"$^@\" /ef /s /fhr! /er /fr /bd /bm /fpi /fp5 /mf /w4 /e25 /5r /bt=nt /zp4 /ei /wcd=726 /fhd /fh=\"$+@\"  /d2 /rod=$(read_only_dirs) /d_WIN32 /d_DBCS /d_DEBUG -i=\"$^:;$^:..;$^:..\\release;$(optima_dir)\\hpp;$(optima_dir)\\h;$(optima_dir)"+
+"\\h\\sys;$(optima_dir)\\components;$(optima_dir)\\w32sdk\\h;$(optima_dir)\\w32sdk\\h\\nt\"";
+        @end;
+       @end;
+       @begin IDE_BldRle_Srcs
+        IDE_BldRle_Src_Item "CPP";
+       @end;
+       IDE_BldRle_Many_To_One 0;
+       IDE_BldRle_Autodep 1;
+      @end;
+      @begin IDE_BldRle
+       @begin IDE_BldRle_Base
+        @begin IDE_CfgBase
+         IDE_CfgBase_Name "WClassToObj";
+        @end;
+       @end;
+       IDE_BldRle_Target "Obj";
+       IDE_BldRle_Editor "NT.WPCH.DLL";
+       IDE_BldRle_Index 3;
+       IDE_BldRle_Priority 1;
+       @begin IDE_BldRle_Platform
+        @begin IDE_Platform
+         IDE_Platform_Mask -1;
+        @end;
+       @end;
+       @begin IDE_BldRle_Cmds
+        @begin IDE_Command
+         IDE_Command_Tool "WPP386";
+         IDE_Command_Options "-i=\"$^:;$^:..;$^:..\\release;$(optima_dir)\\hpp;$(optima_dir)\\h;$(optima_dir)\\h\\sys;$(optima_dir)\\components;$(optima_dir)\\w32sdk\\h;$(optima_dir)\\w32sdk\\h\\nt\" -d_DBCS -d_DEBUG -d_WIN32 -S -D2 -W4 -WE \"$[@\" /fo=\"$^@\" /ef /fr /bd /bm /fpi"+
+" /fp5 /mf /e25 /5r /bt=nt /zp4 /ei /wcd=726 /fhd /fh=\"$+@\" /fhw /rod=$(read_only_dirs)";
+         IDE_Command_Def_Opt "\"$[@\" /fo=\"$^@\" /ef /s /fr /bd /bm /fpi /fp5 /mf /w4 /e25 /5r /bt=nt /zp4 /ei /wcd=726 /fhd /fh=\"$+@\" /fhw /d2 /rod=$(read_only_dirs) /d_WIN32 /d_DBCS /d_DEBUG -i=\"$^:;$^:..;$^:..\\release;$(optima_dir)\\hpp;$(optima_dir)\\h;$(optima_dir)\\h\\s"+
+"ys;$(optima_dir)\\components;$(optima_dir)\\w32sdk\\h;$(optima_dir)\\w32sdk\\h\\nt\"";
+        @end;
+       @end;
+       @begin IDE_BldRle_InitCmds
+        @begin IDE_Command
+         IDE_Command_Tool "WPP386";
+         IDE_Command_Options "\"$[@\" /fo=\"$^@\" /ef /s /fr /bd /bm /fpi /fp5 /mf /w4 /e25 /5r /bt=nt /zp4 /ei /wcd=726 /fhd /fh=\"$+@\" /fhw /d2 /rod=$(read_only_dirs) /d_WIN32 /d_DBCS /d_DEBUG -i=\"$^:;$^:..;$^:..\\release;$(optima_dir)\\hpp;$(optima_dir)\\h;$(optima_dir)\\h\\s"+
+"ys;$(optima_dir)\\components;$(optima_dir)\\w32sdk\\h;$(optima_dir)\\w32sdk\\h\\nt\"";
+         IDE_Command_Def_Opt "\"$[@\" /fo=\"$^@\" /ef /s /fr /bd /bm /fpi /fp5 /mf /w4 /e25 /5r /bt=nt /zp4 /ei /wcd=726 /fhd /fh=\"$+@\" /fhw /d2 /rod=$(read_only_dirs) /d_WIN32 /d_DBCS /d_DEBUG -i=\"$^:;$^:..;$^:..\\release;$(optima_dir)\\hpp;$(optima_dir)\\h;$(optima_dir)\\h\\s"+
+"ys;$(optima_dir)\\components;$(optima_dir)\\w32sdk\\h;$(optima_dir)\\w32sdk\\h\\nt\"";
+        @end;
+       @end;
+       @begin IDE_BldRle_Srcs
+        IDE_BldRle_Src_Item "WClass";
+       @end;
+       IDE_BldRle_Many_To_One 0;
+       IDE_BldRle_Autodep 1;
+      @end;
+      @begin IDE_BldRle
+       @begin IDE_BldRle_Base
+        @begin IDE_CfgBase
+         IDE_CfgBase_Name "LinkIt";
+        @end;
+       @end;
+       IDE_BldRle_Target "DLL";
+       IDE_BldRle_Editor "NT.WLINK.DLL";
+       IDE_BldRle_Index 4;
+       IDE_BldRle_Priority -1;
+       @begin IDE_BldRle_Platform
+        @begin IDE_Platform
+         IDE_Platform_Mask -1;
+        @end;
+       @end;
+       @begin IDE_BldRle_Cmds
+        @begin IDE_Command
+         IDE_Command_Tool "WLINK";
+         IDE_Command_Options "debug dwarf option incremental='$^*.ilk' option osname='Windows NT' libpath '$(optima_dir)\\lib;$(optima_dir)\\components;$(optima_dir)\\w32sdk\\lib386\\nt' format windows nt dll run win=4.0 $(__WCMsyslib__) wcmdda$(__WcmDevVer__).lib $(__WCMProSysLib"+
+"__) wcpdda$(__WcmProVer__).lib $(__WCMEntSysLib__) wcedda$(__WcmEntVer__).lib";
+         IDE_Command_Def_Opt "debug dwarf option incremental='$^*.ilk' option osname='Windows NT' libpath '$(optima_dir)\\lib;$(optima_dir)\\components;$(optima_dir)\\w32sdk\\lib386\\nt' format windows nt dll run win=4.0 $(__WCMsyslib__) wcmdda$(__WcmDevVer__).lib $(__WCMProSysLib"+
+"__) wcpdda$(__WcmProVer__).lib $(__WCMEntSysLib__) wcedda$(__WcmEntVer__).lib";
+        @end;
+       @end;
+       @begin IDE_BldRle_Srcs
+        IDE_BldRle_Src_Item "Res";
+        IDE_BldRle_Src_Item "Lib";
+        IDE_BldRle_Src_Item "Obj";
+        IDE_BldRle_Src_Item "Exe";
+       @end;
+       IDE_BldRle_Many_To_One 1;
+       IDE_BldRle_Autodep 0;
+      @end;
+      @begin IDE_BldRle
+       @begin IDE_BldRle_Base
+        @begin IDE_CfgBase
+         IDE_CfgBase_Name "Resource";
+        @end;
+       @end;
+       IDE_BldRle_Target "Res";
+       IDE_BldRle_Editor "NT.WRC";
+       IDE_BldRle_Index 5;
+       IDE_BldRle_Priority -1;
+       @begin IDE_BldRle_Platform
+        @begin IDE_Platform
+         IDE_Platform_Mask -1;
+        @end;
+       @end;
+       @begin IDE_BldRle_Cmds
+        @begin IDE_Command
+         IDE_Command_Tool "WRC";
+         IDE_Command_Options "\"$[@\" /fo=\"$^@\" -bt=nt -ad -r -d_DEBUG -d__WATCOMC__ -i=\"$^:;$^:..;$^:..\\release;$(optima_dir)\\rc;$(optima_dir)\\h;$(optima_dir)\\hpp;$(optima_dir)\\w32sdk\\h;$(optima_dir)\\w32sdk\\h\\nt\" -q";
+         IDE_Command_Def_Opt "\"$[@\" /fo=\"$^@\" -bt=nt -ad -r -d_DEBUG -d__WATCOMC__ -i=\"$^:;$^:..;$^:..\\release;$(optima_dir)\\rc;$(optima_dir)\\h;$(optima_dir)\\hpp;$(optima_dir)\\w32sdk\\h;$(optima_dir)\\w32sdk\\h\\nt\" -q";
+        @end;
+       @end;
+       @begin IDE_BldRle_Srcs
+        IDE_BldRle_Src_Item "RC";
+       @end;
+       IDE_BldRle_Many_To_One 0;
+       IDE_BldRle_Autodep 1;
+      @end;
+      @begin IDE_BldRle
+       @begin IDE_BldRle_Base
+        @begin IDE_CfgBase
+         IDE_CfgBase_Name "DllToLib";
+        @end;
+       @end;
+       IDE_BldRle_Target "Lib";
+       IDE_BldRle_Editor "NT.IMPLIB";
+       IDE_BldRle_Index 6;
+       IDE_BldRle_Priority -1;
+       @begin IDE_BldRle_Platform
+        @begin IDE_Platform
+         IDE_Platform_Mask -1;
+        @end;
+       @end;
+       @begin IDE_BldRle_Cmds
+        @begin IDE_Command
+         IDE_Command_Tool "WLIB";
+         IDE_Command_Options "-b -n \"$^@\" +\"$[@\" ";
+         IDE_Command_Def_Opt "-b -n \"$^@\" +\"$[@\" ";
+        @end;
+       @end;
+       @begin IDE_BldRle_Srcs
+        IDE_BldRle_Src_Item "DLL";
+       @end;
+       IDE_BldRle_Many_To_One 0;
+       IDE_BldRle_Autodep 0;
+      @end;
+     @end;
+     @begin IDE_FileTypes
+      @begin IDE_FileTyp
+       IDE_FileTyp_Name "C";
+       @begin IDE_FileTyp_Exts
+        IDE_FileTyp_Ext_Item ".c";
+       @end;
+       IDE_FileTyp_Index 1;
+       IDE_FileTyp_Def_Dir "Debug\\";
+      @end;
+      @begin IDE_FileTyp
+       IDE_FileTyp_Name "CPP";
+       @begin IDE_FileTyp_Exts
+        IDE_FileTyp_Ext_Item ".cpp";
+       @end;
+       IDE_FileTyp_Index 2;
+       IDE_FileTyp_Def_Dir "Debug\\";
+      @end;
+      @begin IDE_FileTyp
+       IDE_FileTyp_Name "Obj";
+       @begin IDE_FileTyp_Exts
+        IDE_FileTyp_Ext_Item ".obj";
+       @end;
+       IDE_FileTyp_Index 3;
+       IDE_FileTyp_Def_Dir "Debug\\";
+      @end;
+      @begin IDE_FileTyp
+       IDE_FileTyp_Name "Lib";
+       @begin IDE_FileTyp_Exts
+        IDE_FileTyp_Ext_Item ".lib";
+       @end;
+       IDE_FileTyp_Index 4;
+       IDE_FileTyp_Def_Dir "Debug\\";
+      @end;
+      @begin IDE_FileTyp
+       IDE_FileTyp_Name "DLL";
+       @begin IDE_FileTyp_Exts
+        IDE_FileTyp_Ext_Item ".dll";
+       @end;
+       IDE_FileTyp_Index 5;
+       IDE_FileTyp_Def_Dir "Debug\\";
+      @end;
+      @begin IDE_FileTyp
+       IDE_FileTyp_Name "RC";
+       @begin IDE_FileTyp_Exts
+        IDE_FileTyp_Ext_Item ".rc";
+       @end;
+       IDE_FileTyp_Index 6;
+       IDE_FileTyp_Def_Dir "Debug\\";
+      @end;
+      @begin IDE_FileTyp
+       IDE_FileTyp_Name "Res";
+       @begin IDE_FileTyp_Exts
+        IDE_FileTyp_Ext_Item ".res";
+       @end;
+       IDE_FileTyp_Index 7;
+       IDE_FileTyp_Def_Dir "Debug\\";
+      @end;
+      @begin IDE_FileTyp
+       IDE_FileTyp_Name "Exe";
+       @begin IDE_FileTyp_Exts
+        IDE_FileTyp_Ext_Item ".exe";
+       @end;
+       IDE_FileTyp_Index 8;
+       IDE_FileTyp_Def_Dir "Debug\\";
+      @end;
+      @begin IDE_FileTyp
+       IDE_FileTyp_Name "WClass";
+       @begin IDE_FileTyp_Exts
+        IDE_FileTyp_Ext_Item "wpch.cpp";
+       @end;
+       IDE_FileTyp_Index 9;
+       IDE_FileTyp_Def_Dir "Debug\\";
+      @end;
+     @end;
+     IDE_IsRunable 0;
+     IDE_IsCharMode 0;
+     IDE_IsDll 1;
+     IDE_IsLib 0;
+     IDE_IsJava 0;
+     IDE_IsJavaApplet 0;
+     IDE_Defext ".dll";
+     IDE_DefName "dll";
+     IDE_Pch_name "DLLD01";
+    @end;
+   @end;
+  @end;
+ @end;
+
+ @begin CFileList
+ @end;
+@end;

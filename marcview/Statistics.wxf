@@ -1,0 +1,710 @@
+Save Format v1.3
+@begin Form "yStatistics"
+ Exported 0;
+
+ @begin Object "WModelessDialog"
+  WSCaption 1;
+  WSDlgBorder 1;
+  WSVisible 1;
+  Font "8.MS Sans Serif.Bold";
+  Icon "WIcon( WResourceID( MARCView ) )";
+  FormPositionType "Centered";
+  Text "File Statistics";
+  @begin Event "Create"
+   GencodeSrcLine 293;
+   FunctionName "yStatistics::yStatistics_Create";
+  @end;
+  @begin UserFunction "yStatistics()"
+   Compiler 1;
+   GencodeSrcLine 404;
+   FunctionName "yStatistics::yStatistics()";
+  @end;
+  @begin UserFunction "~yStatistics()"
+   Compiler 1;
+   GencodeSrcLine 407;
+   FunctionName "yStatistics::~yStatistics()";
+  @end;
+  ResID 105;
+  DesignName yStatistics;
+  TabIndex 0;
+  DesignRect -911,71,226,330;
+ @end;
+
+ @begin Object "WListBox"
+  WLBSNotify 1;
+  WLBSHasStrings 1;
+  WLBSUseTabStops 1;
+  WLBSNoIntegralHeight 1;
+  WCCSTop 1;
+  WCCSNoDivider 1;
+  WSVScroll 1;
+  WSBorder 1;
+  WSChild 1;
+  WSExClientEdge 1;
+  WSVisible 1;
+  Font "9.Courier New";
+  ResID 101;
+  DesignName FieldStats;
+  TabIndex 0;
+  DesignRect 5,150,210,130;
+  @begin ComponentData "FieldStats"
+  @end;
+ @end;
+
+ @begin Object "WCommandButton"
+  WSChild 1;
+  WSMaximizeBox 1;
+  WSTabStop 1;
+  WSVisible 1;
+  Default "1";
+  Pressed "0";
+  FDXFieldName "okbutton_data";
+  FDXFieldType "WBool";
+  Text "Close";
+  @begin Event "Click"
+   GencodeSrcLine 410;
+   FunctionName "yStatistics::okbutton_Click";
+  @end;
+  ResID 102;
+  DesignName okbutton;
+  TabIndex 1;
+  DesignRect 155,290,43,15;
+ @end;
+
+ @begin Object "WTextBox"
+  WTextBoxAutoHScroll 1;
+  WSBorder 1;
+  WSChild 1;
+  WSExClientEdge 1;
+  WSVisible 1;
+  Font "9.Courier New";
+  ResID 103;
+  DesignName NumRecsBox;
+  TabIndex 2;
+  DesignRect 5,28,210,15;
+ @end;
+
+ @begin Object "WLabel"
+  WSSLeftNoWordWrap 1;
+  WSSNotify 1;
+  WCCSNoResize 1;
+  WCCSNoParentAlign 1;
+  WSChild 1;
+  WSVisible 1;
+  Text "Record length";
+  AutoSize "1";
+  ResID 104;
+  DesignName label_1;
+  TabIndex 3;
+  DesignRect 124,8,46,8;
+ @end;
+
+ @begin Object "WLabel"
+  WSSLeftNoWordWrap 1;
+  WSSNotify 1;
+  WCCSNoResize 1;
+  WCCSNoParentAlign 1;
+  WSChild 1;
+  WSVisible 1;
+  Text "Records";
+  AutoSize "1";
+  ResID 105;
+  DesignName label_2;
+  TabIndex 4;
+  DesignRect 7,18,28,8;
+ @end;
+
+ @begin Object "WLabel"
+  WSSLeftNoWordWrap 1;
+  WSSNotify 1;
+  WCCSNoResize 1;
+  WCCSNoParentAlign 1;
+  WSChild 1;
+  WSVisible 1;
+  Text "File size";
+  AutoSize "1";
+  ResID 106;
+  DesignName label_3;
+  TabIndex 5;
+  DesignRect 60,18,27,8;
+ @end;
+
+ @begin Object "WLabel"
+  WSSLeftNoWordWrap 1;
+  WSSNotify 1;
+  WCCSNoResize 1;
+  WCCSNoParentAlign 1;
+  WSChild 1;
+  WSVisible 1;
+  Text "Min";
+  AutoSize "1";
+  ResID 107;
+  DesignName label_4;
+  TabIndex 6;
+  DesignRect 105,18,12,8;
+ @end;
+
+ @begin Object "WLabel"
+  WSSLeftNoWordWrap 1;
+  WSSNotify 1;
+  WCCSNoResize 1;
+  WCCSNoParentAlign 1;
+  WSChild 1;
+  WSVisible 1;
+  Text "Max";
+  AutoSize "1";
+  ResID 108;
+  DesignName label_6;
+  TabIndex 7;
+  DesignRect 140,18,14,8;
+ @end;
+
+ @begin Object "WLabel"
+  WSSLeftNoWordWrap 1;
+  WSSNotify 1;
+  WCCSNoResize 1;
+  WCCSNoParentAlign 1;
+  WSChild 1;
+  WSVisible 1;
+  Text "Mean";
+  AutoSize "1";
+  ResID 109;
+  DesignName label_7;
+  TabIndex 8;
+  DesignRect 172,18,18,8;
+ @end;
+
+ @begin Object "WLabel"
+  WSSLeftNoWordWrap 1;
+  WSSNotify 1;
+  WCCSNoResize 1;
+  WCCSNoParentAlign 1;
+  WSChild 1;
+  WSVisible 1;
+  Text "Field length";
+  AutoSize "1";
+  ResID 110;
+  DesignName label_8;
+  TabIndex 9;
+  DesignRect 126,130,38,8;
+ @end;
+
+ @begin Object "WLabel"
+  WSSLeftNoWordWrap 1;
+  WSSNotify 1;
+  WCCSNoResize 1;
+  WCCSNoParentAlign 1;
+  WSChild 1;
+  WSVisible 1;
+  Text "Mean";
+  AutoSize "1";
+  ResID 111;
+  DesignName label_9;
+  TabIndex 10;
+  DesignRect 172,140,19,8;
+ @end;
+
+ @begin Object "WLabel"
+  WSSLeftNoWordWrap 1;
+  WSSNotify 1;
+  WCCSNoResize 1;
+  WCCSNoParentAlign 1;
+  WSChild 1;
+  WSVisible 1;
+  Text "Max";
+  AutoSize "1";
+  ResID 112;
+  DesignName label_10;
+  TabIndex 11;
+  DesignRect 140,140,14,8;
+ @end;
+
+ @begin Object "WLabel"
+  WSSLeftNoWordWrap 1;
+  WSSNotify 1;
+  WCCSNoResize 1;
+  WCCSNoParentAlign 1;
+  WSChild 1;
+  WSVisible 1;
+  Text "Min";
+  AutoSize "1";
+  ResID 113;
+  DesignName label_11;
+  TabIndex 12;
+  DesignRect 105,140,12,8;
+ @end;
+
+ @begin Object "WLabel"
+  WSSLeftNoWordWrap 1;
+  WSSNotify 1;
+  WCCSNoResize 1;
+  WCCSNoParentAlign 1;
+  WSChild 1;
+  WSVisible 1;
+  Text "Count";
+  AutoSize "1";
+  ResID 114;
+  DesignName label_12;
+  TabIndex 13;
+  DesignRect 60,140,20,8;
+ @end;
+
+ @begin Object "WLabel"
+  WSSLeftNoWordWrap 1;
+  WSSNotify 1;
+  WCCSNoResize 1;
+  WCCSNoParentAlign 1;
+  WSChild 1;
+  WSVisible 1;
+  Text "Tag";
+  AutoSize "1";
+  ResID 115;
+  DesignName label_13;
+  TabIndex 14;
+  DesignRect 7,140,13,8;
+ @end;
+
+ @begin Object "WListBox"
+  WLBSNotify 1;
+  WLBSHasStrings 1;
+  WLBSUseTabStops 1;
+  WLBSNoIntegralHeight 1;
+  WCCSTop 1;
+  WCCSNoDivider 1;
+  WSVScroll 1;
+  WSBorder 1;
+  WSChild 1;
+  WSExClientEdge 1;
+  WSVisible 1;
+  Font "9.Courier New";
+  ResID 116;
+  DesignName LeaderStats;
+  TabIndex 15;
+  DesignRect 5,66,210,55;
+  @begin ComponentData "LeaderStats"
+  @end;
+ @end;
+
+ @begin Object "WLabel"
+  WSSLeftNoWordWrap 1;
+  WSSNotify 1;
+  WCCSNoResize 1;
+  WCCSNoParentAlign 1;
+  WSChild 1;
+  WSVisible 1;
+  Text "Leader byte";
+  AutoSize "1";
+  ResID 117;
+  DesignName label_14;
+  TabIndex 16;
+  DesignRect 7,55,39,8;
+ @end;
+
+ @begin Object "WLabel"
+  WSSLeftNoWordWrap 1;
+  WSSNotify 1;
+  WCCSNoResize 1;
+  WCCSNoParentAlign 1;
+  WSChild 1;
+  WSVisible 1;
+  Text "Value";
+  AutoSize "1";
+  ResID 118;
+  DesignName label_15;
+  TabIndex 17;
+  DesignRect 136,55,19,8;
+ @end;
+
+ @begin Object "WLabel"
+  WSSLeftNoWordWrap 1;
+  WSSNotify 1;
+  WCCSNoResize 1;
+  WCCSNoParentAlign 1;
+  WSChild 1;
+  WSVisible 1;
+  Text "Count";
+  AutoSize "1";
+  ResID 119;
+  DesignName label_16;
+  TabIndex 18;
+  DesignRect 172,55,20,8;
+ @end;
+
+ @begin Object "WCommandButton"
+  WSChild 1;
+  WSMaximizeBox 1;
+  WSTabStop 1;
+  WSVisible 1;
+  Pressed "0";
+  Text "Help";
+  @begin Event "Click"
+   GencodeSrcLine 418;
+   FunctionName "yStatistics::HelpButton_Click";
+  @end;
+  ResID 120;
+  DesignName HelpButton;
+  TabIndex 19;
+  DesignRect 25,290,40,15;
+ @end;
+
+ @begin Object "WCommandButton"
+  WSChild 1;
+  WSMaximizeBox 1;
+  WSTabStop 1;
+  WSVisible 1;
+  Pressed "0";
+  Text "Print";
+  @begin Event "Click"
+   GencodeSrcLine 426;
+   FunctionName "yStatistics::PrintButton_Click";
+  @end;
+  ResID 121;
+  DesignName PrintButton;
+  TabIndex 20;
+  DesignRect 90,290,40,15;
+ @end;
+
+ @begin Object "WPrintDialog"
+  WPrintDSEnablePrintHook 1;
+  ResID 122;
+  DesignName PrintDialog;
+  TabIndex 21;
+  DesignRect 135,290,16,17;
+ @end;
+
+ @begin HPPPrefixBlock
+@begin-code HPPPrefix
+
+/*
+Copyright 1992-2009 Systems Planning (www.systemsplanning.com)
+
+Licensed under the Apache License, Version 2.0 (the "License"); 
+you may not use this file except in compliance with the License. 
+You may obtain a copy of the License at 
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software 
+distributed under the License is distributed on an "AS IS" BASIS, 
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. 
+See the License for the specific language governing permissions and 
+limitations under the License.
+*/
+
+// Declarations added here will be included at the top of the .HPP file
+//030309//#include <process.h>	//011103 for html link
+#include "help.hpp"
+#include "printdialog.hpp"
+
+extern "C" 
+{
+    #include "d:\marc\sp_marc\sp_marc.hpp"
+};
+
+@end-code;
+  GencodeSrcLine 10;
+ @end;
+
+ @begin CPPPrefixBlock
+@begin-code CPPPrefix
+
+// Code added here will be included at the top of the .CPP file
+
+//  Include definitions for resources.
+#include "WRes.h"
+
+@end-code;
+  GencodeSrcLine 10;
+ @end;
+
+ @begin ClassContentsBlock
+@begin-code ClassContents
+
+    public:
+        // add your public instance data here
+        	void SetProduct (char*);
+		void SetFilepath (char*);
+    private:
+        // add your private instance data here
+		
+		// added for printing
+		WString product;
+		WString TheFilePath;
+		WString sNumRecs;
+		WString sLeaderStats;
+		WString sFieldStats;
+		
+		char GetLdrValue (int);
+		
+    protected:
+        // add your protected instance data here
+
+@end-code;
+  GencodeSrcLine 109;
+ @end;
+
+@begin-code GeneratedClassContents
+
+        yStatistics();
+        ~yStatistics();
+
+@end-code;
+
+@begin-code Code "yStatistics::yStatistics()"
+
+@@CLASSNAME@::@CLASSNAME@()
+{
+}
+
+@end-code;
+
+@begin-code Code "yStatistics::~yStatistics()"
+
+@@CLASSNAME@::~@CLASSNAME@()
+{
+}
+
+@end-code;
+
+@begin-code Code "yStatistics::yStatistics_Create"
+
+char @CLASSNAME@::GetLdrValue (int i)
+{
+	int value = i % 37;	//the 37 potential values (space, 0..9, a..z)
+	if (value == 0)
+		return '#';			//blank
+	else if (value < 11)
+		return value + 47;	//a numeric value
+	else
+		return value + 86;	//a lowercase alpha value
+}
+
+
+WBool @CLASSNAME@::yStatistics_Create(
+	WObject *         		source,
+	WCreateEventData *		event )
+{
+	
+	long far	*preport;
+	int i = SP_Statistics (&preport);
+	if (i < 1)
+	{	
+		WMessageBox::Info (NULL, "Statistics", "Unable to read file");
+		return FALSE;
+	}
+
+	WString stemp;
+	
+	//0=numrecs, 1=filesize, 2=minreclen, 3=maxreclen, 4=?
+	sNumRecs.Sprintf ("%7ld%11ld%6ld%8ld%8ld", 
+			preport [0],
+			preport [1],
+			preport [2],
+			preport [3],
+			preport [4]);
+			
+	NumRecsBox->SetText (sNumRecs);
+	sNumRecs.Concat ("\n");
+	
+	
+	//000503 leader stats
+	char*	bytename [] =	{"Record Status",		//0
+						"Type of Record",		//1
+						"Bibliographic Level",	//2
+						"Type of Control",	//3
+						"Char coding scheme",	//4
+						"Encoding Level",		//5
+						"Descr Cat Form",		//6
+						"Linked Record Req"};	//7
+	
+	//temps (see below)
+	char tempc [23];
+	char tempv;
+	long templ;
+	
+	i = 5;	//040724 was 4
+	//need to read all 296 longs and eliminate values with 0 count (unlike field stats below, in which
+	//		only non-zero tags are received)
+	while (i < 301)	//040724 was 300
+	{
+		if (preport [i] != 0)
+		{
+			//subtracting 4 because first 4 bytes are record stats
+			
+			/*000504 when put together like this, caused task exception
+			stemp.Sprintf ("%s\t%c\t%ld",
+					bytename [(i-4) / 37], GetLdrValue (i-4), preport [i]);
+			*/
+			//030907 UNIMARC (next 3 lines)
+			if (((SP_RecordFormat () == UNIMARCBIB) || (SP_RecordFormat () == UNIMARCAUTH)) && 
+					!strcmp (bytename [(i-5) / 37], "Type of Control"))	//040724 was i-4
+				strcpy (tempc, "Hierarchical Level");	//the byte name
+			else
+				strcpy (tempc, bytename [(i-5) / 37]);	//the byte name	//040724 was i-4
+			tempv = GetLdrValue (i-5);				//the value	//040724 was i-4
+			templ = preport [i];					//the count
+			stemp.Sprintf ("%-31s%c%8ld",
+					tempc, tempv, templ);
+					
+			LeaderStats->Add (stemp);
+			sLeaderStats.Concat (stemp);
+			sLeaderStats.Concat ("\n");
+		}
+		
+		//UNIMARC (next 3 lines) -- byte 09 is undefined, so skip that part of array
+		if (((SP_RecordFormat () == UNIMARCBIB) || (SP_RecordFormat () == UNIMARCAUTH)) && 
+				(i == 148))
+			i += 37;
+		else
+			i++;
+	}
+
+	
+	//300=tag, 301=tagcount, 302=taxminlen, 303=taxmaxlen, 304=taxtotallen
+	i = 301;	//040724 was 300
+	while (preport [i] > 0)
+	{
+		/*000504 use fixed-width font, tabs didn't work
+		stemp.Sprintf ("%03ld\t%ld\t\t%ld\t%ld\t%ld",
+				preport [i], preport [i+1], preport [i+2], preport [i+3], preport [i+4]/preport [i+1]);
+		*/
+		stemp.Sprintf ("%03ld%13ld%8ld%8ld%8ld",
+				preport [i], preport [i+1], preport [i+2], preport [i+3], preport [i+4]/preport [i+1]);
+				
+		FieldStats->Add (stemp);
+		sFieldStats.Concat (stemp);
+		sFieldStats.Concat ("\n");
+		i += 5;
+	}
+    
+    return FALSE;
+}
+
+@end-code;
+
+@begin-code Code "yStatistics::okbutton_Click"
+
+WBool @CLASSNAME@::okbutton_Click(
+	WObject *   		source,
+	WEventData *		event )
+{
+	Dismiss (TRUE);
+    
+    return FALSE;
+}
+
+@end-code;
+
+@begin-code Code "yStatistics::HelpButton_Click"
+
+WBool @CLASSNAME@::HelpButton_Click(
+	WObject *   		source,
+	WEventData *		event )
+{
+	yHelp::ShowHelp ("statistics");	
+    
+    return FALSE;
+}
+
+@end-code;
+
+@begin-code Code "yStatistics::PrintButton_Click"
+
+WBool @CLASSNAME@::PrintButton_Click(
+	WObject *   		source,
+	WEventData *		event )
+{
+	if (PrintDialog->Prompt ())
+	{
+		WPrinterCanvas canvas = PrintDialog->GetPrinterCanvas ();	
+	
+		WString header = "Statistics for " + TheFilePath;
+		
+		WLocaleID li;
+		WString footer = "Printed from " + product + " on ";
+		footer.Concat (li.GetFormatDate (WDateFormatShortDatePicture));
+		footer.Concat (" at ");
+		footer.Concat (li.GetFormatTime (WTimeFormatForce24hourFormat));
+		footer = footer.Left (footer.GetSize () - 3);	//strip off " AM" or " PM"
+	
+		WString reccountheader =        "                        Record length\n";
+		reccountheader.Concat          ("Records  File size   Min     Max    Mean\n");
+		reccountheader.Concat          ("-------  ---------   ---     ---    ----\n");
+		WString leaderstatsheader = "\n\nLeader byte                Value   Count\n";
+		leaderstatsheader.Concat       ("-----------                -----   -----\n");
+		WString fieldstatsheader =  "\n\n                        Field length\n";
+		fieldstatsheader.Concat        ("Tag          Count   Min     Max    Mean\n");
+		fieldstatsheader.Concat        ("---          -----   ---     ---    ----\n");
+
+		WString everything = reccountheader + sNumRecs + leaderstatsheader + sLeaderStats + fieldstatsheader + sFieldStats;
+		WStringArray lines = everything.Parse ("\n", FALSE, "");
+		WString onepage;
+		
+		WTextMetrics tm = canvas.GetTextMetrics();
+		int lineHeight = tm.height;
+		
+		// this is the total height minus one inch top and bottom, divided by lineHeight
+		int linesperpage = 
+				(canvas.QueryCapability (WCCVerticalPixels) -
+					(2 * canvas.QueryCapability (WCCLogicalPixelsY))) 
+				/ lineHeight;
+		
+		int linesprinted = 0;
+
+
+		canvas.StartDocument ();
+		
+		do
+		{
+			onepage.Clear ();
+			for (int i = linesprinted; i < linesprinted + linesperpage; i++)
+			{
+				onepage.Concat (lines [i]);
+				onepage.Concat ("\n");
+			}
+			linesprinted += linesperpage;
+			
+			canvas.DrawText 
+				(WPoint 
+					(canvas.QueryCapability (WCCLogicalPixelsX), 		//one inch from left
+					.5 * canvas.QueryCapability (WCCLogicalPixelsY)),		//half inch from top
+				header.GetText ());
+				
+			canvas.DrawText 
+				(WRect 
+					(canvas.QueryCapability (WCCLogicalPixelsX), 	// one inch from left
+					canvas.QueryCapability (WCCLogicalPixelsY),		// one inch from top 
+					canvas.QueryCapability (WCCHorizontalPixels) -
+						canvas.QueryCapability (WCCLogicalPixelsX),	// one inch from right
+					canvas.QueryCapability (WCCVerticalPixels) - 
+						canvas.QueryCapability (WCCLogicalPixelsY)),	// one inch from bottom
+				onepage);
+			
+			canvas.DrawText 
+				(WPoint 
+					(canvas.QueryCapability (WCCLogicalPixelsX), 		//one inch from left
+					canvas.QueryCapability (WCCVerticalPixels) - 
+						(.5 * canvas.QueryCapability (WCCLogicalPixelsY))),	//half inch from top
+				footer.GetText ());
+				
+			canvas.EndPage ();
+		} while (linesprinted < lines.GetCount ());
+		
+		canvas.EndDocument ();
+	}
+    
+    return FALSE;
+}
+
+void @CLASSNAME@::SetProduct (char* prod)
+{
+    product = prod;
+}
+
+void @CLASSNAME@::SetFilepath (char* file)
+{
+    TheFilePath = file;
+}
+
+@end-code;
+@end;

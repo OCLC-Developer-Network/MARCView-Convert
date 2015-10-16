@@ -1,0 +1,446 @@
+Save Format v1.3
+@begin Form "yAboutBox"
+ Exported 0;
+
+ @begin Object "WDialog"
+  WSCaption 1;
+  WSDlgBorder 1;
+  WSVisible 1;
+  Font "8.MS Sans Serif";
+  Icon "WIcon( WResourceID( MARCView ) )";
+  FormPositionType "Centered";
+  FormAbsTop "112";
+  FormAbsLeft "13";
+  FDXStructName "AboutBoxFDXStruct";
+  Text "About MARCView";
+  @begin Event "Create"
+   GencodeSrcLine 189;
+   FunctionName "yAboutBox::yAboutBox_Create";
+  @end;
+  @begin UserFunction "yAboutBox()"
+   Compiler 1;
+   GencodeSrcLine 299;
+   FunctionName "yAboutBox::yAboutBox()";
+  @end;
+  @begin UserFunction "~yAboutBox()"
+   Compiler 1;
+   GencodeSrcLine 303;
+   FunctionName "yAboutBox::~yAboutBox()";
+  @end;
+  @begin UserFunction "SetExitSwitch (WBool)"
+   GencodeSrcLine 307;
+   FunctionName "yAboutBox::SetExitSwitch (WBool)";
+  @end;
+  @begin UserFunction "Prototype for SetExitSwitch (WBool)"
+   Private 1;
+   GencodeSrcLine 82;
+   FunctionName "yAboutBox::Prototype for SetExitSwitch (WBool)";
+  @end;
+  @begin UserFunction "SetProduct (char*)"
+   GencodeSrcLine 311;
+   FunctionName "yAboutBox::SetProduct (char*)";
+  @end;
+  @begin UserFunction "Prototype for SetProduct (char*)"
+   Private 1;
+   GencodeSrcLine 84;
+   FunctionName "yAboutBox::Prototype for SetProduct (char*)";
+  @end;
+  ResID 103;
+  DesignName yAboutBox;
+  TabIndex 0;
+  DesignRect -2148,170,414,289;
+ @end;
+
+ @begin Object "WCommandButton"
+  WSChild 1;
+  WSMaximizeBox 1;
+  WSTabStop 1;
+  WSVisible 1;
+  Pressed "0";
+  FDXFieldName "cb_OK_data";
+  FDXFieldType "WBool";
+  Text "OK";
+  Cancel "1";
+  @begin Event "Click"
+   GencodeSrcLine 325;
+   FunctionName "yAboutBox::CancelButton_Click";
+  @end;
+  ResID 101;
+  DesignName CancelButton;
+  TabIndex 0;
+  DesignRect 176,235,60,15;
+ @end;
+
+ @begin Object "WLabel"
+  WSSLeftNoWordWrap 1;
+  WSSNotify 1;
+  WCCSNoResize 1;
+  WCCSNoParentAlign 1;
+  WSChild 1;
+  WSVisible 1;
+  Font "14.Verdana";
+  Text "(product)";
+  AutoSize "1";
+  ResID 102;
+  DesignName ProductLabel;
+  TabIndex 1;
+  DesignRect 64,16,61,14;
+ @end;
+
+ @begin Object "WLabel"
+  WSSLeftNoWordWrap 1;
+  WSSNotify 1;
+  WCCSNoResize 1;
+  WCCSNoParentAlign 1;
+  WSChild 1;
+  WSVisible 1;
+  Font "9.Arial";
+  Text "[version]";
+  AutoSize "1";
+  ResID 103;
+  DesignName VersionLabel;
+  TabIndex 2;
+  DesignRect 64,32,31,9;
+ @end;
+
+ @begin Object "WRichTextBox"
+  WRESDisableNoScroll 1;
+  WTextBoxCenter 1;
+  WTextBoxMultiLine 1;
+  WTextBoxAutoVScroll 1;
+  WTextBoxWantReturn 1;
+  WTextBoxNumber 1;
+  WCCSTop 1;
+  WCCSNoResize 1;
+  WCCSNoDivider 1;
+  WSChild 1;
+  WSExClientEdge 1;
+  WSVisible 1;
+  Font "9.Arial";
+  BackColor "WColorDialogBackground";
+  ResID 104;
+  DesignName AboutText;
+  TabIndex 3;
+  DesignRect 5,60,396,165;
+ @end;
+
+ @begin Object "WRichTextBox"
+  WRESDisableNoScroll 1;
+  WTextBoxRight 1;
+  WTextBoxMultiLine 1;
+  WTextBoxAutoVScroll 1;
+  WTextBoxWantReturn 1;
+  WTextBoxNumber 1;
+  WCCSNoMoveY 1;
+  WCCSNoResize 1;
+  WCCSNoDivider 1;
+  WSChild 1;
+  WSVisible 1;
+  Font "9.Arial";
+  BackColor "WColorDialogBackground";
+  ResID 105;
+  DesignName AddressText;
+  TabIndex 4;
+  DesignRect 235,10,164,45;
+ @end;
+
+ @begin Object "WPictureBox"
+  WSSIcon 1;
+  WSSNotify 1;
+  WCCSTop 1;
+  WCCSNoMoveY 1;
+  WCCSBottom 1;
+  WSChild 1;
+  WSVisible 1;
+  ResID 106;
+  DesignName Icon;
+  TabIndex 5;
+  DesignRect 30,19,21,19;
+  @begin ComponentData "Icon"
+   Picture "<no picture>";
+  @end;
+ @end;
+
+ @begin Object "WCommandButton"
+  WSChild 1;
+  WSMaximizeBox 1;
+  WSTabStop 1;
+  Default "1";
+  Pressed "0";
+  Text "Exit";
+  @begin Event "Click"
+   GencodeSrcLine 333;
+   FunctionName "yAboutBox::ExitButton_Click";
+  @end;
+  ResID 107;
+  DesignName ExitButton;
+  TabIndex 6;
+  DesignRect 106,235,60,15;
+ @end;
+
+ @begin HPPPrefixBlock
+@begin-code HPPPrefix
+
+/*
+Copyright 1992-2009 Systems Planning (www.systemsplanning.com)
+
+Licensed under the Apache License, Version 2.0 (the "License"); 
+you may not use this file except in compliance with the License. 
+You may obtain a copy of the License at 
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software 
+distributed under the License is distributed on an "AS IS" BASIS, 
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. 
+See the License for the specific language governing permissions and 
+limitations under the License.
+*/
+
+// Declarations added here will be included at the top of the .HPP file
+
+@end-code;
+  GencodeSrcLine 10;
+ @end;
+
+ @begin CPPPrefixBlock
+@begin-code CPPPrefix
+
+// Code added here will be included at the top of the .CPP file
+
+//  Include definitions for resources.
+#include "WRes.h"
+
+@end-code;
+  GencodeSrcLine 10;
+ @end;
+
+ @begin ClassContentsBlock
+@begin-code ClassContents
+
+    public:
+        // add your public instance data here
+    private:
+        // add your private instance data here
+		WBool exitswitch;
+		WString product;
+		WString versioninfo;
+		WString contactinfo;
+		
+    protected:
+        	// add your protected instance data here
+
+@end-code;
+  GencodeSrcLine 71;
+ @end;
+
+@begin-code GeneratedClassContents
+
+        yAboutBox();
+        ~yAboutBox();
+
+@end-code;
+
+@begin-code Code "yAboutBox::yAboutBox()"
+
+@@CLASSNAME@::@CLASSNAME@()
+{
+    
+}
+
+@end-code;
+
+@begin-code Code "yAboutBox::~yAboutBox()"
+
+@@CLASSNAME@::~@CLASSNAME@()
+{
+    
+}
+
+@end-code;
+
+@begin-code Code "yAboutBox::SetExitSwitch (WBool)"
+
+void @CLASSNAME@::SetExitSwitch (WBool on)
+{
+	exitswitch = on;
+}
+
+@end-code;
+
+@begin-code Code "yAboutBox::Prototype for SetExitSwitch (WBool)"
+
+    public:
+        	void SetExitSwitch (WBool);
+
+@end-code;
+
+@begin-code Code "yAboutBox::SetProduct (char*)"
+
+void @CLASSNAME@::SetProduct (char* prod)
+{
+    product = prod;
+}
+
+void @CLASSNAME@::SetVersion (char* ver)
+{
+    versioninfo = ver;
+}
+
+void @CLASSNAME@::SetContact (char* contact)
+{
+	contactinfo = contact;
+}
+
+@end-code;
+
+@begin-code Code "yAboutBox::Prototype for SetProduct (char*)"
+
+    public:
+        	void SetProduct (char*);
+        	void SetVersion (char*);
+		void SetContact (char*);
+
+@end-code;
+
+@begin-code Code "yAboutBox::yAboutBox_Create"
+
+WBool @CLASSNAME@::yAboutBox_Create(
+	WObject *         		source,
+	WCreateEventData *		event )
+{
+	WString	thetext;
+	
+	Center ();
+	
+	WRect r = GetClientRectangle ();
+	int width = 80;	//width of a button
+	int space = 10;		//space between buttons
+	
+    if (exitswitch)	//user pressed Exit
+	{
+		CancelButton->SetText ("Cancel");
+		CancelButton->SetLeft ((r.w + space) / 2);
+		CancelButton->SetWidth (width);
+		CancelButton->SetVisible (TRUE);	//980912
+		ExitButton->SetLeft (CancelButton->GetLeft () - width - space);
+		ExitButton->SetWidth (width);
+		ExitButton->SetVisible (TRUE);
+	}
+	else	//user pressed About
+	{
+		CancelButton->SetText ("OK");
+		CancelButton->SetLeft ((r.w - width) / 2);
+		CancelButton->SetWidth (width);
+		CancelButton->SetVisible (TRUE);	//980912
+		ExitButton->SetVisible (FALSE);
+	}
+	
+	ProductLabel->SetText (product);
+	VersionLabel->SetText (versioninfo);
+	
+	AddressText->SetText 
+		("Copyright © 1992-2009 Systems Planning\r\n"
+		"info@systemsplanning.com\r\n"
+		"http://www.systemsplanning.com");
+		
+	if (!WString::Compare (product, "MARCView", FALSE, 8))
+	{
+		thetext = 
+				"\r\n\r\nThis code was provided to the community as open source in 2009.\r\n"
+				"Systems Planning no longer maintains it.\r\n"
+				"\r\nHowever, we do provide searching of MARC files with our MWeb Universal product.\r\n"
+				"For more information, please go to systemsplanning.com.\r\n"
+				"\r\nMARCView is a trademark of Systems Planning, which has assisted cultural organizations\r\n"
+				"with planning, designing, and developing information systems since 1986.";
+				
+		AboutText->SetText (thetext);
+	}
+	else		//marconvert
+	{
+		//050107 if this gets too complicated we can just set TheClientName instead
+		WString client = versioninfo.Substring (versioninfo.Position ("for "));
+		client.Trim ();
+		
+		//remove the release number -- won't work without a space between VERSION and RELEASE
+		//	-- incoming string looks like "JJJ Library 1.0"
+		int i = 0, j;
+		while (i != NOT_FOUND)
+		{
+			j = i;
+			i = client.Position (" ", i + 1);
+		}
+		client = client.Substring (0, j);
+		
+		thetext = 
+				"This version of MARConvert has been especially developed ";
+		thetext.Concat (client);
+		thetext.Concat
+				(".\r\n\r\n");
+		
+		//050106 contact info -- only 6 lines will fit vertically
+		if (!contactinfo.GetEmpty ())
+		{
+			thetext.Concat
+					("For support, please contact:\r\n");
+			thetext.Concat (contactinfo);
+			thetext.Concat
+					("\r\n\r\n");
+		}
+		
+		thetext.Concat
+				("MARConvert is guaranteed to read any records of the type we have seen during development.\r\n"
+				"In case of problems, send us the problem file for corrections.\r\n"
+				"\r\nWe also do custom programming -- bugfree and on time!\r\n"
+				"For more information, see our website at the URL above.\r\n"
+				"\r\nWe welcome your comments and suggestions.\r\n"
+				"\r\nMARConvert is a trademark of Systems Planning, which has assisted cultural organizations\r\n"
+				"with planning, designing, and developing information systems since 1986.");
+		
+		AboutText->SetText (thetext);
+		SetText ("About MARConvert");
+	}
+	
+	//030223
+	WIcon mcicon;
+	if (!WString::Compare (product, "MARCView", FALSE, 8))
+		mcicon = WIcon (WResourceID (MARCView));
+	else
+		mcicon = WIcon (WResourceID (MARConvert));
+	Icon->SetIcon (mcicon);
+	
+	//991025 only way to get icon to display correct size. if done at design time it gets overridden
+	Icon->SetWidth (32);
+	Icon->SetHeight (32);
+	
+    return FALSE;
+}
+
+@end-code;
+
+@begin-code Code "yAboutBox::CancelButton_Click"
+
+WBool @CLASSNAME@::CancelButton_Click(
+    WObject         *source,
+    WEventData      *event )
+{
+    Dismiss (FALSE);
+    
+    return FALSE;
+}
+
+@end-code;
+
+@begin-code Code "yAboutBox::ExitButton_Click"
+
+WBool @CLASSNAME@::ExitButton_Click(
+	WObject *   		source,
+	WEventData *		event )
+{
+    Dismiss (TRUE);
+    
+    return FALSE;
+}
+
+@end-code;
+@end;

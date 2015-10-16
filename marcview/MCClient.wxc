@@ -1,0 +1,473 @@
+Save Format v1.3
+@begin ClassFile "yMCClient"
+ Exported 0;
+
+@begin-code BaseClassList
+
+public WObject
+
+@end-code;
+
+ @begin UserFunction "yMCClient()"
+  GencodeSrcLine 39;
+  FunctionName "yMCClient::yMCClient()";
+ @end;
+
+ @begin UserFunction "Prototype for yMCClient()"
+  Private 1;
+  GencodeSrcLine 88;
+  FunctionName "yMCClient::Prototype for yMCClient()";
+ @end;
+
+ @begin UserFunction "~yMCClient()"
+  GencodeSrcLine 42;
+  FunctionName "yMCClient::~yMCClient()";
+ @end;
+
+ @begin UserFunction "Prototype for ~yMCClient()"
+  Private 1;
+  GencodeSrcLine 90;
+  FunctionName "yMCClient::Prototype for ~yMCClient()";
+ @end;
+
+ @begin UserFunction "Initialize (void)"
+  GencodeSrcLine 46;
+  FunctionName "yMCClient::Initialize (void)";
+ @end;
+
+ @begin UserFunction "Prototype for Initialize (void)"
+  Private 1;
+  GencodeSrcLine 92;
+  FunctionName "yMCClient::Prototype for Initialize (void)";
+ @end;
+
+ @begin HPPPrefixBlock
+@begin-code HPPPrefix
+
+/*
+Copyright 1992-2009 Systems Planning (www.systemsplanning.com)
+
+Licensed under the Apache License, Version 2.0 (the "License"); 
+you may not use this file except in compliance with the License. 
+You may obtain a copy of the License at 
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software 
+distributed under the License is distributed on an "AS IS" BASIS, 
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. 
+See the License for the specific language governing permissions and 
+limitations under the License.
+*/
+
+// Declarations added here will be included at the top of the .HPP file
+
+extern "C" 
+{
+    #include "d:\marc\sp_marc\sp_marc.hpp"
+};
+
+
+//050106 enum to avoid keying errors in client codes
+//050117 first one dummy to avoid problems if user has no INI
+//051222 this is a bit of a kludge, but we have hundreds of places where this is used
+typedef enum {DUMMY=0, AAA, BBB, CCC, DDD, EEE, FFF, GGG, HHH, JJJ, KKK, LLL, MMM, NNN, 
+			PPP, QQQ, RRR, SSS} yClient;
+typedef enum {CONVERT, EXPORT, IMPORT} yMCType;
+typedef enum {SINGLE, MULTIPLE} yMCBatchFiles;
+typedef enum {SIMPLE, COMPLEX} yMCExportOutput;
+
+@end-code;
+  GencodeSrcLine 11;
+ @end;
+
+ @begin CPPPrefixBlock
+@begin-code CPPPrefix
+
+// Code added here will be included at the top of the .CPP file
+
+
+yClient			yMCClient::TheClient;
+WString			yMCClient::TheClientCode;
+WString			yMCClient::TheClientName;
+WString			yMCClient::TheDialogHeading;
+WString			yMCClient::TheHelpContact;
+WString			yMCClient::TheHelpFile;
+WString			yMCClient::TheRelease;
+WString			yMCClient::TheVersion;
+WBool			yMCClient::MCBadFile;
+WBool			yMCClient::MCBadRecHaltsBatch;
+yMCBatchFiles		yMCClient::MCBatchFiles;
+WBool			yMCClient::MCCharConvErrIsBad;
+WString			yMCClient::MCExportDSN;
+WBool			yMCClient::MCExportHeaders;
+WBool			yMCClient::MCExportODBCLoad;
+yMCExportOutput	yMCClient::MCExportOutput;
+WBool			yMCClient::MCExportSQL;
+WBool			yMCClient::MCFieldNotFoundIsBad;
+yCharSet			yMCClient::MCSourceCharset;
+yCharConvert		yMCClient::MCTargetCharset;
+yMCType			yMCClient::MCType;
+		
+
+//  Include definitions for resources.
+#include "WRes.h"
+
+@end-code;
+  GencodeSrcLine 11;
+ @end;
+
+ @begin ClassContentsBlock
+@begin-code ClassContents
+
+    public:
+        // add your public instance data here
+
+static yClient			TheClient;
+static WString			TheClientCode;
+static WString			TheClientName;		//070824 believe not yet used, we get this from the INI instead
+static WString			TheDialogHeading;
+static WString			TheHelpContact;
+static WString			TheHelpFile;
+static WString			TheRelease;
+static WString			TheVersion;
+static WBool			MCBadFile;		// 060819 whether to use a badfile -- however, 
+									//		we maintain and display a badcount in either case
+static WBool			MCBadRecHaltsBatch;	// TRUE IF client wants batch to halt if any bad recs in a file
+									//	-- the file with the bad recs gets completed, but it
+									//			halts after that file
+									//	-- applies only if MCBatchFiles is MULTIPLE
+static yMCBatchFiles	MCBatchFiles;
+static WBool			MCCharConvErrIsBad;	// TRUE if char-conv err means rec is bad
+
+/*071026 not used in MV. Only DLL needs to know, and for that it uses the client
+		codes in SP_UseFile
+static WBool			MCCodeTables;		// TRUE if client uses large codetables for conversion,
+									//		FALSE if client uses just Symbols.cpp (default)
+									*/
+static WString			MCExportDSN;		//070828
+static WBool			MCExportHeaders;	//070920 whether text files sh fieldnames as first row
+static WBool			MCExportODBCLoad;	//071004 whether there is a potential to load using ODBC -- MCExportSQL must be on
+static yMCExportOutput	MCExportOutput;	//070721 whether Export outputs a single file or multiple
+static WBool			MCExportSQL;		//070921 writes text files for loading into a db, plus the potential to use ODBC if MCExportODBCLoad is on and there is a DSN in the INI
+static WBool			MCFieldNotFoundIsBad;	// TRUE if field not in TT means rec is bad
+static yCharSet		MCSourceCharset;	// these two not implemented yet...
+static yCharConvert		MCTargetCharset;	//... for import (or MtM if it needs it)
+static yMCType			MCType;
+
+		
+    private:
+        // add your private instance data here
+		//060517 moved to statics//WString		TheClientCode;
+    protected:
+        // add your protected instance data here
+
+@end-code;
+  GencodeSrcLine 47;
+ @end;
+
+@begin-code GeneratedClassContents
+
+
+@end-code;
+
+@begin-code Code "yMCClient::yMCClient()"
+
+@@CLASSNAME@::@CLASSNAME@()
+{
+}
+
+@end-code;
+
+@begin-code Code "yMCClient::Prototype for yMCClient()"
+
+    public:
+        @@CLASSNAME@();
+
+@end-code;
+
+@begin-code Code "yMCClient::~yMCClient()"
+
+@@CLASSNAME@::~@CLASSNAME@()
+{
+    
+}
+
+@end-code;
+
+@begin-code Code "yMCClient::Prototype for ~yMCClient()"
+
+    public:
+        ~@CLASSNAME@();
+
+@end-code;
+
+@begin-code Code "yMCClient::Initialize (void)"
+
+void @CLASSNAME@::Initialize (void)
+{
+	// setup params from INI
+	TheClientCode = WAppObject.GetProfileString ("Client", "ClientCode", "", "MARCView.INI");
+	TheClientName = WAppObject.GetProfileString ("Client", "ClientName", "", "MARCView.INI");
+	TheDialogHeading = WAppObject.GetProfileString ("Client", "DialogHeading", "", "MARCView.INI");
+	TheHelpContact = WAppObject.GetProfileString ("Client", "HelpContact", "", "MARCView.INI");
+	TheHelpFile = "MC_" + TheClientCode + "_Help.asp";
+	TheVersion = "for " + TheClientName;
+	
+	MCExportDSN = WAppObject.GetProfileString ("Export", "DSN", "", "MARCView.INI");
+	
+	// setup params not from INI
+	if (TheClientCode == "AAA")
+	{
+		TheClient = AAA;
+		TheRelease = "Open Source Release";
+		MCType = CONVERT;
+		
+		MCBadFile = TRUE;
+		MCBadRecHaltsBatch = FALSE;
+		MCBatchFiles = MULTIPLE;
+		MCCharConvErrIsBad = TRUE;	// CHECK CODE TO SEE IF THIS IS ACTUALLY THE CASE
+		MCSourceCharset = UTF8;		// actually handles ...
+		MCTargetCharset = TOANSEL;	// ... both directions
+	}
+	else if (TheClientCode == "BBB")
+	{
+		TheClient = BBB;
+		TheRelease = "Open Source Release";
+		MCType = CONVERT;
+		
+		MCBadFile = FALSE;
+		MCBadRecHaltsBatch = FALSE;
+		MCBatchFiles = MULTIPLE;
+		MCCharConvErrIsBad = TRUE;	// CHECK CODE TO SEE IF THIS IS ACTUALLY THE CASE
+		MCSourceCharset = ANSEL;
+		MCTargetCharset = TOUTF8;
+	}
+	else if (TheClientCode == "CCC")
+	{
+		TheClient = CCC;
+		TheRelease = "Open Source Release";
+		MCType = CONVERT;
+		
+		//061103 rlse 1.1 do not use badfile AFTER TESTING
+		//MCBadFile = TRUE;
+		MCBadFile = FALSE;
+		
+		MCBadRecHaltsBatch = FALSE;
+		MCBatchFiles = MULTIPLE;
+		MCCharConvErrIsBad = TRUE;	// CHECK CODE TO SEE IF THIS IS ACTUALLY THE CASE
+		MCSourceCharset = UTF8;		// actually handles ...
+		MCTargetCharset = TOANSEL;	// ... both directions
+	}
+	else if (TheClientCode == "DDD")
+	{
+		TheClient = DDD;
+		TheRelease = "Open Source Release";
+		MCType = IMPORT;
+		
+		// no MCBatchType as yet
+		// add source/target charsets
+		MCBadFile = TRUE;
+		MCCharConvErrIsBad = TRUE;	// CHECK CODE TO SEE IF THIS IS ACTUALLY THE CASE
+		MCFieldNotFoundIsBad = TRUE;	// CHECK CODE TO SEE IF THIS IS ACTUALLY THE CASE
+	}
+	else if (TheClientCode == "EEE")
+	{
+		TheClient = EEE;
+		TheRelease = "Open Source Release";
+		MCType = IMPORT;
+		
+		MCBadFile = TRUE;
+		MCBadRecHaltsBatch = FALSE;
+		MCBatchFiles = MULTIPLE;
+		MCCharConvErrIsBad = TRUE;	// CHECK CODE TO SEE IF THIS IS ACTUALLY THE CASE
+		MCFieldNotFoundIsBad = TRUE;	// CHECK CODE TO SEE IF THIS IS ACTUALLY THE CASE
+		// add source/target charsets
+	}
+	else if (TheClientCode == "FFF")
+	{
+		TheClient = FFF;
+		TheRelease = "Open Source Release";
+		MCType = CONVERT;
+		
+		MCBadFile = FALSE;
+		MCBadRecHaltsBatch = FALSE;
+		MCBatchFiles = MULTIPLE;
+		MCCharConvErrIsBad = TRUE;	// CHECK CODE TO SEE IF THIS IS ACTUALLY THE CASE
+		MCFieldNotFoundIsBad = TRUE;	// CHECK CODE TO SEE IF THIS IS ACTUALLY THE CASE
+		MCSourceCharset = ANSEL;
+		MCTargetCharset = TOUNIMARC;
+	}
+	else if (TheClientCode == "GGG")
+	{
+		TheClient = GGG;
+		TheRelease = "Open Source Release";
+		MCType = CONVERT;
+		
+		// not sure if they do or not MCBadFile = FALSE;
+		MCCharConvErrIsBad = TRUE;	// CHECK CODE TO SEE IF THIS IS ACTUALLY THE CASE
+		// no MCBatchType as yet
+		MCSourceCharset = ANSEL;
+		MCTargetCharset = TOUTF8;
+	}
+	else if (TheClientCode == "HHH")
+	{
+		TheClient = HHH;
+		TheRelease = "Open Source Release";
+		MCType = CONVERT;
+		
+		MCBadFile = FALSE;
+		MCBadRecHaltsBatch = FALSE;
+		MCBatchFiles = MULTIPLE;
+		MCCharConvErrIsBad = TRUE;	// CHECK CODE TO SEE IF THIS IS ACTUALLY THE CASE
+		MCFieldNotFoundIsBad = TRUE;	// CHECK CODE TO SEE IF THIS IS ACTUALLY THE CASE
+		MCSourceCharset = UTF8;
+		MCTargetCharset = TOANSEL;
+	}
+	else if (TheClientCode == "JJJ")
+	{
+		TheClient = JJJ;
+		TheRelease = "Open Source Release";
+		MCType = EXPORT;
+		
+		MCBadFile = TRUE;
+		MCBadRecHaltsBatch = FALSE;
+		// no MCBatchType as yet
+		MCCharConvErrIsBad = TRUE;	// CHECK CODE TO SEE IF THIS IS ACTUALLY THE CASE
+		MCExportOutput = SIMPLE;
+		MCFieldNotFoundIsBad = TRUE;	// CHECK CODE TO SEE IF THIS IS ACTUALLY THE CASE
+		// add source/target charsets
+	}
+	else if (TheClientCode == "KKK")
+	{
+		TheClient = KKK;
+		TheRelease = "Open Source Release";
+		MCType = EXPORT;
+		
+		MCBadFile = FALSE;
+		MCBatchFiles = SINGLE;
+		MCCharConvErrIsBad = TRUE;	// CHECK CODE TO SEE IF THIS IS ACTUALLY THE CASE
+		MCExportOutput = COMPLEX;
+		MCFieldNotFoundIsBad = TRUE;	// CHECK CODE TO SEE IF THIS IS ACTUALLY THE CASE
+		// add source/target charsets
+	}
+	else if (TheClientCode == "LLL")
+	{
+		TheClient = LLL;
+		TheRelease = "Open Source Release";
+		MCType = CONVERT;
+		
+		MCBadFile = FALSE;
+		MCBadRecHaltsBatch = FALSE;
+		MCBatchFiles = MULTIPLE;
+		MCCharConvErrIsBad = TRUE;	// CHECK CODE TO SEE IF THIS IS ACTUALLY THE CASE
+		// add source/target charsets
+	}
+	else if (TheClientCode == "MMM")
+	{
+		TheClient = MMM;
+		TheRelease = "Open Source Release";
+		MCType = EXPORT;
+		
+		MCBadFile = FALSE;		// dn make sense since they cdn do anything with the contents
+		MCBadRecHaltsBatch = FALSE;
+		MCBatchFiles = MULTIPLE;
+		// no char conversion //MCCharConvErrIsBad = TRUE;
+		MCExportHeaders = TRUE;
+		MCExportODBCLoad = FALSE;
+		MCExportOutput = COMPLEX;
+		MCExportSQL = TRUE;
+		MCFieldNotFoundIsBad = FALSE;
+		MCSourceCharset = ANSEL;
+		MCTargetCharset = NOCONVERSION;
+	}
+	else if (TheClientCode == "NNN")
+	{
+		TheClient = NNN;
+		TheRelease = "Open Source Release";
+		MCType = EXPORT;
+		
+		MCBadFile = FALSE;
+		MCBadRecHaltsBatch = FALSE;
+		MCBatchFiles = MULTIPLE;
+		// no char conversion //MCCharConvErrIsBad = TRUE;
+		MCExportOutput = SIMPLE;
+		// no TT //MCFieldNotFoundIsBad = TRUE;
+		MCSourceCharset = ANSEL;
+		MCTargetCharset = NOCONVERSION;
+	}
+	else if (TheClientCode == "PPP")
+	{
+		TheClient = PPP;
+		TheRelease = "Open Source Release";
+		MCType = EXPORT;
+		
+		MCBadFile = FALSE;			// we write bad recs to report
+		MCBadRecHaltsBatch = TRUE;
+		MCBatchFiles = MULTIPLE;
+		MCCharConvErrIsBad = FALSE;
+		MCExportHeaders = TRUE;
+		MCExportODBCLoad = TRUE;
+		MCExportOutput = COMPLEX;
+		MCExportSQL = TRUE;
+		MCFieldNotFoundIsBad = FALSE;
+		MCSourceCharset = ANSEL;
+		MCTargetCharset = TOUTF8;
+	}
+	else if (TheClientCode == "QQQ")
+	{
+		TheClient = QQQ;
+		TheRelease = "Open Source Release";
+		MCType = CONVERT;
+		
+		MCBadFile = FALSE;
+		MCBatchFiles = SINGLE;
+		MCCharConvErrIsBad = TRUE;	// CHECK CODE TO SEE IF THIS IS ACTUALLY THE CASE
+		MCSourceCharset = UTF8;
+		MCTargetCharset = TOANSEL;
+	}
+	else if (TheClientCode == "RRR")
+	{
+		TheClient = RRR;
+		TheRelease = "Open Source Release";
+		MCType = IMPORT;
+		
+		MCBadFile = TRUE;
+		MCBatchFiles = SINGLE;
+		MCCharConvErrIsBad = TRUE;	// CHECK CODE TO SEE IF THIS IS ACTUALLY THE CASE
+		MCFieldNotFoundIsBad = TRUE;	// CHECK CODE TO SEE IF THIS IS ACTUALLY THE CASE
+		// add source/target charsets
+	}
+	else if (TheClientCode == "SSS")
+	{
+		TheClient = SSS;
+		TheRelease = "Open Source Release";
+		MCType = IMPORT;
+		
+		MCBadFile = TRUE;
+		MCBadRecHaltsBatch = FALSE;
+		MCBatchFiles = MULTIPLE;
+		MCCharConvErrIsBad = TRUE;	// CHECK CODE TO SEE IF THIS IS ACTUALLY THE CASE
+		MCFieldNotFoundIsBad = TRUE;	// CHECK CODE TO SEE IF THIS IS ACTUALLY THE CASE
+		// add source/target charsets
+	}
+	else
+	{
+		WMessageBox::Info 
+				(NULL, 
+				"MARConvert", 
+				"Missing or incorrect values in MARCView.ini file -- "
+				"conversion functions will not work.\n\nPlease see \"About MARConvert\" in the Help menu for vendor contact information");
+	}
+    
+}
+
+@end-code;
+
+@begin-code Code "yMCClient::Prototype for Initialize (void)"
+
+    public:
+        void Initialize (void);
+
+@end-code;
+@end;

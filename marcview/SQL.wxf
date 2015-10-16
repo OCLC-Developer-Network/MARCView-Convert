@@ -1,0 +1,850 @@
+Save Format v1.3
+@begin Form "ySQL"
+ Exported 0;
+
+ @begin Object "WDialog"
+  WSCaption 1;
+  WSSizeable 1;
+  WSDlgBorder 1;
+  WSSysMenu 1;
+  WSSystemMenu 1;
+  WSMinimizeBox 1;
+  WSMaximizeBox 1;
+  WSGroup 1;
+  WSTabStop 1;
+  WSResizeBorder 1;
+  WSVisible 1;
+  Font "8.MS Sans Serif";
+  FormPositionType "Centered";
+  Text "SQL Search";
+  @begin Event "Create"
+   GencodeSrcLine 288;
+   FunctionName "ySQL::ySQL_Create";
+  @end;
+  @begin UserFunction "ySQL()"
+   Compiler 1;
+   GencodeSrcLine 307;
+   FunctionName "ySQL::ySQL()";
+  @end;
+  @begin UserFunction "~ySQL()"
+   Compiler 1;
+   GencodeSrcLine 310;
+   FunctionName "ySQL::~ySQL()";
+  @end;
+  ResID 106;
+  DesignName ySQL;
+  TabIndex 0;
+  DesignRect -1049,251,463,243;
+ @end;
+
+ @begin Object "WComboBox"
+  WCBSDropDown 1;
+  WCBSHasStrings 1;
+  WCBSNoIntegralHeight 1;
+  WCCSNoMoveY 1;
+  WSVScroll 1;
+  WSChild 1;
+  WSMinimizeBox 1;
+  WSMaximizeBox 1;
+  WSGroup 1;
+  WSTabStop 1;
+  WSVisible 1;
+  TextLimit "3000";
+  DropDownHeight "9";
+  FDXFieldName "SQLCombo_data";
+  FDXFieldType "WInt";
+  ResID 101;
+  DesignName SQLCombo;
+  TabIndex 0;
+  DesignRect 10,170,440,13;
+  @begin ComponentData "SQLCombo"
+  @end;
+ @end;
+
+ @begin Object "WCommandButton"
+  WSChild 1;
+  WSMaximizeBox 1;
+  WSTabStop 1;
+  WSVisible 1;
+  Pressed "0";
+  Text "More Help";
+  @begin Event "Click"
+   GencodeSrcLine 320;
+   FunctionName "ySQL::HelpButton_Click";
+  @end;
+  ResID 102;
+  DesignName HelpButton;
+  TabIndex 1;
+  DesignRect 10,195,60,15;
+ @end;
+
+ @begin Object "WCommandButton"
+  WSChild 1;
+  WSMaximizeBox 1;
+  WSTabStop 1;
+  WSVisible 1;
+  Default "1";
+  Pressed "0";
+  Text "OK";
+  @begin Event "Click"
+   GencodeSrcLine 328;
+   FunctionName "ySQL::OKButton_Click";
+  @end;
+  ResID 103;
+  DesignName OKButton;
+  TabIndex 2;
+  DesignRect 325,195,60,15;
+ @end;
+
+ @begin Object "WCommandButton"
+  WSChild 1;
+  WSMaximizeBox 1;
+  WSTabStop 1;
+  WSVisible 1;
+  Pressed "0";
+  Text "Cancel";
+  Cancel "1";
+  @begin Event "Click"
+   GencodeSrcLine 571;
+   FunctionName "ySQL::CancelButton_Click";
+  @end;
+  ResID 104;
+  DesignName CancelButton;
+  TabIndex 3;
+  DesignRect 391,195,60,15;
+ @end;
+
+ @begin Object "WLabel"
+  WSSLeftNoWordWrap 1;
+  WSSNotify 1;
+  WCCSNoResize 1;
+  WCCSNoParentAlign 1;
+  WSChild 1;
+  WSVisible 1;
+  Font "10.MS Sans Serif.Bold";
+  Text "Enter SQL \"where\" clause, or select from previous searches";
+  AutoSize "1";
+  ResID 105;
+  DesignName label_1;
+  TabIndex 4;
+  DesignRect 90,150,274,10;
+ @end;
+
+ @begin Object "WLabel"
+  WSSLeftNoWordWrap 1;
+  WSSNotify 1;
+  WCCSNoResize 1;
+  WCCSNoParentAlign 1;
+  WSChild 1;
+  WSVisible 1;
+  Text "Use \"and\" or \"or\" for a boolean search. Use \"<>\" for a \"not\" search";
+  AutoSize "1";
+  ResID 106;
+  DesignName label_2;
+  TabIndex 5;
+  DesignRect 235,45,214,8;
+ @end;
+
+ @begin Object "WLabel"
+  WSSLeftNoWordWrap 1;
+  WSSNotify 1;
+  WCCSNoResize 1;
+  WCCSNoParentAlign 1;
+  WSChild 1;
+  WSVisible 1;
+  Text "Use single or double quotes around multiple-word phrases";
+  AutoSize "1";
+  ResID 107;
+  DesignName label_3;
+  TabIndex 6;
+  DesignRect 235,55,181,8;
+ @end;
+
+ @begin Object "WLabel"
+  WSSLeftNoWordWrap 1;
+  WSSNotify 1;
+  WCCSNoResize 1;
+  WCCSNoParentAlign 1;
+  WSChild 1;
+  WSVisible 1;
+  Text "Use double-quotes around terms to be searched case-sensitively";
+  AutoSize "1";
+  ResID 108;
+  DesignName label_4;
+  TabIndex 7;
+  DesignRect 235,25,204,8;
+ @end;
+
+ @begin Object "WLabel"
+  WSSLeftNoWordWrap 1;
+  WSSNotify 1;
+  WCCSNoResize 1;
+  WCCSNoParentAlign 1;
+  WSChild 1;
+  WSVisible 1;
+  Text "Use == instead of = for exact-match search";
+  AutoSize "1";
+  ResID 109;
+  DesignName label_5;
+  TabIndex 8;
+  DesignRect 235,35,136,8;
+ @end;
+
+ @begin Object "WLabel"
+  WSSLeftNoWordWrap 1;
+  WSSNotify 1;
+  WCCSNoResize 1;
+  WCCSNoParentAlign 1;
+  WSChild 1;
+  WSVisible 1;
+  Font "10.MS Sans Serif.Bold";
+  Text "Examples";
+  AutoSize "1";
+  ResID 110;
+  DesignName label_6;
+  TabIndex 9;
+  DesignRect 115,75,60,11;
+ @end;
+
+ @begin Object "WLabel"
+  WSSLeftNoWordWrap 1;
+  WSSNotify 1;
+  WCCSNoResize 1;
+  WCCSNoParentAlign 1;
+  WSChild 1;
+  WSVisible 1;
+  Text "100=jones";
+  AutoSize "1";
+  ResID 111;
+  DesignName label_7;
+  TabIndex 10;
+  DesignRect 137,85,33,8;
+ @end;
+
+ @begin Object "WLabel"
+  WSSLeftNoWordWrap 1;
+  WSSNotify 1;
+  WCCSNoResize 1;
+  WCCSNoParentAlign 1;
+  WSChild 1;
+  WSVisible 1;
+  Text "100$d==1946-";
+  AutoSize "1";
+  ResID 112;
+  DesignName label_8;
+  TabIndex 11;
+  DesignRect 137,95,46,8;
+ @end;
+
+ @begin Object "WLabel"
+  WSSLeftNoWordWrap 1;
+  WSSNotify 1;
+  WCCSNoResize 1;
+  WCCSNoParentAlign 1;
+  WSChild 1;
+  WSVisible 1;
+  Text "xxx=\"New York\" (xxx will look in the whole record)";
+  AutoSize "1";
+  ResID 113;
+  DesignName label_9;
+  TabIndex 12;
+  DesignRect 137,115,52,8;
+ @end;
+
+ @begin Object "WLabel"
+  WSSLeftNoWordWrap 1;
+  WSSNotify 1;
+  WCCSNoResize 1;
+  WCCSNoParentAlign 1;
+  WSChild 1;
+  WSVisible 1;
+  Text "1xx=london";
+  AutoSize "1";
+  ResID 114;
+  DesignName label_10;
+  TabIndex 13;
+  DesignRect 137,105,36,8;
+ @end;
+
+ @begin Object "WLabel"
+  WSSLeftNoWordWrap 1;
+  WSSNotify 1;
+  WCCSNoResize 1;
+  WCCSNoParentAlign 1;
+  WSChild 1;
+  WSVisible 1;
+  Text "Only the currently open file can be searched";
+  AutoSize "1";
+  ResID 115;
+  DesignName label_11;
+  TabIndex 14;
+  DesignRect 15,25,139,8;
+ @end;
+
+ @begin Object "WLabel"
+  WSSLeftNoWordWrap 1;
+  WSSNotify 1;
+  WCCSNoResize 1;
+  WCCSNoParentAlign 1;
+  WSChild 1;
+  WSVisible 1;
+  Text "Terms are sought anywhere in the specified field/subfield";
+  AutoSize "1";
+  ResID 116;
+  DesignName label_12;
+  TabIndex 15;
+  DesignRect 15,45,179,8;
+ @end;
+
+ @begin Object "WLabel"
+  WSSLeftNoWordWrap 1;
+  WSSNotify 1;
+  WCCSNoResize 1;
+  WCCSNoParentAlign 1;
+  WSChild 1;
+  WSVisible 1;
+  Font "10.MS Sans Serif.Bold";
+  Text "Basics";
+  AutoSize "1";
+  ResID 117;
+  DesignName label_13;
+  TabIndex 16;
+  DesignRect 15,10,40,10;
+ @end;
+
+ @begin Object "WLabel"
+  WSSLeftNoWordWrap 1;
+  WSSNotify 1;
+  WCCSNoResize 1;
+  WCCSNoParentAlign 1;
+  WSChild 1;
+  WSVisible 1;
+  Font "10.MS Sans Serif.Bold";
+  Text "Advanced";
+  AutoSize "1";
+  ResID 118;
+  DesignName label_14;
+  TabIndex 17;
+  DesignRect 235,10,48,10;
+ @end;
+
+ @begin Object "WLabel"
+  WSSLeftNoWordWrap 1;
+  WSSNotify 1;
+  WCCSNoResize 1;
+  WCCSNoParentAlign 1;
+  WSChild 1;
+  WSVisible 1;
+  Text "Tags must be specified, and can include \"x\" as wildcard";
+  AutoSize "1";
+  ResID 119;
+  DesignName label_15;
+  TabIndex 18;
+  DesignRect 15,35,177,8;
+ @end;
+
+ @begin Object "WLabel"
+  WSSLeftNoWordWrap 1;
+  WSSNotify 1;
+  WCCSNoResize 1;
+  WCCSNoParentAlign 1;
+  WSChild 1;
+  WSVisible 1;
+  Text "Add $ and a single subfield code if desired";
+  AutoSize "1";
+  ResID 120;
+  DesignName label_16;
+  TabIndex 19;
+  DesignRect 15,55,133,8;
+ @end;
+
+ @begin Object "WLabel"
+  WSSLeftNoWordWrap 1;
+  WSSNotify 1;
+  WCCSNoResize 1;
+  WCCSNoParentAlign 1;
+  WSChild 1;
+  WSVisible 1;
+  Text "100=\"LaVerne\" and 245$a=='chemistry for all' and 250$a<>'2d ed'";
+  AutoSize "1";
+  ResID 121;
+  DesignName label_17;
+  TabIndex 20;
+  DesignRect 137,126,209,8;
+ @end;
+
+ @begin HPPPrefixBlock
+@begin-code HPPPrefix
+
+/*
+Copyright 1992-2009 Systems Planning (www.systemsplanning.com)
+
+Licensed under the Apache License, Version 2.0 (the "License"); 
+you may not use this file except in compliance with the License. 
+You may obtain a copy of the License at 
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software 
+distributed under the License is distributed on an "AS IS" BASIS, 
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. 
+See the License for the specific language governing permissions and 
+limitations under the License.
+*/
+
+// Declarations added here will be included at the top of the .HPP file
+
+#include "help.hpp"
+#include "utility.hpp"
+
+@end-code;
+  GencodeSrcLine 10;
+ @end;
+
+ @begin CPPPrefixBlock
+@begin-code CPPPrefix
+
+// Code added here will be included at the top of the .CPP file
+
+//  Include definitions for resources.
+#include "WRes.h"
+
+@end-code;
+  GencodeSrcLine 10;
+ @end;
+
+ @begin ClassContentsBlock
+@begin-code ClassContents
+
+    public:
+        // add your public instance data here
+		WString				sql;	
+		WString				ExactlyEqual;
+		yUtility::yFindData	FindData;
+		
+		WString				GetSQL ();
+		int					GetTerms (yUtility::yFindData*, int);
+		void					DP (char*, WString);
+		void					DP (char*, int);
+		void					DP (char*, long);
+		
+		
+    private:
+        // add your private instance data here
+		WStringArray 		tokens;
+		
+		WFilePath		RecentFiles [9];
+		void				PushRecentQuery (WString);
+		WStringArray		RecentQueries;
+		
+    protected:
+        // add your protected instance data here
+
+@end-code;
+  GencodeSrcLine 103;
+ @end;
+
+@begin-code GeneratedClassContents
+
+        ySQL();
+        ~ySQL();
+
+@end-code;
+
+@begin-code Code "ySQL::ySQL()"
+
+@@CLASSNAME@::@CLASSNAME@()
+{
+}
+
+@end-code;
+
+@begin-code Code "ySQL::~ySQL()"
+
+@@CLASSNAME@::~@CLASSNAME@()
+{
+    
+}
+	
+
+WString @CLASSNAME@::GetSQL ()
+{
+	return sql;
+}
+
+@end-code;
+
+@begin-code Code "ySQL::ySQL_Create"
+
+WBool @CLASSNAME@::ySQL_Create(
+	WObject *         		source,
+	WCreateEventData *		event )
+{
+	RecentQueries.SetCount (9);
+	
+	WString s;
+	for (int i = 0; i < 9; i++)
+	{
+		s.Sprintf ("%d", i + 1);
+		s = WAppObject.GetProfileString ("RecentQueries", s, "", "MARCView.INI");
+		RecentQueries [i] = s;
+		SQLCombo->Add (RecentQueries [i]);
+	}
+	
+	ExactlyEqual.Concat (31);
+    
+    return FALSE;
+}
+
+@end-code;
+
+@begin-code Code "ySQL::HelpButton_Click"
+
+WBool @CLASSNAME@::HelpButton_Click(
+	WObject *   		source,
+	WEventData *		event )
+{
+    yHelp::ShowHelp ("sql");
+    
+    return FALSE;
+}
+
+@end-code;
+
+@begin-code Code "ySQL::OKButton_Click"
+
+WBool @CLASSNAME@::OKButton_Click(
+	WObject *   		source,
+	WEventData *		event )
+{
+	sql = SQLCombo->GetText ();
+	PushRecentQuery (sql);
+	
+	// save recent queries
+	WString s;
+	for (int i = 0; i < 9; i++)
+	{
+		s.Sprintf ("%lu", i + 1);
+		if (!RecentQueries [i].GetEmpty ())
+			WAppObject.SetProfileString ("RecentQueries", s, RecentQueries [i], "MARCView.INI");
+	}
+
+	// replace == with single char (padded) to keep pattern consistent
+	WString exactlyequal = " ";
+	exactlyequal.Concat (ExactlyEqual);
+	exactlyequal.Concat (' ');
+	sql = yUtility::CleanString (sql, "==", exactlyequal);
+	
+	// make sure =s are surrounded by spaces
+	sql = yUtility::CleanString (sql, "=", " = ");
+	
+	//050713 make sure parens are surrounded by spaces
+	sql = yUtility::CleanString (sql, "(", " ( ");
+	sql = yUtility::CleanString (sql, ")", " ) ");
+	
+	//050730 same for <>
+	sql = yUtility::CleanString (sql, "<>", " <> ");
+	
+	tokens = sql.Parse (NULL, TRUE, WSTRING_DEFAULT_QUOTELIST, FALSE);
+     	
+	Dismiss (1);
+    
+    return FALSE;
+}
+
+
+//050713 this used to create a single termrec. rewritten to fill the entire array
+int @CLASSNAME@::GetTerms (yUtility::yFindData* termarray, int maxterms)
+{
+	//DP ("maxterms", maxterms);
+	DP ("-- ySQL::GetTerms\nToken count", tokens.GetCount ());
+	
+	//050730
+	if (tokens.GetCount () < 3)
+		return 0;
+
+	int i, termindex, tokenindex=0;
+	
+	yUtility::yFindData *termrec = termarray;
+	
+	// initialize
+	for (termindex = 0; termindex < maxterms; termindex++)
+	{
+		//DP ("termindex in outer loop", termindex);
+		
+		//DP ("tokenindex in outer loop before", tokenindex);
+		//if (tokenindex >= tokens.GetCount ())
+		//	break;
+		//DP ("tokenindex in outer loop after", tokenindex);
+			
+		// not really necessary to clear all these, as only tag is examined, but easier to debug
+		termrec->tag = "";
+		termrec->sfc = "";
+		termrec->term = "";
+		termrec->casesensitive = FALSE;
+		termrec->exactmatch = FALSE;
+		termrec->andor = FALSE;	// this is the operator PRECEDING this term
+								//	-- must be FALSE for single term
+		termrec->not = FALSE;
+		termrec++;
+	}
+	
+	// loop thru tokens until termrecs complete
+	termrec = termarray;	// reset
+	int numterms = 1;
+	while (TRUE)
+	{
+		//DP ("tokenindex in inner loop before", tokenindex);
+		if (tokenindex >= tokens.GetCount ())
+			break;
+		//DP ("tokenindex in inner loop after", tokenindex);
+			
+		if ((tokens [tokenindex] == "(") || (tokens [tokenindex] == ")"))
+		{
+			//DP ("tokenindex in paren block", tokenindex);
+			tokenindex++;
+			continue;
+		}
+		
+		if (!WString::Compare (tokens [tokenindex], "and", FALSE))
+		{
+			DP ("tokenindex in 'and' block", tokenindex);
+			termrec++;	// point to next termrec
+			numterms++;
+			if (numterms >= maxterms)
+				break;
+			termrec->andor = TRUE;
+			tokenindex++;
+			continue;
+		}
+		
+		if (!WString::Compare (tokens [tokenindex], "or", FALSE))
+		{
+			DP ("tokenindex in 'or' block", tokenindex);
+			termrec++;	// point to next termrec
+			numterms++;
+			if (numterms > maxterms)
+				break;
+			termrec->andor = FALSE;
+			tokenindex++;
+			continue;
+		}
+		
+		//DP ("tokenindex before tag assignment", tokenindex);
+		termrec->tag = tokens [tokenindex];	
+		//DP ("tag", tokens [tokenindex]);
+		
+		termrec->sfc = "";
+		i = termrec->tag.Position ("$");
+		if (i != NOT_FOUND)
+		{
+			termrec->sfc = termrec->tag.Substring (i + 1, 1);
+			termrec->tag = termrec->tag.Substring (0, 3);
+		}
+
+		
+		if (tokens [tokenindex + 1] == "<>")
+			termrec->not = TRUE;	// exactmatch stays FALSE -- we don't have a way to specify 
+								//		NOT and EXACTMATCH together
+			
+		if (tokens [tokenindex + 1] == ExactlyEqual)
+			termrec->exactmatch = TRUE;
+		else
+			termrec->exactmatch = FALSE;
+		
+		
+		termrec->term = tokens [tokenindex + 2];
+		termrec->term = yUtility::CleanString (termrec->term, "'", "");
+		if (termrec->term.Position ("\"") != NOT_FOUND)
+			termrec->casesensitive = TRUE;
+		termrec->term = yUtility::CleanString (termrec->term, "\"", "");
+		//DP ("tag", tokens [tokenindex + 2]);
+		
+		
+		tokenindex += 3;
+	}
+
+
+	#ifdef _DEBUG
+	DP ("\nBEFORE REARRANGEMENT", termindex);
+	termrec = termarray;
+	for (termindex = 0; termindex < maxterms; termindex++)
+	{
+		DP ("\nterm number", termindex);
+		DP ("tag", termrec->tag);
+		DP ("sfc", termrec->sfc);
+		DP ("term", termrec->term);
+		DP ("casesensitive", termrec->casesensitive);
+		DP ("exactmatch", termrec->exactmatch);
+		DP ("andor", termrec->andor);
+		DP ("not", termrec->not);
+		
+		termrec++;
+	}
+	#endif
+	
+	if ((tokens.GetCount () > 4) && (tokens [4] == "("))
+	{
+		// reset pointer
+		termrec = termarray;
+		// create another pointer for moving
+		yUtility::yFindData* index = termarray;
+		// set this to 2d term
+		index++;
+		// create a temp term
+		yUtility::yFindData temp;
+		// move 1st term to temp term
+		temp.tag = termrec->tag;
+		temp.sfc = termrec->sfc;
+		temp.term = termrec->term;
+		temp.casesensitive = termrec->casesensitive;
+		temp.exactmatch = termrec->exactmatch;
+		temp.andor = termrec->andor;
+		temp.not = termrec->not;
+		// op before 2d term now goes with temp
+		temp.andor = index->andor;
+		// reset 2d term's op
+		index->andor = FALSE;
+		// move 2d term to 1st
+		termrec->tag = index->tag;
+		termrec->sfc = index->sfc;
+		termrec->term = index->term;
+		termrec->casesensitive = index->casesensitive;
+		termrec->exactmatch = index->exactmatch;
+		termrec->andor = index->andor;
+		termrec->not = index->not;
+		// increment pointers
+		termrec++;
+		index++;
+		// move 3d term to 2d
+		termrec->tag = index->tag;
+		termrec->sfc = index->sfc;
+		termrec->term = index->term;
+		termrec->casesensitive = index->casesensitive;
+		termrec->exactmatch = index->exactmatch;
+		termrec->andor = index->andor;
+		termrec->not = index->not;
+		// move temp term to 3d
+		// increment pointers
+		termrec++;
+		termrec->tag = temp.tag;
+		termrec->sfc = temp.sfc;
+		termrec->term = temp.term;
+		termrec->casesensitive = temp.casesensitive;
+		termrec->exactmatch = temp.exactmatch;
+		termrec->andor = temp.andor;
+		termrec->not = temp.not;
+	}
+		
+	#ifdef _DEBUG
+	DP ("\nAFTER REARRANGEMENT", termindex);
+	termrec = termarray;
+	for (termindex = 0; termindex < maxterms; termindex++)
+	{
+		DP ("\nterm number", termindex);
+		DP ("tag", termrec->tag);
+		DP ("sfc", termrec->sfc);
+		DP ("term", termrec->term);
+		DP ("casesensitive", termrec->casesensitive);
+		DP ("exactmatch", termrec->exactmatch);
+		DP ("andor", termrec->andor);
+		DP ("not", termrec->not);
+		
+		termrec++;
+	}
+	#endif
+	
+	return numterms;
+}
+
+@end-code;
+
+@begin-code Code "ySQL::CancelButton_Click"
+
+WBool @CLASSNAME@::CancelButton_Click(
+	WObject *   		source,
+	WEventData *		event )
+{
+    Dismiss (0);
+    
+    return FALSE;
+}
+
+//PushRecentQuery
+void @CLASSNAME@::PushRecentQuery (WString query)
+{
+	int 		i, j;
+	WBool 	found = FALSE;
+	// if file already in list, move it to top
+	for (i = 0; i < 8; i++)
+	{
+		// we use Compare with FALSE to do case-INsensitive compare
+		if (!WString::Compare (RecentQueries [i], query, FALSE))
+		{
+			for (j = i; j > 0; j--)
+				RecentQueries [j] = RecentQueries [j - 1];
+			RecentQueries [0] = query;
+			found = TRUE;
+			break;
+		}
+	}
+	
+	if (!found)
+	{
+		for (i = 8; i > 0; i--)
+			RecentQueries [i] = RecentQueries [i - 1];
+		RecentQueries [0] = query;
+	}
+
+}
+
+
+//DP
+void @CLASSNAME@::DP (char* s, WString t)
+{
+	#ifdef _DEBUG
+	FILE* debugfile;
+	WString temp;
+	if ((debugfile = fopen ("debug.txt", "a")) == NULL)
+		WMessageBox::Info (NULL, NULL, "Problem reopening debug.txt");
+	temp.Sprintf ("%s:\t%s\n", s, t.GetText ());
+	fputs (temp.GetText (), debugfile);
+	fclose (debugfile);
+	#endif			
+}
+//DP
+
+
+//DP
+void @CLASSNAME@::DP (char* s, int t)
+{
+	#ifdef _DEBUG
+	FILE* debugfile;
+	WString temp;
+	if ((debugfile = fopen ("debug.txt", "a")) == NULL)
+		WMessageBox::Info (NULL, NULL, "Problem reopening debug.txt");
+	temp.Sprintf ("%s:\t%d\n", s, t);
+	fputs (temp.GetText (), debugfile);
+	fclose (debugfile);
+	#endif			
+}
+//DP
+
+
+//DP
+void @CLASSNAME@::DP (char* s, long t)
+{
+	#ifdef _DEBUG
+	FILE* debugfile;
+	WString temp;
+	if ((debugfile = fopen ("debug.txt", "a")) == NULL)
+		WMessageBox::Info (NULL, NULL, "Problem reopening debug.txt");
+	temp.Sprintf ("%s:\t%ld\n", s, t);
+	fputs (temp.GetText (), debugfile);
+	fclose (debugfile);
+	#endif			
+}
+//DP
+
+@end-code;
+@end;

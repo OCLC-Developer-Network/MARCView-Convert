@@ -1,0 +1,1777 @@
+Save Format v1.3
+@begin Form "ySettings"
+ Exported 0;
+
+ @begin Object "WDialog"
+  WSCaption 1;
+  WSDlgBorder 1;
+  WSVisible 1;
+  Font "8.MS Sans Serif";
+  Icon "WIcon( WResourceID( MARCView ) )";
+  FormPositionType "Centered";
+  FormAbsTop "216";
+  FormAbsLeft "163";
+  Text "Settings";
+  @begin Event "Create"
+   GencodeSrcLine 626;
+   FunctionName "ySettings::ySettings_Create";
+  @end;
+  @begin UserFunction "ySettings()"
+   Compiler 1;
+   GencodeSrcLine 705;
+   FunctionName "ySettings::ySettings()";
+  @end;
+  @begin UserFunction "~ySettings()"
+   Compiler 1;
+   GencodeSrcLine 708;
+   FunctionName "ySettings::~ySettings()";
+  @end;
+  @begin UserFunction "ReadIni ()"
+   GencodeSrcLine 712;
+   FunctionName "ySettings::ReadIni ()";
+  @end;
+  @begin UserFunction "Prototype for ReadIni ()"
+   Private 1;
+   GencodeSrcLine 231;
+   FunctionName "ySettings::Prototype for ReadIni ()";
+  @end;
+  @begin UserFunction "WriteIni ()"
+   GencodeSrcLine 805;
+   FunctionName "ySettings::WriteIni ()";
+  @end;
+  @begin UserFunction "Prototype for WriteIni ()"
+   Private 1;
+   GencodeSrcLine 233;
+   FunctionName "ySettings::Prototype for WriteIni ()";
+  @end;
+  ResID 104;
+  DesignName ySettings;
+  TabIndex 0;
+  DesignRect -802,161,348,323;
+ @end;
+
+ @begin Object "WGroupBox"
+  WCCSTop 1;
+  WCCSNoMoveY 1;
+  WCCSBottom 1;
+  WCCSNoResize 1;
+  WSChild 1;
+  WSMinimizeBox 1;
+  WSGroup 1;
+  WSVisible 1;
+  Text "General Settings";
+  ResID 101;
+  DesignName groupb_1;
+  TabIndex 0;
+  DesignRect 10,10,135,55;
+ @end;
+
+ @begin Object "WCheckBox"
+  WBSAutoCheckBox 1;
+  WCCSTop 1;
+  WCCSNoMoveY 1;
+  WCCSBottom 1;
+  WSChild 1;
+  WSMaximizeBox 1;
+  WSTabStop 1;
+  WSVisible 1;
+  AutoSize "1";
+  Text "Allow non-numeric tags";
+  ToolTipText "Permits tags that include letters (such as RLIN acquisitions fields)";
+  Checked "0";
+  ResID 102;
+  DesignName nonnumtagscheckbox;
+  TabIndex 1;
+  DesignRect 20,20,86,12;
+ @end;
+
+ @begin Object "WCheckBox"
+  WBSAutoCheckBox 1;
+  WCCSTop 1;
+  WCCSNoMoveY 1;
+  WCCSBottom 1;
+  WSChild 1;
+  WSMaximizeBox 1;
+  WSTabStop 1;
+  WSVisible 1;
+  AutoSize "1";
+  Text "Highlight terms found in search";
+  Checked "0";
+  ResID 103;
+  DesignName hilitetermscheckbox;
+  TabIndex 2;
+  DesignRect 20,30,110,12;
+ @end;
+
+ @begin Object "WCheckBox"
+  WBSAutoCheckBox 1;
+  WCCSTop 1;
+  WCCSNoMoveY 1;
+  WCCSBottom 1;
+  WSChild 1;
+  WSMaximizeBox 1;
+  WSTabStop 1;
+  WSVisible 1;
+  AutoSize "1";
+  Text "New line for each subfield";
+  Checked "0";
+  ResID 104;
+  DesignName newlinecheckbox;
+  TabIndex 3;
+  DesignRect 20,40,95,12;
+ @end;
+
+ @begin Object "WGroupBox"
+  WCCSTop 1;
+  WCCSNoMoveY 1;
+  WCCSBottom 1;
+  WCCSNoResize 1;
+  WSChild 1;
+  WSMinimizeBox 1;
+  WSGroup 1;
+  WSVisible 1;
+  Text "Size Limits (do not use commas)";
+  ResID 105;
+  DesignName groupb_3;
+  TabIndex 4;
+  DesignRect 155,10,175,55;
+ @end;
+
+ @begin Object "WLabel"
+  WSSLeftNoWordWrap 1;
+  WSSNotify 1;
+  WCCSNoResize 1;
+  WCCSNoParentAlign 1;
+  WSChild 1;
+  WSVisible 1;
+  Text "Maximum records";
+  ResID 106;
+  DesignName label_1;
+  TabIndex 5;
+  DesignRect 165,20,60,8;
+ @end;
+
+ @begin Object "WTextBox"
+  WTextBoxAutoHScroll 1;
+  WSBorder 1;
+  WSChild 1;
+  WSMaximizeBox 1;
+  WSTabStop 1;
+  WSExClientEdge 1;
+  WSVisible 1;
+  ResID 107;
+  DesignName maxrecsentry;
+  TabIndex 6;
+  DesignRect 272,20,46,12;
+ @end;
+
+ @begin Object "WLabel"
+  WSSLeftNoWordWrap 1;
+  WSSNotify 1;
+  WCCSNoResize 1;
+  WCCSNoParentAlign 1;
+  WSChild 1;
+  WSVisible 1;
+  Text "Maximum records to build";
+  ResID 108;
+  DesignName label_4;
+  TabIndex 7;
+  DesignRect 165,34,86,8;
+ @end;
+
+ @begin Object "WTextBox"
+  WTextBoxAutoHScroll 1;
+  WSBorder 1;
+  WSChild 1;
+  WSMaximizeBox 1;
+  WSTabStop 1;
+  WSExClientEdge 1;
+  WSVisible 1;
+  ResID 109;
+  DesignName maxgridentry;
+  TabIndex 8;
+  DesignRect 272,40,46,12;
+ @end;
+
+ @begin Object "WLabel"
+  WSSLeftNoWordWrap 1;
+  WSSNotify 1;
+  WCCSNoResize 1;
+  WCCSNoParentAlign 1;
+  WSChild 1;
+  WSVisible 1;
+  Text "Navigation Grid for (5000 is";
+  ResID 110;
+  DesignName label_5;
+  TabIndex 9;
+  DesignRect 165,42,90,9;
+ @end;
+
+ @begin Object "WLabel"
+  WSSLeftNoWordWrap 1;
+  WSSNotify 1;
+  WCCSNoResize 1;
+  WCCSNoParentAlign 1;
+  WSChild 1;
+  WSVisible 1;
+  Text "recommended maximum)";
+  ResID 111;
+  DesignName label_11;
+  TabIndex 10;
+  DesignRect 165,50,96,8;
+ @end;
+
+ @begin Object "WGroupBox"
+  WCCSTop 1;
+  WCCSNoMoveY 1;
+  WCCSBottom 1;
+  WCCSNoResize 1;
+  WSChild 1;
+  WSMinimizeBox 1;
+  WSGroup 1;
+  WSVisible 1;
+  Text "Character Set of Records";
+  ToolTipText "Character set used in input file";
+  ResID 112;
+  DesignName CharsetInGroup;
+  TabIndex 11;
+  DesignRect 10,70,95,55;
+ @end;
+
+ @begin Object "WOptionButton"
+  WBSAutoRadioButton 1;
+  WCCSTop 1;
+  WCCSNoParentAlign 1;
+  WSChild 1;
+  WSMaximizeBox 1;
+  WSTabStop 1;
+  WSVisible 1;
+  AutoSize "1";
+  Text "Read Leader";
+  ToolTipText "Use Leader byte 09 to determine character set of record";
+  @begin Event "Click"
+   GencodeSrcLine 867;
+   FunctionName "ySettings::Leader09Radio_Click";
+  @end;
+  ResID 113;
+  DesignName Leader09Radio;
+  TabIndex 12;
+  DesignRect 20,80,55,12;
+ @end;
+
+ @begin Object "WOptionButton"
+  WBSAutoRadioButton 1;
+  WCCSTop 1;
+  WCCSNoParentAlign 1;
+  WSChild 1;
+  WSMaximizeBox 1;
+  WSTabStop 1;
+  WSVisible 1;
+  AutoSize "1";
+  Text "MARC-8";
+  ToolTipText "Diacriticals precede characters in input file";
+  @begin Event "Click"
+   GencodeSrcLine 880;
+   FunctionName "ySettings::ANSELInRadio_Click";
+  @end;
+  ResID 114;
+  DesignName ANSELInRadio;
+  TabIndex 13;
+  DesignRect 20,90,40,12;
+ @end;
+
+ @begin Object "WOptionButton"
+  WBSAutoRadioButton 1;
+  WCCSTop 1;
+  WCCSNoParentAlign 1;
+  WSChild 1;
+  WSMaximizeBox 1;
+  WSTabStop 1;
+  WSVisible 1;
+  AutoSize "1";
+  Text "Latin-1";
+  ToolTipText "Characters include diacriticals in input file";
+  @begin Event "Click"
+   GencodeSrcLine 893;
+   FunctionName "ySettings::LatinInRadio_Click";
+  @end;
+  ResID 115;
+  DesignName LatinInRadio;
+  TabIndex 14;
+  DesignRect 20,100,35,12;
+ @end;
+
+ @begin Object "WOptionButton"
+  WBSAutoRadioButton 1;
+  WCCSTop 1;
+  WCCSNoParentAlign 1;
+  WSChild 1;
+  WSMaximizeBox 1;
+  WSTabStop 1;
+  WSVisible 1;
+  AutoSize "1";
+  Text "UTF-8";
+  ToolTipText "Records use UTF-8 representation of Unicode character set";
+  @begin Event "Click"
+   GencodeSrcLine 906;
+   FunctionName "ySettings::UTF8InRadio_Click";
+  @end;
+  ResID 116;
+  DesignName UTF8InRadio;
+  TabIndex 15;
+  DesignRect 20,110,33,12;
+ @end;
+
+ @begin Object "WGroupBox"
+  WCCSTop 1;
+  WCCSNoMoveY 1;
+  WCCSBottom 1;
+  WCCSNoResize 1;
+  WSChild 1;
+  WSMinimizeBox 1;
+  WSGroup 1;
+  WSVisible 1;
+  Text "Navigation Grid: MARC21 and MARCXML Bibliographic";
+  ResID 117;
+  DesignName groupb_2;
+  TabIndex 16;
+  DesignRect 115,70,216,56;
+ @end;
+
+ @begin Object "WLabel"
+  WSSLeftNoWordWrap 1;
+  WSSNotify 1;
+  WCCSNoResize 1;
+  WCCSNoParentAlign 1;
+  WSChild 1;
+  WSVisible 1;
+  Text "Column 2";
+  AutoSize "1";
+  ResID 118;
+  DesignName label_6;
+  TabIndex 17;
+  DesignRect 177,79,30,8;
+ @end;
+
+ @begin Object "WLabel"
+  WSSLeftNoWordWrap 1;
+  WSSNotify 1;
+  WCCSNoResize 1;
+  WCCSNoParentAlign 1;
+  WSChild 1;
+  WSVisible 1;
+  Text "Column 3";
+  AutoSize "1";
+  ResID 119;
+  DesignName label_7;
+  TabIndex 18;
+  DesignRect 227,79,30,9;
+ @end;
+
+ @begin Object "WLabel"
+  WSSLeftNoWordWrap 1;
+  WSSNotify 1;
+  WCCSNoResize 1;
+  WCCSNoParentAlign 1;
+  WSChild 1;
+  WSVisible 1;
+  Text "Column 4";
+  AutoSize "1";
+  ResID 120;
+  DesignName label_8;
+  TabIndex 19;
+  DesignRect 277,79,30,8;
+ @end;
+
+ @begin Object "WMaskedTextBox"
+  WTextBoxAutoHScroll 1;
+  WSBorder 1;
+  WSChild 1;
+  WSMaximizeBox 1;
+  WSTabStop 1;
+  WSExClientEdge 1;
+  WSVisible 1;
+  InputMask "???$?";
+  UseCurrentDate "0";
+  TextLimit "5";
+  OutputFormat "";
+  PromptChar "32";
+  ResID 121;
+  DesignName mb_col2entry;
+  TabIndex 20;
+  DesignRect 177,91,30,12;
+ @end;
+
+ @begin Object "WMaskedTextBox"
+  WTextBoxAutoHScroll 1;
+  WSBorder 1;
+  WSChild 1;
+  WSMaximizeBox 1;
+  WSTabStop 1;
+  WSExClientEdge 1;
+  WSVisible 1;
+  InputMask "???$?";
+  UseCurrentDate "0";
+  TextLimit "5";
+  OutputFormat "";
+  PromptChar "32";
+  ResID 122;
+  DesignName mb_col3entry;
+  TabIndex 21;
+  DesignRect 227,91,30,12;
+ @end;
+
+ @begin Object "WMaskedTextBox"
+  WTextBoxAutoHScroll 1;
+  WSBorder 1;
+  WSChild 1;
+  WSMaximizeBox 1;
+  WSTabStop 1;
+  WSExClientEdge 1;
+  WSVisible 1;
+  InputMask "???$?";
+  UseCurrentDate "0";
+  TextLimit "5";
+  OutputFormat "";
+  PromptChar "32";
+  ResID 123;
+  DesignName mb_col4entry;
+  TabIndex 22;
+  DesignRect 277,91,30,12;
+ @end;
+
+ @begin Object "WLabel"
+  WSSLeftNoWordWrap 1;
+  WSSNotify 1;
+  WCCSNoResize 1;
+  WCCSNoParentAlign 1;
+  WSChild 1;
+  WSVisible 1;
+  Text "Field$subfield";
+  ToolTipText "Examples: 100$a, 1xx$a";
+  AutoSize "1";
+  ResID 124;
+  DesignName label_9;
+  TabIndex 23;
+  DesignRect 125,93,43,8;
+ @end;
+
+ @begin Object "WTextBox"
+  WTextBoxAutoHScroll 1;
+  WSBorder 1;
+  WSChild 1;
+  WSMaximizeBox 1;
+  WSTabStop 1;
+  WSExClientEdge 1;
+  WSVisible 1;
+  TextLimit "20";
+  ResID 125;
+  DesignName mb_col2labelentry;
+  TabIndex 24;
+  DesignRect 177,106,46,12;
+ @end;
+
+ @begin Object "WTextBox"
+  WTextBoxAutoHScroll 1;
+  WSBorder 1;
+  WSChild 1;
+  WSMaximizeBox 1;
+  WSTabStop 1;
+  WSExClientEdge 1;
+  WSVisible 1;
+  TextLimit "20";
+  ResID 126;
+  DesignName mb_col3labelentry;
+  TabIndex 25;
+  DesignRect 227,106,46,12;
+ @end;
+
+ @begin Object "WTextBox"
+  WTextBoxAutoHScroll 1;
+  WSBorder 1;
+  WSChild 1;
+  WSMaximizeBox 1;
+  WSTabStop 1;
+  WSExClientEdge 1;
+  WSVisible 1;
+  TextLimit "20";
+  ResID 127;
+  DesignName mb_col4labelentry;
+  TabIndex 26;
+  DesignRect 277,106,46,12;
+ @end;
+
+ @begin Object "WLabel"
+  WSSLeftNoWordWrap 1;
+  WSSNotify 1;
+  WCCSNoResize 1;
+  WCCSNoParentAlign 1;
+  WSChild 1;
+  WSVisible 1;
+  Text "Column label";
+  AutoSize "1";
+  ResID 128;
+  DesignName label_10;
+  TabIndex 27;
+  DesignRect 125,108,40,8;
+ @end;
+
+ @begin Object "WGroupBox"
+  WCCSTop 1;
+  WCCSNoMoveY 1;
+  WCCSBottom 1;
+  WCCSNoResize 1;
+  WSChild 1;
+  WSMinimizeBox 1;
+  WSGroup 1;
+  WSVisible 1;
+  Text "Navigation Grid: MARC21 and MARCXML Authority";
+  ResID 129;
+  DesignName groupb_4;
+  TabIndex 28;
+  DesignRect 115,130,216,45;
+ @end;
+
+ @begin Object "WMaskedTextBox"
+  WTextBoxAutoHScroll 1;
+  WSBorder 1;
+  WSChild 1;
+  WSMaximizeBox 1;
+  WSTabStop 1;
+  WSExClientEdge 1;
+  WSVisible 1;
+  InputMask "???$?";
+  UseCurrentDate "0";
+  TextLimit "5";
+  OutputFormat "";
+  PromptChar "32";
+  ResID 130;
+  DesignName ma_col2entry;
+  TabIndex 29;
+  DesignRect 177,141,30,12;
+ @end;
+
+ @begin Object "WMaskedTextBox"
+  WTextBoxAutoHScroll 1;
+  WSBorder 1;
+  WSChild 1;
+  WSMaximizeBox 1;
+  WSTabStop 1;
+  WSExClientEdge 1;
+  WSVisible 1;
+  InputMask "???$?";
+  UseCurrentDate "0";
+  TextLimit "5";
+  OutputFormat "";
+  PromptChar "32";
+  ResID 131;
+  DesignName ma_col3entry;
+  TabIndex 30;
+  DesignRect 227,141,30,12;
+ @end;
+
+ @begin Object "WMaskedTextBox"
+  WTextBoxAutoHScroll 1;
+  WSBorder 1;
+  WSChild 1;
+  WSMaximizeBox 1;
+  WSTabStop 1;
+  WSExClientEdge 1;
+  WSVisible 1;
+  InputMask "???$?";
+  UseCurrentDate "0";
+  TextLimit "5";
+  OutputFormat "";
+  PromptChar "32";
+  ResID 132;
+  DesignName ma_col4entry;
+  TabIndex 31;
+  DesignRect 277,141,30,12;
+ @end;
+
+ @begin Object "WLabel"
+  WSSLeftNoWordWrap 1;
+  WSSNotify 1;
+  WCCSNoResize 1;
+  WCCSNoParentAlign 1;
+  WSChild 1;
+  WSVisible 1;
+  Text "Field$subfield";
+  ResID 133;
+  DesignName label_2;
+  TabIndex 32;
+  DesignRect 125,143,43,8;
+ @end;
+
+ @begin Object "WTextBox"
+  WTextBoxAutoHScroll 1;
+  WSBorder 1;
+  WSChild 1;
+  WSMaximizeBox 1;
+  WSTabStop 1;
+  WSExClientEdge 1;
+  WSVisible 1;
+  ResID 134;
+  DesignName ma_col2labelentry;
+  TabIndex 33;
+  DesignRect 177,156,46,12;
+ @end;
+
+ @begin Object "WTextBox"
+  WTextBoxAutoHScroll 1;
+  WSBorder 1;
+  WSChild 1;
+  WSMaximizeBox 1;
+  WSTabStop 1;
+  WSExClientEdge 1;
+  WSVisible 1;
+  ResID 135;
+  DesignName ma_col3labelentry;
+  TabIndex 34;
+  DesignRect 227,156,46,12;
+ @end;
+
+ @begin Object "WTextBox"
+  WTextBoxAutoHScroll 1;
+  WSBorder 1;
+  WSChild 1;
+  WSMaximizeBox 1;
+  WSTabStop 1;
+  WSExClientEdge 1;
+  WSVisible 1;
+  ResID 136;
+  DesignName ma_col4labelentry;
+  TabIndex 35;
+  DesignRect 277,156,46,12;
+ @end;
+
+ @begin Object "WLabel"
+  WSSLeftNoWordWrap 1;
+  WSSNotify 1;
+  WCCSNoResize 1;
+  WCCSNoParentAlign 1;
+  WSChild 1;
+  WSVisible 1;
+  Text "Column label";
+  ResID 137;
+  DesignName label_3;
+  TabIndex 36;
+  DesignRect 125,158,40,8;
+ @end;
+
+ @begin Object "WGroupBox"
+  WCCSTop 1;
+  WCCSNoMoveY 1;
+  WCCSBottom 1;
+  WCCSNoResize 1;
+  WSChild 1;
+  WSMinimizeBox 1;
+  WSGroup 1;
+  WSVisible 1;
+  Text "Navigation Grid: UNIMARC Bibliographic";
+  ResID 138;
+  DesignName groupb_5;
+  TabIndex 37;
+  DesignRect 115,180,216,45;
+ @end;
+
+ @begin Object "WMaskedTextBox"
+  WTextBoxAutoHScroll 1;
+  WSBorder 1;
+  WSChild 1;
+  WSMaximizeBox 1;
+  WSTabStop 1;
+  WSExClientEdge 1;
+  WSVisible 1;
+  InputMask "???$?";
+  UseCurrentDate "0";
+  TextLimit "5";
+  OutputFormat "";
+  PromptChar "32";
+  ResID 139;
+  DesignName ub_col2entry;
+  TabIndex 38;
+  DesignRect 177,191,30,12;
+ @end;
+
+ @begin Object "WMaskedTextBox"
+  WTextBoxAutoHScroll 1;
+  WSBorder 1;
+  WSChild 1;
+  WSMaximizeBox 1;
+  WSTabStop 1;
+  WSExClientEdge 1;
+  WSVisible 1;
+  InputMask "???$?";
+  UseCurrentDate "0";
+  TextLimit "5";
+  FDXFieldName "mtextb_5_data";
+  OutputFormat "";
+  PromptChar "32";
+  ResID 140;
+  DesignName ub_col3entry;
+  TabIndex 39;
+  DesignRect 227,191,30,12;
+ @end;
+
+ @begin Object "WMaskedTextBox"
+  WTextBoxAutoHScroll 1;
+  WSBorder 1;
+  WSChild 1;
+  WSMaximizeBox 1;
+  WSTabStop 1;
+  WSExClientEdge 1;
+  WSVisible 1;
+  InputMask "???$?";
+  UseCurrentDate "0";
+  TextLimit "5";
+  OutputFormat "";
+  PromptChar "32";
+  ResID 141;
+  DesignName ub_col4entry;
+  TabIndex 40;
+  DesignRect 277,191,30,12;
+ @end;
+
+ @begin Object "WLabel"
+  WSSLeftNoWordWrap 1;
+  WSSNotify 1;
+  WCCSNoResize 1;
+  WCCSNoParentAlign 1;
+  WSChild 1;
+  WSVisible 1;
+  Text "Field$subfield";
+  ResID 142;
+  DesignName label_12;
+  TabIndex 41;
+  DesignRect 125,193,43,8;
+ @end;
+
+ @begin Object "WTextBox"
+  WTextBoxAutoHScroll 1;
+  WSBorder 1;
+  WSChild 1;
+  WSMaximizeBox 1;
+  WSTabStop 1;
+  WSExClientEdge 1;
+  WSVisible 1;
+  ResID 143;
+  DesignName ub_col2labelentry;
+  TabIndex 42;
+  DesignRect 177,206,46,12;
+ @end;
+
+ @begin Object "WTextBox"
+  WTextBoxAutoHScroll 1;
+  WSBorder 1;
+  WSChild 1;
+  WSMaximizeBox 1;
+  WSTabStop 1;
+  WSExClientEdge 1;
+  WSVisible 1;
+  ResID 144;
+  DesignName ub_col3labelentry;
+  TabIndex 43;
+  DesignRect 227,206,46,12;
+ @end;
+
+ @begin Object "WTextBox"
+  WTextBoxAutoHScroll 1;
+  WSBorder 1;
+  WSChild 1;
+  WSMaximizeBox 1;
+  WSTabStop 1;
+  WSExClientEdge 1;
+  WSVisible 1;
+  ResID 145;
+  DesignName ub_col4labelentry;
+  TabIndex 44;
+  DesignRect 277,206,46,12;
+ @end;
+
+ @begin Object "WLabel"
+  WSSLeftNoWordWrap 1;
+  WSSNotify 1;
+  WCCSNoResize 1;
+  WCCSNoParentAlign 1;
+  WSChild 1;
+  WSVisible 1;
+  Text "Column label";
+  ResID 146;
+  DesignName label_13;
+  TabIndex 45;
+  DesignRect 125,208,40,8;
+ @end;
+
+ @begin Object "WGroupBox"
+  WCCSTop 1;
+  WCCSNoMoveY 1;
+  WCCSBottom 1;
+  WCCSNoResize 1;
+  WSChild 1;
+  WSMinimizeBox 1;
+  WSGroup 1;
+  WSVisible 1;
+  Text "Navigation Grid: UNIMARC Authority";
+  ResID 147;
+  DesignName groupb_6;
+  TabIndex 46;
+  DesignRect 115,230,216,45;
+ @end;
+
+ @begin Object "WMaskedTextBox"
+  WTextBoxAutoHScroll 1;
+  WSBorder 1;
+  WSChild 1;
+  WSMaximizeBox 1;
+  WSTabStop 1;
+  WSExClientEdge 1;
+  WSVisible 1;
+  InputMask "???$?";
+  UseCurrentDate "0";
+  TextLimit "5";
+  OutputFormat "";
+  PromptChar "32";
+  ResID 148;
+  DesignName ua_col2entry;
+  TabIndex 47;
+  DesignRect 177,241,30,12;
+ @end;
+
+ @begin Object "WMaskedTextBox"
+  WTextBoxAutoHScroll 1;
+  WSBorder 1;
+  WSChild 1;
+  WSMaximizeBox 1;
+  WSTabStop 1;
+  WSExClientEdge 1;
+  WSVisible 1;
+  InputMask "???$?";
+  UseCurrentDate "0";
+  TextLimit "5";
+  OutputFormat "";
+  PromptChar "32";
+  ResID 149;
+  DesignName ua_col3entry;
+  TabIndex 48;
+  DesignRect 227,241,30,12;
+ @end;
+
+ @begin Object "WMaskedTextBox"
+  WTextBoxAutoHScroll 1;
+  WSBorder 1;
+  WSChild 1;
+  WSMaximizeBox 1;
+  WSTabStop 1;
+  WSExClientEdge 1;
+  WSVisible 1;
+  InputMask "???$?";
+  UseCurrentDate "0";
+  TextLimit "5";
+  OutputFormat "";
+  PromptChar "32";
+  ResID 150;
+  DesignName ua_col4entry;
+  TabIndex 49;
+  DesignRect 277,241,30,12;
+ @end;
+
+ @begin Object "WLabel"
+  WSSLeftNoWordWrap 1;
+  WSSNotify 1;
+  WCCSNoResize 1;
+  WCCSNoParentAlign 1;
+  WSChild 1;
+  WSVisible 1;
+  Text "Field$subfield";
+  ResID 151;
+  DesignName label_14;
+  TabIndex 50;
+  DesignRect 125,243,43,8;
+ @end;
+
+ @begin Object "WTextBox"
+  WTextBoxAutoHScroll 1;
+  WSBorder 1;
+  WSChild 1;
+  WSMaximizeBox 1;
+  WSTabStop 1;
+  WSExClientEdge 1;
+  WSVisible 1;
+  ResID 152;
+  DesignName ua_col2labelentry;
+  TabIndex 51;
+  DesignRect 177,256,46,12;
+ @end;
+
+ @begin Object "WTextBox"
+  WTextBoxAutoHScroll 1;
+  WSBorder 1;
+  WSChild 1;
+  WSMaximizeBox 1;
+  WSTabStop 1;
+  WSExClientEdge 1;
+  WSVisible 1;
+  ResID 153;
+  DesignName ua_col3labelentry;
+  TabIndex 52;
+  DesignRect 227,256,46,12;
+ @end;
+
+ @begin Object "WTextBox"
+  WTextBoxAutoHScroll 1;
+  WSBorder 1;
+  WSChild 1;
+  WSMaximizeBox 1;
+  WSTabStop 1;
+  WSExClientEdge 1;
+  WSVisible 1;
+  ResID 154;
+  DesignName ua_col4labelentry;
+  TabIndex 53;
+  DesignRect 277,256,46,12;
+ @end;
+
+ @begin Object "WLabel"
+  WSSLeftNoWordWrap 1;
+  WSSNotify 1;
+  WCCSNoResize 1;
+  WCCSNoParentAlign 1;
+  WSChild 1;
+  WSVisible 1;
+  Text "Column label";
+  ResID 155;
+  DesignName label_15;
+  TabIndex 54;
+  DesignRect 125,258,40,8;
+ @end;
+
+ @begin Object "WLabel"
+  WSSLeftNoWordWrap 1;
+  WSSNotify 1;
+  WCCSNoResize 1;
+  WCCSNoParentAlign 1;
+  WSChild 1;
+  WSMinimizeBox 1;
+  WSGroup 1;
+  WSVisible 1;
+  ResID 156;
+  DesignName label_16;
+  TabIndex 55;
+  DesignRect 60,235,20,8;
+ @end;
+
+ @begin Object "WCommandButton"
+  WSChild 1;
+  WSMaximizeBox 1;
+  WSTabStop 1;
+  WSVisible 1;
+  Pressed "0";
+  Text "Restore Defaults";
+  @begin Event "Click"
+   GencodeSrcLine 919;
+   FunctionName "ySettings::Restore_Click";
+  @end;
+  ResID 157;
+  DesignName Restore;
+  TabIndex 56;
+  DesignRect 10,280,80,15;
+ @end;
+
+ @begin Object "WCommandButton"
+  WSChild 1;
+  WSMaximizeBox 1;
+  WSTabStop 1;
+  WSVisible 1;
+  Pressed "0";
+  Text "Help";
+  @begin Event "Click"
+   GencodeSrcLine 978;
+   FunctionName "ySettings::HelpButton_Click";
+  @end;
+  ResID 158;
+  DesignName HelpButton;
+  TabIndex 57;
+  DesignRect 135,280,50,15;
+ @end;
+
+ @begin Object "WCommandButton"
+  WSChild 1;
+  WSMaximizeBox 1;
+  WSTabStop 1;
+  WSVisible 1;
+  Default "1";
+  Pressed "0";
+  Text "OK";
+  @begin Event "Click"
+   GencodeSrcLine 986;
+   FunctionName "ySettings::OKButton_Click";
+  @end;
+  ResID 159;
+  DesignName OKButton;
+  TabIndex 58;
+  DesignRect 225,280,50,15;
+ @end;
+
+ @begin Object "WCommandButton"
+  WSChild 1;
+  WSMaximizeBox 1;
+  WSTabStop 1;
+  WSVisible 1;
+  Pressed "0";
+  Text "Cancel";
+  Cancel "1";
+  @begin Event "Click"
+   GencodeSrcLine 1178;
+   FunctionName "ySettings::CancelButton_Click";
+  @end;
+  ResID 160;
+  DesignName CancelButton;
+  TabIndex 59;
+  DesignRect 280,280,50,15;
+ @end;
+
+ @begin HPPPrefixBlock
+@begin-code HPPPrefix
+
+/*
+Copyright 1992-2009 Systems Planning (www.systemsplanning.com)
+
+Licensed under the Apache License, Version 2.0 (the "License"); 
+you may not use this file except in compliance with the License. 
+You may obtain a copy of the License at 
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software 
+distributed under the License is distributed on an "AS IS" BASIS, 
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. 
+See the License for the specific language governing permissions and 
+limitations under the License.
+*/
+
+// Declarations added here will be included at the top of the .HPP file
+//030309//#include <process.h>	//011103 for html link
+#include "help.hpp"
+
+class yOptions
+{
+	public:
+		WBool		NonnumericTags;
+		WBool		UserWantsHilite;
+		WBool		SubfieldNewline;	//970913
+		WString		CharsetIn;		//STORED IN ALL CAPS
+		WString		MB_Col2;
+		WString		MB_Col3;
+		WString		MB_Col4;
+		WString		MB_Col2Label;
+		WString		MB_Col3Label;
+		WString		MB_Col4Label;
+		WString		MA_Col2;
+		WString		MA_Col3;
+		WString		MA_Col4;
+		WString		MA_Col2Label;
+		WString		MA_Col3Label;
+		WString		MA_Col4Label;
+		WString		UB_Col2;
+		WString		UB_Col3;
+		WString		UB_Col4;
+		WString		UB_Col2Label;
+		WString		UB_Col3Label;
+		WString		UB_Col4Label;
+		WString		UA_Col2;
+		WString		UA_Col3;
+		WString		UA_Col4;
+		WString		UA_Col2Label;
+		WString		UA_Col3Label;
+		WString		UA_Col4Label;
+         WLong       	MaxRecords;		//990111
+         WLong       	MaxGrid;			//990403
+};
+
+@end-code;
+  GencodeSrcLine 11;
+ @end;
+
+ @begin CPPPrefixBlock
+@begin-code CPPPrefix
+
+// Code added here will be included at the top of the .CPP file
+
+		 
+//991215 these two are used to warn user when to restart
+WLong		OldMaxRecs;
+WBool		bRestart;
+
+
+//  Include definitions for resources.
+#include "WRes.h"
+
+@end-code;
+  GencodeSrcLine 10;
+ @end;
+
+ @begin ClassContentsBlock
+@begin-code ClassContents
+
+    public:
+    // add your public instance data here
+	
+	yOptions 	Options;
+	
+    private:
+        // add your private instance data here
+		
+    protected:
+        // add your protected instance data here
+
+@end-code;
+  GencodeSrcLine 221;
+ @end;
+
+@begin-code GeneratedClassContents
+
+        ySettings();
+        ~ySettings();
+
+@end-code;
+
+@begin-code Code "ySettings::ySettings()"
+
+@@CLASSNAME@::@CLASSNAME@()
+{
+}
+
+@end-code;
+
+@begin-code Code "ySettings::~ySettings()"
+
+@@CLASSNAME@::~@CLASSNAME@()
+{
+    
+}
+
+@end-code;
+
+@begin-code Code "ySettings::ReadIni ()"
+
+//ReadIni
+WBool @CLASSNAME@::ReadIni ()
+{
+	WString		s;
+
+	//these must agree with defaults in Restore
+
+	s = WAppObject.GetProfileString ("MARCRecord", "NonNumericTags", "0", "MARCView.INI");
+   	Options.NonnumericTags = (s == "1");
+	s = WAppObject.GetProfileString ("Preferences", "HighlightFoundTerms", "1", "MARCView.INI");
+	Options.UserWantsHilite = (s == "1");
+	
+	s = WAppObject.GetProfileString ("Preferences", "SubfieldNewline", "0", "MARCView.INI");
+	Options.SubfieldNewline = (s == "1");
+	
+	s = WAppObject.GetProfileString ("MARCRecord", "CharSetIn", "LEADER", "MARCView.INI");
+	s.ToUppercase ();
+	Options.CharsetIn = s.GetText ();
+	
+	
+	s = WAppObject.GetProfileString ("NavigationGrid", "MB_Col2", "001", "MARCView.INI");
+	Options.MB_Col2 = s.GetText ();
+	s = WAppObject.GetProfileString ("NavigationGrid", "MB_Col3", "1xxa", "MARCView.INI");
+	Options.MB_Col3 = s.GetText ();
+	s = WAppObject.GetProfileString ("NavigationGrid", "MB_Col4", "245a", "MARCView.INI");
+	Options.MB_Col4 = s.GetText ();
+	s = WAppObject.GetProfileString ("NavigationGrid", "MB_Col2Label", "RecID", "MARCView.INI");
+	Options.MB_Col2Label = s.GetText ();
+	s = WAppObject.GetProfileString ("NavigationGrid", "MB_Col3Label", "Author", "MARCView.INI");
+	Options.MB_Col3Label = s.GetText ();
+	s = WAppObject.GetProfileString ("NavigationGrid", "MB_Col4Label", "Title", "MARCView.INI");
+	Options.MB_Col4Label = s.GetText ();
+	
+	s = WAppObject.GetProfileString ("NavigationGrid", "MA_Col2", "001", "MARCView.INI");
+	Options.MA_Col2 = s.GetText ();
+	s = WAppObject.GetProfileString ("NavigationGrid", "MA_Col3", "1xxa", "MARCView.INI");
+	Options.MA_Col3 = s.GetText ();
+	s = WAppObject.GetProfileString ("NavigationGrid", "MA_Col4", "245a", "MARCView.INI");
+	Options.MA_Col4 = s.GetText ();
+	s = WAppObject.GetProfileString ("NavigationGrid", "MA_Col2Label", "RecID", "MARCView.INI");
+	Options.MA_Col2Label = s.GetText ();
+	s = WAppObject.GetProfileString ("NavigationGrid", "MA_Col3Label", "Author", "MARCView.INI");
+	Options.MA_Col3Label = s.GetText ();
+	s = WAppObject.GetProfileString ("NavigationGrid", "MA_Col4Label", "Title", "MARCView.INI");
+	Options.MA_Col4Label = s.GetText ();
+	
+	s = WAppObject.GetProfileString ("NavigationGrid", "UB_Col2", "001", "MARCView.INI");
+	Options.UB_Col2 = s.GetText ();
+	s = WAppObject.GetProfileString ("NavigationGrid", "UB_Col3", "1xxa", "MARCView.INI");
+	Options.UB_Col3 = s.GetText ();
+	s = WAppObject.GetProfileString ("NavigationGrid", "UB_Col4", "245a", "MARCView.INI");
+	Options.UB_Col4 = s.GetText ();
+	s = WAppObject.GetProfileString ("NavigationGrid", "UB_Col2Label", "RecID", "MARCView.INI");
+	Options.UB_Col2Label = s.GetText ();
+	s = WAppObject.GetProfileString ("NavigationGrid", "UB_Col3Label", "Author", "MARCView.INI");
+	Options.UB_Col3Label = s.GetText ();
+	s = WAppObject.GetProfileString ("NavigationGrid", "UB_Col4Label", "Title", "MARCView.INI");
+	Options.UB_Col4Label = s.GetText ();
+	
+	s = WAppObject.GetProfileString ("NavigationGrid", "UA_Col2", "001", "MARCView.INI");
+	Options.UA_Col2 = s.GetText ();
+	s = WAppObject.GetProfileString ("NavigationGrid", "UA_Col3", "1xxa", "MARCView.INI");
+	Options.UA_Col3 = s.GetText ();
+	s = WAppObject.GetProfileString ("NavigationGrid", "UA_Col4", "245a", "MARCView.INI");
+	Options.UA_Col4 = s.GetText ();
+	s = WAppObject.GetProfileString ("NavigationGrid", "UA_Col2Label", "RecID", "MARCView.INI");
+	Options.UA_Col2Label = s.GetText ();
+	s = WAppObject.GetProfileString ("NavigationGrid", "UA_Col3Label", "Author", "MARCView.INI");
+	Options.UA_Col3Label = s.GetText ();
+	s = WAppObject.GetProfileString ("NavigationGrid", "UA_Col4Label", "Title", "MARCView.INI");
+	Options.UA_Col4Label = s.GetText ();
+    
+	
+    s = WAppObject.GetProfileString ("Preferences", "MaximumRecords", "100000", "MARCView.INI");
+	Options.MaxRecords = s.ConvertToLong ();
+    //default value 100000 not returned, 0 instead
+    if (Options.MaxRecords == 0)
+        Options.MaxRecords = 100000;
+    
+    s = WAppObject.GetProfileString ("Preferences", "MaximumGridRecords", "5000", "MARCView.INI");
+	Options.MaxGrid = s.ConvertToLong ();
+	/*040821 allow user to enter 0
+    //in case default value 5000 not returned, 0 instead (happened with max records)
+    if (Options.MaxGrid == 0)*/
+    if (Options.MaxGrid < 0)
+        Options.MaxGrid = 5000;
+    if (Options.MaxGrid > 10000)
+        Options.MaxGrid = 10000;
+	
+    
+	return FALSE;
+}
+//ReadIni
+
+@end-code;
+
+@begin-code Code "ySettings::Prototype for ReadIni ()"
+
+    public:
+        	WBool 	ReadIni ();
+
+@end-code;
+
+@begin-code Code "ySettings::WriteIni ()"
+
+WBool @CLASSNAME@::WriteIni ()
+{
+	WString		s;
+	
+    if (Options.NonnumericTags == 1)
+		s = "1";
+	else
+		s = "0";
+	WAppObject.SetProfileString ("MARCRecord", "NonNumericTags", s, "MARCView.INI");
+
+	if (Options.UserWantsHilite)
+		s = "1";
+	else
+		s = "0";
+	WAppObject.SetProfileString ("Preferences", "HighlightFoundTerms", s, "MARCView.INI");
+
+	if (Options.SubfieldNewline)
+		s = "1";
+	else
+		s = "0";
+	WAppObject.SetProfileString ("Preferences", "SubfieldNewline", s, "MARCView.INI");
+
+	WAppObject.SetProfileString ("MARCRecord", "CharSetIn", Options.CharsetIn, "MARCView.INI");
+
+
+	WAppObject.SetProfileString ("NavigationGrid", "MB_Col2", Options.MB_Col2, "MARCView.INI");
+	WAppObject.SetProfileString ("NavigationGrid", "MB_Col2Label", Options.MB_Col2Label, "MARCView.INI");
+	WAppObject.SetProfileString ("NavigationGrid", "MB_Col3", Options.MB_Col3, "MARCView.INI");
+	WAppObject.SetProfileString ("NavigationGrid", "MB_Col3Label", Options.MB_Col3Label, "MARCView.INI");
+	WAppObject.SetProfileString ("NavigationGrid", "MB_Col4", Options.MB_Col4, "MARCView.INI");
+	WAppObject.SetProfileString ("NavigationGrid", "MB_Col4Label", Options.MB_Col4Label, "MARCView.INI");
+
+	WAppObject.SetProfileString ("NavigationGrid", "MA_Col2", Options.MA_Col2, "MARCView.INI");
+	WAppObject.SetProfileString ("NavigationGrid", "MA_Col2Label", Options.MA_Col2Label, "MARCView.INI");
+	WAppObject.SetProfileString ("NavigationGrid", "MA_Col3", Options.MA_Col3, "MARCView.INI");
+	WAppObject.SetProfileString ("NavigationGrid", "MA_Col3Label", Options.MA_Col3Label, "MARCView.INI");
+	WAppObject.SetProfileString ("NavigationGrid", "MA_Col4", Options.MA_Col4, "MARCView.INI");
+	WAppObject.SetProfileString ("NavigationGrid", "MA_Col4Label", Options.MA_Col4Label, "MARCView.INI");
+
+	WAppObject.SetProfileString ("NavigationGrid", "UB_Col2", Options.UB_Col2, "MARCView.INI");
+	WAppObject.SetProfileString ("NavigationGrid", "UB_Col2Label", Options.UB_Col2Label, "MARCView.INI");
+	WAppObject.SetProfileString ("NavigationGrid", "UB_Col3", Options.UB_Col3, "MARCView.INI");
+	WAppObject.SetProfileString ("NavigationGrid", "UB_Col3Label", Options.UB_Col3Label, "MARCView.INI");
+	WAppObject.SetProfileString ("NavigationGrid", "UB_Col4", Options.UB_Col4, "MARCView.INI");
+	WAppObject.SetProfileString ("NavigationGrid", "UB_Col4Label", Options.UB_Col4Label, "MARCView.INI");
+
+	WAppObject.SetProfileString ("NavigationGrid", "UA_Col2", Options.UA_Col2, "MARCView.INI");
+	WAppObject.SetProfileString ("NavigationGrid", "UA_Col2Label", Options.UA_Col2Label, "MARCView.INI");
+	WAppObject.SetProfileString ("NavigationGrid", "UA_Col3", Options.UA_Col3, "MARCView.INI");
+	WAppObject.SetProfileString ("NavigationGrid", "UA_Col3Label", Options.UA_Col3Label, "MARCView.INI");
+	WAppObject.SetProfileString ("NavigationGrid", "UA_Col4", Options.UA_Col4, "MARCView.INI");
+	WAppObject.SetProfileString ("NavigationGrid", "UA_Col4Label", Options.UA_Col4Label, "MARCView.INI");
+
+
+    s.Sprintf ("%ld", Options.MaxRecords);
+    WAppObject.SetProfileString ("Preferences", "MaximumRecords", s, "MARCView.INI");
+
+    s.Sprintf ("%ld", Options.MaxGrid);
+    WAppObject.SetProfileString ("Preferences", "MaximumGridRecords", s, "MARCView.INI");
+	
+	return FALSE;
+}
+
+@end-code;
+
+@begin-code Code "ySettings::Prototype for WriteIni ()"
+
+    public:
+        	WBool 	WriteIni ();
+
+@end-code;
+
+@begin-code Code "ySettings::ySettings_Create"
+
+WBool @CLASSNAME@::ySettings_Create(
+	WObject *         		source,
+	WCreateEventData *		event )
+{
+	WString		s;
+	
+	nonnumtagscheckbox->SetChecked (Options.NonnumericTags);
+	hilitetermscheckbox->SetChecked (Options.UserWantsHilite);
+	newlinecheckbox->SetChecked (Options.SubfieldNewline);
+	
+	Leader09Radio->SetChecked (!WString::Compare (Options.CharsetIn, "LEADER"));
+	ANSELInRadio->SetChecked (!WString::Compare (Options.CharsetIn, "ANSEL"));
+	LatinInRadio->SetChecked (!WString::Compare (Options.CharsetIn, "LATIN"));
+	UTF8InRadio->SetChecked (!WString::Compare (Options.CharsetIn, "UTF8"));
+
+	if (Leader09Radio->GetChecked ())
+	{
+		ANSELInRadio->SetChecked (FALSE);
+		LatinInRadio->SetChecked (FALSE);
+		UTF8InRadio->SetChecked (FALSE);
+	}
+    if (ANSELInRadio->GetChecked ())
+	{
+		Leader09Radio->SetChecked (FALSE);
+		LatinInRadio->SetChecked (FALSE);
+		UTF8InRadio->SetChecked (FALSE);
+	}
+    if (LatinInRadio->GetChecked ())
+	{
+		Leader09Radio->SetChecked (FALSE);
+		ANSELInRadio->SetChecked (FALSE);
+		UTF8InRadio->SetChecked (FALSE);
+	}
+    if (UTF8InRadio->GetChecked ())
+	{
+		Leader09Radio->SetChecked (FALSE);
+		ANSELInRadio->SetChecked (FALSE);
+		LatinInRadio->SetChecked (FALSE);
+	}
+
+	
+	mb_col2entry->SetText (Options.MB_Col2);
+	mb_col3entry->SetText (Options.MB_Col3);
+	mb_col4entry->SetText (Options.MB_Col4);
+	mb_col2labelentry->SetText (Options.MB_Col2Label);
+	mb_col3labelentry->SetText (Options.MB_Col3Label);
+	mb_col4labelentry->SetText (Options.MB_Col4Label);
+	
+	ma_col2entry->SetText (Options.MA_Col2);
+	ma_col3entry->SetText (Options.MA_Col3);
+	ma_col4entry->SetText (Options.MA_Col4);
+	ma_col2labelentry->SetText (Options.MA_Col2Label);
+	ma_col3labelentry->SetText (Options.MA_Col3Label);
+	ma_col4labelentry->SetText (Options.MA_Col4Label);
+	
+	ub_col2entry->SetText (Options.UB_Col2);
+	ub_col3entry->SetText (Options.UB_Col3);
+	ub_col4entry->SetText (Options.UB_Col4);
+	ub_col2labelentry->SetText (Options.UB_Col2Label);
+	ub_col3labelentry->SetText (Options.UB_Col3Label);
+	ub_col4labelentry->SetText (Options.UB_Col4Label);
+	
+	ua_col2entry->SetText (Options.UA_Col2);
+	ua_col3entry->SetText (Options.UA_Col3);
+	ua_col4entry->SetText (Options.UA_Col4);
+	ua_col2labelentry->SetText (Options.UA_Col2Label);
+	ua_col3labelentry->SetText (Options.UA_Col3Label);
+	ua_col4labelentry->SetText (Options.UA_Col4Label);
+    
+    s.Sprintf ("%ld", Options.MaxRecords);
+    maxrecsentry->SetText (s);
+    
+    s.Sprintf ("%ld", Options.MaxGrid);
+    maxgridentry->SetText (s);
+	    
+	OldMaxRecs =  maxrecsentry->GetText ().ConvertToLong ();
+
+	return FALSE;
+}
+
+@end-code;
+
+@begin-code Code "ySettings::Leader09Radio_Click"
+
+WBool @CLASSNAME@::Leader09Radio_Click(
+	WObject *   		source,
+	WEventData *		event )
+{
+    if (Leader09Radio->GetChecked ())
+	{
+		ANSELInRadio->SetChecked (FALSE);
+		LatinInRadio->SetChecked (FALSE);
+		UTF8InRadio->SetChecked (FALSE);
+	}
+    
+    return FALSE;
+}
+
+@end-code;
+
+@begin-code Code "ySettings::ANSELInRadio_Click"
+
+WBool @CLASSNAME@::ANSELInRadio_Click(
+	WObject *   		source,
+	WEventData *		event )
+{
+    if (ANSELInRadio->GetChecked ())
+	{
+		Leader09Radio->SetChecked (FALSE);
+		LatinInRadio->SetChecked (FALSE);
+		UTF8InRadio->SetChecked (FALSE);
+	}
+    
+    return FALSE;
+}
+
+@end-code;
+
+@begin-code Code "ySettings::LatinInRadio_Click"
+
+WBool @CLASSNAME@::LatinInRadio_Click(
+	WObject *   		source,
+	WEventData *		event )
+{
+    if (LatinInRadio->GetChecked ())
+	{
+		Leader09Radio->SetChecked (FALSE);
+		ANSELInRadio->SetChecked (FALSE);
+		UTF8InRadio->SetChecked (FALSE);
+	}
+    
+    return FALSE;
+}
+
+@end-code;
+
+@begin-code Code "ySettings::UTF8InRadio_Click"
+
+WBool @CLASSNAME@::UTF8InRadio_Click(
+	WObject *   		source,
+	WEventData *		event )
+{
+    if (UTF8InRadio->GetChecked ())
+	{
+		Leader09Radio->SetChecked (FALSE);
+		ANSELInRadio->SetChecked (FALSE);
+		LatinInRadio->SetChecked (FALSE);
+	}
+    
+    return FALSE;
+}
+
+@end-code;
+
+@begin-code Code "ySettings::Restore_Click"
+
+WBool @CLASSNAME@::Restore_Click(
+	WObject *   		source,
+	WEventData *		event )
+{
+	WString		s;
+	
+	//these must agree with defaults in Readini
+	
+	nonnumtagscheckbox->SetChecked (FALSE);
+	hilitetermscheckbox->SetChecked (TRUE);
+	newlinecheckbox->SetChecked (FALSE);
+
+	Leader09Radio->SetChecked (TRUE);
+	ANSELInRadio->SetChecked (FALSE);
+	LatinInRadio->SetChecked (FALSE);
+	UTF8InRadio->SetChecked (FALSE);
+
+	s = "001";		mb_col2entry->SetText (s);
+	s = "Rec ID";		mb_col2labelentry->SetText (s);
+	s = "1xxa";		mb_col3entry->SetText (s);
+	s = "Author";		mb_col3labelentry->SetText (s);
+	s = "245a";		mb_col4entry->SetText (s);
+	s = "Title";		mb_col4labelentry->SetText (s);
+
+	s = "001";		ma_col2entry->SetText (s);
+	s = "Rec ID";		ma_col2labelentry->SetText (s);
+	s = "1xxa";		ma_col3entry->SetText (s);
+	s = "Heading";	ma_col3labelentry->SetText (s);
+	s = "";			ma_col4entry->SetText (s);
+	s = "";			ma_col4labelentry->SetText (s);
+
+	s = "001";		ub_col2entry->SetText (s);
+	s = "Rec ID";		ub_col2labelentry->SetText (s);
+	s = "7xx";		ub_col3entry->SetText (s);
+	s = "Author";		ub_col3labelentry->SetText (s);
+	s = "200a";		ub_col4entry->SetText (s);
+	s = "Title";		ub_col4labelentry->SetText (s);
+
+	s = "001";		ua_col2entry->SetText (s);
+	s = "Rec ID";		ua_col2labelentry->SetText (s);
+	s = "1xxa";		ua_col3entry->SetText (s);
+	s = "Heading";	ua_col3labelentry->SetText (s);
+	s = "";			ua_col4entry->SetText (s);
+	s = "";			ua_col4labelentry->SetText (s);
+	
+	
+    s = "100000";
+    maxrecsentry->SetText (s);
+	    
+	if (s.ConvertToLong () > OldMaxRecs)
+		bRestart = TRUE;
+	else
+		bRestart = FALSE;
+		
+    s = "5000";
+    maxgridentry->SetText (s);
+	
+	return FALSE;
+}
+
+@end-code;
+
+@begin-code Code "ySettings::HelpButton_Click"
+
+WBool @CLASSNAME@::HelpButton_Click(
+	WObject *   		source,
+	WEventData *		event )
+{
+	yHelp::ShowHelp ("settings");	
+        
+    return FALSE;
+}
+
+@end-code;
+
+@begin-code Code "ySettings::OKButton_Click"
+
+//OKButton_Click
+WBool @CLASSNAME@::OKButton_Click(
+	WObject *   		source,
+	WEventData *		event )
+{
+	WString		s;
+	WString		t;
+
+    if (nonnumtagscheckbox->GetChecked ())
+		Options.NonnumericTags = 1;
+	else
+		Options.NonnumericTags = 0;
+
+	if (hilitetermscheckbox->GetChecked ())
+		Options.UserWantsHilite = TRUE;
+	else
+		Options.UserWantsHilite = FALSE;
+
+	if (newlinecheckbox->GetChecked ())
+		Options.SubfieldNewline = TRUE;
+	else
+		Options.SubfieldNewline = FALSE;
+
+	//011105
+	if (Leader09Radio->GetChecked ())
+		Options.CharsetIn = "LEADER";
+	else if (ANSELInRadio->GetChecked ())
+		Options.CharsetIn = "ANSEL";
+	else if (LatinInRadio->GetChecked ())
+		Options.CharsetIn = "LATIN";
+	else
+		Options.CharsetIn = "UTF8";
+
+
+	s = mb_col2entry->GetText ();
+	if (s.GetLength () < 3)		//user goofed
+		s = "";
+	Options.MB_Col2 = s;
+	t = mb_col2labelentry->GetText ();
+	if (s.GetEmpty () || t.GetEmpty ())		//none entered
+		t = s;
+	Options.MB_Col2Label = t;
+
+	s = mb_col3entry->GetText ();
+	if (s.GetLength () < 3)		//user goofed
+		s = "";
+	Options.MB_Col3 = s;
+	t = mb_col3labelentry->GetText ();
+	if (s.GetEmpty () || t.GetEmpty ())		//none entered
+		t = s;
+	Options.MB_Col3Label = t;
+	
+	s = mb_col4entry->GetText ();
+	if (s.GetLength () < 3)		//user goofed
+		s = "";
+	Options.MB_Col4 = s;
+	t = mb_col4labelentry->GetText ();
+	if (s.GetEmpty () || t.GetEmpty ())		//none entered
+		t = s;
+	Options.MB_Col4Label = t;
+
+	s = ma_col2entry->GetText ();
+	if (s.GetLength () < 3)		//user goofed
+		s = "";
+	Options.MA_Col2 = s;
+	t = ma_col2labelentry->GetText ();
+	if (s.GetEmpty () || t.GetEmpty ())		//none entered
+		t = s;
+	Options.MA_Col2Label = t;
+
+	s = ma_col3entry->GetText ();
+	if (s.GetLength () < 3)		//user goofed
+		s = "";
+	Options.MA_Col3 = s;
+	t = ma_col3labelentry->GetText ();
+	if (s.GetEmpty () || t.GetEmpty ())		//none entered
+		t = s;
+	Options.MA_Col3Label = t;
+	
+	s = ma_col4entry->GetText ();
+	if (s.GetLength () < 3)		//user goofed
+		s = "";
+	Options.MA_Col4 = s;
+	t = ma_col4labelentry->GetText ();
+	if (s.GetEmpty () || t.GetEmpty ())		//none entered
+		t = s;
+	Options.MA_Col4Label = t;
+
+	s = ub_col2entry->GetText ();
+	if (s.GetLength () < 3)		//user goofed
+		s = "";
+	Options.UB_Col2 = s;
+	t = ub_col2labelentry->GetText ();
+	if (s.GetEmpty () || t.GetEmpty ())		//none entered
+		t = s;
+	Options.UB_Col2Label = t;
+
+	s = ub_col3entry->GetText ();
+	if (s.GetLength () < 3)		//user goofed
+		s = "";
+	Options.UB_Col3 = s;
+	t = ub_col3labelentry->GetText ();
+	if (s.GetEmpty () || t.GetEmpty ())		//none entered
+		t = s;
+	Options.UB_Col3Label = t;
+	
+	s = ub_col4entry->GetText ();
+	if (s.GetLength () < 3)		//user goofed
+		s = "";
+	Options.UB_Col4 = s;
+	t = ub_col4labelentry->GetText ();
+	if (s.GetEmpty () || t.GetEmpty ())		//none entered
+		t = s;
+	Options.UB_Col4Label = t;
+
+	s = ua_col2entry->GetText ();
+	if (s.GetLength () < 3)		//user goofed
+		s = "";
+	Options.UA_Col2 = s;
+	t = ua_col2labelentry->GetText ();
+	if (s.GetEmpty () || t.GetEmpty ())		//none entered
+		t = s;
+	Options.UA_Col2Label = t;
+
+	s = ua_col3entry->GetText ();
+	if (s.GetLength () < 3)		//user goofed
+		s = "";
+	Options.UA_Col3 = s;
+	t = ua_col3labelentry->GetText ();
+	if (s.GetEmpty () || t.GetEmpty ())		//none entered
+		t = s;
+	Options.UA_Col3Label = t;
+	
+	s = ua_col4entry->GetText ();
+	if (s.GetLength () < 3)		//user goofed
+		s = "";
+	Options.UA_Col4 = s;
+	t = ua_col4labelentry->GetText ();
+	if (s.GetEmpty () || t.GetEmpty ())		//none entered
+		t = s;
+	Options.UA_Col4Label = t;
+
+
+	//max recs
+    	s = maxrecsentry->GetText ();
+		
+	//040416 check for non-numeric entry
+	long ii = s.ConvertToLong ();
+	if (ii == 0)
+		ii = 100000;
+		
+    	Options.MaxRecords = ii;
+	    
+	if (ii > OldMaxRecs)
+		bRestart = TRUE;
+	else
+		bRestart = FALSE;
+
+
+	//max grid
+    	s = maxgridentry->GetText ();
+	
+	//040416 we enforce an upper limit, also check for non-numeric entry
+	ii = s.ConvertToLong ();
+	/*040821 allow user to enter 0
+	if (ii == 0)*/
+	if (ii < 0)
+		ii = 5000;
+	if (ii > 10000)
+		ii = 10000;
+		
+    	Options.MaxGrid = ii;
+    
+	
+	WriteIni ();
+
+	if (bRestart)
+		WMessageBox::Message (NULL, 
+				WMsgBSOk | WMsgBSIconInformation,
+				"Information", 	
+				"Please restart MARCView for all settings to take effect" );
+	else		//just reopen file
+		WMessageBox::Message (NULL, 
+				WMsgBSOk | WMsgBSIconInformation,
+				"Information", 	
+				"Please reopen MARC file for all settings to take effect" );
+		
+    Dismiss (TRUE);
+    
+    return FALSE;
+}
+//OKButton_Click
+
+@end-code;
+
+@begin-code Code "ySettings::CancelButton_Click"
+
+WBool @CLASSNAME@::CancelButton_Click(
+	WObject *   		source,
+	WEventData *		event )
+{
+    Dismiss (FALSE);
+    
+    return FALSE;
+}
+
+@end-code;
+@end;

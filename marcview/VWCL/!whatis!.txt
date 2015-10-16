@@ -1,0 +1,5 @@
+This is the Virtual Windows Class Library, a small part of which is used in MARCView
+Export. Then renamed VXCL.
+
+Its website keeps changing, was www.vxcl.org, now www.toddtown.com
+

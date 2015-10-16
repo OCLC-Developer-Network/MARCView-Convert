@@ -1,0 +1,48 @@
+MARConvert Translation Table
+LDR		"LLLLLnab  22BBBBB   4500"
+001		Unique Identifier
+008&1		"DDDDDD"
+008&2		Year of Publication	"s+++"
+008&3		"    |||||||f|    |||| |||||  "
+024-		"8 "
+024a		Unique Identifier	
+0242		"Medline"
+100-		"1 "
+100a		Authors
+100u		Institution
+245-		"10"
+245a		Title
+260a		Source
+520a		Abstract
+583-		"1 "
+583a		Publication Type
+650-		"12"
+650a		MeSH Subject Headings
+700-		"1 "
+700a		MC_700a
+780-		"01"
+780a		Comments
+785-		"01"
+785a		MC_785a
+856-		"41"
+856u		Unique Identifier	"http://removed.search.serialssolutions.com/?sid=removed&id=pmid:+++"
+000		Abbreviated Source
+000		Authors Full Name
+000		CAS Registry/EC Number/Name of Substance
+000		Country of Publication
+000		Entry Date
+000		Gene Symbol
+000		General Note
+000		Grant Number
+000		ISSN
+000		Journal Subset
+000		Keyword Heading
+000		Language
+000		Local Messages
+000		NLM Journal Code
+000		Publishing Model
+000		Publishing Type
+000		Record Owner
+000		Revision Date
+000		Update Date
+//

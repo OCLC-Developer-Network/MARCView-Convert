@@ -1,0 +1,43 @@
+Save Format v1.3
+@begin Resources
+ Res_UserPassThru "";
+
+ @begin Res_VersionInfo
+  Res_FileMajorVersion 1;
+  Res_FileMinorVersion 0;
+  Res_ProductMajorVersion 1;
+  Res_ProductMinorVersion 0;
+  Res_DebugFlag 0;
+  Res_PrereleaseFlag 0;
+  @begin Res_StringFileInfo
+   Res_SFILanguage 1033;
+   Res_SFICharset 1200;
+   Res_SFIComments "";
+   Res_SFICompanyName "SYSTEMS PLANNING";
+   Res_SFIFileDescription "";
+   Res_SFIFileVersion "1.0";
+   Res_SFIInternal_Name "";
+   Res_SFICopyrightNotice "Copyright \251 1997";
+   Res_SFITrademarkNotice "";
+   Res_SFIOriginalFilename "";
+   Res_SFIPrivateBuild "";
+   Res_SFIProductName "";
+   Res_SFIProductVersion "1.0";
+   Res_SFISpecialBuild "";
+   Res_SFILanguage 1033;
+   Res_SFICharset 1200;
+   Res_SFIComments "";
+   Res_SFICompanyName "SYSTEMS PLANNING";
+   Res_SFIFileDescription "";
+   Res_SFIFileVersion "1.0";
+   Res_SFIInternal_Name "";
+   Res_SFICopyrightNotice "Copyright \251 1997";
+   Res_SFITrademarkNotice "";
+   Res_SFIOriginalFilename "";
+   Res_SFIPrivateBuild "";
+   Res_SFIProductName "";
+   Res_SFIProductVersion "1.0";
+   Res_SFISpecialBuild "";
+  @end;
+ @end;
+@end;

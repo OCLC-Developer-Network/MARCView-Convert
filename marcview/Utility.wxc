@@ -1,0 +1,719 @@
+Save Format v1.3
+@begin ClassFile "yUtility"
+ Exported 0;
+
+@begin-code BaseClassList
+
+public WObject
+
+@end-code;
+
+ @begin UserFunction "yUtility()"
+  GencodeSrcLine 16;
+  FunctionName "yUtility::yUtility()";
+ @end;
+
+ @begin UserFunction "Prototype for yUtility()"
+  Private 1;
+  GencodeSrcLine 53;
+  FunctionName "yUtility::Prototype for yUtility()";
+ @end;
+
+ @begin UserFunction "~yUtility()"
+  GencodeSrcLine 37;
+  FunctionName "yUtility::~yUtility()";
+ @end;
+
+ @begin UserFunction "Prototype for ~yUtility()"
+  Private 1;
+  GencodeSrcLine 69;
+  FunctionName "yUtility::Prototype for ~yUtility()";
+ @end;
+
+ @begin HPPPrefixBlock
+@begin-code HPPPrefix
+
+/*
+Copyright 1992-2009 Systems Planning (www.systemsplanning.com)
+
+Licensed under the Apache License, Version 2.0 (the "License"); 
+you may not use this file except in compliance with the License. 
+You may obtain a copy of the License at 
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software 
+distributed under the License is distributed on an "AS IS" BASIS, 
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. 
+See the License for the specific language governing permissions and 
+limitations under the License.
+*/
+
+// Declarations added here will be included at the top of the .HPP file
+
+@end-code;
+  GencodeSrcLine 11;
+ @end;
+
+ @begin CPPPrefixBlock
+@begin-code CPPPrefix
+
+// Code added here will be included at the top of the .CPP file
+#include <math.h>		//051229 for pow function
+
+//  Include definitions for resources.
+#include "WRes.h"
+
+@end-code;
+  GencodeSrcLine 11;
+ @end;
+
+ @begin ClassContentsBlock
+@begin-code ClassContents
+
+    public:
+        // add your public instance data here
+		// this doesn't work either//static WStringArray errortexts;
+		
+		typedef struct tagFOUND	//used to communicate between Find and Display
+		{
+			WString		term;
+			WString		tag;
+			WString		sfc;
+			WString		ind1;		//060420
+			WString		ind2;		//060420
+			WBool		casesensitive;
+			WBool		exactmatch;	//050730 used for SQL, not for Find
+			WBool		andor;		//050712 used for SQL, not for Find
+			WBool		not;			//050730 used for SQL, not for Find
+		} yFindData;
+
+    private:
+        // add your private instance data here
+    protected:
+        // add your protected instance data here
+
+@end-code;
+  GencodeSrcLine 32;
+ @end;
+
+@begin-code GeneratedClassContents
+
+
+@end-code;
+
+@begin-code Code "yUtility::yUtility()"
+
+@@CLASSNAME@::@CLASSNAME@()
+{
+	/*
+	errortexts.SetCount (15);
+	errortexts [0] = "May be a blocked or Unicode UCS-16 file";			// -11
+	errortexts [1] = "Character conversion problem";						// -10
+	errortexts [2] = "Illegal use of SP_MARC";							// -9
+	errortexts [3] = "Out of memory";									// -8
+	errortexts [4] = "Future feature";									// -7
+	errortexts [5] = "Maximum records exceeded";							// -6
+	errortexts [6] = "Not a legal MARC record";							// -5
+	errortexts [7] = "Unexpected end of file";							// -4
+	errortexts [8] = "File not open";									// -3
+	errortexts [9] = "File not found or in use by another application";	// -2
+	errortexts [10] =	"Unspecified problem";								// -1
+	errortexts [11] = "Nonfatal exception";								// 0
+	errortexts [12] = "Perfect success";								// 1
+	errortexts [13] = "Minor validation error";							// 2
+	errortexts [14] = "Fatal validation error";							// 3
+	*/
+}
+
+@end-code;
+
+@begin-code Code "yUtility::Prototype for yUtility()"
+
+    public:
+        	@@CLASSNAME@();
+		static WString 	CleanString(WString, int, int);
+		static WString 	CleanString(WString, WString, long);	//for replacing TheCount, etc
+		static WString 	CleanString(WString, WString, WString);
+		static WString 	CleanString(WString, int, WString);
+		static long		ConvertHexToLong(WString);
+		static WString		DedupString(WString in, WString delims=NULL);
+		static void		DP(WString label, WString var=NULL, WBool msgbox=FALSE);
+		static WString		Escape (WString);
+		static void 		InsertMARCField(WString*, WString*, WString*, int, WString*);
+		static WString		MakeStartEndMsg(WBool);
+		static WString		MakeUsefileMessage(int);
+		static WString		Unescape(WString);
+		static WString 	UnicodeDecimalToUtf8(long);
+		
+
+@end-code;
+
+@begin-code Code "yUtility::~yUtility()"
+
+@@CLASSNAME@::~@CLASSNAME@()
+{
+    
+}
+
+
+//CleanString (char-to-char)
+//replaces one character with another, as often as found
+WString @CLASSNAME@::CleanString (WString in, int oldc, int newc)
+{
+	WString out;
+	long j = in.Position (oldc);
+	
+	while (j != NOT_FOUND)
+	{
+		out += in.Substring (0, j);
+		out += WChar(newc);
+		in = in.Substring (j + 1);
+		j = in.Position (oldc);
+	}
+	
+	//trailing chars
+	out = out + in;
+	
+	return out;
+}
+//CleanString (characters)
+
+
+
+//CleanString (string-to-long)
+//replaces one character with another, as often as found
+WString @CLASSNAME@::CleanString (WString in, WString olds, long newl)
+{
+	WString out;
+	long j = in.Position (olds);
+	long k = olds.GetLength ();
+	
+	while (j != NOT_FOUND)
+	{
+		out += in.Substring (0, j);
+		out += "%ld";
+		out.Sprintf (out.GetText (), newl);
+		in = in.Substring (j + k);
+		j = in.Position (olds);
+	}
+	
+	//trailing chars
+	out = out + in;
+	
+	return out;
+}
+//CleanString (long)
+
+
+
+//CleanString (string-to-string)
+//replaces one substring with another, as often as found
+WString @CLASSNAME@::CleanString (WString in, WString olds, WString news)
+{
+	WString out;
+	long k = olds.GetLength();
+
+	long j = in.Position(olds);
+	while (j != NOT_FOUND)
+	{
+		out = out + in.Substring(0, j) + news;
+		in = in.Substring(j + k);
+		j = in.Position(olds);
+	}
+	
+	/*070927 no time to do a good job right now, but this kludge corrects
+			the following problem. if we want every pair of tabs to 
+			have "NULL" between them and there are multiple tabs in a row,
+			then some won't get them. for example, replace "TT" with "TNULLT"
+			in "abcTTTxyz" -- after the first TT, the strings look like this:
+			in: 	abcTxyz
+			out:	abcTNULLT
+			so the 2d and 3d Ts never get NULL between them
+		-- to kludge this, the caller should do the whole conversion twice*/
+	
+	//trailing chars
+	out = out + in;
+	
+	return out;
+}
+//CleanString (strings)
+
+
+
+//CleanString (int-to-string)
+//replaces one substring with another, as often as found
+WString @CLASSNAME@::CleanString (WString in, int oldc, WString news)
+{
+	WString out;
+	long j = in.Position(oldc);
+
+	while (j != NOT_FOUND)
+	{
+		out += in.Substring(0, j) + news;
+		in = in.Substring(j + 1);
+		j = in.Position(oldc);
+	}
+	
+	//trailing chars
+	out = out + in;
+	
+	return out;
+}
+//CleanString (strings)
+
+
+
+//ConvertHexToLong
+long @CLASSNAME@::ConvertHexToLong (WString ss)
+{
+	long i;
+	WWidestChar c;
+	
+	WString s = ss;	//970819 don't uppercase the original hex
+	
+	s.ToUppercase ();
+		
+	//since this assumes 4-digit hex, make sure it is
+	s = "0000" + s;
+	s = s.Right (4);
+	
+	c = s.GetCharacter (0);
+	if (isalpha (c))
+		c = c - 55;
+	else
+		c = c - 48;
+	i = c * 4096;
+	
+	c = s.GetCharacter (1);
+	if (isalpha (c))
+		c = c - 55;
+	else
+		c = c - 48;
+	i += c * 256;
+	
+	c = s.GetCharacter (2);
+	if (isalpha (c))
+		c = c - 55;
+	else
+		c = c - 48;
+	i += c * 16;
+	
+	c = s.GetCharacter (3);
+	if (isalpha (c))
+		c = c - 55;
+	else
+		c = c - 48;
+	i += c;
+	
+	return i;
+}
+//ConvertHexToLong
+
+
+
+//DedupString -- returns in sorted order
+// 	-- either a WSortableArray or a VSORTEDSTRINGLINKEDLIST would be better here,
+//		but can't get either one to work
+//	-- altho we can parse on any char in delims, we dnk which one was in the orig
+//		string, so we just use a space in the new string
+WString @CLASSNAME@::DedupString(WString in, WString delims)
+{
+	WString out;
+	int i, j;
+	WStringArray ins;
+	if (delims.GetNull)
+		ins = in.Parse();
+	else
+		ins = in.Parse(delims);	// untested
+	int k = ins.GetCount();
+
+	for (i = 0; i < k - 1; i++)
+	{
+		for (j = i + 1; j < k; j++)
+		{
+			if (ins[j] == ins[i])
+				ins[j].Clear();
+		}		
+	}
+
+	for (i = 0; i < k; i++)
+	{
+		if (!ins[i].GetNull())
+			out.Concatf("%s ", ins[i].GetText());
+	}
+		
+	return out;
+}
+//DedupString
+
+
+
+//DP debug print
+void @CLASSNAME@::DP(WString label, WString var, WBool msgbox)
+{
+	#ifdef _DEBUG
+	FILE* debugfile;
+	if ((debugfile = fopen("debug.txt", "a")) == NULL)
+	{
+		WMessageBox::Info(NULL, NULL, "Problem opening debug.txt");
+	}
+	fputs(label.GetText(), debugfile);
+	fputs("\t\t", debugfile);
+	fputs(var.GetText(), debugfile);
+	fputs("\n", debugfile);
+	fclose(debugfile);
+	
+	if (msgbox)
+	{
+		WMessageBox::Info(NULL, label.GetText(), var.GetText());
+	}
+	#endif
+}
+//DP
+
+
+
+//Escape
+WString @CLASSNAME@::Escape (WString in)
+{
+	WString out = in;
+	
+	//add others as problems arise
+	out = CleanString (out, "%", "%25");
+	out = CleanString (out, " ", "%20");
+	out = CleanString (out, "#", "%23");
+	out = CleanString (out, "'", "%27");
+	out = CleanString (out, "/", "%2F");
+	out = CleanString (out, "<", "%3C");
+	out = CleanString (out, ">", "%3E");
+	out = CleanString (out, "\\", "%5C");
+	
+	return out;
+}
+//Escape
+
+
+
+//HexToDec -- handles any number of hex digits -- UNTESTED
+long HexToDec (char* in)
+{
+	char* rev = strrev (strupr (in));
+	int i = strlen (rev);
+	int j, k;
+	long multiplier=0, out=0;
+	
+	for (j = 0; j < i; j++)
+	{
+		if (isalpha (rev[j]))
+			k = rev[j] - 55;
+		else
+			k = rev[j] - 48;
+			
+		multiplier = pow (16, j);
+		out += k * multiplier;
+	}
+	
+	return out;
+}
+//HexToDec
+
+
+
+//InsertMARCField -- since we pass the tag as an int, dn handle non-numeric fields
+void @CLASSNAME@::InsertMARCField(WString* pleader, WString* pdir, WString* prec, int tag, WString* pnew)
+{
+	int newlen = pnew->GetLength();
+	
+	// make sure it's terminated
+	if (pnew->GetCharacter(newlen - 1) != 30)
+	{
+		pnew->Concat(30);
+		newlen++;
+	}
+	
+	long newoffset=0;
+	int i;
+	WString direntry, temp, temp2;
+	direntry.Sprintf("%03d%04d", tag, newlen);
+	WString newdir, newleader;
+	
+	// correct leader reclen and base-address
+	temp.Sprintf ("%05ld", pleader->Substring(0, 5).ConvertToLong() + newlen + 12);
+	temp2.Sprintf ("%05ld", pleader->Substring(12, 5).ConvertToLong() + 12);	// base-addr
+	newleader = temp;
+	newleader.Concat(pleader->Substring(5, 7));
+	newleader.Concat(temp2);
+	newleader.Concat(pleader->Substring(17));
+	*pleader = newleader;
+	
+	i = 0;
+	// copy up to insertion point
+	while ((pdir->Substring(i, 3).ConvertToInteger() <= tag) && (pdir->GetCharacter(i) != 30))
+	{
+		// copy the dir entry
+		newdir.Concat(pdir->Substring(i, 12));
+		i += 12;
+	}
+	
+	// save the offset of the new field so we can insert it into the data
+	newoffset = pdir->Substring(i + 7, 5).ConvertToInteger();
+	
+	// insert the dir entry for the new field
+	temp.Sprintf("%05d", newoffset);
+	newdir.Concat(direntry);
+	newdir.Concat(temp);
+
+	// copy remainder of rec
+	while (pdir->GetCharacter(i) != 30)
+	{
+		// copy remaining dir entries, adjusting offsets
+		newdir.Concat(pdir->Substring(i, 7));
+		temp.Sprintf("%05d", pdir->Substring(i + 7, 5).ConvertToInteger() + newlen);
+		newdir.Concat(temp);
+		i += 12;
+	}
+	newdir.Concat(30);
+	*pdir = newdir;
+	
+	// insert data
+	WString newrec = prec->Substring(0, newoffset);
+	newrec.Concat(*pnew);
+	newrec.Concat(prec->Substring(newoffset));
+	*prec = newrec;
+}
+//InsertMARCField
+
+
+
+//MakeStartEndMsg
+WString @CLASSNAME@::MakeStartEndMsg(WBool isstart)
+{
+	WLocaleID li;
+	WString msg = (isstart) ? "MARConvert, begun " : "\n\nMARConvert, ended ";
+	msg.Concat(li.GetFormatDate(WDateFormatShortDatePicture));
+	msg.Concat(" at ");
+	msg.Concat(li.GetFormatTime(WTimeFormatForce24hourFormat));
+	msg = msg.Left(msg.GetLength() - 3);	//strip off " AM" or " PM"
+	msg.Concat("\n");
+	
+	return msg;
+}
+//MakeStartEndMsg
+
+
+
+//MakeUsefileMessage
+WString @CLASSNAME@::MakeUsefileMessage(int i)
+{
+	WString msg;
+	
+	switch (i)
+	{
+		// SP_Usefile returns 1 for a MARC21 or MARCXML file, 0 for a UniMARC file
+		//	-- neither requires a message
+		
+		case -2:    
+			msg = "Input file not found";
+			break;
+		case -3:     
+			msg = "Input file could not be opened";
+			break;
+		case -4:   
+			msg = "Unexpected end of input file";
+			break;
+		case -5:         
+			msg = "Invalid MARC record";
+			break;
+		case -6:     
+			msg.Sprintf ("Maximum records exceeded");
+			break;
+		case -9:     
+			msg = "Illegal use of SP_MARC";
+			break;
+		default:                
+			msg.Sprintf("Unknown error %d", i);
+			break;
+	}
+	
+	return msg;
+}
+//MakeUsefileMessage
+
+
+
+//Unescape
+WString @CLASSNAME@::Unescape (WString in)
+{
+	WString out;
+	
+	long ii = in.Position ('%');
+	int j;
+	
+	if (ii == NOT_FOUND)
+		return in;
+	
+	//030922 we can't replace %25 with % in loop, as the % will be interpreted as an escape char
+	while (ii != NOT_FOUND)
+	{
+		out = in.Left (ii);
+		j = (int) ConvertHexToLong (in.Substring (ii + 1, 2));
+		if (j == 37)	//percent sign
+		{
+			out.Concat ("~~~");	//let's hope no one uses this legitimately!
+			out.Concat (in.Substring (ii + 3));
+		}
+		else
+		{
+			out.Concat (j);
+			out.Concat (in.Substring (ii + 3));
+		}
+		in = out;
+		ii = in.Position ('%');
+	}
+	
+	out = CleanString (out, "~~~", "%");	// now we catch the percent signs
+
+	return out;
+}
+//Unescape
+
+
+
+//UnicodeDecimalToUtf8
+WString @CLASSNAME@::UnicodeDecimalToUtf8 (long unicode)
+{
+	WString s, t;
+
+	if (unicode <= 127)
+	{
+		s.Sprintf ("%X ", unicode);
+		t.Concat (s);
+	}
+	else if (unicode <= 2047)
+	{
+		s.Sprintf ("%X ", 192 + (unicode / 64));
+		t.Concat (s);
+		s.Sprintf ("%X ", 128 + (unicode % 64));
+		t.Concat (s);
+	}
+	else if (unicode <= 65535)
+	{
+		s.Sprintf ("%X ", 224 + (unicode / 4096));
+		t.Concat (s);
+		s.Sprintf ("%X ", 128 + ((unicode / 64) % 64));
+		t.Concat (s);
+		s.Sprintf ("%X ", 128 + (unicode % 64));
+		t.Concat (s);
+	}
+	else if (unicode <= 2097151L)
+	{
+		s.Sprintf ("%X ", 240 + (unicode / 262144L));
+		t.Concat (s);
+		s.Sprintf ("%X ", 128 + ((unicode / 4096) % 64));
+		t.Concat (s);
+		s.Sprintf ("%X ", 128 + ((unicode / 64) % 64));
+		t.Concat (s);
+		s.Sprintf ("%X ", 128 + (unicode % 64));
+		t.Concat (s);
+	}
+	else if (unicode <= 67108863L)
+	{
+		s.Sprintf ("%X ", 240 + (unicode / 16777216L));
+		t.Concat (s);
+		s.Sprintf ("%X ", 240 + ((unicode / 262144L) % 64));
+		t.Concat (s);
+		s.Sprintf ("%X ", 128 + ((unicode / 4096) % 64));
+		t.Concat (s);
+		s.Sprintf ("%X ", 128 + ((unicode / 64) % 64));
+		t.Concat (s);
+		s.Sprintf ("%X ", 128 + (unicode % 64));
+		t.Concat (s);
+	}
+	else if (unicode <= 2147483647L)
+	{
+		s.Sprintf ("%X ", 240 + (unicode / 1073741824L));
+		t.Concat (s);
+		s.Sprintf ("%X ", 240 + ((unicode / 16777216L) % 64));
+		t.Concat (s);
+		s.Sprintf ("%X ", 240 + ((unicode / 262144L) % 64));
+		t.Concat (s);
+		s.Sprintf ("%X ", 128 + ((unicode / 4096) % 64));
+		t.Concat (s);
+		s.Sprintf ("%X ", 128 + ((unicode / 64) % 64));
+		t.Concat (s);
+		s.Sprintf ("%X ", 128 + (unicode % 64));
+		t.Concat (s);
+	}
+	
+	t.Trim ();
+	return t;
+/*
+Example: take the decimal Unicode designation 8482 (decimal), which is for the trademark sign. 
+This number is larger than 2048, so we get three numbers.
+The first number is 224 + (8482 div 4096) = 224 + 2 = 226.
+The second number is 128 + (8482 div 64) mod 64) = 128 + (132 mod 64) = 128 + 4 = 132.
+The third number is 128 + (8482 mod 64) = 128 + 34 = 162.
+Now the other way round. We see the numbers 226, 132 and 162. What is the decimal Unicode value?
+In this case: (226-224)*4096+(132-128)*64+(162-128) = 8482.
+	
+  for ( var i = 0; i < listArray.length; i++ ) {
+    var n = parseInt(listArray[i], 16);
+    if (i > 0) { outputString += ' ';}
+    if (n <= 0x7F) {
+      outputString += dec2hex2(n);
+    } else if (n <= 0x7FF) {
+      outputString += dec2hex2(0xC0 | ((n>>6) & 0x1F)) + ' ' + dec2hex2(0x80 | (n & 0x3F));
+    } else if (n <= 0xFFFF) {
+      outputString += dec2hex2(0xE0 | ((n>>12) & 0x0F)) + ' ' + dec2hex2(0x80 | ((n>>6) & 0x3F)) + ' ' + dec2hex2(0x80 | (n & 0x3F));
+    } else if (n <= 0x10FFFF) {
+      outputString += dec2hex2(0xF0 | ((n>>18) & 0x07)) + ' ' + dec2hex2(0x80 | ((n>>12) & 0x3F)) + ' ' + dec2hex2(0x80 | ((n>>6) & 0x3F)) + ' ' + dec2hex2(0x80 | (n & 0x3F));
+    } else {
+      outputString += '!erreur ' + dec2hex(n) +'!';
+    }
+  }
+	
+	if (unicode > '007F')
+		dec1 = hextodec (substr (unicode, 1, 1))
+		dec2 = hextodec (substr (unicode, 2, 1))
+		dec3 = hextodec (substr (unicode, 3, 1))
+		dec4 = hextodec (substr (unicode, 4, 1))
+		if (unicode > '07FF')
+			char1 = 224
+			char1 = char1 + dec1
+			
+			char2 = 128
+			char2 = char2 + (4 * dec2)
+			char2 = char2 + int (dec3/4)
+			
+			char3 = 128
+			char3 = char3 + (16 * mod (dec3, 4))
+			char3 = char3 + dec4
+			
+			replace utf8 with chr (char1) + chr (char2) + chr (char3)
+		else
+			char1 = 192
+			char1 = char1 + (4 * dec2)
+			char1 = char1 + int (dec3/4)
+			
+			char2 = 128
+			char2 = char2 + (16 * mod (dec3, 4))
+			char2 = char2 + dec4
+			
+			replace utf8 with chr (char1) + chr (char2)
+		endif
+	endif
+endscan
+  */
+}
+//UnicodeDecimalToUtf8
+
+@end-code;
+
+@begin-code Code "yUtility::Prototype for ~yUtility()"
+
+    public:
+        ~@CLASSNAME@();
+
+@end-code;
+@end;

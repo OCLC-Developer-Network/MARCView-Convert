@@ -1,0 +1,70 @@
+MARConvert Translation Table for PPP
+FieldSep	T
+SubfieldSep	"; "
+-		MAIN.id					num
+LDR		MAIN.leader				text
+005		MAIN.date_last_trans			date
+008/0-5		MAIN.date_created			date
+008/35-37	MAIN.feed_language			text
+024a		MAIN.accession_number			num
+072a		MAIN.doctype				text
+110		MAIN.corp_author			text
+245h		MAIN.art_repro				text
+245a		MAIN.title				text
+245b		MAIN.subtitle				text
+300a		MAIN.pages				text
+300b		MAIN.phys_desc				text
+520a		MAIN.abstract				text
+610a		MAIN.subject_venue			text
+773t		MAIN.journal_name			text
+773o		MAIN.journal_subject			text
+773g		MAIN.issue_and_pages			text
+787		MAIN.book_reviewed			text
+-		MAIN.full_marc				text
+-		AUTHORS.id				num
+-		AUTHORS.mainid				num
+-		AUTHORS.tag				text
+100a		AUTHORS.author_sort			text
+100d		AUTHORS.author_dates			text
+100e		AUTHORS.author_role			text
+700a		AUTHORS.author_sort			text
+700d		AUTHORS.author_dates			text
+700e		AUTHORS.author_role			text
+-		RELATED_PEOPLE.id			num
+-		RELATED_PEOPLE.mainid			num
+600a		RELATED_PEOPLE.name_sort		text
+600b		RELATED_PEOPLE.name_suffix		text
+600q		RELATED_PEOPLE.name_details		text
+600c		RELATED_PEOPLE.descriptive_phrase	text
+600d		RELATED_PEOPLE.life_dates_text		text
+600t		RELATED_PEOPLE.illustrations		text
+600x		RELATED_PEOPLE.relationship		text
+-		TOPICAL_SUBJECTS.id			num
+-		TOPICAL_SUBJECTS.mainid			num
+650a		TOPICAL_SUBJECTS.subject		text
+650y		TOPICAL_SUBJECTS.subject_period		text
+650z		TOPICAL_SUBJECTS.subject_loc		text
+650x		TOPICAL_SUBJECTS.relationship		text
+-		GEO_SUBJECTS.id				num
+-		GEO_SUBJECTS.mainid			num
+651a		GEO_SUBJECTS.geographic_loc		text
+651x		GEO_SUBJECTS.relationship		text
+651z		GEO_SUBJECTS.related_loc		text
+651y		GEO_SUBJECTS.time_period		text
+-		RELATED_LINKS.id			num
+-		RELATED_LINKS.mainid			num
+856u		RELATED_LINKS.link1			text
+856x		RELATED_LINKS.link_type			text
+856z		RELATED_LINKS.link2			text
+001		-
+003		-
+006		-
+007		-
+009		-
+040		-
+516		-
+534		-
+630		-
+852		-
+957		-
+//end of file

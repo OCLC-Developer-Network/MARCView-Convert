@@ -1,0 +1,3295 @@
+Save Format v1.3
+@begin Form "yImport"
+ Exported 0;
+
+ @begin Object "WDialog"
+  WSCaption 1;
+  WSDlgBorder 1;
+  WSVisible 1;
+  Font "8.MS Sans Serif.Bold";
+  Icon "WIcon( WResourceID( MARCView ) )";
+  FormPositionType "Centered";
+  FormAbsTop "13";
+  FormAbsLeft "358";
+  FDXStructName "yImportFDXStruct";
+  BackColor "[ 236 236 255 ]";
+  HelpID "21";
+  Text "MARConvert";
+  @begin Event "Create"
+   GencodeSrcLine 395;
+   FunctionName "yImport::yImport_Create";
+  @end;
+  @begin UserFunction "yImport()"
+   Compiler 1;
+   GencodeSrcLine 496;
+   FunctionName "yImport::yImport()";
+  @end;
+  @begin UserFunction "~yImport()"
+   Compiler 1;
+   GencodeSrcLine 500;
+   FunctionName "yImport::~yImport()";
+  @end;
+  ResID 104;
+  DesignName yImport;
+  TabIndex 0;
+  DesignRect -2306,168,356,294;
+ @end;
+
+ @begin Object "WCommandButton"
+  WSChild 1;
+  WSMinimizeBox 1;
+  WSMaximizeBox 1;
+  WSGroup 1;
+  WSTabStop 1;
+  WSVisible 1;
+  Default "1";
+  Pressed "0";
+  FDXFieldName "OKButton_data";
+  FDXFieldType "WBool";
+  Text "OK";
+  @begin Event "Click"
+   GencodeSrcLine 504;
+   FunctionName "yImport::OKButton_Click";
+  @end;
+  ResID 101;
+  DesignName OKButton;
+  TabIndex 0;
+  DesignRect 247,250,40,15;
+ @end;
+
+ @begin Object "WLabel"
+  WSSRight 1;
+  WSSNotify 1;
+  WCCSNoMoveY 1;
+  WSChild 1;
+  WSVisible 1;
+  Text "File to import";
+  ResID 102;
+  DesignName label_1;
+  TabIndex 1;
+  DesignRect 9,45,70,8;
+ @end;
+
+ @begin Object "WLabel"
+  WSSRight 1;
+  WSSNotify 1;
+  WCCSNoMoveY 1;
+  WSChild 1;
+  WSVisible 1;
+  Text "Output file";
+  ResID 103;
+  DesignName label_2;
+  TabIndex 2;
+  DesignRect 9,65,70,8;
+ @end;
+
+ @begin Object "WLabel"
+  WSSRight 1;
+  WSSNotify 1;
+  WCCSNoMoveY 1;
+  WSChild 1;
+  WSVisible 1;
+  Text "Report file";
+  ResID 104;
+  DesignName label_3;
+  TabIndex 3;
+  DesignRect 9,85,70,8;
+ @end;
+
+ @begin Object "WLabel"
+  WSSRight 1;
+  WSSNotify 1;
+  WCCSNoMoveY 1;
+  WSChild 1;
+  WSVisible 1;
+  Text "Bad record file";
+  ResID 105;
+  DesignName label_4;
+  TabIndex 4;
+  DesignRect 9,105,70,8;
+ @end;
+
+ @begin Object "WLabel"
+  WSSRight 1;
+  WSSNotify 1;
+  WCCSNoMoveY 1;
+  WSChild 1;
+  WSVisible 1;
+  Text "Translation file";
+  ResID 106;
+  DesignName TransLabel;
+  TabIndex 5;
+  DesignRect 9,125,70,8;
+ @end;
+
+ @begin Object "WTextBox"
+  WTextBoxAutoHScroll 1;
+  WSBorder 1;
+  WSChild 1;
+  WSExClientEdge 1;
+  WSVisible 1;
+  ResID 107;
+  DesignName InfileBox;
+  TabIndex 6;
+  DesignRect 87,42,200,15;
+ @end;
+
+ @begin Object "WTextBox"
+  WTextBoxAutoHScroll 1;
+  WSBorder 1;
+  WSChild 1;
+  WSExClientEdge 1;
+  WSVisible 1;
+  ResID 108;
+  DesignName OutfileBox;
+  TabIndex 7;
+  DesignRect 87,62,200,15;
+ @end;
+
+ @begin Object "WTextBox"
+  WTextBoxAutoHScroll 1;
+  WSBorder 1;
+  WSChild 1;
+  WSExClientEdge 1;
+  WSVisible 1;
+  ResID 109;
+  DesignName RptfileBox;
+  TabIndex 8;
+  DesignRect 87,82,200,15;
+ @end;
+
+ @begin Object "WTextBox"
+  WTextBoxAutoHScroll 1;
+  WSBorder 1;
+  WSChild 1;
+  WSExClientEdge 1;
+  WSVisible 1;
+  ResID 110;
+  DesignName BadfileBox;
+  TabIndex 9;
+  DesignRect 87,102,200,15;
+ @end;
+
+ @begin Object "WTextBox"
+  WTextBoxAutoHScroll 1;
+  WSBorder 1;
+  WSChild 1;
+  WSExClientEdge 1;
+  WSVisible 1;
+  ResID 111;
+  DesignName TransfileBox;
+  TabIndex 10;
+  DesignRect 87,122,200,15;
+ @end;
+
+ @begin Object "WLabel"
+  WSSLeftNoWordWrap 1;
+  WSSNotify 1;
+  WCCSNoResize 1;
+  WCCSNoParentAlign 1;
+  WSChild 1;
+  Font "12.MS Sans Serif.Bold";
+  ForeColor "WColorBrightRed";
+  Text "!";
+  ResID 112;
+  DesignName InBang;
+  TabIndex 11;
+  DesignRect 290,45,5,13;
+ @end;
+
+ @begin Object "WLabel"
+  WSSLeftNoWordWrap 1;
+  WSSNotify 1;
+  WCCSNoResize 1;
+  WCCSNoParentAlign 1;
+  WSChild 1;
+  Font "12.MS Sans Serif.Bold";
+  ForeColor "WColorBrightRed";
+  Text "!";
+  ResID 113;
+  DesignName OutBang;
+  TabIndex 12;
+  DesignRect 290,65,6,11;
+ @end;
+
+ @begin Object "WLabel"
+  WSSLeftNoWordWrap 1;
+  WSSNotify 1;
+  WCCSNoResize 1;
+  WCCSNoParentAlign 1;
+  WSChild 1;
+  Font "12.MS Sans Serif.Bold";
+  ForeColor "WColorBrightRed";
+  Text "!";
+  ResID 114;
+  DesignName RptBang;
+  TabIndex 13;
+  DesignRect 290,85,5,10;
+ @end;
+
+ @begin Object "WLabel"
+  WSSLeftNoWordWrap 1;
+  WSSNotify 1;
+  WCCSNoResize 1;
+  WCCSNoParentAlign 1;
+  WSChild 1;
+  Font "12.MS Sans Serif.Bold";
+  ForeColor "WColorBrightRed";
+  Text "!";
+  ResID 115;
+  DesignName BadBang;
+  TabIndex 14;
+  DesignRect 290,105,5,11;
+ @end;
+
+ @begin Object "WLabel"
+  WSSLeftNoWordWrap 1;
+  WSSNotify 1;
+  WCCSNoResize 1;
+  WCCSNoParentAlign 1;
+  WSChild 1;
+  Font "12.MS Sans Serif.Bold";
+  ForeColor "WColorBrightRed";
+  Text "!";
+  ResID 116;
+  DesignName TransBang;
+  TabIndex 15;
+  DesignRect 290,125,5,10;
+ @end;
+
+ @begin Object "WFileDialog"
+  WFDSHideReadOnly 1;
+  WFDSNoChangeDir 1;
+  WFDSEnableHook 1;
+  WFDSExplorer 1;
+  InitialDirectory "WFilePath( \".\" )";
+  ResID 117;
+  DesignName FileDialog;
+  TabIndex 16;
+  DesignRect 315,170,16,17;
+ @end;
+
+ @begin Object "WCommandButton"
+  WSChild 1;
+  WSMaximizeBox 1;
+  WSTabStop 1;
+  WSVisible 1;
+  Pressed "0";
+  Text "Browse";
+  @begin Event "Click"
+   GencodeSrcLine 2231;
+   FunctionName "yImport::BrowseButton_Click";
+  @end;
+  ResID 118;
+  DesignName BrowseButton;
+  TabIndex 17;
+  DesignRect 300,41,40,15;
+ @end;
+
+ @begin Object "WLabel"
+  WSSLeftNoWordWrap 1;
+  WSSNotify 1;
+  WCCSNoResize 1;
+  WCCSNoParentAlign 1;
+  WSChild 1;
+  WSVisible 1;
+  Font "8.MS Sans Serif";
+  Text "All values are saved as defaults";
+  AutoSize "1";
+  ResID 119;
+  DesignName SaveMsg;
+  TabIndex 18;
+  DesignRect 130,230,85,8;
+ @end;
+
+ @begin Object "WCommandButton"
+  WSChild 1;
+  WSMaximizeBox 1;
+  WSTabStop 1;
+  WSVisible 1;
+  Pressed "0";
+  Text "Cancel";
+  Cancel "1";
+  @begin Event "Click"
+   GencodeSrcLine 2278;
+   FunctionName "yImport::CancelButton_Click";
+  @end;
+  ResID 120;
+  DesignName CancelButton;
+  TabIndex 19;
+  DesignRect 300,250,40,15;
+ @end;
+
+ @begin Object "WLabel"
+  WSSRight 1;
+  WSSNotify 1;
+  WCCSNoMoveY 1;
+  WSChild 1;
+  WSVisible 1;
+  Text "[count goes here]";
+  ResID 121;
+  DesignName CountLabel;
+  TabIndex 20;
+  DesignRect 177,208,107,9;
+ @end;
+
+ @begin Object "WLabel"
+  WSSRight 1;
+  WSSNotify 1;
+  WCCSNoMoveY 1;
+  WSChild 1;
+  WSVisible 1;
+  Text "Records to import";
+  ResID 122;
+  DesignName NumberLabel;
+  TabIndex 21;
+  DesignRect 9,208,70,8;
+ @end;
+
+ @begin Object "WTextBox"
+  WTextBoxAutoHScroll 1;
+  WSBorder 1;
+  WSChild 1;
+  WSExClientEdge 1;
+  WSVisible 1;
+  ResID 123;
+  DesignName MaxnumBox;
+  TabIndex 22;
+  DesignRect 87,205,39,15;
+ @end;
+
+ @begin Object "WLabel"
+  WSSLeftNoWordWrap 1;
+  WSSNotify 1;
+  WCCSNoResize 1;
+  WCCSNoParentAlign 1;
+  WSChild 1;
+  WSVisible 1;
+  Text "Character conversion desired";
+  AutoSize "1";
+  ResID 124;
+  DesignName ChrConvLabel;
+  TabIndex 23;
+  DesignRect 77,142,96,8;
+ @end;
+
+ @begin Object "WOptionButton"
+  WBSAutoRadioButton 1;
+  WCCSTop 1;
+  WCCSNoParentAlign 1;
+  WSChild 1;
+  WSMinimizeBox 1;
+  WSGroup 1;
+  WSVisible 1;
+  AutoSize "1";
+  Text "MARC Maker/Breaker to ANSEL";
+  ResID 125;
+  DesignName MakrBrkrRadio;
+  TabIndex 24;
+  DesignRect 90,155,117,12;
+ @end;
+
+ @begin Object "WOptionButton"
+  WBSAutoRadioButton 1;
+  WCCSTop 1;
+  WCCSNoParentAlign 1;
+  WSChild 1;
+  WSVisible 1;
+  AutoSize "1";
+  Text "Latin-1 to ANSEL";
+  ResID 126;
+  DesignName LatinRadio;
+  TabIndex 25;
+  DesignRect 90,165,68,12;
+ @end;
+
+ @begin Object "WOptionButton"
+  WBSAutoRadioButton 1;
+  WCCSTop 1;
+  WCCSNoParentAlign 1;
+  WSChild 1;
+  WSVisible 1;
+  AutoSize "1";
+  Text "No conversion";
+  ResID 127;
+  DesignName NoneRadio;
+  TabIndex 26;
+  DesignRect 90,175,59,11;
+ @end;
+
+ @begin Object "WCommandButton"
+  WSChild 1;
+  WSMaximizeBox 1;
+  WSTabStop 1;
+  WSVisible 1;
+  Pressed "0";
+  Text "Help";
+  @begin Event "Click"
+   GencodeSrcLine 2662;
+   FunctionName "yImport::HelpButton_Click";
+  @end;
+  ResID 128;
+  DesignName HelpButton;
+  TabIndex 27;
+  DesignRect 10,250,40,15;
+ @end;
+
+ @begin Object "WLabel"
+  WSSLeftNoWordWrap 1;
+  WSSNotify 1;
+  WCCSNoResize 1;
+  WCCSNoParentAlign 1;
+  WSChild 1;
+  WSVisible 1;
+  Font "14.Verdana";
+  ForeColor "WColorBrightBlue";
+  Text "Import";
+  AutoSize "1";
+  ResID 129;
+  DesignName Title;
+  TabIndex 28;
+  DesignRect 36,8,37,14;
+ @end;
+
+ @begin Object "WPictureBox"
+  WSSIcon 1;
+  WSSNotify 1;
+  WCCSTop 1;
+  WCCSNoMoveY 1;
+  WCCSBottom 1;
+  WSChild 1;
+  WSVisible 1;
+  ResID 130;
+  DesignName Icon;
+  TabIndex 29;
+  DesignRect 10,5,25,25;
+  @begin ComponentData "Icon"
+   Picture "<no picture>";
+  @end;
+ @end;
+
+ @begin Object "WLabel"
+  WSSRight 1;
+  WSSNotify 1;
+  WCCSNoMoveY 1;
+  WSChild 1;
+  WSVisible 1;
+  Text "Copy translation file";
+  ResID 131;
+  DesignName CopytransLabel;
+  TabIndex 30;
+  DesignRect 4,145,75,8;
+ @end;
+
+ @begin Object "WTextBox"
+  WTextBoxAutoHScroll 1;
+  WSBorder 1;
+  WSChild 1;
+  WSExClientEdge 1;
+  WSVisible 1;
+  ResID 132;
+  DesignName CopytransBox;
+  TabIndex 31;
+  DesignRect 87,142,200,15;
+ @end;
+
+ @begin Object "WLabel"
+  WSSLeftNoWordWrap 1;
+  WSSNotify 1;
+  WCCSNoResize 1;
+  WCCSNoParentAlign 1;
+  WSChild 1;
+  Font "12.MS Sans Serif.Bold";
+  ForeColor "WColorBrightRed";
+  Text "!";
+  ResID 133;
+  DesignName CopytransBang;
+  TabIndex 32;
+  DesignRect 290,145,5,10;
+ @end;
+
+ @begin Object "WLabel"
+  WSSRight 1;
+  WSSNotify 1;
+  WCCSNoMoveY 1;
+  WSChild 1;
+  WSVisible 1;
+  Text "Import type";
+  ResID 134;
+  DesignName RuntypeLabel;
+  TabIndex 33;
+  DesignRect 9,170,70,8;
+ @end;
+
+ @begin Object "WOptionButton"
+  WBSAutoRadioButton 1;
+  WCCSTop 1;
+  WCCSNoParentAlign 1;
+  WSChild 1;
+  WSVisible 1;
+  FDXFieldName "CatalogRunRadio_data";
+  FDXFieldType "WULong";
+  AutoSize "1";
+  Text "Catalog data";
+  Checked "1";
+  ResID 135;
+  DesignName CatalogRunRadio;
+  TabIndex 34;
+  DesignRect 85,170,53,12;
+ @end;
+
+ @begin Object "WOptionButton"
+  WBSAutoRadioButton 1;
+  WCCSTop 1;
+  WCCSNoParentAlign 1;
+  WSChild 1;
+  WSVisible 1;
+  AutoSize "1";
+  Text "Copy data";
+  ResID 136;
+  DesignName CopyRunRadio;
+  TabIndex 35;
+  DesignRect 85,180,45,12;
+ @end;
+
+ @begin HPPPrefixBlock
+@begin-code HPPPrefix
+
+/*
+Copyright 1992-2009 Systems Planning (www.systemsplanning.com)
+
+Licensed under the Apache License, Version 2.0 (the "License"); 
+you may not use this file except in compliance with the License. 
+You may obtain a copy of the License at 
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software 
+distributed under the License is distributed on an "AS IS" BASIS, 
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. 
+See the License for the specific language governing permissions and 
+limitations under the License.
+*/
+
+// Declarations added here will be included at the top of the .HPP file
+extern "C" 
+{
+    #include "d:\marc\sp_marc\sp_marc.hpp"
+};
+
+#include <io.h> //for "access" function
+#include <time.h>
+#include "yTrans.hpp"
+#include "help.hpp"
+#include "MCclient.hpp"
+#include "utility.hpp"
+
+#include <direct.h>
+#ifdef _DEBUG
+	#include <stdio.h>
+	#include <stdlib.h>
+#endif
+
+@end-code;
+  GencodeSrcLine 10;
+ @end;
+
+ @begin CPPPrefixBlock
+@begin-code CPPPrefix
+
+// Code added here will be included at the top of the .CPP file
+
+
+//  Include definitions for resources.
+#include "WRes.h"
+
+@end-code;
+  GencodeSrcLine 10;
+ @end;
+
+ @begin ClassContentsBlock
+@begin-code ClassContents
+
+    public:
+		int				BatchImport(WConsole*, WString, WString, WBool boverwrite=FALSE, WBool bCatalogRun=TRUE);
+
+
+	private:
+		
+		// ini params
+		typedef struct paramtag
+		{
+			WFilePath		infilepath;
+			WFilePath		outfilepath;
+			WFilePath		badfilepath;
+			WFilePath		rptfilepath;
+			WFilePath		transfilepath;
+			WFilePath		copytransfilepath;
+			yCharSet		charset;
+			WString		maxnum;		// easier to store this way, then convert when passed
+			WBool		bCatalogRun;
+		}	yIniParams;
+		
+		yIniParams	TheIniParams;
+		
+		yCharSet		CharSet;
+		char**		ppaConvert;
+		WString 		sConvert;
+		yClient		TheClient;
+		yMCClient		MCClient;
+		
+		//050310 made global
+		WBool		IsDelimited;
+		WStringArray	aFieldnames, aFielddata;
+		long			fieldsreadindex;		//0-based, incremented before use for tagged-text files,
+											//		set by reading header for delimited files
+		WString		previousfield;	// for SSS
+		
+		
+		void			AddToArrays (WString, WString);
+		WString		Assemble (yTrans*, WBool, WString);
+		WString		CleanCatFieldname (WString);
+		int			ConvertChar (WString&, WString*);
+		WString		ConvertTextToMARC (FILE*, FILE*, FILE*, FILE*, FILE*, FILE*, 
+							long&, long&, long&, WBool, long maxnum=0, WBool bCatalogRun=TRUE);
+		long			DeleteNodes (FILE*, yTrans*);
+		WBool		DoEEEProcessing (yTrans*, long, FILE*, WBool bCatalogRun=TRUE);
+		void			GetIniParams ();
+		WString		GetNextField (FILE*);
+		WString		Make007 (WString, WString, WString);
+		void			PrintNode (yTrans*, FILE*);
+		void			ShowTree (WString, yTrans*, FILE*);
+		void			WriteIniParams ();
+			
+	
+    protected:
+        // add your protected instance data here
+
+@end-code;
+  GencodeSrcLine 147;
+ @end;
+
+@begin-code GeneratedClassContents
+
+        yImport();
+        ~yImport();
+
+@end-code;
+
+@begin-code Code "yImport::yImport()"
+
+@@CLASSNAME@::@CLASSNAME@()
+{
+    
+}
+
+@end-code;
+
+@begin-code Code "yImport::~yImport()"
+
+@@CLASSNAME@::~@CLASSNAME@()
+{
+    
+}
+
+@end-code;
+
+@begin-code Code "yImport::yImport_Create"
+
+WBool @CLASSNAME@::yImport_Create(
+	WObject *         		source,
+	WCreateEventData *		event )
+{
+	
+	TheClient = MCClient.TheClient;
+	
+	//050129 close file being viewed as we may be recreating it
+	SP_CloseFile ();
+	
+	
+	GetIniParams ();
+	
+	
+	InfileBox->SetText (TheIniParams.infilepath);
+	OutfileBox->SetText (TheIniParams.outfilepath);
+	RptfileBox->SetText (TheIniParams.rptfilepath);
+	BadfileBox->SetText (TheIniParams.badfilepath);
+	TransfileBox->SetText (TheIniParams.transfilepath);
+
+	MaxnumBox->SetText (TheIniParams.maxnum);
+
+	if (TheIniParams.charset == MAKRBRKR)
+		MakrBrkrRadio->SetChecked (TRUE);
+	else if (TheIniParams.charset == LATIN)
+		LatinRadio->SetChecked (TRUE);
+	else 
+		NoneRadio->SetChecked (TRUE);	//"none", missing, or erroneous value (or "Getty")
+
+	CountLabel->SetText ("");	//so development msg doesn't show
+	
+	
+	if (TheClient == EEE)
+	{
+		CopytransBox->SetText (TheIniParams.copytransfilepath);
+		
+		if (TheIniParams.bCatalogRun == FALSE)
+		{
+			CatalogRunRadio->SetChecked (FALSE);
+			CopyRunRadio->SetChecked (TRUE);
+		}
+		else		// "Catalog" or nothing or garbage: assume Catalog run
+		{
+			CatalogRunRadio->SetChecked (TRUE);
+			CopyRunRadio->SetChecked (FALSE);
+		}
+	}
+	
+	
+	// ADJUST DIALOG BOX
+	
+	// we suppress these for every client so far, as none need to choose charset
+	ChrConvLabel->SetVisible (FALSE);
+	MakrBrkrRadio->SetVisible (FALSE);
+	LatinRadio->SetVisible (FALSE);
+	//050103 obso//GettyRadio->SetVisible (FALSE);
+	NoneRadio->SetVisible (FALSE);
+	
+	
+	// hide EEE extra textbox and close up space
+	if (TheClient != EEE)
+	{
+		// EEE-specific stuff
+		CopytransLabel->SetVisible (FALSE);
+		CopytransBox->SetVisible (FALSE);
+		CopytransBang->SetVisible (FALSE);
+		RuntypeLabel->SetVisible (FALSE);
+		CatalogRunRadio->SetVisible (FALSE);
+		CopyRunRadio->SetVisible (FALSE);
+		
+		NumberLabel->SetTop (NumberLabel->GetTop () - 80);		// "Records to import"
+		MaxnumBox->SetTop (MaxnumBox->GetTop () - 80);
+		CountLabel->SetTop (CountLabel->GetTop () - 80);
+		SaveMsg->SetTop (SaveMsg->GetTop () - 80);
+		OKButton->SetTop (OKButton->GetTop () - 80);
+		CancelButton->SetTop (CancelButton->GetTop () - 80);
+		HelpButton->SetTop (HelpButton->GetTop () - 80);
+		SetHeight (GetHeight () - 80);
+	}
+	
+	
+	if (TheClient == RRR)	// no translation table
+	{
+		TransLabel->SetVisible (FALSE);
+		TransfileBox->SetVisible (FALSE);
+		TransBang->SetVisible (FALSE);
+	}
+	
+	
+	WIcon mcicon;
+	mcicon = WIcon (WResourceID (MARConvert));
+	Icon->SetIcon (mcicon);
+	
+	//991025 only way to get icon to display correct size. if done at design time it gets overridden
+	Icon->SetWidth (32);
+	Icon->SetHeight (32);
+	
+	Title->SetText (MCClient.TheDialogHeading);
+
+    return FALSE;
+}
+
+@end-code;
+
+@begin-code Code "yImport::OKButton_Click"
+
+WBool @CLASSNAME@::OKButton_Click(
+	WObject *   	source,
+	WEventData *	event )
+{
+	WString 			LabelSep, RecordSep, lineend, FieldSep, QuoteChar;
+	WString 			msg;
+	WBool			bCatalogRun;	// EEE: 1=catalog, 0=copy
+
+	long       	 	count=0, badcount=0, nodecount=0;
+	long&			rcount = count;
+	long&			rbadcount = badcount;
+	long&			rnodecount = nodecount;
+	
+	lineend = "\n";	//lineend not currently settable;
+    
+	TheIniParams.infilepath = InfileBox->GetText ();
+	TheIniParams.outfilepath = OutfileBox->GetText ();
+	TheIniParams.rptfilepath = RptfileBox->GetText ();
+	TheIniParams.badfilepath = BadfileBox->GetText ();
+	
+	if (TheClient != RRR)	//no translation table
+		TheIniParams.transfilepath = TransfileBox->GetText ();
+	
+	if (TheClient == EEE)
+	{
+		TheIniParams.copytransfilepath = CopytransBox->GetText ();
+		
+		if (CatalogRunRadio->GetChecked () == TRUE)
+			TheIniParams.bCatalogRun = TRUE;
+		else
+			TheIniParams.bCatalogRun = FALSE;
+	}
+	
+	TheIniParams.maxnum = MaxnumBox->GetText ();
+    
+	
+	//check files
+	WBool prob = FALSE;
+	if (access (TheIniParams.infilepath, 0) == -1)
+	{
+		InBang->SetVisible (TRUE);
+		prob = TRUE;
+	}
+	
+	if (TheClient != RRR)	//no translation table
+	{
+		if (access (TheIniParams.transfilepath, 0) == -1)
+		{
+			TransBang->SetVisible (TRUE);
+			prob = TRUE;
+		}
+	}
+	
+	if (TheClient == EEE)
+	{
+		if (access (TheIniParams.copytransfilepath, 0) == -1)
+		{
+			CopytransBang->SetVisible (TRUE);
+			prob = TRUE;
+		}
+	}
+	
+	if (prob)
+	{
+		WMessageBox::Message    (NULL, 
+								WMsgBSOk | WMsgBSIconError,
+								"Problem",
+								"Files marked with ! not found");
+		InBang->SetVisible (FALSE);
+		TransBang->SetVisible (FALSE);
+		return FALSE;
+	}
+
+	if (access (TheIniParams.outfilepath, 0) == 0)
+	{
+		OutBang->SetVisible (TRUE);
+		prob = TRUE;
+	}
+	if (access (TheIniParams.rptfilepath, 0) == 0)
+	{
+		RptBang->SetVisible (TRUE);
+		prob = TRUE;
+	}
+	if (access (TheIniParams.badfilepath, 0) == 0)
+	{
+		BadBang->SetVisible (TRUE);
+		prob = TRUE;
+	}
+	
+	if (prob)
+	{
+		if (WMessageBox::Message 	(NULL,
+									WMsgBSOkCancel | WMsgBSIconError,
+									"Warning!",
+									"Files marked with ! already exist"
+									"\nClick OK to overwrite"
+									) == WMBReturnCancel)
+		{
+			OutBang->SetVisible (FALSE);
+			RptBang->SetVisible (FALSE);
+			BadBang->SetVisible (FALSE);
+			return FALSE;
+		}
+	}
+
+	
+	// WRITE PARAMS TO INI
+
+	if (MakrBrkrRadio->GetChecked ())
+		CharSet = MAKRBRKR;
+	else if (LatinRadio->GetChecked ())
+		CharSet = LATIN;
+	else 
+		CharSet = UNKNOWN;
+
+	// these clients always import latin (this is true for EEE even tho some recs have MARC-8 wrongly)
+	if ((TheClient == DDD) || (TheClient == EEE) || (TheClient == RRR) || (TheClient == SSS))
+		CharSet = LATIN;
+		
+	TheIniParams.charset = CharSet;
+
+	if (TheClient == EEE)
+		bCatalogRun = TheIniParams.bCatalogRun;
+
+	WriteIniParams ();
+	
+
+	//initialize report file
+	FILE* rfile;
+	if ((rfile = fopen (TheIniParams.rptfilepath.GetText (), "w")) == NULL)
+   	{
+		WMessageBox::Info (NULL, NULL, "Problem opening %s", TheIniParams.rptfilepath.GetText ());
+	    	Dismiss( FALSE );
+		return FALSE;
+	}
+	
+
+	msg = yUtility::MakeStartEndMsg(TRUE);
+	fputs(msg.GetText(), rfile);
+	
+	
+	//open input file
+	FILE* ifile;
+	if ((ifile = fopen (TheIniParams.infilepath.GetText (), "r")) == NULL)
+   	{
+		msg.Sprintf ("Problem opening %s", TheIniParams.infilepath.GetText ());
+		WMessageBox::Info (NULL, NULL, msg.GetText ());
+		fputs (msg.GetText (), rfile);
+		fclose (rfile);
+	    	Dismiss( FALSE );
+		return FALSE;
+	}
+	
+	//open output file
+	FILE* ofile;
+	if ((ofile = fopen (TheIniParams.outfilepath.GetText (), "w")) == NULL)
+   	{
+		msg.Sprintf ("Problem opening %s", TheIniParams.outfilepath.GetText ());
+		WMessageBox::Info (NULL, NULL, msg.GetText ());
+		fputs (msg.GetText (), rfile);
+		fclose (rfile);
+		fclose (ifile);
+	    	Dismiss( FALSE );
+		return FALSE;
+	}
+	
+	//open bad file
+	FILE* badfile;
+	if ((badfile = fopen (TheIniParams.badfilepath.GetText (), "w")) == NULL)
+   	{
+		msg.Sprintf ("Problem opening %s", TheIniParams.badfilepath.GetText ());
+		WMessageBox::Info (NULL, NULL, msg.GetText ());
+		fputs (msg.GetText (), rfile);
+		fclose (rfile);
+		fclose (ifile);
+		fclose (ofile);
+	    	Dismiss( FALSE );
+		return FALSE;
+	}
+	
+	
+	//open translation file
+	FILE* tfile;
+	WString tfilepath = TheIniParams.transfilepath;
+	if ((TheClient == EEE) && !bCatalogRun)
+		tfilepath = TheIniParams.copytransfilepath;
+	if ((tfile = fopen (tfilepath.GetText (), "r")) == NULL)
+   	{
+		msg.Sprintf ("Problem opening %s", tfilepath.GetText ());
+		WMessageBox::Info (NULL, NULL, msg.GetText ());
+		fputs (msg.GetText (), rfile);
+		fclose (rfile);
+		fclose (ifile);
+		fclose (ofile);
+		fclose (badfile);
+	    	Dismiss( FALSE );
+		return FALSE;
+	}
+
+
+	FILE* debugfile;
+	#ifdef _DEBUG
+	if ((debugfile = fopen ("debug.txt", "w")) == NULL)
+   	{
+		WMessageBox::Info (NULL, NULL, "Problem opening debug.txt");
+	}
+	#endif
+	
+	
+	msg.Sprintf ("\n\nInput file:        %s\n", TheIniParams.infilepath.GetText ());
+	fputs (msg.GetText (), rfile);
+	msg.Sprintf ("Output file:       %s\n\n", TheIniParams.outfilepath.GetText ());
+	fputs (msg.GetText (), rfile);
+
+
+	// call sub to process single file
+	long maxnum = TheIniParams.maxnum.ConvertToLong ();
+	if ((TheClient == EEE) && !bCatalogRun)
+		msg = ConvertTextToMARC 
+				(ifile, ofile, badfile, rfile, tfile, debugfile, 
+				rcount, rbadcount, rnodecount, TRUE, maxnum, FALSE);	// FALSE means Copy Run
+	else
+		msg = ConvertTextToMARC 
+				(ifile, ofile, badfile, rfile, tfile, debugfile, 
+				rcount, rbadcount, rnodecount, TRUE, maxnum);
+	
+
+	fclose (ifile);
+	fclose (ofile);
+	fclose (badfile);
+
+	//debugging -- open the new marc file to view using MainForm's Open
+	//MainForm::OpenFile (outfilepath);
+	
+	//finish report
+	msg.Sprintf ("\nRecords read:      %lu\n", count);
+	fputs (msg.GetText (), rfile);
+	msg.Sprintf ("Good records:      %lu\n", count - badcount);
+	fputs (msg.GetText (), rfile);
+	msg.Sprintf ("Bad records:       %lu\n", badcount);
+	fputs (msg.GetText (), rfile);
+	
+	
+	msg = yUtility::MakeStartEndMsg(FALSE);
+	fputs(msg.GetText(), rfile);
+	
+	fclose (rfile);
+	fclose (debugfile);
+
+
+	//final message
+	msg.Sprintf ("--End of run. %s\n%lu records read, %lu good records, %lu bad records", 
+			msg.GetText (), 
+			count, 
+			count - badcount,
+			badcount);
+	WMessageBox::Message    
+			(NULL, 
+			WMsgBSOk | WMsgBSIconInformation,
+			"Import complete",
+			msg.GetText ());
+	
+    Dismiss( TRUE );
+    
+    return FALSE;
+}
+//OKButton_Click
+
+
+
+//BatchImport
+int @CLASSNAME@::BatchImport 
+		(WConsole* pconsole, 
+		WString infilepath, 
+		WString rptfilepath, 
+		WBool boverwrite,
+		WBool bCatalogRun)
+{
+	
+	if (TheClient == DDD)
+		CharSet = LATIN;
+	else if (TheClient == EEE)
+		CharSet = LATIN;
+	else if (TheClient == RRR)
+		CharSet = LATIN;
+	else if (TheClient == SSS)
+		CharSet = LATIN;
+	
+
+	int Result = E_PERFECTSUCCESS;
+	WBool success;
+	WString buffer;
+	
+	long       	 	count=0, badcount=0, nodecount=0;
+	long&			rcount = count;
+	long&			rbadcount = badcount;
+	long&			rnodecount = nodecount;
+
+
+	infilepath.Trim ();
+	
+	WFilePath infp = infilepath;
+	
+	//041024 the current working directory (cwd) is ..\marcview when using the IDE
+	if (infp.GetDrive ().GetEmpty () && infp.GetDirectory ().GetEmpty ())
+	{
+		char *cwd;
+		cwd = getcwd (NULL, 0);
+		if (cwd != NULL)
+		{
+			WString temp (cwd);
+			//cprintf ("cwd %s\n", temp.GetText ());
+			infp.SetDrive (temp.Substring (0, 2));
+			infp.SetDirectory (temp.Substring (2));
+			//cprintf ("input %s\n", infp.GetText ());
+		}
+		free (cwd);
+	}
+	
+	// actually we should pass this is so we can use client's choice of extension (as we do in export)
+	WFilePath outfilepath = infp.GetDrive () + infp.GetDirectory () + infp.GetFileName () + ".MRC";
+	
+	//050318 now passed 
+	//WFilePath rptfilepath = infp.GetDrive () + infp.GetDirectory () + infp.GetFileName () + ".RPT";
+
+	// caller s pass this in so it is the same as export and MtM
+	WFilePath badfilepath = infp.GetDrive () + infp.GetDirectory () + infp.GetFileName () + ".BAD";
+
+	
+	WString msg, startmsg;
+	if ((TheClient != EEE) && (TheClient != SSS))	// uses command file, so this is done in MainForm
+		startmsg = yUtility::MakeStartEndMsg(TRUE);
+	
+	if (TheClient == RRR)
+	{
+		msg.Sprintf ("\nConverting text file to MARC\n"
+				"    Input file : %s\n"
+				"    Output file: %s\n",
+				infp.GetText (), outfilepath.GetText ());
+	}
+	else if (TheClient == EEE)
+	{
+		msg.Sprintf ("\n\nConverting TechLib data to MARC\n"
+				"    Input file : %s\n"
+				"    Output file: %s\n",
+				infp.GetText (), outfilepath.GetText ());
+	}
+	else if (TheClient == SSS)
+	{
+		msg.Sprintf ("\n\nConverting Ovid Medline Records to MARC Records\n"
+				"    Input file : %s\n"
+				"    Output file: %s\n",
+				infp.GetText (), outfilepath.GetText ());
+	}
+
+	msg.Concat ("\n-- See http://www.systemsplanning.com/marc/");
+	msg.Concat (MCClient.TheHelpFile);
+	msg.Concat (" for Help --\n\n");
+	
+	startmsg.Concat (msg);
+    	cprintf (startmsg.GetText ());
+	// can't write to report yet as it isn't open
+
+
+	if (!boverwrite)
+	{
+		//see if output file exists
+		if (access (outfilepath, 0) == 0)
+		{
+			cprintf ("\nOutput file exists, overwrite? (y/n)\n");
+			success = pconsole->Read (buffer);
+			if (success)
+				buffer.ToLowercase ();
+			if (buffer.GetCharacter (0) != 'y')
+			return E_EXCEPTION;
+		}
+		
+		//see if bad file exists
+		if (access (badfilepath, 0) == 0)
+		{
+			cprintf ("\nBad-record file exists, overwrite? (y/n)\n");
+			success = pconsole->Read (buffer);
+			buffer.ToLowercase ();
+			if (buffer.GetCharacter (0) != 'y')
+			return E_EXCEPTION;
+		}
+	
+		if (TheClient == RRR)
+		{
+			//see if report file exists
+			//	-- for other projects, we use one report for all files, so the caller checks this -- NOT YET CODED IN CALLER
+			if (access (rptfilepath, 0) == 0)
+			{
+				cprintf ("\nReport file exists, overwrite? (y/n)\n");
+				success = pconsole->Read (buffer);
+				buffer.ToLowercase ();
+				if (buffer.GetCharacter (0) != 'y')
+				return E_EXCEPTION;
+			}
+		}
+	}
+
+
+	//open input file
+	FILE* ifile;
+	if ((ifile = fopen (infp.GetText (), "r")) == NULL)
+   	{
+	    	cprintf ("\nCannot open input file %s, error %d\n", 
+					infp.GetText (),
+					errno);
+		return E_FILENOTOPEN;
+	}
+	
+	
+	//make output file
+    	FILE* ofile;
+    	if ((ofile = fopen (outfilepath.GetText (), "w")) == NULL)
+	{
+	    	cprintf ("\nCannot create output file %s\n", outfilepath.GetText ());
+		return E_FILENOTOPEN;
+	}
+	
+	
+	//make report file
+    	FILE* rfile;
+		
+	/*070718 dn believe this is correct since no space allocated, added to fopen below
+	char* mode;
+	if ((TheClient == EEE) || (TheClient == SSS))
+		mode = "a";	//append -- these clients use a single report file for all conversion in the run
+	else
+		mode = "w";	//overwrite
+	*/
+	
+	/*070718 use conditional for mode -- also generalize to use MCClient -- untested!!!!
+    	if ((rfile = fopen (rptfilepath.GetText (), mode)) == NULL)*/
+    	if ((rfile = fopen (rptfilepath.GetText(), (MCClient.MCBatchFiles == SINGLE) ? "w" : "a")) == NULL)
+		
+	{
+	    	cprintf ("\nCannot create report file %s\n", rptfilepath.GetText ());
+		return E_FILENOTOPEN;
+	}
+	
+	
+	//open bad file -- control by MCBadFile when necessary
+	FILE* badfile;
+	if ((badfile = fopen (badfilepath.GetText (), "w")) == NULL)
+   	{
+	    	cprintf ("\nCannot open bad-record file %s\n", badfilepath.GetText ());
+		return E_FILENOTOPEN;
+	}
+	
+	
+	// translation table
+	FILE* tfile;
+	WString transfilepath;
+	if ((TheClient == EEE) && !bCatalogRun)
+		transfilepath = WAppObject.GetProfileString 
+				("Import", "CopyTransfile", "", "MARCView.INI");
+	else
+		transfilepath = WAppObject.GetProfileString 
+				("Import", "Transfile", "", "MARCView.INI");
+					
+	if ((tfile = fopen (transfilepath.GetText (), "r")) == NULL)
+   	{
+		cprintf ("\nCannot open Translation Table\n");
+		return E_FILENOTOPEN;
+	}
+
+
+	FILE* debugfile;
+	#ifdef _DEBUG
+	if ((debugfile = fopen ("debug.txt", "w")) == NULL)
+   	{
+		WMessageBox::Info (NULL, NULL, "Problem opening debug.txt");
+	}
+	#endif
+	
+
+	// now we can write the start msg to report
+	fputs (startmsg.GetText (), rfile);
+
+
+	// call sub to process single file
+	if ((TheClient == EEE) && !bCatalogRun)
+		msg = ConvertTextToMARC 
+				(ifile, ofile, badfile, rfile, tfile, debugfile, 
+				rcount, rbadcount, rnodecount, FALSE, 0, FALSE);	// last param FALSE means Copy Run
+	else
+		msg = ConvertTextToMARC 
+				(ifile, ofile, badfile, rfile, tfile, debugfile, 
+				rcount, rbadcount, rnodecount, FALSE);
+
+
+	msg.Sprintf ("\nEnd of run\n"
+			"\tRecords read:     %lu\n"
+			"\tGood records:     %lu\n"
+			"\tBad records:      %lu\n", 
+			count, 
+			count - badcount, // for some reason we don't track goodcount separately in import
+			badcount);
+	fputs (msg.GetText (), rfile);
+	cprintf (msg.GetText ());
+	
+	
+	if ((TheClient != EEE) && (TheClient != SSS))
+	{
+		msg = yUtility::MakeStartEndMsg(FALSE);
+		fputs(msg.GetText(), rfile);
+		cprintf(msg.GetText());
+	}
+	
+	fclose (rfile);
+
+
+	fclose (ifile);
+	fclose (ofile);
+	fclose (badfile);
+	fclose (debugfile);
+	
+	return Result;
+}
+//BatchImport
+
+
+
+//ConvertTextToMARC
+WString @CLASSNAME@::ConvertTextToMARC 
+		(FILE* ifile, 
+		FILE* ofile, 
+		FILE* badfile, 
+		FILE* rfile, 
+		FILE* tfile,
+		FILE* debugfile,
+		long& rcount, 
+		long& rbadcount, 
+		long& rnodecount,
+		WBool interactive,
+		long maxnum,
+		WBool bCatalogRun)
+{
+	WString 		LabelSep, RecordSep, lineend, FieldSep, QuoteChar;
+   	long         	i, j;
+	
+	#define MAXFIELDLEN		10000	//needed for fgets
+	
+	char 			t_line [MAXFIELDLEN];
+	WString 			t_string;
+	WStringArray 		tlinearray;
+	yTrans			*root, *t_field, *t_sub, *t_seg, *t_007;
+
+   	long        		fldlen, offset, minfldlen, minsflen;
+	WString			dir, leader, title, the007, msg, output;
+	WString 			s, fielddata, subfielddata, allfields;
+	WBool			iscontrolfield, isbadrec, sub_has_var, isfatal=0;
+	int				iConvert;
+	WString			thisname, thisdata;
+
+
+    /*----------------------
+    |      INITIALIZE      |
+    ----------------------*/
+	
+	SP_CloseFile ();	//too confusing to user to leave a marc file open while creating another
+	SP_InitializeSymbols ();		//loads symbol table if not done yet
+	
+	
+	//040723 this is the time for the 008
+	time_t tim = time (NULL);
+	tm* lcltim = localtime (&tim);
+	WString time_008;
+	// subtracting 100 from the year leaves us with the last two digits of the year,
+	//		since year is relative to 1900 (of course, only since 2000, but this is
+	//		the date the marc rec was created, so it's OK)
+	time_008.Sprintf ("%02u%02u%02u", lcltim->tm_year - 100, lcltim->tm_mon + 1, lcltim->tm_mday);
+
+
+    //READ TRANSLATION TABLE
+	
+	if (TheClient == RRR)		//no translation table
+	{
+		// for RRR we just read the input file
+	
+		IsDelimited = FALSE;
+		LabelSep = "\t";
+		RecordSep = "\n";
+		
+		root = new yTrans;
+		if (!root->MakeTree (ifile))	// let tree use same file
+		{
+			fclose (ifile);
+			msg = "Problem building Translation Nodes";
+			if (interactive)
+			{
+				fputs (msg.GetText (), rfile);
+				fclose (rfile);
+				Dismiss (FALSE);
+			}
+			else
+				cprintf (msg.GetText ());
+				
+			return msg;
+		}
+		
+		fseek (ifile, 0, SEEK_SET);
+	}
+	
+	else		// all other clients
+	{
+		//read in first line and ignore
+		fgets (t_line, sizeof (t_line), tfile);
+		
+	
+		if (TheClient == SSS)	// SSS is neither tagged nor delimited, so no field or label separators
+							//	-- (we force a label separator in GetNextField though)
+		{
+			IsDelimited = FALSE;
+			RecordSep = "<";
+			LabelSep = "=";
+		}
+		
+		else
+		{
+			//next one or two lines are separators
+			fgets (t_line, sizeof (t_line), tfile);
+			t_string = t_line;
+			tlinearray = t_string.Parse (" \t\r\n");
+			
+			//000602 need to check whether line 2 is LabelSep or FieldSep
+			if (t_string.Position ("FieldSep", 0, TRUE) != NOT_FOUND)
+			{
+				IsDelimited = TRUE;
+				FieldSep = tlinearray [1];
+			}
+			else
+			{
+				IsDelimited = FALSE;
+				LabelSep = tlinearray [1];
+			}
+			
+			// if tagged-text, line 3 is RecordSep
+			if (!IsDelimited)
+			{
+				fgets (t_line, sizeof (t_line), tfile);
+				t_string = t_line;
+				tlinearray = t_string.Parse (" \t\r\n");
+				RecordSep = tlinearray [1];
+			}
+		
+			//now convert Ts and Ns
+			if (IsDelimited)
+			{
+				FieldSep = yUtility::CleanString (FieldSep, 'T', '\t');
+				FieldSep = yUtility::CleanString (FieldSep, 'N', '\n');
+			}
+			else
+			{
+				if (TheClient != EEE)
+				{
+					LabelSep = yUtility::CleanString (LabelSep, 'T', '\t');
+					LabelSep = yUtility::CleanString (LabelSep, 'N', '\n');
+					RecordSep = yUtility::CleanString (RecordSep, 'T', '\t');
+					RecordSep = yUtility::CleanString (RecordSep, 'N', '\n');
+				}
+			}
+		}
+		
+		
+		root = new yTrans;
+		if (!root->MakeTree (tfile))	// let tree use same file
+		{
+			fclose (tfile);
+			fputs ("Problem building Translation Table", rfile);
+			fclose (rfile);
+			Dismiss( FALSE );
+			return FALSE;
+		}
+		
+		fclose (tfile);
+	}
+	
+	//END OF READING TRANSLATION TABLE
+	
+
+	//991216 set up table for MakrBrkr Character Conversion
+	if (CharSet == MAKRBRKR)
+	{
+		
+		/*991216 use LC's USMARC.TXT file to create conversion table.
+		
+		-- here is part of the documentation from the USMARC.TXT file
+		
+		* The curly braces "{" (7Bx/123d) and "}" (7Dx/125d) are used             *
+		*   in MARCMakr Version 2.4 to delimit mnemonics converted according      *
+		*   to this table.  Any characters not delimited by the curly braces      *
+		*   are passed unchanged into the USMARC output record.                   *
+		*                                                                         *
+		* Mnemonics WITHOUT corresponding hexadecimal (or decimal) equivalents    *
+		*   do not produce a character in the USMARC output record.               *
+		*                                                                         *
+		* Mnemonics encountered that are not listed in this table should be       *
+		*   passed to the output record preceded by an ampersand (&) and          *
+		*   followed by a semicolon (;).  Thus "{zilch}" would be come "&zilch;"  *
+		*   in the output record.                                                 *
+		*                                                                         *
+		* Mnemonics in this table are always enclosed in curly braces "{...}".    *
+		* When a mnemonic is mapped to more than one character (e.g., when a      *
+		*   mnemonic is represented by two USMARC characters), the character      *
+		*   codes are concatenated in this table.                                 */
+
+
+		sConvert =
+				"{0}30{00}{01}{02}{03}{04}{05}{06}{07}{08}{09}{0A}{0B}{0C}{0D}{0E}{0F}"
+				"{1}31{10}{11}{12}{13}{14}{15}{16}{17}{18}{19}{1A}{1B}1B{1C}{1D}1D{1E}1E{1F}1F"
+				"{2}32{20}20{21}21{22}22{23}23{24}24{25}25{26}26{27}27{28}28{29}29{2A}2A{2B}2B{2C}2C{2D}2D{2E}2E{2F}2F"
+				"{3}33{30}30{31}31{32}32{33}33{34}34{35}35{36}36{37}37{38}38{39}39{3A}3A{3B}3B{3C}3C{3D}3D{3E}3E{3F}3F"
+				"{4}34{40}40{41}41{42}42{43}43{44}44{45}45{46}46{47}47{48}48{49}49{4A}4A{4B}4B{4C}4C{4D}4D{4E}4E{4F}4F"
+				"{5}35{50}50{51}51{52}52{53}53{54}54{55}55{56}56{57}57{58}58{59}59{5A}5A{5B}5B{5C}5C{5D}5D{5E}5E{5F}5F"
+				"{6}36{60}60{61}61{62}62{63}63{64}64{65}65{66}66{67}67{68}68{69}69{6A}6A{6B}6B{6C}6C{6D}6D{6E}6E{6F}6F"
+				"{7}37{70}70{71}71{72}72{73}73{74}74{75}75{76}76{77}77{78}78{79}79{7A}7A{7B}7B{7C}7C{7D}7D{7E}7E{7F}"
+				"{8}38{80}{81}{82}{83}{84}{85}{86}{87}{88}{89}{8A}{8B}{8C}{8D}8D{8E}8E{8F}"
+				"{9}39{90}{91}{92}{93}{94}{95}{96}{97}{98}{99}{9A}{9B}{9C}{9D}{9E}{9F}"
+				"{a}61{A}41{A0}A0{A1}A1{A2}A2{A3}A3{A4}A4{A5}A5{A6}A6{A7}A7{A8}A8"
+				"{A9}A9{AA}AA{AB}AB{AC}AC{acute}E2{AD}AD{AE}AE{aelig}B5{AElig}A5{AF}"
+				"{agr}61{amp}26{apos}27{arab}2833{ast}2A"
+				"{b}62{B}42{B0}B0{B1}B1{B2}B2{B3}B3{B4}B4{B5}B5{B6}B6{B7}B7{B8}B8{B9}B9{BA}BA{BB}{BC}BC{BD}BD{BE}{BF}"
+				"{bgr}62{breve}E6{breveb}F9{brvbar}7C{bsol}5C"
+				"{c}63{C}43{C0}C0{C1}C1{C2}C2{C3}C3{C4}C4{C5}C5{C6}C6{C7}{C8}"
+				"{C9}{CA}{candra}EF{caron}E9{CB}{CC}{CD}{CE}{cedil}F0{CF}"
+				"{circ}E3{circb}F4{cjk}2431{colon}3A{comma}2C{commaa}FE{commab}F7{commat}40{copy}C3{curren}24{cyril}284E"
+				"{d}64{D}44{D0}{D1}{D2}{D3}{D4}{D5}{D6}{D7}{D8}{D9}{DA}"
+				"{dagger}7C{Dagger}7C{DB}{dblac}EE{dbldotb}F3{dblunder}F5{DC}{DD}{DE}{deg}C0{DF}"
+				"{diaer}E8{dollar}24{dot}E7{dotb}F2{dstrok}B3{Dstrok}A3"
+				"{e}65{E}45{E0}E0{E1}E1{E2}E2{E3}E3{E4}E4{E5}E5{E6}E6{E7}E7{E8}E8{E9}E9{EA}EA{EB}EB{EC}EC{ED}ED{EE}EE{EF}EF"
+				"{equals}3D{esc}1B{eth}BA{exarab}2834{excl}21{excyril}2851{exlatin}2832"
+				"{f}66{F}46{F0}F0{F1}F1{F2}F2{F3}F3{F4}F4{F5}F5{F6}F6{F7}F7{F8}F8{F9}F9{FA}FA{FB}FB{FC}{FD}{FE}FE{FF}"
+				"{flat}A9{g}67{G}47{ggr}67{grave}E1{greek}67{gs}1D{gt}3E"
+				"{h}68{H}48{hardsign}B7{hebrew}2832{hooka}E0{hookl}F7{hookr}F1{hyphen}2D"
+				"{i}69{I}49{iexcl}C6{ijlig}696A{IJlig}494A{inodot}B8{iquest}C5"
+				"{j}6A{J}4A{joiner}8D{k}6B{K}4B"
+				"{l}6C{L}4C{laquo}22{latin}2842{lcub}7B{ldbltil}FA{llig}EB"
+				"{lpar}28{lsqb}5B{lsquo}27{lsquor}27{lstrok}B1{Lstrok}A1{lt}3C"
+				"{m}6D{M}4D{macr}E5{middot}A8{mllhring}B0{mlprime}A7{mlPrime}B7{mlrhring}AE"
+				"{n}6E{N}4E{nbsp}{nonjoin}8E{nonsrtb}{nonsrte}{normal}73{num}23"
+				"{o}6F{O}4F{oelig}B6{OElig}A6{ogon}F1{ohorn}BC{Ohorn}AC{ordf}61{ordm}6F{ostrok}B2{Ostrok}A2"
+				"{p}70{P}50{para}7C{percnt}25{period}2E{phono}C2{plus}2B{plusmn}AB{pound}B9"
+				"{q}71{Q}51{quest}3F{quot}22"
+				"{r}72{R}52{raquo}22{rcedil}F8{rcommaa}ED{rcub}7D{rdbltil}FB{rdquofh}22"
+				"{rdquor}22{rdquor}22{reg}AA{ring}EA{ringb}F4{rlig}EC{rpar}29{rs}1E{rsqb}5D{rsquo}27{rsquor}27{rsquor}27"
+				"{s}73{S}53{scriptl}C1{sect}7C{semi}3B{sharp}C4{shy}{si}{so}{softsign}A7"
+				"{sol}2F{space}20{spcirc}5E{spgrave}60{sptilde}7E{spundscr}5F{sub}62{super}70{szlig}7373"
+				"{t}74{T}54{thorn}B4{THORN}A4{tilde}E4"
+				"{u}75{U}55{uhorn}BD{Uhorn}AD{uml}E8{under}F6{us}1F"
+				"{v}76{V}56{verbar}7C{vlineb}F2{w}77{W}57{x}78{X}58{y}79{Y}59{yen}59{z}7A{Z}5A{";
+				//trailing { simplifies processing
+	}
+	
+
+
+    /*---------------------
+    |      MAIN LOOP      |
+    ---------------------*/
+	
+	/*980610	added STL path and _OPTIMA define in target\default options\obj\CPP,WXC...
+				--	couldn't get stl to compile, but left those in default options	*/
+
+	//initialize for loop
+	long CurrRec = 0;
+	long badrecs = 0;
+	if (maxnum == 0)			//do all
+		maxnum = 2000000000;	//2 billion -- we should also set this for batch mode
+		
+	//initialize for first record
+	dir.Clear ();
+	fldlen=0;
+	offset=0;
+	isbadrec = FALSE;
+	root->ClearTree ();
+	
+	// these three for RRR
+	WStringArray linearray;
+	WString		thistag, theseinds, thissfc;
+	leader = "LLLLLnam  22BBBBB   4500";	// create default leader -- other clients will overwrite
+
+	fieldsreadindex = -1;		// see notes above
+	
+	// these are for EEE
+	WBool		inL = FALSE;	//050311 latch for EEE L-fields
+	WString		collation, thisenum, holdings, loc;
+	
+	// this is for SSS, but others could use it if they want pubdates in the 008
+	WString		pubdate;
+
+	/*060111 use rMessage
+	//050130
+	long			badchar;
+	long&		rbadchar = badchar;*/
+	WString		TheMessage;
+	WString&		rMessage = TheMessage;
+	
+	if (IsDelimited)
+	{
+		//first line is fieldnames
+		/*
+		fgets (t_line, sizeof (t_line), ifile);	//check return value
+		t_string = t_line;
+		t_string.Truncate (t_string.GetLength () - 1);	//trailing \n
+		*/
+		t_string = GetNextField (ifile);
+		aFieldnames = t_string.Parse (FieldSep);
+		fieldsreadindex = aFieldnames.GetCount () - 1;
+	}
+
+
+	if (TheClient == SSS)	// record separators are at start of recs, this skips the first one
+		fgets (t_line, sizeof (t_line), ifile);
+	
+
+	// MAIN LOOP
+	
+	while (!feof (ifile))
+	{
+		if (IsDelimited)
+		{
+			//read a line and put into WString
+			/*
+			fgets (t_line, sizeof (t_line), ifile);	//check return value
+			t_string = t_line;
+			t_string.Truncate (t_string.GetLength () - 1);	//trailing \n
+			*/
+			t_string = GetNextField (ifile);
+			aFielddata = t_string.Parse (FieldSep, FALSE, "\"", FALSE);
+					/*1st FALSE means do not ignore multiples, so we can have empty fields
+					we use only the double quote as a delimiter (otherwise apostrophes mess up parsing)
+					2d FALSE means so not strip quotes from around strings -- because sometimes
+						actual data contains quotes (such as painting titles) which must be preserved*/
+						
+			//now we selectively strip quotes -- developed for DDD (text file created from Excel file)
+			//	-- if only a single set, strip them. if more, strip all but one. for example, excel outputs a field in quotes
+			//			with three sets, such as """Luke Blackburn""" [title of a painting]
+			//	this is because quotes in the data are doubled, such as """Quoted string"" at beginning"
+			//		-- so if we simply replace "" with " and then strip surrounding quotes, we should be ok
+			for (int i = 0; i < aFielddata.GetCount (); i++)
+			{
+				/*
+				WString temp = aFielddata [i];		//so we can see it in debugger
+				temp = yUtility::CleanString (temp, "\"\"", "\"");
+				*/
+				
+				aFielddata [i] = yUtility::CleanString (aFielddata [i], "\"\"", "\"");
+				
+				//now strip surrounding quotes
+				if ((aFielddata [i].GetCharacter (0) == '"') && (aFielddata [i].GetCharacter (aFielddata [i].GetLength () -1) == '"'))
+				{
+					aFielddata [i] = aFielddata [i].Substring (1, aFielddata [i].GetLength () - 2);
+				}
+			}
+		}
+		
+		else		// tagged-text
+		{
+			// LOOP TO READ ONE RECORD
+			
+			while (TRUE)
+			{
+				// READ A LINE
+				
+				if (TheClient == RRR)
+				{
+					// since there is no separator between records, we break on each 001 (but not the first one)
+					//	-- and when we return to the next rec, we need to process its 001 before reading over it
+					if ((t_string.Substring (0, 3) != "001") || (fieldsreadindex != -1))
+					{
+						t_string = GetNextField (ifile);
+					}
+					// there is no line separating records, so we have to look for start of next rec
+					if ((t_string.Substring (0, 3) == "001") && (fieldsreadindex != -1))
+							break;
+				}
+				else if (TheClient == EEE)
+				{
+					t_string = GetNextField (ifile);
+					
+					//050128 EEE recs start with "R  EEE" or "R  COPY" but then have spaces and rec num
+					// 	-- we actually break on the 1st line of the file, but it doesn't seem to hurt
+					//		-- if it does, do something comparable to what we do for RRR
+					if (!WString::Compare (t_string, "R  C", TRUE, 4) || feof (ifile))
+						break;
+				}
+				else
+				{
+					t_string = GetNextField (ifile);
+					
+					if ((TheClient == SSS) && feof (ifile))
+						break;
+						
+					if (!WString::Compare (t_string, RecordSep))
+						break;
+				}
+				
+				
+				// PROCESS THE LINE
+				
+				if (TheClient == RRR)
+				{
+					linearray = t_string.Parse ("\t\r\n", TRUE, NULL);
+					if (linearray.GetCount () == 4)		// normal line
+					{
+						thistag = linearray [0];
+						theseinds = linearray [1];
+						theseinds.Trim (FALSE, TRUE);	// trim from end only
+						thissfc = linearray [2];
+						thissfc.Trim ();
+						if (theseinds.GetLength () > 0)
+						{
+							/*050310 untested
+							fieldsreadindex++;
+							if (fieldsreadindex >= aFieldnames.GetCount ())
+							{
+								aFieldnames.SetCount (fieldsreadindex + 10);
+								aFielddata.SetCount (fieldsreadindex + 10);
+							}
+							
+							aFieldnames [fieldsreadindex] = thistag;
+							aFieldnames [fieldsreadindex].Concat ("-");	//indicator
+							aFielddata [fieldsreadindex] = theseinds;
+							*/
+							AddToArrays (thistag + "-", theseinds);
+						}
+						
+						/*050310 untested
+						fieldsreadindex++;
+						if (fieldsreadindex >= aFieldnames.GetCount ())
+						{
+							aFieldnames.SetCount (fieldsreadindex + 10);
+							aFielddata.SetCount (fieldsreadindex + 10);
+						}
+						
+						aFieldnames [fieldsreadindex] = thistag;
+						aFieldnames [fieldsreadindex].Concat (thissfc);
+						aFielddata [fieldsreadindex] = linearray [3];
+						*/
+						AddToArrays (thistag + thissfc, linearray [3]);
+					}
+					else		// continuation line
+					{
+						aFielddata [fieldsreadindex].Concat (", ");
+						aFielddata [fieldsreadindex].Concat (linearray [0]);
+					}
+				}
+				
+				else		// all clients except RRR
+				{
+					// EEE continuation lines
+					
+					if ((TheClient == EEE) && (t_string.GetCharacter (0) != 'L') && inL)
+					{
+						// end of a set of L-lines
+						thisdata = yUtility::CleanString (thisdata, "\n", "");	//trailing \n
+						
+						// save COLL for later parsing
+						if (thisname == "COLL")
+						{
+							collation.Concat ("|");
+							collation.Concat (thisdata);
+							inL = FALSE;
+						}
+						else
+						{
+							AddToArrays (thisname, thisdata);
+							inL = FALSE;
+						}
+					}
+					
+					if ((TheClient == EEE) && (t_string.GetCharacter (0) == 'E'))
+					{
+						// start of a set of L-lines
+						thisname = CleanCatFieldname (t_string);
+						thisdata.Clear ();
+						inL = TRUE;
+						continue;
+					}
+					else if ((TheClient == EEE) && (t_string.GetCharacter (0) == 'L'))
+					{
+						thisdata.Concat (t_string.Substring (3));
+						continue;
+					}
+				
+				
+					// ADD TO ARRAY
+					
+					i = t_string.Position (LabelSep);
+					
+					if (i == NOT_FOUND)
+					{
+						//050310 not sure we test this way anymore
+						// put the line in thisname to be tested whether EOF or rec-separator
+						//	-- keep \n if any because client may specify as part of RecordSep
+						thisname = t_string;
+						thisdata.Clear ();
+					}
+					else
+					{
+						thisname = t_string.Left (i);
+						thisdata = t_string.Substring (i + 1);
+					}
+					
+					if (TheClient == EEE)
+					{
+						// save COLL for later parsing
+						if (thisname.Substring (0, 8) == "V  COLL(")
+						{
+							collation.Concat ("|");
+							collation.Concat (yUtility::CleanString (thisdata, "\n", ""));
+							continue;
+						}
+						else
+						{
+							thisname = CleanCatFieldname (thisname);
+							thisdata = yUtility::CleanString (thisdata, "\n", "");
+						}
+					}
+					
+					// merge fields
+					if (TheClient == EEE)
+					{
+						//050402 insert ENUM into HOLDINGS -- this works because fields are in alpha order
+						if (thisname == "ENUM")
+						{
+							thisenum = thisdata;
+							thisdata.Clear ();	// so it won't be added to arrays
+						}
+						else if ((thisname == "HOLDINGS") && !thisenum.GetEmpty ())
+						{
+							holdings = thisdata;
+							thisdata.Clear ();	// so it won't be added to arrays
+						}
+					}
+					
+					// substitute fields
+					if (TheClient == EEE)
+					{
+						//050402 save LOC, use it if no SHELF_LOC
+						if (thisname == "LOC")
+						{
+							loc = thisdata;
+							thisdata.Clear ();	// so it won't be added to arrays
+						}
+						if (thisname == "SHELF_LOC")
+						{
+							loc = thisdata;
+							thisdata.Clear ();	// so it won't be added to arrays
+						}
+					}
+					
+					// save pubdate for 008
+					if ((TheClient == SSS) && (thisname == "Year of Publication"))
+					{
+						pubdate = thisdata;
+					}
+					
+					
+					// add to arrays
+					if (!thisdata.GetEmpty ())
+					{
+						if (TheClient == SSS)
+						{
+							if (thisname == "MeSH Subject Headings")
+							{
+								// don't add mesh fields that do not start with *
+								if (thisdata.GetCharacter (0) == '*')
+								{
+									// remove *
+									thisdata = thisdata.Substring (1);
+									
+									// remove code after /, and make words in [] into $x
+									i = thisdata.Position ("/");
+									j = thisdata.Position ("[");
+									if ((i != NOT_FOUND) && (j != NOT_FOUND))
+									{
+										WString subx = thisdata.Substring (j + 1);
+										subx.Truncate (subx.GetLength () - 1);	//trailing ]
+										thisdata = thisdata.Substring (0, i);
+										thisdata.Concat (zmarcsubterm);
+										thisdata.Concat ('x');
+										thisdata.Concat (subx);
+									}
+									
+									AddToArrays (thisname, thisdata);
+								}
+							}
+							else if (thisname == "Authors")
+							{
+								// parse multiple authors
+								WStringArray authors = thisdata.Parse (".");
+								AddToArrays (thisname, authors [0]);
+								for (i = 1; i < authors.GetCount (); i++)
+									AddToArrays ("MC_700a", authors [i].Strip ());
+							}
+							else if (thisname == "Comments")
+							{
+								if (thisdata.Position ("Comment on:") == 0)
+									AddToArrays ("Comments", thisdata.Substring (12));
+								else		// must be Comment in
+									AddToArrays ("MC_785a", thisdata.Substring (12));
+							}
+							else if (thisname == "Title")
+							{
+								// there may be 0 or more phrases within [] after the title.
+								//	-- if phrase contains "comment", delete it and the []
+								//	-- if phrase containd " refs", delete it and the []
+								//	-- otherwise delete the [] and move the phrase to 245$k
+								i = thisdata.Position ("[");
+								j = thisdata.Position ("]");
+								while ((i != NOT_FOUND) && (j != NOT_FOUND))
+								{
+									s = thisdata.Substring (i + 1, j - i - 1);
+									thisdata = thisdata.Substring (0, i - 1) + thisdata.Substring (j + 1);
+									if ((s.Position ("comment", 0, TRUE) == NOT_FOUND) &&
+											(s.Position (" refs", 0, TRUE) == NOT_FOUND))
+									{
+										thisdata.Concat (zmarcsubterm);
+										thisdata.Concat ('k');
+										thisdata.Concat (s);
+									}
+									
+									i = thisdata.Position ("[");
+									j = thisdata.Position ("]");
+								}
+								
+								AddToArrays (thisname, thisdata);
+							}
+							else
+								AddToArrays (thisname, thisdata);
+						}
+						else
+							AddToArrays (thisname, thisdata);
+					}
+				}	// not RRR
+			
+				if ((TheClient == EEE) || (TheClient == SSS))	// these have RecordSep at start of record
+				{
+					if (feof (ifile) || (t_string.GetCharacter (0) == 26))
+						break;
+				}
+			}
+		}
+		
+
+		// add the collation
+		if ((TheClient == EEE) && !collation.GetEmpty ())
+		{
+			WString asubfield, tempx;
+			WStringArray acoll = collation.Parse ("|");
+			for (int i = 0; i < acoll.GetCount (); i++)
+			{
+				if (acoll [i].Position ("cm.") != NOT_FOUND)
+					AddToArrays ("MC_300c", acoll [i]);
+				else 
+				{
+					int j = acoll [i].Position (":");
+					if (j == NOT_FOUND)
+					{
+						asubfield.Concat (acoll [i]);
+						asubfield.Concat (' ');
+					}
+					else
+					{
+						tempx = acoll [i].Substring (0, j);
+						tempx.Trim ();
+						asubfield.Concat (tempx);
+						asubfield.Concat (' ');
+						
+						tempx = acoll [i].Substring (j + 1);
+						tempx.Trim ();
+						AddToArrays ("MC_300b", tempx);
+					}
+				}
+			}
+			asubfield.Trim ();
+			AddToArrays ("MC_300a", asubfield);
+			/* debugging
+			WString temp;
+			temp.Sprintf ("record:%d, collation:%s\n", CurrRec, collation.GetText ());
+			fputs (temp.GetText (), rfile);
+			*/
+		}
+
+
+		//050402 merge the ENUM and HOLDINGS
+		if ((TheClient == EEE) && (!thisenum.GetEmpty () || !holdings.GetEmpty ()))
+		{
+			if (!thisenum.GetEmpty () && !holdings.GetEmpty ())
+				AddToArrays ("HOLDINGS", thisenum + " (" + holdings + ")");
+			else if (!thisenum.GetEmpty ())
+				AddToArrays ("HOLDINGS", thisenum);
+			else
+				AddToArrays ("HOLDINGS", holdings);
+		}
+		
+		
+		//050402 insert loc
+		if ((TheClient == EEE) && !loc.GetEmpty ())
+		{
+			AddToArrays ("LOC", loc);
+		}
+		
+		
+		// RRR files have no end-of-record line, so we still have to write last rec
+		// EEE and SSS files have RecordSep at start of rec instead of end
+		if ((TheClient != EEE) && (TheClient != RRR) && (TheClient != SSS))
+		{
+			if (feof (ifile) || (t_line [0] == 26))
+				break;
+		}
+
+
+		// NOW WE HAVE ALL FIELDS FOR A SINGLE RECORD MORE OR LESS AS READ, ADD THEM TO TREE
+
+		for (int fieldindex = 0; fieldindex <= fieldsreadindex; fieldindex++)	//fieldsreadindex is 0=based
+		{
+			//process this tag
+			if (aFielddata [fieldindex].GetLength () > 0)
+			{
+				#ifdef _DEBUG
+				thisname = aFieldnames [fieldindex];
+				thisdata = aFielddata [fieldindex];
+				if (CurrRec < 0)
+				{
+					WString msg;
+					msg.Sprintf ("Before inserting %s", thisdata.GetText ());
+					ShowTree (msg.GetText (), root, debugfile);
+				}
+				#endif
+				t_field = root->InsertString(aFieldnames [fieldindex], aFielddata [fieldindex]);
+				if (!t_field)
+				{
+					output.Sprintf ("Could not find tag %s in Translation Table\n", 
+							aFieldnames [fieldindex].GetText ());
+					fputs (output.GetText (), rfile);
+					isbadrec = TRUE;
+				}
+				#ifdef _DEBUG
+				if (CurrRec < 0)
+				{
+					msg.Sprintf ("After inserting %s", thisdata.GetText ());
+					ShowTree (msg.GetText (), root, debugfile);
+				}
+				#endif
+			}
+		}
+		
+
+		//050316 EXTRACT CERTAIN FIELDS NEEDED TO GENERATE OTHERS
+		if (TheClient == EEE)
+		{
+			// for the 007 we need the leader, collation, and title. we will get the leader below,
+			//		we already have the collation, so here just get the title
+			t_field = root;
+
+			while (t_field)
+			{
+				if ((t_field->targettag == "245") && (t_field->targetsfs.GetCharacter (0) == 'a'))
+				{
+					title = t_field->string;
+					break;
+				}
+				
+				t_field = t_field->nextfield;
+			}
+		}
+		
+
+		// WRITE MARC RECORD, making any alterations required -- we do it here as we have easy access to the entire record
+		
+		/*050128 added check of fieldsreadindex for EEE -- RecordSep is at start of
+					rec instead of at end, so first time encountered there is no data
+		if (!aFielddata [0].GetEmpty ())	//000602 we have a record*/
+		if ((fieldsreadindex > -1) && !aFielddata [0].GetEmpty ())	//000602 we have a record
+		{
+			//OUTPUT ROUTINE
+			//go thru tree of Trans nodes, building all data into fielddata
+			//trans->string has the data, not yet processed by any special routines for this file
+
+			allfields.Clear ();
+			
+			t_field = root;
+			
+			fielddata.Clear ();	//assumes first field doesn't need inds or sfc
+			subfielddata.Clear ();
+
+			while (t_field)
+			{
+				if (SP_FieldIsControlField ((BYTE*) t_field->targettag.GetText ()))
+				{
+					iscontrolfield = TRUE;
+					minfldlen = 0;
+					minsflen = 0;
+				}
+				else
+				{
+					iscontrolfield = FALSE;
+					minfldlen = 4;	//inds and sfc
+					minsflen = 2;		//sfd and sfc, or inds
+				}
+				
+				// START NEW FIELD
+				
+				//991130 permit nonnumeric tags -- not dependent on state of Settings
+				//		-- assumes nonnumeric tags are NOT control fields
+				
+				// keep in mind that non-control fields must always have a sfc in the TT
+
+				t_sub = t_field;
+				
+				while (t_sub)
+				{
+					sub_has_var = FALSE;
+					subfielddata.Clear ();
+					
+					t_seg = t_sub;
+					
+					while (t_seg)
+					{
+						//000613 -- if there are segments, make sure at least one segment has a var field (see log)
+						if ((t_seg->targetsegment == 0) || 
+								(!t_seg->constant && !t_seg->string.GetEmpty ()))
+							sub_has_var = TRUE;
+		
+		
+						// FIELD-SPECIFIC PROCESSING
+						
+						//040723 put today's date into 008 if requested by "DDDDDD". for the first rec
+						//	-- note that DDDDDD has to be in a segment by itself
+						if ((t_seg->targettag == "008") && (t_seg->sourcelabel == "\"DDDDDD\""))
+						{
+							sub_has_var = TRUE;	// the generated date is considered a var to force 008 output
+							t_seg->string = time_008;
+						}
+							
+						if ((TheClient == SSS) && (t_seg->targettag == "008") && (t_seg->sourcelabel == "Year of Publication"))
+						{
+							// make sure it is exactly 4 digits
+							if (pubdate.GetEmpty ())
+								pubdate = "uuuu";
+							else
+							{
+								pubdate = pubdate + "    ";
+								pubdate.Truncate (4);
+							}
+							t_seg->string = pubdate;
+							
+							// put in byte 6
+							if (pubdate == "uuuu")
+								t_seg->attachment = "n+++";
+							else
+								t_seg->attachment = "s+++";
+						}
+						
+							
+						// CLIENT-SPECIFIC PROCESSING
+						
+						if (TheClient == EEE)
+						{
+							if (!DoEEEProcessing (t_seg, CurrRec, rfile, bCatalogRun))
+								isbadrec = TRUE;
+						}
+		
+		
+						// write the results
+						if (!t_seg->string.GetEmpty ())
+							// concatenates
+							subfielddata = Assemble (t_seg, iscontrolfield, subfielddata);
+							
+						t_seg = t_seg->nextseg;
+					}
+					
+					//050130 second term added to allow inds
+					if ((subfielddata.GetLength () > minsflen) || (t_sub->targetsfs == "-"))
+					{
+						if (sub_has_var)
+							fielddata.Concat (subfielddata);
+					}
+						
+					t_sub = t_sub->nextsf;
+				}
+				
+				
+				// INDICATORS -- see if fld has indicators, if not add default (two spaces)
+				
+				//050313 set nonfiling-characters ind where reqd (English only for now)
+				
+				// 130/730 untested -- also subfield codes to check need to be added (see for 2xx below)
+				if ((t_field->targettag == "130") ||
+						(t_field->targettag == "730"))
+				{
+					WString ind1 = " ";
+					if (t_field->string.Left (2) == "A ")
+						ind1 = "2";
+					else if (t_field->string.Left (3) == "An ")
+						ind1 = "3";
+					else if (t_field->string.Left (4) == "The ")
+						ind1 = "4";
+					else 
+						ind1 = "0";
+						
+					if (fielddata.GetCharacter (0) == zmarcsubterm)
+						fielddata = ind1 + " " + fielddata;
+					else
+						fielddata = ind1 + fielddata.Substring (1);
+				}
+				
+				//050920 added sfs to check -- the case of no sfc NOT TESTED
+				else if ((t_field->targettag == "222") ||
+						(t_field->targettag == "240") ||
+						(t_field->targettag == "242") ||
+						(t_field->targettag == "243") ||
+						(t_field->targettag == "245"))
+				{
+					WString ind2 = " ";
+					/*050920 check within $a
+					if (t_field->string.Left (2) == "A ")
+						ind2 = "2";
+					else if (t_field->string.Left (3) == "An ")
+						ind2 = "3";
+					else if (t_field->string.Left (4) == "The ")
+						ind2 = "4";
+					*/
+					if (fielddata.Position ("aA ") != NOT_FOUND)
+						ind2 = "2";
+					else if (fielddata.Position ("aAn ") != NOT_FOUND)
+						ind2 = "3";
+					else if (fielddata.Position ("aThe ") != NOT_FOUND)
+						ind2 = "4";
+					else 
+						ind2 = "0";
+
+					if (fielddata.GetCharacter (0) == zmarcsubterm)
+						fielddata = " " + ind2 + fielddata;
+					else
+						fielddata = fielddata.Left (1) + ind2 + fielddata.Substring (2);
+				}
+				
+				else if (!iscontrolfield && (fielddata.GetCharacter (0) == zmarcsubterm))
+					fielddata = "  " + fielddata;
+				
+				
+				// fielddata now contains entire field
+				
+				if (!fielddata.GetEmpty ())
+				{
+					iConvert = ConvertChar (rMessage, &fielddata);
+					
+					//050130 SP_LatinToAnsel returned 0 if char not found, which I believe was wrong,
+					//			otherwise this would never occur unless field was > 99999. now returns E_CONVERSION
+					/*050318 need to distinguish between return codes
+					if (iConvert < 1)*/
+					if (iConvert == -1)
+					{
+						// this msg will show up once per field! but it is usually a mistake we made
+						isbadrec = TRUE;
+						/*060111 use rMessage returned from ConvertChar -- UNTESTED
+						msg.Sprintf ("Unknown character encoding, record %lu\n", 
+								CurrRec + 1);
+						*/
+						msg.Sprintf("Record %lu\n%s", CurrRec + 1, TheMessage.GetText());
+						fputs (msg.GetText (), rfile);
+					}
+					else if (iConvert < 1)
+					{
+						isbadrec = TRUE;
+						/*060111 use rMessage returned from SP_Convertxxx -- UNTESTED
+						msg.Sprintf ("Unknown symbol %d, record %lu, field %s\n", 
+								badchar, 
+								CurrRec + 1,
+								t_field->tag.GetText ());
+						*/
+						msg.Sprintf("Record %lu, field %s\n%s",
+								CurrRec + 1,
+								t_field->targettag.GetText(),
+								TheMessage.GetText());
+						fputs (msg.GetText (), rfile);
+					}
+
+
+					//field is fully processed, add it to directory and allfields
+					if (!WString::Compare (t_field->targettag, "LDR"))
+					{
+						leader = fielddata;	//save to output later
+						
+						if (TheClient == EEE)	// only EEE gets a constructed 007 as yet
+						{
+							//050315 it's unusual to add a MARC element when we've already started to output
+							//		them, but it isn't until now that we know we've finished the leader
+							//	-- fortunately we know the leader is always the first item in the TT, so wd
+							//		could not have done the 007 yet
+							the007 = Make007 (leader, collation, title);
+							t_007 = root->InsertString("MC_007", the007);
+							if (!t_field)
+							{
+								output = "Could not find tag 007 in Translation Table\n";
+								fputs (output.GetText (), rfile);
+								isbadrec = TRUE;
+							}
+			
+							// for EEE, need to check 007 to see if leader needs to be adjusted
+							if (the007.GetCharacter (0) == 's')	// then we have a sound recording
+								leader.SetCharacter (6, 'i');
+						}
+					}
+					else
+					{
+						if (fielddata.GetLength () > minfldlen)
+						{
+							fielddata.Concat (zmarcfldterm);
+							
+							//make dir entry
+							dir.Concat(t_field->targettag);
+							fldlen = fielddata.GetLength ();
+							s.Sprintf("%04ld", fldlen);
+							dir.Concat(s);
+							s.Sprintf("%05ld", offset);
+							dir.Concat(s);
+							offset += fldlen;
+							if ((fldlen > 9999) || (offset > 99999))
+							{
+								msg.Sprintf ("\n\nProblem with MARC field length or offset, record %d", CurrRec + 1);
+								fputs (msg.GetText (), rfile);
+								isbadrec = TRUE;
+								isfatal = TRUE;
+								break;
+							}
+								
+							//add to data string
+							allfields.Concat (fielddata);
+						}
+					}
+					
+					fielddata.Clear ();
+				}
+				
+				t_field = t_field->nextfield;
+			}
+			
+			
+			//output record length
+			s.Sprintf ("00000%ld", dir.GetLength () + offset + 26);
+			if (s.ConvertToLong () > 99999)
+			{
+				msg.Sprintf ("\n\nProblem with MARC record length, record %d", CurrRec + 1);
+				fputs (msg.GetText (), rfile);
+				isbadrec = TRUE;
+				isfatal = TRUE;
+			}
+			
+			
+			if (isfatal)	//060228 probably the caller should do this
+				// anyway, why are we returning FALSE when a string is expected?
+				// also, Dismiss isn't right if this is in batch mode
+				// -- c.f. ConvertToUNIMARC in MtM
+			{
+				fclose (rfile);
+				fclose (ifile);
+				fclose (ofile);
+				fclose (badfile);
+				Dismiss( FALSE );
+				return FALSE;
+			}
+			
+			// WRITE MARC RECORD
+			
+			if (isbadrec)
+				badrecs++;
+				
+			FILE* fff = (isbadrec) ? badfile : ofile;
+			fputs (s.Right (5).GetText (), fff);	//check return value
+			
+			//output leader after reclen up to baseaddr
+			fputs (leader.Substring (5, 7).GetText (), fff);	//check return value
+			
+			//output baseaddr
+			s.Sprintf ("00000%ld", dir.GetLength () +  25);
+			fputs (s.Right (5).GetText (), fff);	//check return value
+			
+			//output leader after baseaddr
+			fputs (leader.Right (7).GetText (), fff);	//check return value
+			
+			//output dir
+			fputs (dir.GetText (), fff);	//check return value
+			fputc (zmarcfldterm, fff);	//check return value
+			
+			//output fields
+			fputs (allfields.GetText (), fff);
+			fputc (zmarcrecterm, fff);	//check return value
+
+
+			CurrRec++;	// whether good or bad
+			
+			
+			if (CurrRec >= maxnum)
+				break;
+				
+
+			//initialize for next record
+			dir.Clear ();
+			fldlen=0;
+			offset=0;
+			if (!IsDelimited)	// probably would work for delimited also as it is set by the read
+				fieldsreadindex = -1; //because incremented before use
+			isbadrec = FALSE;
+			root->ClearTree ();
+			collation.Clear ();
+			thisenum.Clear ();
+			loc.Clear ();
+			pubdate.Clear ();
+			inL = FALSE;
+		}
+
+		
+		#ifndef _DEBUG
+		if (CurrRec % 100 == 0)
+		#endif
+		{
+			if (interactive)
+			{
+				output.Sprintf ("Record: %lu", CurrRec);
+				CountLabel->SetText (output);
+				//CountLabel->SetLeft ((r.w - CountLabel->GetWidth ()) / 2);
+				Update ();
+			}
+			else
+				cprintf ("\tRecord %lu\r", CurrRec);
+		}
+		
+	}	//while not eof
+	
+    /*---------------------
+    |      TERMINATE      |
+    ---------------------*/
+
+
+	long nodes = DeleteNodes (debugfile, root);
+
+
+	output.Sprintf ("Processed: %lu", CurrRec);
+	if (interactive)
+		CountLabel->SetText (output.GetText ());
+	
+	rcount = CurrRec;
+	rbadcount = badrecs;
+	rnodecount = nodes;
+	
+	return output;
+}
+//ConvertTextToMARC
+
+
+
+//AddToArrays
+void @CLASSNAME@::AddToArrays (WString name, WString data)
+{
+	fieldsreadindex++;
+	if (fieldsreadindex >= aFieldnames.GetCount ())
+	{
+		aFieldnames.SetCount (fieldsreadindex + 10);
+		aFielddata.SetCount (fieldsreadindex + 10);
+	}
+	
+	aFieldnames [fieldsreadindex] = name;
+	aFielddata [fieldsreadindex] = data;
+}
+//AddToArrays
+
+
+
+//********************** SHOULD USE DELETETREE IN yTRANS *******************************
+//DeleteNodes
+long @CLASSNAME@::DeleteNodes (FILE* debugfile, yTrans* root)
+{
+	yTrans		*t_trans, *t_field, *t_sub, *t_seg;
+	long 		ii = 0;
+	
+	//delete nodes, count as we go for final msg
+	#ifdef _DEBUG
+	ShowTree ("End of run, before deleting tree", root, debugfile);
+	#endif
+	
+	
+	t_field = root;
+	while (t_field)
+	{
+		t_seg = t_field->nextseg;
+		while (t_seg)
+		{
+			t_trans = t_seg->nextseg;
+			delete t_seg;
+			t_seg = t_trans;
+			ii++;
+		}
+			
+		t_sub = t_field->nextsf;
+		while (t_sub)
+		{
+			t_seg = t_sub->nextseg;
+			while (t_seg)
+			{
+				t_trans = t_seg->nextseg;
+				delete t_seg;
+				t_seg = t_trans;
+				ii++;
+			}
+		
+			t_trans = t_sub->nextsf;
+			delete t_sub;
+			t_sub = t_trans;
+			ii++;
+		}
+		
+		t_trans = t_field->nextfield;
+		delete t_field;
+		t_field = t_trans;
+		ii++;
+	}
+	
+	return ii;
+}
+//DeleteNodes
+
+@end-code;
+
+@begin-code Code "yImport::BrowseButton_Click"
+
+//BrowseButton_Click
+WBool @CLASSNAME@::BrowseButton_Click(
+	WObject *   		source,
+	WEventData *		event )
+{
+    	WFilePath infilepath, outfilepath, rptfilepath, badfilepath, transfilepath;
+	
+	//040728 get last path from INI
+	WString last_DP = WAppObject.GetProfileString ("RecentFiles", "Folder", "", "MARCView.INI");
+	if (!last_DP.GetEmpty ())
+		FileDialog->SetInitialDirectory (last_DP);
+    
+    if (FileDialog->PromptForOpen ())
+    {
+        	infilepath = FileDialog->GetFilePath ();
+        	outfilepath = infilepath;
+        	outfilepath.SetExtension ("MRC");	//041028 was MAR, but too much conflict with MS Access Reports
+        	rptfilepath = infilepath;
+        	rptfilepath.SetExtension ("RPT");
+        	badfilepath = infilepath;
+        	badfilepath.SetExtension ("BAD");
+        
+        	InfileBox->SetText (infilepath);
+        	OutfileBox->SetText (outfilepath);
+       	RptfileBox->SetText (rptfilepath);
+        	BadfileBox->SetText (badfilepath);
+			
+		/*070722 our new assumption is that all clients will use the same TT for 
+				all conversions, so do not modify the INI setting -- untested
+		//040311 they will probably always use the same one for all conversions	. this
+		//		leaves the TT filename as it was in the INI file
+		if ((TheClient != DDD) && (TheClient != EEE) && (TheClient != SSS))
+		{
+			transfilepath = infilepath;
+			transfilepath.SetExtension ("MCI");	// marconvert import table
+	        	TransfileBox->SetText (transfilepath);
+		}
+		*/
+		
+		//040728 save path to INI
+		last_DP = infilepath.GetDrive () + infilepath.GetDirectory ();
+		WAppObject.SetProfileString ("RecentFiles", "Folder", last_DP, "MARCView.INI");
+	}
+    
+    return FALSE;
+}
+//BrowseButton_Click
+
+@end-code;
+
+@begin-code Code "yImport::CancelButton_Click"
+
+//CancelButton_Click
+WBool @CLASSNAME@::CancelButton_Click(
+	WObject *   		source,
+	WEventData *		event )
+{
+    Dismiss( FALSE );
+    
+    return FALSE;
+}
+//CancelButton_Click
+
+
+
+//CleanCatFieldname
+WString @CLASSNAME@::CleanCatFieldname (WString in)
+{
+	WString out;
+	
+	// remove trailing EOL if any (happens if fieldname on sep line (as in L-fields)
+	out = yUtility::CleanString (in, "\n", "");
+	
+	// remove first three chars (line-type and blanks)
+	out = out.Substring (3);
+	
+	// remove increment, e.g. (1)
+	int i = out.Position ("(");
+	out = out.Substring (0, i);
+	
+	return out;
+}
+//CleanCatFieldname
+
+
+
+//ConvertChar
+int @CLASSNAME@::ConvertChar (WString& rMessage, WString *oldstr)
+{
+	WString		newstr, msg;
+	const char*	pResult;		//060314 should be array as used in ConvertToUNIMARC
+	long			i, j, k, m, lastj;
+	long			len;
+	long&		rlen = len;
+	char 		cc [] = "12";	//max 2 chars inserted at present
+	
+	if ((CharSet == UNKNOWN) || (CharSet == ANSEL))
+		return 1;	//000620 these are not errors. UNKNOWN is a user option, ANSEL just means no conversion necessary
+		
+	else if (CharSet == MAKRBRKR)
+	{
+		//all Positions herein are case-sensitive
+		lastj = -1;
+		i = oldstr->Position ('{');
+		while (i != NOT_FOUND)
+		{
+			j = oldstr->Position ('}', i + 1);
+			k = sConvert.Position (oldstr->Substring (i, j - i + 1));
+			if (k == NOT_FOUND)
+			{
+				newstr.Concat (oldstr->Substring (lastj + 1, i - 1 - lastj));
+				newstr.Concat ('&');
+				newstr.Concat (oldstr->Substring (i + 1, j - i - 1));
+				newstr.Concat (';');
+			}
+			else
+			{
+				m = sConvert.Position ('{', k + 1);
+				newstr.Concat (oldstr->Substring (lastj + 1, i - 1 - lastj));
+				cc [0] = 0; 
+				cc [1] = 0;
+				
+				/* %4hx format specifier reversed bytes when two bytes -- believing it's
+						a number so has to big-endian it?
+				sscanf (sConvert.Substring (k + j - i + 1, m - k - (j - i + 1)).GetText (),
+						"%2hx%2hx",
+						cc);
+				*/
+				//kludgy solution will work only if 0, 1, or 2 chars (which is 1, 2, or 4 bytes
+				m = m - k - (j - i + 1);	//length to insert
+				switch (m)
+				{
+					case 0: break;	//no bytes to add
+					case 2: 
+						sscanf (sConvert.Substring (k + j - i + 1, 2).GetText (),
+								"%2hx",
+								cc);
+						newstr.Concat (cc);
+						break;
+					case 4: 
+						sscanf (sConvert.Substring (k + j - i + 1, 2).GetText (),
+								"%2hx",
+								cc);
+						newstr.Concat (cc);
+						sscanf (sConvert.Substring (k + j - i + 3, 2).GetText (),
+								"%2hx",
+								cc);
+						newstr.Concat (cc);
+						break;
+					//anything else is a problem
+				}
+						
+				//newstr.Concat (cc);
+			}
+			
+			lastj = j;
+			i = oldstr->Position ('{', lastj);
+		}
+		
+		//remainder of field
+		newstr.Concat (oldstr->Substring (lastj + 1));
+		
+		//000620 
+		oldstr->SetText (newstr.GetText ());
+		return 1;	//need to check for problems
+	}
+		
+	else if (CharSet == LATIN)
+	{
+		pResult = oldstr->GetText ();
+		#ifdef _DEBUG
+		i = SP_ConvertLatin (rMessage, (LPPUSTR) &pResult, rlen, TOANSEL);
+		#else
+		i = SP_LatinToAnsel ((LPPUSTR) &pResult, rlen);
+		#endif
+		if (i == 1)
+			oldstr->SetText (pResult);	//otherwise keep original oldstr
+		return i;
+	}
+	
+	else		//000620 illegal CharSet
+	{
+		rMessage = "Unknown character encoding\n";
+		return -1;
+	}
+}
+//ConvertChar
+
+
+
+//****************************** SHOULD USE THE ONE IN yTRANS *****************************
+//Assemble -- incorporates Attachment if any -- duplicated in MtM (where it was refactored)
+//000612 modified to add sfd and sfc if subfielddata empty, not otherwise -- handles any number
+//		of empty segments
+WString @CLASSNAME@::Assemble (yTrans *curr, WBool iscontrolfield, WString subfielddata)
+{
+	int			i;
+	WBool		needs_sfc = 
+						!iscontrolfield &&
+							(	((subfielddata.GetLength () == 0) && (curr->targetsfs != "-"))
+							||
+								((subfielddata.GetLength () == 2) && (subfielddata.GetCharacter (0) != zmarcsubterm))	);
+
+	
+	// note: always Concat because subfielddata may have contents from earlier segments
+	
+	if (iscontrolfield)
+	{
+		if (curr->attachment.GetEmpty ())
+			subfielddata.Concat (curr->string);
+		else
+		{
+			i = curr->attachment.Position ("+++");
+			if (i == NOT_FOUND)		// user forgot +++, just add without attachment
+				subfielddata.Concat (curr->string);
+			else
+				subfielddata.Concat (curr->attachment.Substring (0, i) + curr->string + curr->attachment.Substring (i + 3));
+		}
+	}
+	
+	else		// not control field
+	{
+		if (curr->attachment.GetEmpty ())	//no ->attachment
+		{
+			if (needs_sfc)
+			{
+				subfielddata.Concat (zmarcsubterm);
+				subfielddata.Concat (curr->targetsfs);
+			}
+				
+			subfielddata.Concat (curr->string);
+		}
+	
+		else		// have attachment
+		{
+			i = curr->attachment.Position ("+++");
+		
+			if (i == NOT_FOUND)
+			{
+				//user forgot +++, just add without attachment
+				if (needs_sfc)
+				{
+					subfielddata.Concat (zmarcsubterm);
+					subfielddata.Concat (curr->targetsfs);
+				}
+						
+				subfielddata.Concat (curr->string);
+			}
+		
+			else		// attachment has +++
+			{
+				int sfcstart = 0;
+				//000603 handle indicators (preceded by -)
+				if (curr->attachment.GetCharacter (0) == '-')
+				{
+					subfielddata.Concat (curr->attachment.Substring (1, 2));
+					sfcstart = 3;
+				}
+				
+				// now look for what might be after the inds
+				
+				if (curr->attachment.Position ("$") == sfcstart) //050401//0)
+				{
+					/* attachment contains subfield to precede this one
+						-- only meaningful in first or only segment of current subfield, altho this is not checked
+						-- only meaningful if +++ is at end of attachment, also not checked */
+					
+					//add ->attachment
+					subfielddata.Concat (zmarcsubterm);
+					/*050401
+					subfielddata.Concat (curr->attachment.Substring (1, curr->attachment.GetLength () - 4));*/
+					subfielddata.Concat (curr->attachment.Substring (sfcstart + 1, curr->attachment.GetLength () - (sfcstart + 4)));
+					
+					//now add this field's stuff
+					subfielddata.Concat (zmarcsubterm);
+					subfielddata.Concat (curr->targetsfs);
+					subfielddata.Concat (curr->string);
+				}
+				else if (curr->attachment.Position ("+++$") == 0)
+				{
+					/* attachment contains subfield to follow this one
+						-- only meaningful in last or only segment of current subfield, altho this is not checked */
+					
+					//add this field
+					if (needs_sfc)
+					{
+						subfielddata.Concat (zmarcsubterm);
+						subfielddata.Concat (curr->targetsfs);
+					}
+					
+					subfielddata.Concat (curr->string);
+					
+					//add attachment
+					subfielddata.Concat (zmarcsubterm);
+					subfielddata.Concat (curr->attachment.Substring (4, curr->attachment.GetLength () - 4));
+				}
+				else		// no $
+				{
+					if (needs_sfc)
+					{
+						subfielddata.Concat (zmarcsubterm);
+						subfielddata.Concat (curr->targetsfs);
+					}
+					
+					subfielddata.Concat (curr->attachment.Substring (0, i) + curr->string + curr->attachment.Substring (i + 3));
+				}
+			}
+		}
+	}
+	
+	return subfielddata;
+}
+//Assemble
+
+
+
+//GetIniParams
+void @CLASSNAME@::GetIniParams ()
+{
+	WString s;
+	TheIniParams.infilepath = WAppObject.GetProfileString 
+			("Import", "Infile", "", "MARCView.INI");
+	TheIniParams.outfilepath = WAppObject.GetProfileString 
+			("Import", "Outfile", "", "MARCView.INI");
+	TheIniParams.rptfilepath = WAppObject.GetProfileString 
+			("Import", "Rptfile", "", "MARCView.INI");
+	TheIniParams.badfilepath = WAppObject.GetProfileString 
+			("Import", "Badfile", "", "MARCView.INI");
+	TheIniParams.transfilepath = WAppObject.GetProfileString 
+			("Import", "Transfile", "", "MARCView.INI");
+			
+	TheIniParams.maxnum = WAppObject.GetProfileString 
+			("Import", "Maxnum", "0", "MARCView.INI");
+
+	s = WAppObject.GetProfileString 
+			("Import", "CharSet", "None", "MARCView.INI");
+	if (s == "MakrBrkr")
+		TheIniParams.charset = MAKRBRKR;
+	else if (s == "Latin")
+		TheIniParams.charset = LATIN;
+	else 
+		TheIniParams.charset = UNKNOWN;
+	
+	
+	if (TheClient == EEE)
+	{
+		TheIniParams.copytransfilepath = WAppObject.GetProfileString 
+				("Import", "CopyTransfile", "", "MARCView.INI");
+		s = WAppObject.GetProfileString 
+				("Import", "RunType", "Catalog", "MARCView.INI");
+		if (s == "Copy")
+			TheIniParams.bCatalogRun = FALSE;
+		else		// "Catalog" or nothing or garbage: assume Catalog run
+			TheIniParams.bCatalogRun = TRUE;
+	}
+}
+//GetIniParams
+
+
+
+//GetNextField
+WString @CLASSNAME@::GetNextField (FILE* ifile)
+{
+	char 		t_line [MAXFIELDLEN];
+	WString		t_string;
+	int			i;
+	
+	fgets (t_line, sizeof (t_line), ifile);	//check return value
+	t_string = t_line;
+	
+	// EEE recs often have 0D 0D 0A embedded in a line, have to repl w space and concat next line
+	if (TheClient == EEE)
+	{
+		int i = t_string.Position ("\r\n");
+		if (i != NOT_FOUND)
+		{
+			t_string.Truncate (i);
+			t_string.Concat (' ');
+			fgets (t_line, sizeof (t_line), ifile);	//check return value
+			t_string.Concat (t_line);
+		}
+	}
+	else if (TheClient == SSS)		// we just read fieldname, data is on next line
+	{
+		// there are blank lines between records, and file may end with any
+		//		combination of CRs and LFs
+		int kkk;
+		while (((t_line [0] == 10) || (t_line [0] == 13)) && !feof (ifile))
+		{
+			kkk = feof (ifile);	// was this just for debugging? can't remember
+			fgets (t_line, sizeof (t_line), ifile);	//check return value
+			t_string = t_line;
+		}
+			
+		if (t_string.GetCharacter (0) == '<')	// record separator -- we are only interested in the first character
+		{
+			t_string = "<";
+		}
+		else
+		{
+			if (t_string.Substring (0, 2) == "  ") 	// then we have a 2d or later value for the current heading
+			{
+				// strip leading spaces
+				i = 0;
+				while (t_line [i] == ' ')
+					i++;
+				
+				t_string = previousfield;
+				t_string.Concat ('=');		// we insert a dummy LabelSep and will treat the field as tagged-text
+				t_string.Concat (t_line + i);
+				t_string.Truncate (t_string.GetLength () - 1);	//trailing \n
+			}
+			else
+			{
+				t_string.Truncate (t_string.GetLength () - 1);	//trailing \n
+				previousfield = t_string;
+				fgets (t_line, sizeof (t_line), ifile);	// check return value
+				
+				// strip leading spaces
+				i = 0;
+				while (t_line [i] == ' ')
+					i++;
+				
+				t_string.Concat ('=');		// we insert a dummy LabelSep and will treat the field as tagged-text
+				t_string.Concat (t_line + i);
+				t_string.Truncate (t_string.GetLength () - 1);	//trailing \n
+			}
+		}
+	}
+	
+	if (IsDelimited)
+		t_string.Truncate (t_string.GetLength () - 1);	//trailing \n
+		
+	return t_string;
+}
+//GetNextField
+
+@end-code;
+
+@begin-code Code "yImport::HelpButton_Click"
+
+WBool @CLASSNAME@::HelpButton_Click(
+	WObject *   		source,
+	WEventData *		event )
+{
+    yHelp::ShowHelp ("convert");
+    
+    return FALSE;
+}
+//HelpButton_Click
+
+
+
+//Make007
+WString @CLASSNAME@::Make007 (WString leader, WString collation, WString title)
+{
+	WString 	the007;
+	char		rectype = (char) leader.GetCharacter (6);
+	
+	// only the ones needed for EEE have been coded so far
+	
+	switch (rectype)
+	{
+		case 'a': 	break;	// language material, no 007 needed
+		case 'c':	break;	// notated music, needed but not yet coded
+		case 'd':	break;	// manuscript notated music, needed but not yet coded
+		case 'e':	break;	// cartographic material, needed but not yet coded
+		case 'f':	break;	// manuscript cartographic material, needed but not yet coded
+		
+		case 'g':			// projected medium
+			// this alg may apply to EEE only!! -- they have sound recordings mixed in with videos
+			if ((collation.Position ("videocassette", 0, TRUE) != NOT_FOUND) ||
+					(title.Position ("video recording", 0, TRUE) != NOT_FOUND))
+			{
+				//        012345678
+				the007 = "vf ||||||";
+			}
+			else if ((collation.Position ("sound cassette", 0, TRUE) != NOT_FOUND) ||
+					(title.Position ("sound recording", 0, TRUE) != NOT_FOUND))
+			{
+				// all EEE sound is non-musical
+				//        01234567890123
+				the007 = "ss |||||||||||";
+			}
+			
+			// otherwise we can't create an 007
+			
+			break;	
+			
+		case 'i':	break;	// nonmusical sound recording, needed but not yet coded
+		case 'j':	break;	// musical sound recording, needed but not yet coded
+		case 'k':	break;	// two-dimensional nonprojectable graphic, needed but not yet coded
+		
+		case 'm':			// computer file
+			//        01234567890123
+			the007 = "c| |||||||||||";
+			break;
+			
+		case 'o':	break;	// kit, needed but not yet coded
+		case 'p':	break;	// mixed material, needed but not yet coded
+		case 'r':	break;	// three-dimensional artifact or naturally occuring object, no 007 needed
+		case 't':	break;	// manuscript language material, no 007 needed
+		default:		break;	// shouldn't ever happen
+	}
+	
+	return the007;
+}
+//Make007
+
+
+
+//ShowTree -- debugging
+void @CLASSNAME@::ShowTree (WString msg, yTrans* root, FILE* f)
+{
+	yTrans	*t_field, *t_sub, *t_seg;
+	
+	/* fields in a yTrans
+	yNodeType		type;
+	WString		tag;
+	WString		subs;
+	int			segment;
+	WBool		constant;
+	WString		label;		//this stores column 2 of the TT
+	WString		attachment;
+	WString		string;		//this holds data as we build it for this node
+	yTrans*		thisfield;
+	yTrans*		nextfield;
+	yTrans*		nextsf;
+	yTrans*		nextseg;
+	yTIndex*		indexnode;
+	*/
+	
+	fputs ("\n\n", f);
+	fputs (msg.GetText (), f);
+	fputs ("\n\n", f);
+	// need two tabs after a pointer because they are 8 long (same as a tab)
+	fputs ("address    type\ttag\tsubs\tseg\tconst\tlabel\tadded\tstring\tthisfld\t\tnextfld\t\tnextsub\t\tnextseg\t\tindexnode", f);
+	fputs ("\n\n", f);
+	
+	t_field = root;
+	while (t_field)
+	{
+		PrintNode (t_field, f);
+			
+		t_sub = t_field->nextsf;
+		while (t_sub)
+		{
+			PrintNode (t_sub, f);
+			
+			t_seg = t_sub->nextseg;
+			while (t_seg)
+			{
+				PrintNode (t_seg, f);
+				t_seg = t_seg->nextseg;
+			}
+		
+			t_sub = t_sub->nextsf;
+		}
+		
+		t_seg = t_field->nextseg;
+		while (t_seg)
+		{
+			PrintNode (t_seg, f);
+			t_seg = t_seg->nextseg;
+		}
+		
+		t_field = t_field->nextfield;
+	}
+}
+//ShowTree
+
+
+
+//PrintNode -- debugging
+void @CLASSNAME@::PrintNode (yTrans* trans, FILE* f)
+{
+	/* fields in a yTrans
+	yNodeType		type;
+	WString		tag;
+	WString		subs;
+	int			segment;
+	WBool		constant;
+	WString		label;		//this stores column 2 of the TT
+	WString		attachment;
+	WString		string;		//this holds data as we build it for this node
+	yTrans*		thisfield;
+	yTrans*		nextfield;
+	yTrans*		nextsf;
+	yTrans*		nextseg;
+	yTIndex*		indexnode;
+	*/
+	
+	WString output;
+		
+	output.Sprintf
+			("%p   %d\t%s\t%s\t%d\t%d\t%s\t%s\t%s\t%p\t%p\t%p\t%p\t%p\n",
+			trans,
+			trans->type,
+			trans->targettag.GetText (),
+			trans->targetsfs.GetText (),
+			trans->targetsegment,
+			trans->constant,
+			trans->sourcelabel.Substring (0, 7).GetText (),
+			trans->attachment.Substring (0, 7).GetText (),
+			trans->string.Substring (0, 7).GetText (),
+			trans->thisfield,
+			trans->nextfield,
+			trans->nextsf,
+			trans->nextseg,
+			trans->indexnode);
+	fputs (output.GetText (), f);
+}
+//PrintNode
+
+
+
+//DoEEEProcessing
+WBool @CLASSNAME@::DoEEEProcessing (yTrans* curr, long recnum, FILE* rfile, WBool bCatalogRun)
+{
+	//050130 EEE-specific Leader processing
+	
+	WString		msg;
+	
+	// material types -- we stored a 2-byte integer in the segment and
+	//			will now expand it into the Type of Record and Bib Level
+	if (curr->sourcelabel == "MTYPE")
+	{
+		int mtype = atoi (curr->string);
+		if (bCatalogRun)
+		{
+			switch (mtype)
+			{
+				case 10: curr->string = "am"; break;		// mono
+				case 11: curr->string = "gm"; break;		// project medium (video recording)
+				case 21: 
+				case 22: 
+				case 30: curr->string = "am"; break;		// tech rpt
+				case 40: curr->string = "as"; break;		// serial
+				case 50: curr->string = "mm"; break;		// online (pdf only?)
+				case 60: curr->string = "rm"; break;		// realia? (labels)
+				default:
+					msg.Sprintf ("Unknown MTYPE %s, record %lu, field %s\n", 
+							curr->sourcelabel.GetText (), 
+							recnum + 1,
+							curr->targettag.GetText ());
+					fputs (msg.GetText (), rfile);
+					return FALSE;		//break;
+			}
+		}
+		else		// holdings record
+		{
+			switch (mtype)
+			{
+				case 10: curr->string = "x "; break;		// mono
+				case 11: curr->string = "x "; break;		// video recording
+				case 21: 
+				case 22: 
+				case 30: curr->string = "x "; break;		// tech rpt
+				case 40: curr->string = "y "; break;		// serial
+				case 50: curr->string = "x "; break;		// online (pdf only?)
+				case 60: curr->string = "x "; break;		// realia? (labels)
+				default:
+					msg.Sprintf ("Unknown MTYPE %s, record %lu, field %s\n", 
+							curr->sourcelabel.GetText (), 
+							recnum + 1,
+							curr->targettag.GetText ());
+					fputs (msg.GetText (), rfile);
+					return FALSE;		//break;
+			}
+		}
+	}
+	
+	// Encoding Level
+	else if (curr->sourcelabel == "LEVEL")
+	{
+		if (curr->string == "F")
+			curr->string = " ";
+		else if (curr->string == "P")
+			curr->string = "5";
+		else if (curr->string == "T")	// temp record
+			curr->string = "z";
+		else if (curr->string == "R")	// on-request record
+			curr->string = "z";
+		else if (curr->string == "O")	// on-order record
+			curr->string = "z";
+		else if (curr->string == "I")	// in-process?
+			curr->string = "z";
+		else
+		{
+			msg.Sprintf ("Unknown LEVEL %s, record %lu, field %s\n", 
+					curr->string.GetText (), 
+					recnum + 1,
+					curr->targettag.GetText ());
+			fputs (msg.GetText (), rfile);
+			return FALSE;	
+		}
+	}
+	
+	// Imprint
+	else if (curr->sourcelabel == "PUBL")
+	{
+		/*050130 must be a bug, because if param is "\x1Fb" then CleanString inserts "\xFB"
+		curr->string = yUtility::CleanString (curr->string, " : ", "\x1Fb");*/
+		curr->string = yUtility::CleanString (curr->string, " : ", "\x1F b");
+		curr->string = yUtility::CleanString (curr->string, "\x1F ", "\x1F");
+	}	
+	
+	return TRUE;
+}
+//DoEEEProcessing
+
+
+
+//WriteIniParams
+void @CLASSNAME@::WriteIniParams ()
+{
+	WAppObject.SetProfileString 
+			("Import", "Infile", TheIniParams.infilepath.GetText (), "MARCView.INI");
+	WAppObject.SetProfileString 
+			("Import", "Outfile", TheIniParams.outfilepath.GetText (), "MARCView.INI");
+	WAppObject.SetProfileString 
+			("Import", "Rptfile", TheIniParams.rptfilepath.GetText (), "MARCView.INI");
+	WAppObject.SetProfileString 
+			("Import", "Badfile", TheIniParams.badfilepath.GetText (), "MARCView.INI");
+			
+	if (TheClient != RRR)	//no translation table
+		WAppObject.SetProfileString 
+				("Import", "Transfile", TheIniParams.transfilepath.GetText (), "MARCView.INI");
+	
+	if (TheClient == EEE)
+	{
+		WAppObject.SetProfileString 
+				("Import", "CopyTransfile", TheIniParams.copytransfilepath.GetText (), "MARCView.INI");
+				
+		if (TheIniParams.bCatalogRun)
+			WAppObject.SetProfileString 
+					("Import", "RunType", "Catalog", "MARCView.INI");
+		else
+			WAppObject.SetProfileString 
+					("Import", "RunType", "Copy", "MARCView.INI");
+	}
+	
+	WAppObject.SetProfileString 
+			("Import", "Maxnum", TheIniParams.maxnum.GetText (), "MARCView.INI");
+
+	if (TheIniParams.charset == MAKRBRKR)
+		WAppObject.SetProfileString 
+				("Import", "CharSet", "MakrBrkr", "MARCView.INI");
+	else if (TheIniParams.charset == LATIN)
+		WAppObject.SetProfileString 
+				("Import", "CharSet", "Latin", "MARCView.INI");
+	else 
+		WAppObject.SetProfileString 
+				("Import", "CharSet", "", "MARCView.INI");
+}
+//WriteIniParams
+
+@end-code;
+@end;

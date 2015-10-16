@@ -1,0 +1,1382 @@
+Save Format v1.3
+@begin Form "yHexForm"
+ Exported 0;
+
+ @begin Object "WForm"
+  WSCaption 1;
+  WSVScroll 1;
+  WSSizeable 1;
+  WSDlgBorder 1;
+  WSSysMenu 1;
+  WSSystemMenu 1;
+  WSPopup 1;
+  WSMinimizeBox 1;
+  WSMaximizeBox 1;
+  WSGroup 1;
+  WSTabStop 1;
+  WSResizeBorder 1;
+  WSVisible 1;
+  Font "10.Courier New";
+  Icon "WIcon( WResourceID( MARCView ) )";
+  FormPositionType "Centered";
+  FormAbsTop "166";
+  FormAbsLeft "6";
+  @begin Event "Create"
+   GencodeSrcLine 166;
+   FunctionName "yHexForm::yHexForm_Create";
+  @end;
+  @begin Event "GotFocus"
+   GencodeSrcLine 200;
+   FunctionName "yHexForm::yHexForm_GotFocus";
+  @end;
+  @begin Event "KeyDown"
+   GencodeSrcLine 210;
+   FunctionName "yHexForm::yHexForm_KeyDown";
+  @end;
+  @begin Event "LeftButtonDouble"
+   GencodeSrcLine 253;
+   FunctionName "yHexForm::yHexForm_LeftButtonDouble";
+  @end;
+  @begin Event "LeftButtonDown"
+   GencodeSrcLine 299;
+   FunctionName "yHexForm::yHexForm_LeftButtonDown";
+  @end;
+  @begin Event "Paint"
+   GencodeSrcLine 340;
+   FunctionName "yHexForm::yHexForm_Paint";
+  @end;
+  @begin Event "Resize"
+   GencodeSrcLine 983;
+   FunctionName "yHexForm::yHexForm_Resize";
+  @end;
+  @begin Event "Scroll"
+   GencodeSrcLine 1057;
+   FunctionName "yHexForm::yHexForm_Scroll";
+  @end;
+  @begin UserFunction "yHexForm()"
+   Compiler 1;
+   GencodeSrcLine 1093;
+   FunctionName "yHexForm::yHexForm()";
+  @end;
+  @begin UserFunction "~yHexForm()"
+   Compiler 1;
+   GencodeSrcLine 1097;
+   FunctionName "yHexForm::~yHexForm()";
+  @end;
+  @begin UserFunction "public:()"
+   GencodeSrcLine 1103;
+   FunctionName "yHexForm::public:()";
+  @end;
+  @begin UserFunction "Prototype for public:()"
+   Private 1;
+   GencodeSrcLine 113;
+   FunctionName "yHexForm::Prototype for public:()";
+  @end;
+  @begin UserFunction "Setup (WFilePath, long, long, long, WWindowHandle)"
+   GencodeSrcLine 1104;
+   FunctionName "yHexForm::Setup (WFilePath, long, long, long, WWindowHandle)";
+  @end;
+  @begin UserFunction "Prototype for Setup (WFilePath, long, long, long, WWindowHandle)"
+   Private 1;
+   GencodeSrcLine 114;
+   FunctionName "yHexForm::Prototype for Setup (WFilePath, long, long, long, WWindowHandle)";
+  @end;
+  ResID 104;
+  DesignName yHexForm;
+  TabIndex 0;
+  DesignRect -795,166,253,180;
+ @end;
+
+ @begin Object "WCommandButton"
+  WSChild 1;
+  WSMaximizeBox 1;
+  WSTabStop 1;
+  WSVisible 1;
+  Font "8.MS Sans Serif.Bold";
+  Pressed "0";
+  Text "Print";
+  @begin Event "Click"
+   GencodeSrcLine 1154;
+   FunctionName "yHexForm::PrintButton_Click";
+  @end;
+  ResID 101;
+  DesignName PrintButton;
+  TabIndex 0;
+  DesignRect 75,2,40,11;
+ @end;
+
+ @begin Object "WPrintDialog"
+  WPrintDSEnablePrintHook 1;
+  ResID 102;
+  DesignName PrintDialog;
+  TabIndex 1;
+  DesignRect 195,5,14,14;
+ @end;
+
+ @begin Object "WCommandButton"
+  WSChild 1;
+  WSMaximizeBox 1;
+  WSTabStop 1;
+  WSVisible 1;
+  Font "8.MS Sans Serif.Bold";
+  Pressed "0";
+  Text "Close";
+  @begin Event "Click"
+   GencodeSrcLine 1225;
+   FunctionName "yHexForm::CloseButton_Click";
+  @end;
+  ResID 103;
+  DesignName CloseButton;
+  TabIndex 2;
+  DesignRect 125,2,40,11;
+ @end;
+
+ @begin HPPPrefixBlock
+@begin-code HPPPrefix
+
+/*
+Copyright 1992-2009 Systems Planning (www.systemsplanning.com)
+
+Licensed under the Apache License, Version 2.0 (the "License"); 
+you may not use this file except in compliance with the License. 
+You may obtain a copy of the License at 
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software 
+distributed under the License is distributed on an "AS IS" BASIS, 
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. 
+See the License for the specific language governing permissions and 
+limitations under the License.
+*/
+
+//970906	changes to make a new hexview for each record instead of one for entire file
+//980828	changes to make scrolling by line instead of character -- removed because too
+//				hard to control painting. instead, changed Track and Position to move a
+//				line at a time
+
+// Declarations added here will be included at the top of the .HPP file
+#define BEEP WAppObject.Beep (WBeepHand)
+
+@end-code;
+  GencodeSrcLine 10;
+ @end;
+
+ @begin CPPPrefixBlock
+@begin-code CPPPrefix
+
+// Code added here will be included at the top of the .CPP file
+
+//  Include definitions for resources.
+#include "WRes.h"
+#include <math.h>	// for ceil
+
+@end-code;
+  GencodeSrcLine 10;
+ @end;
+
+ @begin ClassContentsBlock
+@begin-code ClassContents
+
+    public:
+        // add your public instance data here
+    private:
+		FILE*			pFile;
+		int				ClickChar;
+		int				FirstChar;		//the first char in the dir entry if the mouse is in a dir, otherwise ignored
+		WDisplayCanvas		dc;
+		int 				DisplayL1, DisplayL2, T;		//left and top, width of the two data areas
+		int 				DisplayW1, DisplayW2, DisplayH;	//width and height of a single character
+		long				BaseAddress;
+		long				CharsPerLine;
+		long				FilePos;			//starting position of record in file
+		long				LinesInWindow;
+		long				RecLen;
+		long				RecNum;
+		long				ScrollOffset;		//# chars user has scrolled
+		WPoint			MP;				//Mouse Position
+		WString			TheFilename;
+		WBool			Valid;			//980829 stops double painting when hexview first opened
+		WWindow 			TheHexWWindow, TheMainWWindow;
+		WWindowHandle		TheParentHandle;
+		WBool			DoubleClick;
+		WBool			bXML;
+		
+		// added for printing
+		WString 			TheProduct;
+		WString 			TheFilePath;
+		// the last 4 params apply only to printing
+		WBool			PaintGuts
+								(WCanvas, 
+								int pixelsperinch=0, 
+								int pagewidth=0,
+								int startline=0,
+								int linesperpage=0);
+			
+		
+    protected:
+        // add your protected instance data here
+
+@end-code;
+  GencodeSrcLine 75;
+ @end;
+
+@begin-code GeneratedClassContents
+
+        yHexForm();
+        ~yHexForm();
+
+@end-code;
+
+@begin-code Code "yHexForm::yHexForm()"
+
+@@CLASSNAME@::@CLASSNAME@()
+{
+    
+}
+
+@end-code;
+
+@begin-code Code "yHexForm::~yHexForm()"
+
+@@CLASSNAME@::~@CLASSNAME@()
+{
+	if (pFile)
+		fclose (pFile);
+    
+}
+
+@end-code;
+
+@begin-code Code "yHexForm::public:()"
+
+    
+
+@end-code;
+
+@begin-code Code "yHexForm::Prototype for public:()"
+
+    public:
+
+@end-code;
+
+@begin-code Code "yHexForm::Setup (WFilePath, long, long, long, WWindowHandle)"
+
+//Setup
+void @CLASSNAME@::Setup (WFilePath filepath, long filepos, long reclen, long recnum, WWindowHandle hwnd)
+{
+	TheParentHandle = hwnd;
+	
+    	TheFilename = filepath;
+	if (pFile)
+		fclose (pFile);
+   	if ((pFile = fopen (TheFilename.GetText (), "rb")) == NULL)
+		return;	//message?
+
+	FilePos = filepos;
+	ScrollOffset = 0;
+	RecLen = reclen;
+	RecNum = recnum;
+	ClickChar = -1;
+	FirstChar = -1;
+	
+	
+	// SEE IF XML FILE
+	
+	//040725 -- this should be identical to that of SP_UseFile -- wd be smarter to have bXML passed
+	char	 temp[6];	// length of record length plus \0
+	memset(temp, 0, sizeof(temp)); 
+	
+	/*070426 simpler
+	for (int i = 0; i < 5; i++)
+		temp [i] = fgetc(pFile);*/
+	fgets(temp, 6, pFile);	// 6 because fgets reads n-1 chars!
+		
+	//050126 HWW XML files start with <collection>
+	if (!strncmp (temp, "<?xml", 5) ||
+			!strncmp (temp, "<coll", 5) ||
+			((temp [3] == '<') && (temp [4] == '?')))
+		bXML = TRUE;
+	else
+		bXML = FALSE;
+
+
+	if (!bXML)
+	{
+		//970717 calc baseaddress once per rec instead of each paint
+		fseek (pFile, FilePos + 12, SEEK_SET);
+		char temp[6];
+		memset(temp, 0, sizeof(temp)); 
+		fgets(temp, 6, pFile);	// 6 because fgets reads n-1 chars!
+		BaseAddress = atol(temp);	
+	}
+}
+//Setup
+
+@end-code;
+
+@begin-code Code "yHexForm::Prototype for Setup (WFilePath, long, long, long, WWindowHandle)"
+
+    public:
+        	void Setup (WFilePath, long, long, long, WWindowHandle);
+        	void SetProduct (char*);
+		
+
+@end-code;
+
+@begin-code Code "yHexForm::yHexForm_Create"
+
+//Create
+WBool @CLASSNAME@::yHexForm_Create(
+	WObject *         		source,
+	WCreateEventData *		event )
+{
+	WString s;
+	s.Sprintf ("Record %lu in %s", RecNum, TheFilename.GetText ());
+	SetText (s);
+	
+	//060203 make window 24 chars wide to make the dir entries easier to scan
+	SetWidth(660);
+	SetHeight(480);
+	
+	//070419
+	PrintButton->SetLeft(230);
+	
+	//070426
+	CloseButton->SetLeft(320);
+	
+	//single canvas for instance, not one per paint
+	dc = WDisplayCanvas(this);
+	dc.SetFont("8,Courier New");	//030103 tried Arial but white backgrounds of letters do not abut
+	
+	Valid = FALSE;
+	
+    return FALSE;
+}
+//Create
+
+
+void @CLASSNAME@::SetProduct (char* prod)
+{
+    TheProduct = prod;
+}
+
+@end-code;
+
+@begin-code Code "yHexForm::yHexForm_GotFocus"
+
+//GotFocus
+WBool @CLASSNAME@::yHexForm_GotFocus(
+	WObject *        		source,
+	WFocusEventData *		event )
+{
+    Valid = FALSE;
+    
+    return FALSE;
+}
+//GotFocus
+
+@end-code;
+
+@begin-code Code "yHexForm::yHexForm_KeyDown"
+
+//KeyDown
+//980828 handle navigation keys. Not automatic because form has no controls, just a canvas
+WBool @CLASSNAME@::yHexForm_KeyDown(
+	WObject *           		source,
+	WKeyPressEventData *		event )
+{
+	//SetPainting (FALSE, FALSE, FALSE);	980829 no longer seems to make a difference
+	
+	switch (event->key)
+	{
+		case WKeyUp: 		ScrollOffset -= CharsPerLine; 				break;
+		case WKeyPageUp: 	ScrollOffset -= CharsPerLine * LinesInWindow; 	break;
+		case WKeyDown: 	ScrollOffset += CharsPerLine; 				break;
+		case WKeyPageDn: 	ScrollOffset += CharsPerLine * LinesInWindow; 	break;
+		case WKeyHome: 	ScrollOffset = 0; 							break;
+		case WKeyEnd: 		ScrollOffset = RecLen;						break;	//adjusted below
+		
+		//031103 move single-byte highlighting
+		case WKeyLeft:		ClickChar--; FirstChar = ClickChar; DoubleClick = FALSE; 	break;
+		case WKeyRight:	ClickChar++; FirstChar = ClickChar; DoubleClick = FALSE; 	break;
+    }
+	
+	Valid = FALSE;
+	
+	//970906
+	if (ScrollOffset < 0)
+		ScrollOffset = 0;
+		
+	//970907
+	if ((RecLen - ScrollOffset) / CharsPerLine < LinesInWindow)
+		ScrollOffset = (((RecLen / CharsPerLine) - LinesInWindow) + 1) * CharsPerLine;
+
+	//980828 copied here too
+	if (ScrollOffset < 0)
+		ScrollOffset = 0;
+
+	//SetPainting (TRUE, FALSE, FALSE);	980829 no longer seems to make a difference
+	Invalidate (FALSE);
+    
+    
+    return FALSE;
+}
+//KeyDown
+
+@end-code;
+
+@begin-code Code "yHexForm::yHexForm_LeftButtonDouble"
+
+//LeftButtonDouble
+//031030 this used to be the action for LeftButtonDown
+WBool @CLASSNAME@::yHexForm_LeftButtonDouble(
+	WObject *        		source,
+	WMouseEventData *		event )
+{
+    Valid = FALSE;
+	
+	//SetPainting (FALSE, FALSE, FALSE);	980829 no longer seems to make a difference
+	MP = event->newPosition;
+
+	//970907 moved from Paint -- see if user clicked on some data
+	WBool bClickInRecord = TRUE;
+	
+	int xoffset, yoffset;
+	if ((MP.x > DisplayL1) && (MP.x < DisplayL1 + (DisplayW1 * CharsPerLine)) && (MP.y > T))
+		xoffset = (MP.x - DisplayL1) / DisplayW1;			//cursor in hex area
+	else if ((MP.x > DisplayL2) && (MP.x < DisplayL2 + (DisplayW2 * CharsPerLine)) && (MP.y > T))
+		xoffset = (MP.x - DisplayL2) / DisplayW2;			//cursor in ascii area
+	else
+		bClickInRecord = FALSE;
+
+	if (bClickInRecord)
+	{
+		yoffset = (MP.y - T) / DisplayH;
+		ClickChar = (yoffset * CharsPerLine) + xoffset;
+		
+		if (bXML)
+			FirstChar = ClickChar;	// double-clicking not supported for XML -- does same as single
+		else
+			//first char of directory entry
+			FirstChar = (ClickChar / 12) * 12;	//only meaningful if directory was clicked
+		
+		//970907 adjust for scrolling
+		ClickChar += ScrollOffset;
+		FirstChar += ScrollOffset;
+	}
+	
+	DoubleClick = TRUE;	//031030
+
+	//SetPainting (TRUE, FALSE, FALSE);	980829 no longer seems to make a difference
+	Invalidate (FALSE);
+    
+    return FALSE;
+}
+//LeftButtonDouble
+
+@end-code;
+
+@begin-code Code "yHexForm::yHexForm_LeftButtonDown"
+
+//LeftButtonDown
+WBool @CLASSNAME@::yHexForm_LeftButtonDown(
+	WObject *        		source,
+	WMouseEventData *		event )
+{
+    Valid = FALSE;
+	
+	//SetPainting (FALSE, FALSE, FALSE);	980829 no longer seems to make a difference
+	MP = event->newPosition;
+
+	//970907 moved from Paint -- see if user clicked on some data
+	WBool bClickInRecord = TRUE;
+	
+	int xoffset, yoffset;
+	if ((MP.x > DisplayL1) && (MP.x < DisplayL1 + (DisplayW1 * CharsPerLine)) && (MP.y > T))
+		xoffset = (MP.x - DisplayL1) / DisplayW1;			//cursor in hex area
+	else if ((MP.x > DisplayL2) && (MP.x < DisplayL2 + (DisplayW2 * CharsPerLine)) && (MP.y > T))
+		xoffset = (MP.x - DisplayL2) / DisplayW2;			//cursor in ascii area
+	else
+		bClickInRecord = FALSE;
+		
+	if (bClickInRecord)
+	{
+		yoffset = (MP.y - T) / DisplayH;
+		ClickChar = (yoffset * CharsPerLine) + xoffset;
+		// with a single click, the firstchar is the same as the clickchar
+		FirstChar = ClickChar;
+		
+		//970907 adjust for scrolling
+		ClickChar += ScrollOffset;
+		FirstChar += ScrollOffset;
+	}
+	
+	DoubleClick = FALSE;	//031030
+
+	//SetPainting (TRUE, FALSE, FALSE);	980829 no longer seems to make a difference
+	Invalidate (FALSE);
+      
+    return FALSE;
+}
+//LeftButtonDown
+
+@end-code;
+
+@begin-code Code "yHexForm::yHexForm_Paint"
+
+//Paint
+WBool @CLASSNAME@::yHexForm_Paint(
+	WObject *        		source,
+	WPaintEventData *		event )
+{
+	if (Valid)
+		return FALSE;
+
+	//070420 requires a return value for printing, ignored here
+	WBool x = PaintGuts(dc);
+	
+	SetScrollPosition(WScrollVertical, ScrollOffset);
+
+	Valid = TRUE;
+	
+    return FALSE;
+}
+//Paint
+
+
+//PaintGuts -- 0704 extended to apply to display AND printing
+WBool @CLASSNAME@::PaintGuts
+		(WCanvas thecanvas, 
+		int pixelsperinch, 
+		int pagewidth, 
+		int startline,
+		int linesperpage)
+{
+	int 			x = 0, y = 0;
+	long 		j;
+	WRect 		hexrect, ascrect;
+	WString		thehex;
+	WString		theasc;
+
+
+	// ADJUST IF PRINTING
+	
+	//070420 pixelsperinch and pagewidth are sent only if printing
+	WBool	printing = pixelsperinch || pagewidth;
+	
+	// if printing, leave 1 inch at top
+	// if not printing, 32 is height of top margin where print button is
+	int		topmargin = (printing) ? pixelsperinch : 32;
+
+	// charsperline is the width of the ASCII section. fixed at 24 for printing
+	long		charsperline = (printing) ? 24 : CharsPerLine;
+
+	int H, L1, L2, W1, W2;
+	long scrolloffset;
+	if (printing)
+	{
+		// hard code these values -- bigger divisors makes more crowded
+		H  = int(pixelsperinch / 5.5);	// lines per inch
+		W1 = int(pixelsperinch / 5);		// hexes per inch
+		W2 = int(pixelsperinch / 11);	// asciis per inch
+		L1 = 2 * W1;					//start of hex block
+		L2 = L1 + (W1 * 24) + (5.5 * W2);	//start of text block
+		scrolloffset = 0;
+	}
+	else
+	{
+		// use those calculated in Resize
+		H = DisplayH;
+		L1 = DisplayL1;
+		L2 = DisplayL2;
+		W1 = DisplayW1;
+		W2 = DisplayW2;
+		scrolloffset = ScrollOffset;
+	}
+
+
+	WBool	result = FALSE;
+
+
+	// PRINT TOP RULER
+	
+	thecanvas.SetTextColor(WColorBrightBlue);
+	thecanvas.SetBackColor(WColorLightGray);
+	
+	hexrect.x = L1; hexrect.y = topmargin; hexrect.w = W1; hexrect.h = H;
+	ascrect.x = L2; ascrect.y = topmargin; ascrect.w = W2; ascrect.h = H;
+	
+	for (j = 0; j < charsperline; j++)
+	{
+		thehex.Sprintf ("%02X ", j);
+		theasc.Sprintf ("%d", j % 10);
+		thecanvas.DrawText (hexrect, thehex.GetText ());
+		thecanvas.DrawText (ascrect, theasc.GetText ());
+		hexrect.x += W1;
+		ascrect.x += W2;
+	}
+	
+	
+	// PRINT LEFT RULERS
+	
+	hexrect.x = 0;
+	hexrect.y += H; 	// skip first line 
+	hexrect.w = 1.9 * W1;
+	hexrect.h = H;
+	
+	ascrect.x = (L2 - (5 * W2) + 4);
+	ascrect.y += H; 	// skip first line 
+	ascrect.w = 4 * W2; 
+	ascrect.h = H;
+	
+	int linenumber = 0;
+	int lastline = startline + linesperpage - 1;
+	for (j = scrolloffset; j < RecLen; j += charsperline)
+	{
+		thehex.Sprintf("%04X", j);
+		theasc.Sprintf("%04d", j);
+		
+		// this is our kludgy method of printing only the left-ruler lines for one page
+		linenumber++;
+		if (!printing || ((linenumber >= startline) && (linenumber <= lastline)))
+		{		
+			thecanvas.DrawText(hexrect, thehex.GetText());
+			thecanvas.DrawText(ascrect, theasc.GetText());
+			
+			hexrect.y += H;
+			ascrect.y += H;
+		}
+		
+		if (y >= LinesInWindow)
+			break;
+	}
+	
+	long FldStart, FldLen, FldEnd = 0;
+	int newend = 0;
+
+	//060105 added last two for coloring escape-sequences
+	unsigned char	c, lastc=0, lastbut2=0, lastbut3=0;
+	
+	x = 0;
+	y = 0;
+	
+	hexrect.x = L1; hexrect.y = topmargin + H; hexrect.w = W1; hexrect.h = H;
+	ascrect.x = L2; ascrect.y = topmargin + H; ascrect.w = W2; ascrect.h = H;
+
+
+	// MAIN LOOP
+	
+	if (!bXML)
+	{
+		fseek (pFile, FilePos, 0);
+		for (j = 0; j < RecLen; j++)
+		{
+			c = fgetc (pFile);
+	
+	
+			// SET TEXT COLOR
+			
+			if ((c == 27) || (lastc == 27))	// escape code and following char
+			{
+				thecanvas.SetTextColor(WColorGreen);
+			}
+			
+			//060105 turn the rest of the escape-sequence green too -- 3-byte sequences
+			else if ((lastbut2 == 27) &&
+					((lastc == '(') || (lastc == ',') || (lastc == '$') || (lastc == ')') || (lastc == '-')))
+			{
+				thecanvas.SetTextColor(WColorGreen);
+			}
+			
+			//060105 turn the rest of the escape-sequence green too -- 4-byte sequences
+			else if ((lastbut3 == 27) && (lastbut2 == '$') &&
+					((lastc == ',') || (lastc == ')') || (lastc == '-')))
+			{
+				thecanvas.SetTextColor(WColorGreen);
+			}
+			
+			else if (c == 29)
+				thecanvas.SetTextColor(WColorWhite);
+			else if (c == 30)
+				thecanvas.SetTextColor(WColorBrightRed);
+			else if ((c == 31) || (lastc == 31))	//last char was sfc
+				thecanvas.SetTextColor(WColorBrightBlue);
+			else if (j < 0)
+				thecanvas.SetTextColor(WColorBlack);
+			else if (j < 24)
+				thecanvas.SetTextColor(WColorRed);
+			else if (j < BaseAddress)
+			{
+				if (j % 12 == 0)
+					thecanvas.SetTextColor(WColorBrightBlue);
+				if ((j - 3) % 12 == 0)
+					thecanvas.SetTextColor(WColorGreen);
+				if ((j - 7) % 12 == 0)
+					thecanvas.SetTextColor(WColorBlack);
+			}
+			else
+				thecanvas.SetTextColor (WColorBlack);
+			
+			
+			// SET BACKCOLOR
+			
+			//leader
+			if (j < 24)
+			{
+				if (j == FirstChar)
+					thecanvas.SetBackColor(WColorBrightYellow);
+				else
+					thecanvas.SetBackColor(WColorWhite);
+			}
+			
+			//directory
+			else if ((j > 23) && (j < BaseAddress))
+			{
+				if ((ClickChar > -1) && DoubleClick)
+				{
+					if (ClickChar < BaseAddress)	// user clicked in directory
+					{
+						//cursor is in a directory -- find length and start of corresponding field
+						if (j == FirstChar + 3) 
+							FldLen = 1000 * (c - 48);
+						else if (j == FirstChar + 4) 
+							FldLen += 100 * (c - 48);
+						else if (j == FirstChar + 5) 
+							FldLen += 10 * (c - 48);
+						else if (j == FirstChar + 6) 
+							FldLen += c - 48;
+						else if (j == FirstChar + 7) 
+							FldStart = 10000 * (c - 48);
+						else if (j == FirstChar + 8) 
+							FldStart += 1000 * (c - 48);
+						else if (j == FirstChar + 9) 
+							FldStart += 100 * (c - 48);
+						else if (j == FirstChar + 10) 
+							FldStart += 10 * (c - 48);
+						else if (j == FirstChar + 11) //end of dir entry
+						{
+							FldStart += c - 48;
+							FldStart += BaseAddress;
+							FldEnd = FldStart + FldLen - 1;
+						}
+					}
+					else		// user clicked in data field
+					{
+						//calc pos of data for each dir entry until one desired is reached
+						if ((ClickChar < FldStart) || (ClickChar > FldEnd))
+						{
+							if ((j - 3) % 12 == 0)
+								FldLen = 1000 * (c - 48);
+							else if ((j - 4) % 12 == 0)
+								FldLen += 100 * (c - 48);
+							else if ((j - 5) % 12 == 0)
+								FldLen += 10 * (c - 48);
+							else if ((j - 6) % 12 == 0)
+								FldLen += c - 48;
+							else if ((j - 7) % 12 == 0)
+								FldStart = 10000 * (c - 48);
+							else if ((j - 8) % 12 == 0)
+								FldStart += 1000 * (c - 48);
+							else if ((j - 9) % 12 == 0)
+								FldStart += 100 * (c - 48);
+							else if ((j - 10) % 12 == 0)
+								FldStart += 10 * (c - 48);
+							else if ((j - 11) % 12 == 0)		//end of dir entry
+							{
+								FldStart += c - 48;
+								FldStart += BaseAddress;
+								FldEnd = FldStart + FldLen - 1;
+								newend = j;
+							}
+						}
+					}
+				}
+				
+				if (DoubleClick)
+				{
+					if ((j >= FirstChar) && (j <= FirstChar + 11))
+						thecanvas.SetBackColor(WColorBrightYellow);
+					else if (j % 24 == 0)
+						thecanvas.SetBackColor(WColorLightGray);
+					else if (j % 12 == 0)
+						thecanvas.SetBackColor(WColorWhite);
+				}
+				else		//single click
+				{
+					if (j == FirstChar)
+						thecanvas.SetBackColor(WColorBrightYellow);
+					else if ((j - (j % 12)) % 24 == 0)
+						thecanvas.SetBackColor(WColorLightGray);
+					else if ((j - (j % 12)) % 12 == 0)
+						thecanvas.SetBackColor(WColorWhite);
+				}
+			}
+			
+			//data field
+			else
+			{
+				if (DoubleClick)
+				{
+					if ((j >= FldStart) && (j <= FldEnd))
+						thecanvas.SetBackColor(WColorBrightYellow);
+					else
+						thecanvas.SetBackColor(WColorWhite);
+				}
+				else		//single click
+				{
+					if (j == FirstChar)
+						thecanvas.SetBackColor(WColorBrightYellow);
+					else
+						thecanvas.SetBackColor(WColorWhite);
+				}
+			}
+						
+			//rec terminator
+			if (c == 29)
+				thecanvas.SetBackColor(WColorBrightRed);
+				
+				
+			// DO THE DRAWING
+		
+			if (j >= scrolloffset)
+			{
+				// this is our kludgy method of printing only one page at a time
+				linenumber = (j / charsperline) + 1;
+					
+				// will return TRUE if more to print
+				result = (linenumber > lastline);
+	
+				#ifdef _DEBUG
+				long xxxxxx;
+				if (printing)// && (startline > 1))
+				{
+					xxxxxx = charsperline;
+				}
+				#endif
+		
+				if (!printing || ((linenumber >= startline) && (linenumber <= lastline)))
+				{
+					thehex.Sprintf ("%02X ", c);
+					
+					if ((c == 0) || (c == 10) || (c == 13))
+						theasc = " ";	//because these chars don't erase what was there before scroll
+	
+					//070426 convert FTs and SDs
+					else if (c == 30)
+						theasc = "¶";
+					else if (c == 31)
+						theasc = "‡";
+					
+					else 
+						theasc.Sprintf ("%c", c);
+				
+					thecanvas.DrawText(hexrect, thehex.GetText());
+					thecanvas.DrawText(ascrect, theasc.GetText());
+				
+					if (x < charsperline - 1)
+					{
+						x++;
+						hexrect.x += W1;
+						ascrect.x += W2;
+					}
+					else
+					{
+						x = 0;
+						y++;
+						hexrect.x = L1;
+						ascrect.x = L2;
+						hexrect.y += H;
+						ascrect.y += H;
+					}
+				}
+			}
+			
+			lastbut3 = lastbut2;
+			lastbut2 = lastc;
+			lastc = c;
+						
+			if ((y >= LinesInWindow) && !printing)
+				break;
+		}	// end of main loop
+		
+		
+		//980829 paint gray after last char unless last char of line also
+		if ((j == RecLen) && !printing)
+		{
+			thecanvas.SetTextColor(WColorDialogBackground);
+			thecanvas.SetBackColor(WColorDialogBackground);
+			thehex = "   ";
+			theasc = " ";
+			for (y = x; y < charsperline; y++)
+			{
+				thecanvas.DrawText(hexrect, thehex.GetText ());
+				thecanvas.DrawText(ascrect, theasc.GetText ());
+				hexrect.x += W1;
+				ascrect.x += W2;
+			}
+		}
+		
+		
+		// PAINT FIRST PART OF RECORD AGAIN TO HIGHLIGHT DIRECTORY
+		
+		if (DoubleClick && (ClickChar > -1))
+		{	
+			x = 0;
+			y = 0;
+			
+			hexrect.x = L1; hexrect.y = topmargin + H; hexrect.w = W1; hexrect.h = H;
+			ascrect.x = L2; ascrect.y = topmargin + H; ascrect.w = W2; ascrect.h = H;
+		
+			fseek(pFile, FilePos, 0);	//reset file
+		
+			for (j = 0; j <= newend; j++)
+			{
+				c = fgetc (pFile);
+		
+				//set textcolor
+				if (c == 30)
+					thecanvas.SetTextColor(WColorBrightRed);
+				else if (j < 0)
+					thecanvas.SetTextColor(WColorBlack);
+				else if (j < 24)
+					thecanvas.SetTextColor(WColorRed);
+				else
+				{
+					if (j % 12 == 0)
+						thecanvas.SetTextColor(WColorBrightBlue);
+					if ((j - 3) % 12 == 0)
+						thecanvas.SetTextColor(WColorGreen);
+					if ((j - 7) % 12 == 0)
+						thecanvas.SetTextColor(WColorBlack);
+				}
+				
+				//set backcolor
+				if (j < 24)
+					thecanvas.SetBackColor(WColorWhite);
+				else 	//must be in directory
+				{
+					if (j + 11 >= newend)	//then this is the last dir
+						thecanvas.SetBackColor(WColorBrightYellow);
+					else if (j % 24 == 0)
+						thecanvas.SetBackColor(WColorLightGray);
+					else if (j % 12 == 0)
+						thecanvas.SetBackColor(WColorWhite);
+				}
+		
+				//do the drawing
+				if (j >= scrolloffset)
+				{
+					// this is our kludgy method of printing only one page at a time
+					linenumber = (j / charsperline) + 1;
+			
+					if (!printing || ((linenumber >= startline) && (linenumber <= lastline)))
+					{
+						thehex.Sprintf ("%02X ", c);
+						
+						if ((c == 0) || (c == 10) || (c == 13))
+							theasc = " ";	//because these chars don't erase what was there before scroll
+		
+						//070426 convert FTs and SDs
+						else if (c == 30)
+							theasc = "¶";
+						else if (c == 31)
+							theasc = "‡";
+						
+						else 
+							theasc.Sprintf ("%c", c);
+							
+						thecanvas.DrawText(hexrect, thehex.GetText());
+						thecanvas.DrawText(ascrect, theasc.GetText());
+					
+						if (x < charsperline - 1)
+						{
+							x++;
+							hexrect.x += W1;
+							ascrect.x += W2;
+						}
+						else
+						{
+							x = 0;
+							y++;
+							hexrect.x = L1;
+							ascrect.x = L2;
+							hexrect.y += H;
+							ascrect.y += H;
+						}
+					}
+				}
+								
+				lastc = c;
+			
+				if ((y >= LinesInWindow) && !printing)
+					break;
+			}
+		}
+	}	// end of not XML
+	
+
+	else		// XML
+	{
+		WBool intag = FALSE, inattr = FALSE;
+		fseek (pFile, FilePos, 0);
+		for (j = 0; j < RecLen; j++)
+		{
+			c = fgetc (pFile);
+	
+			//set text color
+			if (c == 60)	// <
+			{
+				thecanvas.SetTextColor(WColorRed);
+				intag = TRUE;
+			}
+			else if (c == 62)	// >
+			{
+				intag = FALSE;
+			}
+			else if (intag)
+			{
+				if (c == 34)	// "
+				{
+					if (inattr)
+					{
+						thecanvas.SetTextColor(WColorRed);
+						inattr = FALSE;
+					}
+					else
+						inattr = TRUE;
+				}
+				
+				else if (inattr)
+					thecanvas.SetTextColor(WColorBrightBlue);
+			}
+			else if (!intag)
+			{
+				thecanvas.SetTextColor(WColorBlack);
+			}
+			
+			
+			// SET BACKCOLOR
+
+			if (ClickChar > -1)
+			{
+				/* for XML, single and double click do the same thing (namely like single-clicking)
+					-- this is because there is no way to determine the start and end of the element
+					as we can with non-XML */
+				if (j == FirstChar)
+					thecanvas.SetBackColor(WColorBrightYellow);
+				else if (c < 32)	// control chars
+					thecanvas.SetBackColor(WColorLightGray);
+				else
+					thecanvas.SetBackColor(WColorWhite);
+			}
+			else if (c < 32)	// control chars
+				thecanvas.SetBackColor(WColorLightGray);
+			else
+				thecanvas.SetBackColor(WColorWhite);
+			
+	
+				
+			// DO THE DRAWING
+		
+			if (j >= scrolloffset)
+			{
+				// this is our kludgy method of printing only one page at a time
+				linenumber = (j / charsperline) + 1;
+					
+				// will return TRUE if more to print
+				result = (linenumber > lastline);
+		
+				if (!printing || ((linenumber >= startline) && (linenumber <= lastline)))
+				{
+					thehex.Sprintf("%02X ", c);
+					
+					//if ((c == 0) || (c == 10) || (c == 13))
+					if (c == 0)
+						theasc = " ";	//because these chars don't erase what was there before scroll
+		
+					//070426 convert CRs, LFs, tabs
+					else if (c == 9)
+						theasc = "T";
+					else if (c == 10)
+						theasc = "L";
+					else if (c == 13)
+						theasc = "R";
+						
+					else 
+						theasc.Sprintf ("%c", c);
+						
+					thecanvas.DrawText(hexrect, thehex.GetText());
+					thecanvas.DrawText(ascrect, theasc.GetText());
+				
+					if (x < charsperline - 1)
+					{
+						x++;
+						hexrect.x += W1;
+						ascrect.x += W2;
+					}
+					else
+					{
+						x = 0;
+						y++;
+						hexrect.x = L1;
+						ascrect.x = L2;
+						hexrect.y += H;
+						ascrect.y += H;
+					}
+				}
+			}
+			
+			lastc = c;
+			
+			if ((y >= LinesInWindow) && !printing)
+				break;
+		}	// end of main loop
+		
+		
+		// paint gray after last char unless last char of line also
+		if ((j == RecLen) && !printing)
+		{
+			thecanvas.SetTextColor(WColorDialogBackground);
+			thecanvas.SetBackColor(WColorDialogBackground);
+			thehex = "   ";
+			theasc = " ";
+			for (y = x; y < charsperline; y++)
+			{
+				thecanvas.DrawText(hexrect, thehex.GetText());
+				thecanvas.DrawText(ascrect, theasc.GetText());
+				hexrect.x += W1;
+				ascrect.x += W2;
+			}
+		}
+	}	// end of XML
+	
+	
+	//070420 reset for printing header/footer
+	thecanvas.SetTextColor(WColorBlack);
+	thecanvas.SetBackColor(WColorWhite);
+	
+	#ifdef _DEBUG
+	long xxxxxx;
+	if (printing)// && (startline > 1))
+	{
+		xxxxxx = charsperline;
+	}
+	#endif
+	
+	
+	return result;
+}
+//PaintGuts
+
+@end-code;
+
+@begin-code Code "yHexForm::yHexForm_Resize"
+
+//Resize
+WBool @CLASSNAME@::yHexForm_Resize(
+	WObject *         		source,
+	WResizeEventData *		event )
+{
+	if (event->oldPosition == event->newPosition)
+		return FALSE;
+		
+	Valid = FALSE;
+	
+	WRect cr = GetClientRectangle();
+
+	//980828 105 is just a number that works to permit room for everything
+	//			at any window size. may have to be recalculated based on char
+	//			width if variety of fonts are used. the 4 is so value is a
+	//			multiple of 4, so resizing shifts by 4 chars at a time.
+	/*080918 this must be based on the assumption that Courier New 8 has a char-width of 7,
+			but on Paul Griffith's computer it is 9! Thus we should calculate based on 
+			the real width*/
+	//CharsPerLine = (cr.w/105) * 4;
+
+	//980828 would be better to do this in Create, but kept getting divide by zero
+	//			for DisplayH, so obviously it got lost
+	WFont font = GetFont();
+	DisplayW2 = font.GetWidth();	//width of a single glyph
+	//DisplayW2 = 9;	// debug to test paul's problem**************************************
+	DisplayW2--;				//980828 get rid of space between ascii letters
+	DisplayW1 = (2 * DisplayW2) + 2;	// DisplayW1 is width needed for a hex representation (2 chars and some space)
+	DisplayH = font.GetHeight();
+	
+	/*070419 leave room for print button
+	T = DisplayH;				//that is, skip first line	*/
+	T = DisplayH + 32;			// DisplayH skips first line, 32 is height of top margin where print button is
+	
+	// this is the ruler width
+	DisplayL1 = 2 * DisplayW1;	//start of hex block	//000430 changed 1.7 to 2 when DisplayW1 reduced
+	
+	//080918 	calculate number of chars per pane from font width. see d:\marc\docs\hexview_layout.ods
+	CharsPerLine = int((cr.w - (9.5 * DisplayW2) - 4) / ((3 * DisplayW2) + 2));
+	// however, we want this to be a multiple of 4
+	CharsPerLine = 4 * int(CharsPerLine/4);
+	
+	// that is, start of left block + width of left block + gutter
+	DisplayL2 = DisplayL1 + (DisplayW1 * CharsPerLine) + (5.5 * DisplayW2);	//start of text block
+
+	LinesInWindow = (cr.h - T) / DisplayH;
+	
+	WRange r (0, RecLen - (CharsPerLine * LinesInWindow));
+	SetScrollRange (WScrollVertical, r);
+    	Update (TRUE);
+		
+	//debug -- outputs to file
+	/*
+	#ifdef _DEBUG
+	WString tempo;
+	FILE* debug;
+	debug = fopen("hexview.txt", "a");
+	
+	tempo.Sprintf("n1: %d\r\n", n1);
+	fputs (tempo.GetText(), debug);
+
+	tempo.Sprintf("n2: %d\r\n", n2);
+	fputs (tempo.GetText(), debug);
+
+	tempo.Sprintf("CharsPerLine: %d\r\n", CharsPerLine);
+	fputs (tempo.GetText(), debug);
+	
+	fclose (debug);
+	#endif
+	*/
+    
+	return FALSE;
+}
+//Resize
+
+@end-code;
+
+@begin-code Code "yHexForm::yHexForm_Scroll"
+
+//Scroll
+WBool @CLASSNAME@::yHexForm_Scroll(
+	WObject *            		source,
+	WScrollBarEventData *		event )
+{	
+	//SetPainting (FALSE, FALSE, FALSE);	980829 no longer seems to make a difference
+	
+	switch (event->message)
+	{
+		case WLineUp: 		ScrollOffset -= CharsPerLine; 				break;
+		case WPageUp: 		ScrollOffset -= CharsPerLine * LinesInWindow; 	break;
+		case WLineDown: 	ScrollOffset += CharsPerLine; 				break;
+		case WPageDown:	ScrollOffset += CharsPerLine * LinesInWindow; 	break;
+		case WTrack:		ScrollOffset = (event->position / CharsPerLine) * CharsPerLine;	break;
+		//case WPosition:	ScrollOffset = (event->position / CharsPerLine) * CharsPerLine;	break;
+		default: return FALSE; //stops double painting
+    }
+	
+	Valid = FALSE;
+	
+	if (ScrollOffset < 0)
+		ScrollOffset = 0;
+
+	if ((RecLen - ScrollOffset) / CharsPerLine < LinesInWindow)
+		ScrollOffset = (((RecLen / CharsPerLine) - LinesInWindow) + 1) * CharsPerLine;
+	
+	if (ScrollOffset < 0)
+		ScrollOffset = 0;
+
+	//SetPainting (TRUE, FALSE, FALSE);	980829 no longer seems to make a difference
+	
+	Invalidate (FALSE);
+    
+    return FALSE;
+}
+//Scroll
+
+@end-code;
+
+@begin-code Code "yHexForm::PrintButton_Click"
+
+//PrintButton_Click
+WBool @CLASSNAME@::PrintButton_Click(
+	WObject *   		source,
+	WEventData *		event )
+{
+	if (PrintDialog->Prompt())
+	{
+		WPrinterCanvas canvas = PrintDialog->GetPrinterCanvas();	
+		
+		//070421 this produces microscopic output -- using default printer font instead
+		//canvas.SetFont("8,Courier New");	// same font as display window so we can use the same geometry
+	
+		WString header;
+		header.Sprintf ("Record %lu in %s, page ", RecNum, TheFilename.GetText());
+		
+		WLocaleID li;
+		WString footer = "Printed from " + TheProduct + " on ";
+		footer.Concat(li.GetFormatDate(WDateFormatShortDatePicture));
+		footer.Concat(" at ");
+		footer.Concat(li.GetFormatTime(WTimeFormatForce24hourFormat));
+		footer = footer.Left(footer.GetSize() - 3);		//strip off " AM" or " PM"
+
+		// for printing we hard-code the linesperpage and charsperline (elsewhere)
+		//		so we dnht query the printer about its fonts
+		int linesperpage = 47;
+		
+		int startline = 1;
+		WBool paintreturn = TRUE;	// becomes FALSE when no more to paint
+
+		int pagenumber = 1;
+		WString snum, thisheader;
+
+		canvas.StartDocument();
+				
+		do
+		{
+			thisheader = header;
+			snum.Sprintf("%d", pagenumber);
+			thisheader.Concat(snum);
+			pagenumber++;
+			
+			canvas.DrawText 
+				(WPoint 
+					(canvas.QueryCapability(WCCLogicalPixelsX), 		//one inch from left
+					.5 * canvas.QueryCapability(WCCLogicalPixelsY)),	//half inch from top
+				thisheader.GetText());
+			
+			canvas.DrawText 
+				(WPoint 
+					(canvas.QueryCapability(WCCLogicalPixelsX), 		//one inch from left
+					canvas.QueryCapability(WCCVerticalPixels) - 
+						(.5 * canvas.QueryCapability(WCCLogicalPixelsY))),	//half inch from top
+				footer.GetText());
+				
+			paintreturn = PaintGuts
+					(canvas, 
+					canvas.QueryCapability(WCCLogicalPixelsX), 		// pixelsperinch
+					canvas.QueryCapability(WCCHorizontalPixels),	// pagewidth
+					startline,
+					linesperpage);
+			startline += linesperpage;
+				
+			canvas.EndPage();
+		} while (paintreturn);
+		
+		canvas.EndDocument();
+	}
+	
+    return FALSE;
+}
+//PrintButton_Click
+
+@end-code;
+
+@begin-code Code "yHexForm::CloseButton_Click"
+
+WBool @CLASSNAME@::CloseButton_Click(
+	WObject *   		source,
+	WEventData *		event )
+{
+    Close();
+    
+    return FALSE;
+}
+
+@end-code;
+@end;

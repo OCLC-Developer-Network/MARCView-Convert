@@ -1,0 +1,536 @@
+Save Format v1.3
+@begin Form "yFindDialog"
+ Exported 0;
+
+ @begin Object "WDialog"
+  WSCaption 1;
+  WSDlgBorder 1;
+  WSVisible 1;
+  Font "8.MS Sans Serif";
+  Icon "WIcon( WResourceID( MARCView ) )";
+  FormPositionType "Centered";
+  FormAbsTop "248";
+  FormAbsLeft "27";
+  HelpID "11";
+  Text "Enter Search Criteria";
+  @begin Event "Create"
+   GencodeSrcLine 284;
+   FunctionName "yFindDialog::yFindDialog_Create";
+  @end;
+  @begin UserFunction "yFindDialog()"
+   Compiler 1;
+   GencodeSrcLine 302;
+   FunctionName "yFindDialog::yFindDialog()";
+  @end;
+  @begin UserFunction "~yFindDialog()"
+   Compiler 1;
+   GencodeSrcLine 308;
+   FunctionName "yFindDialog::~yFindDialog()";
+  @end;
+  ResID 102;
+  DesignName yFindDialog;
+  TabIndex 0;
+  DesignRect -763,210,259,210;
+ @end;
+
+ @begin Object "WTextBox"
+  WTextBoxAutoHScroll 1;
+  WSBorder 1;
+  WSChild 1;
+  WSMinimizeBox 1;
+  WSMaximizeBox 1;
+  WSGroup 1;
+  WSTabStop 1;
+  WSExClientEdge 1;
+  WSVisible 1;
+  Font "10.MS Sans Serif";
+  TextLimit "300";
+  @begin Event "Change"
+   GencodeSrcLine 312;
+   FunctionName "yFindDialog::FindEntry_Change";
+  @end;
+  @begin Event "CharacterPress"
+   GencodeSrcLine 320;
+   FunctionName "yFindDialog::FindEntry_CharacterPress";
+  @end;
+  ResID 101;
+  DesignName FindEntry;
+  TabIndex 0;
+  DesignRect 85,13,160,15;
+ @end;
+
+ @begin Object "WLabel"
+  WSSCenter 1;
+  WSSNotify 1;
+  WCCSTop 1;
+  WSChild 1;
+  WSVisible 1;
+  Font "10.MS Sans Serif.Bold";
+  Text "Search term";
+  AutoSize "1";
+  ResID 102;
+  DesignName label_1;
+  TabIndex 1;
+  DesignRect 10,15,56,10;
+ @end;
+
+ @begin Object "WLabel"
+  WSSLeftNoWordWrap 1;
+  WSSNotify 1;
+  WCCSNoResize 1;
+  WCCSNoParentAlign 1;
+  WSChild 1;
+  WSVisible 1;
+  Font "10.MS Sans Serif.Bold";
+  Text "Options";
+  AutoSize "1";
+  ResID 103;
+  DesignName label_4;
+  TabIndex 2;
+  DesignRect 10,50,36,10;
+ @end;
+
+ @begin Object "WTextBox"
+  WTextBoxAutoHScroll 1;
+  WSBorder 1;
+  WSChild 1;
+  WSMaximizeBox 1;
+  WSTabStop 1;
+  WSExClientEdge 1;
+  WSVisible 1;
+  TextLimit "3";
+  @begin Event "CharacterPress"
+   GencodeSrcLine 328;
+   FunctionName "yFindDialog::TagEntry_CharacterPress";
+  @end;
+  ResID 104;
+  DesignName TagEntry;
+  TabIndex 3;
+  DesignRect 205,62,40,16;
+ @end;
+
+ @begin Object "WLabel"
+  WSSLeftNoWordWrap 1;
+  WSSNotify 1;
+  WCCSNoResize 1;
+  WCCSNoParentAlign 1;
+  WSChild 1;
+  WSVisible 1;
+  Text "Restrict search to this tag";
+  AutoSize "1";
+  ResID 105;
+  DesignName label_2;
+  TabIndex 4;
+  DesignRect 30,62,80,8;
+ @end;
+
+ @begin Object "WTextBox"
+  WTextBoxAutoHScroll 1;
+  WSBorder 1;
+  WSChild 1;
+  WSMaximizeBox 1;
+  WSTabStop 1;
+  WSExClientEdge 1;
+  WSVisible 1;
+  TextLimit "1";
+  @begin Event "CharacterPress"
+   GencodeSrcLine 336;
+   FunctionName "yFindDialog::SFCEntry_CharacterPress";
+  @end;
+  ResID 106;
+  DesignName SFCEntry;
+  TabIndex 5;
+  DesignRect 229,87,16,15;
+ @end;
+
+ @begin Object "WTextBox"
+  WTextBoxAutoHScroll 1;
+  WSBorder 1;
+  WSChild 1;
+  WSMaximizeBox 1;
+  WSTabStop 1;
+  WSExClientEdge 1;
+  WSVisible 1;
+  TextLimit "1";
+  ResID 107;
+  DesignName Ind1Entry;
+  TabIndex 6;
+  DesignRect 205,110,16,15;
+ @end;
+
+ @begin Object "WTextBox"
+  WTextBoxAutoHScroll 1;
+  WSBorder 1;
+  WSChild 1;
+  WSMaximizeBox 1;
+  WSTabStop 1;
+  WSExClientEdge 1;
+  WSVisible 1;
+  TextLimit "1";
+  ResID 108;
+  DesignName Ind2Entry;
+  TabIndex 7;
+  DesignRect 229,110,16,15;
+ @end;
+
+ @begin Object "WLabel"
+  WSSLeftNoWordWrap 1;
+  WSSNotify 1;
+  WCCSNoResize 1;
+  WCCSNoParentAlign 1;
+  WSChild 1;
+  WSVisible 1;
+  Text "Restrict search to this subfield (case-sensitive)";
+  AutoSize "1";
+  ResID 109;
+  DesignName label_3;
+  TabIndex 8;
+  DesignRect 30,90,145,8;
+ @end;
+
+ @begin Object "WCheckBox"
+  WBSAutoCheckBox 1;
+  WCCSTop 1;
+  WCCSNoMoveY 1;
+  WCCSBottom 1;
+  WSChild 1;
+  WSMaximizeBox 1;
+  WSTabStop 1;
+  WSVisible 1;
+  AutoSize "1";
+  Text "Case-sensitive search term";
+  Checked "0";
+  ResID 110;
+  DesignName CaseCheckbox;
+  TabIndex 9;
+  DesignRect 30,30,97,12;
+ @end;
+
+ @begin Object "WCheckBox"
+  WBSAutoCheckBox 1;
+  WCCSTop 1;
+  WCCSNoMoveY 1;
+  WCCSBottom 1;
+  WSChild 1;
+  WSMaximizeBox 1;
+  WSTabStop 1;
+  WSVisible 1;
+  AutoSize "1";
+  Text "Start search with first record";
+  Checked "1";
+  ResID 111;
+  DesignName FirstrecCheckbox;
+  TabIndex 10;
+  DesignRect 30,138,101,12;
+ @end;
+
+ @begin Object "WCommandButton"
+  WSChild 1;
+  WSMaximizeBox 1;
+  WSTabStop 1;
+  WSVisible 1;
+  Pressed "0";
+  FDXFieldName "cb_1_data";
+  FDXFieldType "WBool";
+  Text "Help";
+  @begin Event "Click"
+   GencodeSrcLine 344;
+   FunctionName "yFindDialog::HelpButton_Click";
+  @end;
+  ResID 112;
+  DesignName HelpButton;
+  TabIndex 11;
+  DesignRect 10,165,60,16;
+ @end;
+
+ @begin Object "WCommandButton"
+  WSDisabled 1;
+  WSChild 1;
+  WSMaximizeBox 1;
+  WSTabStop 1;
+  WSVisible 1;
+  Default "1";
+  Pressed "0";
+  Text "OK";
+  @begin Event "Click"
+   GencodeSrcLine 352;
+   FunctionName "yFindDialog::OKButton_Click";
+  @end;
+  ResID 113;
+  DesignName OKButton;
+  TabIndex 12;
+  DesignRect 120,165,60,16;
+ @end;
+
+ @begin Object "WCommandButton"
+  WSChild 1;
+  WSMaximizeBox 1;
+  WSTabStop 1;
+  WSVisible 1;
+  Pressed "0";
+  Text "Cancel";
+  Cancel "1";
+  @begin Event "Click"
+   GencodeSrcLine 371;
+   FunctionName "yFindDialog::CancelButton_Click";
+  @end;
+  ResID 114;
+  DesignName CancelButton;
+  TabIndex 13;
+  DesignRect 185,165,60,16;
+ @end;
+
+ @begin Object "WLabel"
+  WSSLeftNoWordWrap 1;
+  WSSNotify 1;
+  WCCSNoResize 1;
+  WCCSNoParentAlign 1;
+  WSChild 1;
+  WSVisible 1;
+  Text "(use x as wild-card character)";
+  ResID 115;
+  DesignName label_5;
+  TabIndex 14;
+  DesignRect 40,72,130,11;
+ @end;
+
+ @begin Object "WLabel"
+  WSSLeftNoWordWrap 1;
+  WSSNotify 1;
+  WCCSNoResize 1;
+  WCCSNoParentAlign 1;
+  WSChild 1;
+  WSVisible 1;
+  Text "Restrict search to these indicator values";
+  AutoSize "1";
+  ResID 116;
+  DesignName label_6;
+  TabIndex 15;
+  DesignRect 30,110,126,8;
+ @end;
+
+ @begin Object "WLabel"
+  WSSLeftNoWordWrap 1;
+  WSSNotify 1;
+  WCCSNoResize 1;
+  WCCSNoParentAlign 1;
+  WSChild 1;
+  WSVisible 1;
+  Text "(case-sensitive)";
+  AutoSize "1";
+  ResID 117;
+  DesignName label_7;
+  TabIndex 16;
+  DesignRect 55,120,49,8;
+ @end;
+
+ @begin HPPPrefixBlock
+@begin-code HPPPrefix
+
+/*
+Copyright 1992-2009 Systems Planning (www.systemsplanning.com)
+
+Licensed under the Apache License, Version 2.0 (the "License"); 
+you may not use this file except in compliance with the License. 
+You may obtain a copy of the License at 
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software 
+distributed under the License is distributed on an "AS IS" BASIS, 
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. 
+See the License for the specific language governing permissions and 
+limitations under the License.
+*/
+
+// Declarations added here will be included at the top of the .HPP file
+//030309 moved to yHelp//#include <process.h>	//011103 for html link
+#include "help.hpp"
+#include "utility.hpp"
+
+@end-code;
+  GencodeSrcLine 10;
+ @end;
+
+ @begin CPPPrefixBlock
+@begin-code CPPPrefix
+
+// Code added here will be included at the top of the .CPP file
+
+//  Include definitions for resources.
+#include "WRes.h"
+
+@end-code;
+  GencodeSrcLine 10;
+ @end;
+
+ @begin ClassContentsBlock
+@begin-code ClassContents
+
+    public:
+        // add your public instance data here
+		BOOL					firstchecked;
+		
+		yUtility::yFindData	FindData;
+		
+    private:
+        // add your private instance data here
+    protected:
+        // add your protected instance data here
+
+@end-code;
+  GencodeSrcLine 99;
+ @end;
+
+@begin-code GeneratedClassContents
+
+        yFindDialog();
+        ~yFindDialog();
+
+@end-code;
+
+@begin-code Code "yFindDialog::yFindDialog()"
+
+@@CLASSNAME@::@CLASSNAME@()
+{
+    	FindData.term.SetText ("");
+	FindData.casesensitive = FALSE;
+	firstchecked = TRUE;
+}
+
+@end-code;
+
+@begin-code Code "yFindDialog::~yFindDialog()"
+
+@@CLASSNAME@::~@CLASSNAME@()
+{
+    
+}
+
+@end-code;
+
+@begin-code Code "yFindDialog::yFindDialog_Create"
+
+WBool @CLASSNAME@::yFindDialog_Create(
+	WObject *         		source,
+	WCreateEventData *		event )
+{
+	// restore prev search
+	FindEntry->SetText (FindData.term);
+	TagEntry->SetText (FindData.tag);
+	SFCEntry->SetText(FindData.sfc);
+	Ind1Entry->SetText(FindData.ind1);
+	Ind2Entry->SetText(FindData.ind2);
+	CaseCheckbox->SetChecked (FindData.casesensitive);
+	FirstrecCheckbox->SetChecked (firstchecked);	
+	
+	if (!FindData.term.GetEmpty () || !FindData.tag.GetEmpty () || !FindData.sfc.GetEmpty ())
+	    OKButton->SetEnabled (TRUE);
+
+    return FALSE;
+}
+
+@end-code;
+
+@begin-code Code "yFindDialog::FindEntry_Change"
+
+WBool @CLASSNAME@::FindEntry_Change(
+	WObject *   		source,
+	WEventData *		event )
+{
+    OKButton->SetEnabled (TRUE);
+    
+    return FALSE;
+}
+
+@end-code;
+
+@begin-code Code "yFindDialog::FindEntry_CharacterPress"
+
+WBool @CLASSNAME@::FindEntry_CharacterPress(
+	WObject *                 		source,
+	WCharacterPressEventData *		event )
+{
+    OKButton->SetEnabled (TRUE);
+    
+    return FALSE;
+}
+
+@end-code;
+
+@begin-code Code "yFindDialog::TagEntry_CharacterPress"
+
+WBool @CLASSNAME@::TagEntry_CharacterPress(
+	WObject *                 		source,
+	WCharacterPressEventData *		event )
+{
+    OKButton->SetEnabled (TRUE);
+	
+    return FALSE;
+}
+
+@end-code;
+
+@begin-code Code "yFindDialog::SFCEntry_CharacterPress"
+
+WBool @CLASSNAME@::SFCEntry_CharacterPress(
+	WObject *                 		source,
+	WCharacterPressEventData *		event )
+{
+    OKButton->SetEnabled (TRUE);
+    
+    return FALSE;
+}
+
+@end-code;
+
+@begin-code Code "yFindDialog::HelpButton_Click"
+
+WBool @CLASSNAME@::HelpButton_Click(
+	WObject *   		source,
+	WEventData *		event )
+{
+	yHelp::ShowHelp ("find");	
+    
+    return FALSE;
+}
+
+@end-code;
+
+@begin-code Code "yFindDialog::OKButton_Click"
+
+WBool @CLASSNAME@::OKButton_Click(
+	WObject *   		source,
+	WEventData *		event )
+{
+    	FindData.term = FindEntry->GetText();
+	FindData.tag = TagEntry->GetText();
+	FindData.sfc = SFCEntry->GetText();
+	FindData.ind1 = Ind1Entry->GetText();
+	FindData.ind2 = Ind2Entry->GetText();
+	FindData.casesensitive = CaseCheckbox->GetChecked ();
+	firstchecked = FirstrecCheckbox->GetChecked ();
+	
+	if (FindData.term.GetEmpty () && FindData.tag.GetEmpty () && FindData.sfc.GetEmpty ())
+		Dismiss (0);
+	else
+		Dismiss (1);
+    
+    return FALSE;
+}
+
+@end-code;
+
+@begin-code Code "yFindDialog::CancelButton_Click"
+
+WBool @CLASSNAME@::CancelButton_Click(
+	WObject *   		source,
+	WEventData *		event )
+{
+    Dismiss (0);
+    
+    return FALSE;
+}
+
+@end-code;
+@end;

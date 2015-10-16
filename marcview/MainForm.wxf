@@ -1,0 +1,4208 @@
+Save Format v1.3
+@begin Form "MainForm"
+ Exported 0;
+
+ @begin Object "WModelessDialog"
+  WSCaption 1;
+  WSSizeable 1;
+  WSDlgBorder 1;
+  WSSysMenu 1;
+  WSSystemMenu 1;
+  WSMinimizeBox 1;
+  WSMaximizeBox 1;
+  WSGroup 1;
+  WSTabStop 1;
+  WSResizeBorder 1;
+  WSVisible 1;
+  Font "8.MS Sans Serif.Bold";
+  Icon "WIcon( WResourceID( MARCView ) )";
+  FormPositionType "Centered";
+  FormAbsTop "58";
+  FDXStructName "MainFormFDXStruct";
+  BackColor "[ 236 236 255 ]";
+  @begin Event "Close"
+   GencodeSrcLine 513;
+   FunctionName "MainForm::MainForm_Close";
+  @end;
+  @begin Event "Create"
+   GencodeSrcLine 570;
+   FunctionName "MainForm::MainForm_Create";
+  @end;
+  @begin Event "Resize"
+   GencodeSrcLine 835;
+   FunctionName "MainForm::MainForm_Resize";
+  @end;
+  @begin UserFunction "MainForm()"
+   Compiler 1;
+   GencodeSrcLine 875;
+   FunctionName "MainForm::MainForm()";
+  @end;
+  @begin UserFunction "~MainForm()"
+   Compiler 1;
+   GencodeSrcLine 879;
+   FunctionName "MainForm::~MainForm()";
+  @end;
+  @begin UserFunction "Display (int err=1)"
+   GencodeSrcLine 882;
+   FunctionName "MainForm::Display (int err=1)";
+  @end;
+  @begin UserFunction "Prototype for Display (int err=1)"
+   Private 1;
+   GencodeSrcLine 280;
+   FunctionName "MainForm::Prototype for Display (int err=1)";
+  @end;
+  @begin UserFunction "UpdateGridLayout(void)"
+   GencodeSrcLine 1008;
+   FunctionName "MainForm::UpdateGridLayout(void)";
+  @end;
+  @begin UserFunction "Prototype for UpdateGridLayout(void)"
+   Private 1;
+   GencodeSrcLine 288;
+   FunctionName "MainForm::Prototype for UpdateGridLayout(void)";
+  @end;
+  @begin UserFunction "ClearGrid (void )"
+   GencodeSrcLine 1045;
+   FunctionName "MainForm::ClearGrid (void )";
+  @end;
+  @begin UserFunction "Prototype for ClearGrid (void )"
+   Private 1;
+   GencodeSrcLine 290;
+   FunctionName "MainForm::Prototype for ClearGrid (void )";
+  @end;
+  @begin UserFunction "ClearRecView (void )"
+   GencodeSrcLine 1061;
+   FunctionName "MainForm::ClearRecView (void )";
+  @end;
+  @begin UserFunction "Prototype for ClearRecView (void )"
+   Private 1;
+   GencodeSrcLine 292;
+   FunctionName "MainForm::Prototype for ClearRecView (void )";
+  @end;
+  ResID 101;
+  DesignName MainForm;
+  TabIndex 0;
+  DesignRect -442,167,392,328;
+ @end;
+
+ @begin Menu
+  ItemCount 49;
+  DesignName "menu_1";
+  IsDefault 1;
+  ResID 101;
+  DesignRect 355,125,16,17;
+  @begin Popup
+   Name "item_File";
+   Caption "File";
+   NegotiatePosition None;
+   @begin Item
+    Name "item_Convert";
+    Caption "Convert...";
+    ResID 1027;
+    NegotiatePosition None;
+    @begin Event "Click"
+     GencodeSrcLine 1115;
+     FunctionName "MainForm::menu_1_item_Convert_Click";
+    @end;
+   @end;
+   @begin Item
+    Name "item_Open";
+    Caption "View...";
+    ResID 1028;
+    NegotiatePosition None;
+    @begin Event "Click"
+     GencodeSrcLine 1275;
+     FunctionName "MainForm::menu_1_item_Open_Click";
+    @end;
+   @end;
+   @begin Item
+    Name "item_Print";
+    Caption "Print";
+    ResID 1029;
+    NegotiatePosition None;
+    Disabled 1;
+    @begin Event "Click"
+     GencodeSrcLine 1322;
+     FunctionName "MainForm::menu_1_item_Print_Click";
+    @end;
+   @end;
+   Separator ;
+   @begin Item
+    Name "item_Exit";
+    Caption "Exit";
+    ResID 1031;
+    NegotiatePosition None;
+    @begin Event "Click"
+     GencodeSrcLine 1149;
+     FunctionName "MainForm::menu_1_item_Exit_Click";
+    @end;
+   @end;
+   Separator ;
+  @end;
+  @begin Popup
+   Name "item_Edit";
+   Caption "Edit";
+   NegotiatePosition None;
+   @begin Item
+    Name "item_Copy";
+    Caption "Copy";
+    ResID 1026;
+    NegotiatePosition None;
+    Disabled 1;
+    @begin Event "Click"
+     GencodeSrcLine 1140;
+     FunctionName "MainForm::menu_1_item_Copy_Click";
+    @end;
+   @end;
+  @end;
+  @begin Popup
+   Name "item_Navigate";
+   Caption "Navigate";
+   NegotiatePosition None;
+   @begin Item
+    Name "item_First";
+    Caption "First Record";
+    ResID 1014;
+    NegotiatePosition None;
+    Disabled 1;
+    @begin Event "Click"
+     GencodeSrcLine 1169;
+     FunctionName "MainForm::menu_1_item_First_Click";
+    @end;
+   @end;
+   @begin Item
+    Name "item_Prev";
+    Caption "Previous Record";
+    ResID 1015;
+    NegotiatePosition None;
+    Disabled 1;
+    @begin Event "Click"
+     GencodeSrcLine 1314;
+     FunctionName "MainForm::menu_1_item_Prev_Click";
+    @end;
+   @end;
+   @begin Item
+    Name "item_Next";
+    Caption "Next Record";
+    ResID 1016;
+    NegotiatePosition None;
+    Disabled 1;
+    @begin Event "Click"
+     GencodeSrcLine 1265;
+     FunctionName "MainForm::menu_1_item_Next_Click";
+    @end;
+   @end;
+   @begin Item
+    Name "item_Last";
+    Caption "Last Record";
+    ResID 1017;
+    NegotiatePosition None;
+    Disabled 1;
+    @begin Event "Click"
+     GencodeSrcLine 1255;
+     FunctionName "MainForm::menu_1_item_Last_Click";
+    @end;
+   @end;
+   Separator ;
+   @begin Item
+    Name "item_Goto";
+    Caption "Go to Record...";
+    ResID 1019;
+    NegotiatePosition None;
+    Disabled 1;
+    @begin Event "Click"
+     GencodeSrcLine 1215;
+     FunctionName "MainForm::menu_1_item_Goto_Click";
+    @end;
+   @end;
+   Separator ;
+   @begin Item
+    Name "item_Find";
+    Caption "Find...";
+    ResID 1021;
+    NegotiatePosition None;
+    Disabled 1;
+    @begin Event "Click"
+     GencodeSrcLine 1159;
+     FunctionName "MainForm::menu_1_item_Find_Click";
+    @end;
+   @end;
+   @begin Item
+    Name "item_Again";
+    Caption "Find Again";
+    ResID 1022;
+    NegotiatePosition None;
+    Disabled 1;
+    @begin Event "Click"
+     GencodeSrcLine 1105;
+     FunctionName "MainForm::menu_1_item_Again_Click";
+    @end;
+   @end;
+   Separator ;
+   @begin Item
+    Name "item_SQL";
+    Caption "SQL Search";
+    ResID 1024;
+    NegotiatePosition None;
+    Disabled 1;
+    @begin Event "Click"
+     GencodeSrcLine 1381;
+     FunctionName "MainForm::menu_1_item_SQL_Click";
+    @end;
+   @end;
+   @begin Item
+    Name "item_Reset";
+    Caption "SQL Reset";
+    ResID 1025;
+    NegotiatePosition None;
+    Disabled 1;
+    @begin Event "Click"
+     GencodeSrcLine 1367;
+     FunctionName "MainForm::menu_1_item_Reset_Click";
+    @end;
+   @end;
+  @end;
+  @begin Popup
+   Name "item_Tools";
+   Caption "Tools";
+   NegotiatePosition None;
+   @begin Item
+    Name "item_Fonts";
+    Caption "Fonts...";
+    ResID 1008;
+    NegotiatePosition None;
+    @begin Event "Click"
+     GencodeSrcLine 1179;
+     FunctionName "MainForm::menu_1_item_Fonts_Click";
+    @end;
+   @end;
+   @begin Item
+    Name "item_Settings";
+    Caption "Settings...";
+    ResID 1009;
+    NegotiatePosition None;
+    @begin Event "Click"
+     GencodeSrcLine 1389;
+     FunctionName "MainForm::menu_1_item_Settings_Click";
+    @end;
+   @end;
+   @begin Item
+    Name "item_Statistics";
+    Caption "Statistics";
+    ResID 1010;
+    NegotiatePosition None;
+    Disabled 1;
+    @begin Event "Click"
+     GencodeSrcLine 1409;
+     FunctionName "MainForm::menu_1_item_Statistics_Click";
+    @end;
+   @end;
+   Separator ;
+   @begin Item
+    Name "item_Hex";
+    Caption "Hex View";
+    ResID 1012;
+    NegotiatePosition None;
+    Disabled 1;
+    @begin Event "Click"
+     GencodeSrcLine 1235;
+     FunctionName "MainForm::menu_1_item_Hex_Click";
+    @end;
+   @end;
+   @begin Item
+    Name "item_Unblock";
+    Caption "Unblock...";
+    ResID 1013;
+    NegotiatePosition None;
+    @begin Event "Click"
+     GencodeSrcLine 1439;
+     FunctionName "MainForm::menu_1_item_Unblock_Click";
+    @end;
+   @end;
+  @end;
+  @begin Popup
+   Name "item_Help";
+   Caption "Help";
+   NegotiatePosition None;
+   @begin Item
+    Name "item_HelpSys";
+    Caption "Help";
+    ResID 1005;
+    NegotiatePosition None;
+    @begin Event "Click"
+     GencodeSrcLine 1225;
+     FunctionName "MainForm::menu_1_item_HelpSys_Click";
+    @end;
+   @end;
+   Separator ;
+   @begin Item
+    Name "item_About";
+    Caption "About MARCView";
+    ResID 1007;
+    NegotiatePosition None;
+    @begin Event "Click"
+     GencodeSrcLine 1080;
+     FunctionName "MainForm::menu_1_item_About_Click";
+    @end;
+   @end;
+  @end;
+ @end;
+
+ @begin Object "WCommandButton"
+  WSChild 1;
+  WSMinimizeBox 1;
+  WSMaximizeBox 1;
+  WSGroup 1;
+  WSTabStop 1;
+  WSVisible 1;
+  Pressed "0";
+  Text "Convert";
+  @begin Event "Click"
+   GencodeSrcLine 1450;
+   FunctionName "MainForm::ConvertButton_Click";
+  @end;
+  ResID 102;
+  DesignName ConvertButton;
+  TabIndex 1;
+  DesignRect 80,30,45,15;
+ @end;
+
+ @begin Object "WGrid"
+  WSHScroll 1;
+  WSVScroll 1;
+  WSChild 1;
+  WSMaximizeBox 1;
+  WSTabStop 1;
+  WSVisible 1;
+  Font "10.Courier New";
+  DefaultColumnWidth "85";
+  DefaultRowHeight "16";
+  FullRowSelection "1";
+  HorizontalHeaderHeight "16";
+  MultipleSelection "0";
+  ReadOnly "1";
+  ResizableColumns "1";
+  ResizableRows "0";
+  RowCount "4294967295";
+  ShowColumnLines "1";
+  ShowRowLines "1";
+  ShowHorizontalHeader "1";
+  ShowVerticalHeader "0";
+  UseTabs "1";
+  VerticalHeaderWidth "75";
+  ColumnCount "4";
+  BackColor "WColorWindow";
+  @begin Event "Click"
+   GencodeSrcLine 1458;
+   FunctionName "MainForm::NavigationGrid_Click";
+  @end;
+  @begin Event "LeftButtonUp"
+   GencodeSrcLine 1500;
+   FunctionName "MainForm::NavigationGrid_LeftButtonUp";
+  @end;
+  @begin Event "Select"
+   GencodeSrcLine 1513;
+   FunctionName "MainForm::NavigationGrid_Select";
+  @end;
+  ResID 103;
+  DesignName NavigationGrid;
+  TabIndex 2;
+  DesignRect 5,70,179,192;
+ @end;
+
+ @begin Object "WRichTextBox"
+  WTextBoxMultiLine 1;
+  WTextBoxWantReturn 1;
+  WCCSNoResize 1;
+  WSVScroll 1;
+  WSChild 1;
+  WSExClientEdge 1;
+  WSVisible 1;
+  Font "10.Courier New";
+  @begin Event "LeftButtonUp"
+   GencodeSrcLine 1521;
+   FunctionName "MainForm::RecView_LeftButtonUp";
+  @end;
+  ResID 104;
+  DesignName RecView;
+  TabIndex 3;
+  DesignRect 185,70,154,191;
+ @end;
+
+ @begin Object "WColumnHeading"
+  WHSButtons 1;
+  WCCSNoMoveY 1;
+  WSChild 1;
+  WSExClientEdge 1;
+  WSVisible 1;
+  ToolTipText "Drag vertical bar to adjust size of panes";
+  @begin Event "Change"
+   GencodeSrcLine 1534;
+   FunctionName "MainForm::ColumnControl_Change";
+  @end;
+  @begin Event "Create"
+   GencodeSrcLine 1558;
+   FunctionName "MainForm::ColumnControl_Create";
+  @end;
+  ResID 105;
+  DesignName ColumnControl;
+  TabIndex 4;
+  DesignRect -185,50,329,15;
+ @end;
+
+ @begin Object "WCommandButton"
+  WSChild 1;
+  WSMaximizeBox 1;
+  WSTabStop 1;
+  WSVisible 1;
+  Pressed "0";
+  Text "View";
+  ToolTipText "Open a file";
+  @begin Event "Click"
+   GencodeSrcLine 2385;
+   FunctionName "MainForm::OpenButton_Click";
+  @end;
+  ResID 106;
+  DesignName OpenButton;
+  TabIndex 5;
+  DesignRect 5,0,30,15;
+ @end;
+
+ @begin Object "WFileDialog"
+  WFDSHideReadOnly 1;
+  WFDSNoChangeDir 1;
+  WFDSEnableHook 1;
+  WFDSExplorer 1;
+  InitialDirectory "WFilePath( \".\" )";
+  ResID 107;
+  DesignName FileDialog;
+  TabIndex 6;
+  DesignRect 355,75,16,17;
+ @end;
+
+ @begin Object "WLabel"
+  WSSRight 1;
+  WSSNotify 1;
+  WCCSNoMoveY 1;
+  WSChild 1;
+  WSVisible 1;
+  ForeColor "WColorBrightBlue";
+  ResID 108;
+  DesignName RecCountLabel;
+  TabIndex 7;
+  DesignRect 250,25,135,8;
+ @end;
+
+ @begin Object "WCommandButton"
+  WSChild 1;
+  WSMaximizeBox 1;
+  WSTabStop 1;
+  WSVisible 1;
+  Pressed "0";
+  BackColor "[ 236 236 255 ]";
+  ForeColor "WColorBlack";
+  Text "|<First";
+  ToolTipText "Show first record";
+  @begin Event "Click"
+   GencodeSrcLine 2733;
+   FunctionName "MainForm::FirstButton_Click";
+  @end;
+  ResID 109;
+  DesignName FirstButton;
+  TabIndex 8;
+  DesignRect 39,0,31,15;
+ @end;
+
+ @begin Object "WCommandButton"
+  WSChild 1;
+  WSMaximizeBox 1;
+  WSTabStop 1;
+  WSVisible 1;
+  Pressed "0";
+  Text "< Prev";
+  ToolTipText "Show previous record";
+  @begin Event "Click"
+   GencodeSrcLine 2752;
+   FunctionName "MainForm::PrevButton_Click";
+  @end;
+  ResID 110;
+  DesignName PrevButton;
+  TabIndex 9;
+  DesignRect 69,0,30,15;
+ @end;
+
+ @begin Object "WCommandButton"
+  WSChild 1;
+  WSMaximizeBox 1;
+  WSTabStop 1;
+  WSVisible 1;
+  Pressed "0";
+  Text "Next >";
+  ToolTipText "Show next record";
+  @begin Event "Click"
+   GencodeSrcLine 2775;
+   FunctionName "MainForm::NextButton_Click";
+  @end;
+  ResID 111;
+  DesignName NextButton;
+  TabIndex 10;
+  DesignRect 99,0,30,15;
+ @end;
+
+ @begin Object "WCommandButton"
+  WSChild 1;
+  WSMaximizeBox 1;
+  WSTabStop 1;
+  WSVisible 1;
+  Pressed "0";
+  Text "Last >|";
+  ToolTipText "Show last record";
+  @begin Event "Click"
+   GencodeSrcLine 2799;
+   FunctionName "MainForm::LastButton_Click";
+  @end;
+  ResID 112;
+  DesignName LastButton;
+  TabIndex 11;
+  DesignRect 129,0,30,15;
+ @end;
+
+ @begin Object "WCommandButton"
+  WSChild 1;
+  WSMaximizeBox 1;
+  WSTabStop 1;
+  WSVisible 1;
+  Pressed "0";
+  Text "Goto";
+  ToolTipText "Go to a specific record";
+  @begin Event "Click"
+   GencodeSrcLine 2817;
+   FunctionName "MainForm::GotoButton_Click";
+  @end;
+  ResID 113;
+  DesignName GotoButton;
+  TabIndex 12;
+  DesignRect 163,0,30,15;
+ @end;
+
+ @begin Object "WCommandButton"
+  WSChild 1;
+  WSMaximizeBox 1;
+  WSTabStop 1;
+  WSVisible 1;
+  Pressed "0";
+  Text "Find";
+  ToolTipText "Search for a word or phrase";
+  @begin Event "Click"
+   GencodeSrcLine 2835;
+   FunctionName "MainForm::FindButton_Click";
+  @end;
+  ResID 114;
+  DesignName FindButton;
+  TabIndex 13;
+  DesignRect 193,0,30,15;
+ @end;
+
+ @begin Object "WCommandButton"
+  WSChild 1;
+  WSMaximizeBox 1;
+  WSTabStop 1;
+  WSVisible 1;
+  Pressed "0";
+  Text "Again";
+  ToolTipText "Continue searching";
+  @begin Event "Click"
+   GencodeSrcLine 2960;
+   FunctionName "MainForm::AgainButton_Click";
+  @end;
+  ResID 115;
+  DesignName AgainButton;
+  TabIndex 14;
+  DesignRect 223,0,30,15;
+ @end;
+
+ @begin Object "WCommandButton"
+  WSDisabled 1;
+  WSChild 1;
+  WSMaximizeBox 1;
+  WSTabStop 1;
+  WSVisible 1;
+  Pressed "0";
+  Text "Hex";
+  ToolTipText "View raw record in new window, then click on field or directory of interest";
+  @begin Event "Click"
+   GencodeSrcLine 2981;
+   FunctionName "MainForm::HexviewButton_Click";
+  @end;
+  ResID 116;
+  DesignName HexviewButton;
+  TabIndex 15;
+  DesignRect 257,0,30,15;
+ @end;
+
+ @begin Object "WCommandButton"
+  WSChild 1;
+  WSMaximizeBox 1;
+  WSTabStop 1;
+  WSVisible 1;
+  Pressed "0";
+  Text "Print";
+  ToolTipText "Prints this record";
+  @begin Event "Click"
+   GencodeSrcLine 2989;
+   FunctionName "MainForm::PrintButton_Click";
+  @end;
+  ResID 117;
+  DesignName PrintButton;
+  TabIndex 16;
+  DesignRect 287,0,30,15;
+ @end;
+
+ @begin Object "WCommandButton"
+  WSChild 1;
+  WSMaximizeBox 1;
+  WSTabStop 1;
+  WSVisible 1;
+  Pressed "0";
+  Text "Help";
+  ToolTipText "Display Help file";
+  @begin Event "Click"
+   GencodeSrcLine 3109;
+   FunctionName "MainForm::HelpButton_Click";
+  @end;
+  ResID 118;
+  DesignName HelpButton;
+  TabIndex 17;
+  DesignRect 317,0,30,15;
+ @end;
+
+ @begin Object "WCommandButton"
+  WSChild 1;
+  WSMaximizeBox 1;
+  WSTabStop 1;
+  WSVisible 1;
+  Pressed "0";
+  Text "Exit";
+  ToolTipText "Exits MARCView";
+  @begin Event "Click"
+   GencodeSrcLine 3117;
+   FunctionName "MainForm::ExitButton_Click";
+  @end;
+  ResID 119;
+  DesignName ExitButton;
+  TabIndex 18;
+  DesignRect 351,0,31,15;
+ @end;
+
+ @begin Object "WLabel"
+  WSSLeftNoWordWrap 1;
+  WSSNotify 1;
+  WCCSNoResize 1;
+  WCCSNoParentAlign 1;
+  WSChild 1;
+  WSVisible 1;
+  ForeColor "WColorBrightBlue";
+  AutoSize "1";
+  ResID 120;
+  DesignName FilenameLabel;
+  TabIndex 19;
+  DesignRect 160,25,0,8;
+ @end;
+
+ @begin Object "WLabel"
+  WSSLeftNoWordWrap 1;
+  WSSNotify 1;
+  WCCSNoResize 1;
+  WCCSNoParentAlign 1;
+  WSChild 1;
+  WSVisible 1;
+  ForeColor "WColorBrightBlue";
+  Text "Systems Planning";
+  AutoSize "1";
+  ResID 121;
+  DesignName SPLabel;
+  TabIndex 20;
+  DesignRect 5,285,57,8;
+ @end;
+
+ @begin Object "WLabel"
+  WSSLeftNoWordWrap 1;
+  WSSNotify 1;
+  WCCSNoResize 1;
+  WCCSNoParentAlign 1;
+  WSChild 1;
+  WSVisible 1;
+  BackColor "WColorBrightRed";
+  ForeColor "WColorWhite";
+  AutoSize "1";
+  ResID 122;
+  DesignName MessageLabel;
+  TabIndex 21;
+  DesignRect 170,285,0,8;
+ @end;
+
+ @begin Object "WLabel"
+  WSSLeftNoWordWrap 1;
+  WSSNotify 1;
+  WCCSNoResize 1;
+  WCCSNoParentAlign 1;
+  WSChild 1;
+  WSVisible 1;
+  ForeColor "WColorBrightBlue";
+  Text "Copyright \251 1992-2007";
+  AutoSize "1";
+  ResID 123;
+  DesignName CopyrightLabel;
+  TabIndex 22;
+  DesignRect 305,285,76,8;
+ @end;
+
+ @begin Object "WLabel"
+  WSSLeftNoWordWrap 1;
+  WSSNotify 1;
+  WCCSNoResize 1;
+  WCCSNoParentAlign 1;
+  WSChild 1;
+  WSExTransparent 1;
+  WSVisible 1;
+  ForeColor "WColorBrightBlue";
+  Text "[release label]";
+  AutoSize "1";
+  ResID 124;
+  DesignName ReleaseLabel;
+  TabIndex 23;
+  DesignRect 5,25,46,8;
+ @end;
+
+ @begin Object "WPrintDialog"
+  WPrintDSNoPageNums 1;
+  WPrintDSEnablePrintHook 1;
+  ResID 125;
+  DesignName PrintDialog;
+  TabIndex 24;
+  DesignRect 355,100,16,18;
+ @end;
+
+ @begin Object "WFormProxy"
+  FormClass "HexForm";
+  ResID 126;
+  DesignName HexView;
+  TabIndex 25;
+  DesignRect 355,150,16,17;
+ @end;
+
+ @begin Object "WFontDialog"
+  WFontDSScreenFonts 1;
+  WFontDSEnableHook 1;
+  Font "8.MS Sans Serif";
+  ResID 127;
+  DesignName FontDialog;
+  TabIndex 26;
+  DesignRect 355,175,16,17;
+ @end;
+
+ @begin Object "WCommandButton"
+  WSChild 1;
+  WSMaximizeBox 1;
+  WSTabStop 1;
+  WSVisible 1;
+  Pressed "0";
+  Text "SQL";
+  @begin Event "Click"
+   GencodeSrcLine 3221;
+   FunctionName "MainForm::SQLButton_Click";
+  @end;
+  ResID 128;
+  DesignName SQLButton;
+  TabIndex 27;
+  DesignRect 170,30,45,15;
+ @end;
+
+ @begin HPPPrefixBlock
+@begin-code HPPPrefix
+
+/*
+Copyright 1992-2009 Systems Planning (www.systemsplanning.com)
+
+Licensed under the Apache License, Version 2.0 (the "License"); 
+you may not use this file except in compliance with the License. 
+You may obtain a copy of the License at 
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software 
+distributed under the License is distributed on an "AS IS" BASIS, 
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. 
+See the License for the specific language governing permissions and 
+limitations under the License.
+*/
+
+//970906 changes to make a new hexview for each record instead of one for entire file
+
+// Declarations added here will be included at the top of the .HPP file
+#include "aboutbox.hpp"
+#include "applic.hpp"	//060204 for MARCONVERT define
+#include "bibrec.hpp"
+#include "finddialog.hpp"
+#include "gotodialog.hpp"
+#include "help.hpp"
+#include "hexform.hpp"
+#include "printdialog.hpp"
+#include "settings.hpp"
+#include "sql.hpp"
+#include "statistics.hpp"
+#include "utility.hpp"
+
+// for MARCONVERT
+#include "export.hpp"
+#include "import.hpp"
+#include "marctomarc.hpp"
+#include "mcclient.hpp"
+#include "unblock.hpp"
+
+
+/* to add an MC client or work on a different one:
+		1. turn on this define
+		2. comment out and/or add to client's stuff in INI
+*/
+
+//060204 now in Application.hpp
+//#define MARCONVERT
+//#undef MARCONVERT
+
+
+#include <io.h> 		//for "access" function
+#include <sys\stat.h>	//970115 to get file stats in Open
+
+@end-code;
+  GencodeSrcLine 11;
+ @end;
+
+ @begin CPPPrefixBlock
+@begin-code CPPPrefix
+
+// Code added here will be included at the top of the .CPP file
+const int 	margin = 5;
+const int 	buttonWidth = 50;
+const int 	bandHeight = 23;
+const int		buttonSpace = 6;
+
+
+//  Include definitions for resources.
+#include "WRes.h"
+
+@end-code;
+  GencodeSrcLine 10;
+ @end;
+
+ @begin ClassContentsBlock
+@begin-code ClassContents
+
+    public:
+        // add your public instance data here
+		yAboutBox			AboutBox;
+       	yBibRec  	   		BibRec;
+       	yExport			ExportDialog;
+		yFindDialog		FindDialog;
+		yGotoDialog		GotoDialog;
+		yImport			ImportDialog;
+		yMarcToMarc		ConvertDialog;
+		yMCClient			MCClient;
+		yPrintDialog		PrintDia;	//doesn't conflict with Optima PrintDialog name
+	 	ySettings			SettingsDialog;
+		ySQL				SQLDialog;
+		yStatistics		StatisticsDialog;
+		yUnblock			UnblockDialog;
+		WConsole* 		pconsole;
+		
+		//050106 globals read from INI (or calculated) to replace defines
+		WString			TheProduct;
+		WString			TheHelpFile;
+		WString			TheVersion;
+		WString			TheRelease;
+		WString			TheState;
+		yClient			TheClient;
+
+        
+    private:
+        // add your private instance data here
+		WBool			_inFileDlg;
+		WFilePath			TheFilePath;
+		
+		//040725 recently used files
+		#ifndef LITE
+		WFilePath			RecentFiles [9];
+		void				PushRecentFile (WFilePath);
+		WBool			OpenRecentFile (WObject*, WEventData*);
+		#endif
+
+		WBool			inSQL;
+		//051128 because NavGrid->SetEnabled is braindead
+		WBool			NavGridEnabled;
+		
+    protected:
+        // add your protected instance data here
+
+@end-code;
+  GencodeSrcLine 236;
+ @end;
+
+@begin-code GeneratedClassContents
+
+        MainForm();
+        ~MainForm();
+
+@end-code;
+
+@begin-code Code "MainForm::MainForm()"
+
+@@CLASSNAME@::@CLASSNAME@()
+{
+	_inFileDlg = FALSE;
+}
+
+@end-code;
+
+@begin-code Code "MainForm::~MainForm()"
+
+@@CLASSNAME@::~@CLASSNAME@()
+{
+}
+
+@end-code;
+
+@begin-code Code "MainForm::Display (int err=1)"
+
+//Display
+void @CLASSNAME@::Display (int err)	//default 1 means display record
+{
+	int			i;
+	long			cur, num;
+	long&		rcur = cur;
+	long&		rnum = num;
+	
+	WString		caption;
+	
+	//clear richtext window
+	ClearRecView ();
+
+	//update label
+	BibRec.GetCurrentNum(rcur, rnum);
+	caption.Sprintf("Record %lu of %lu", cur, num);
+	RecCountLabel->SetText(caption);
+		
+	//051128
+	//if (NavigationGrid->GetEnabled () == TRUE)
+	if (NavGridEnabled)
+	{
+		//050201 simple way won't work with marcsql result sets
+		if (inSQL)
+		{
+			for (long ii = 0; ii < NavigationGrid->GetRowCount (); ii++)
+			{
+				if (NavigationGrid->GetText (ii, 0).ConvertToLong () == ii)
+				{
+					NavigationGrid->SetSelectedRowNumber (ii, TRUE, TRUE);
+					break;
+				}
+			}
+		}
+		else
+			NavigationGrid->SetSelectedRowNumber (cur-1, TRUE, TRUE);
+	}
+
+
+	// UPDATE BUTTONS
+	//050731 turning OFF is handled elsewhere for SQL result sets
+	//		-- turning ON uses this
+	
+	if (cur > 1)
+	{
+		FirstButton->SetEnabled (TRUE);
+		PrevButton->SetEnabled (TRUE);
+		menu_1_item_First->SetEnabled (TRUE);
+		menu_1_item_Prev->SetEnabled (TRUE);
+	}
+	else
+	{
+		FirstButton->SetEnabled (FALSE);
+		PrevButton->SetEnabled (FALSE);
+		menu_1_item_First->SetEnabled (FALSE);
+		menu_1_item_Prev->SetEnabled (FALSE);
+	}
+	
+	if (cur == num)
+	{
+		NextButton->SetEnabled (FALSE);
+		LastButton->SetEnabled (FALSE);
+		AgainButton->SetEnabled (FALSE);
+		menu_1_item_Next->SetEnabled (FALSE);
+		menu_1_item_Last->SetEnabled (FALSE);
+		menu_1_item_Again->SetEnabled (FALSE);
+	}
+	else
+	{
+		NextButton->SetEnabled (TRUE);
+		LastButton->SetEnabled (TRUE);
+		menu_1_item_Next->SetEnabled (TRUE);
+		menu_1_item_Last->SetEnabled (TRUE);
+	}
+	
+	if (num == 1)
+	{
+		GotoButton->SetEnabled (FALSE);
+		menu_1_item_Goto->SetEnabled (FALSE);
+	}
+	else if (!inSQL)
+	{
+		GotoButton->SetEnabled (TRUE);
+		menu_1_item_Goto->SetEnabled (TRUE);
+	}
+
+	
+	//050201 moved from below
+	if ((err < 1) || (err > 2))	//validation results
+	{
+		/*060202
+		WMessageBox::Info (NULL, TheProduct.GetText (), BibRec.TheValMsg.GetText ());*/
+		WMessageBox::Info(NULL, TheProduct.GetText(), BibRec.TheMessage.GetText());
+		
+		return;
+	}
+
+
+	i = BibRec.DisplayRecord (RecView);
+
+	RecView->Scroll (0, -1000);	//000504 -200 for win2000 to reset rec to top, 030121 -1000
+
+	if (!inSQL)	//050201 this line
+		MessageLabel->SetText ("");	//clears from previous find
+	
+	if (SettingsDialog.Options.UserWantsHilite)
+	{
+		if (i == E_FUTUREFEATURE)
+		{
+			//030103 this is to handle when user searches on ONLY a tag or sfc (no term)
+			if (FindDialog.FindData.term.GetEmpty ())
+				caption.SetText ("Found but cannot highlight");
+			else
+				caption.SetText ("Found '" + FindDialog.FindData.term + "' but cannot highlight");
+			
+			MessageLabel->SetText (caption);
+			WRect r = GetClientRectangle ();
+			MessageLabel->SetLeft ((r.w - MessageLabel->GetWidth ()) / 2);
+		}
+	}
+
+	RecView->SetVisible (TRUE);	// not sure where it was made invisible...
+		
+	return;
+}
+//Display
+
+@end-code;
+
+@begin-code Code "MainForm::Prototype for Display (int err=1)"
+
+    public:
+        	void 	Display (int err=1);
+		WBool	OpenFile (WFilePath);
+		WBool	Print_Guts (long, long);
+		WBool	Search_Guts (long, long);
+		void		BuildGrid ();
+			
+		
+
+@end-code;
+
+@begin-code Code "MainForm::UpdateGridLayout(void)"
+
+//UpdateGridLayout
+void @CLASSNAME@::UpdateGridLayout(void)
+{
+    	NavigationGrid->SetColumnTitle (0, "Num");
+	
+	switch (BibRec.GetRecordFormat ())
+	{
+		case MARC21BIB:
+		case MARCXMLBIB:
+			NavigationGrid->SetColumnTitle (1, SettingsDialog.Options.MB_Col2Label);
+			NavigationGrid->SetColumnTitle (2, SettingsDialog.Options.MB_Col3Label);
+			NavigationGrid->SetColumnTitle (3, SettingsDialog.Options.MB_Col4Label);
+			break;
+			
+		case MARC21AUTH:
+		case MARCXMLAUTH:
+			NavigationGrid->SetColumnTitle (1, SettingsDialog.Options.MA_Col2Label);
+			NavigationGrid->SetColumnTitle (2, SettingsDialog.Options.MA_Col3Label);
+			NavigationGrid->SetColumnTitle (3, SettingsDialog.Options.MA_Col4Label);
+			break;
+			
+		case UNIMARCBIB:
+			NavigationGrid->SetColumnTitle (1, SettingsDialog.Options.UB_Col2Label);
+			NavigationGrid->SetColumnTitle (2, SettingsDialog.Options.UB_Col3Label);
+			NavigationGrid->SetColumnTitle (3, SettingsDialog.Options.UB_Col4Label);
+			break;
+			
+		case UNIMARCAUTH:
+			NavigationGrid->SetColumnTitle (1, SettingsDialog.Options.UA_Col2Label);
+			NavigationGrid->SetColumnTitle (2, SettingsDialog.Options.UA_Col3Label);
+			NavigationGrid->SetColumnTitle (3, SettingsDialog.Options.UA_Col4Label);
+			break;
+	}
+	
+	return;
+}
+//UpdateGridLayout
+
+@end-code;
+
+@begin-code Code "MainForm::Prototype for UpdateGridLayout(void)"
+
+    public:
+        void UpdateGridLayout(void);
+
+@end-code;
+
+@begin-code Code "MainForm::ClearGrid (void )"
+
+//ClearGrid
+void @CLASSNAME@::ClearGrid (void )
+{
+	// this causes assertion failure in WGrid.cpp: GetTopRowNumber() > 0
+	//050615 try scrolling grid to top first
+	//050615 causes hang if grid is empty//NavigationGrid->EnsureRowIsVisible (0);
+	NavigationGrid->SetRowCount (0);
+	//NavigationGrid->DeleteAllRows ();	//050201 this does nothing, neither
+									// deletes the rows nor resets rowcount
+	NavigationGrid->SetEnabled (FALSE);
+	NavGridEnabled = FALSE;	//051128
+	NavigationGrid->SetVisible (FALSE);
+
+	return;
+}
+//ClearGrid
+
+@end-code;
+
+@begin-code Code "MainForm::Prototype for ClearGrid (void )"
+
+    public:
+        void ClearGrid (void );
+
+@end-code;
+
+@begin-code Code "MainForm::ClearRecView (void )"
+
+//ClearRecView
+void @CLASSNAME@::ClearRecView (void )
+{
+	RecView->SetReadOnly (FALSE);
+	
+	WRange range;
+	range.start = 0;
+	range.end = -1;
+	RecView->SetEditSelection (range);
+	RecView->Clear ();
+	
+	RecView->SetReadOnly (TRUE);
+	Update ();
+	
+	menu_1_item_Copy->SetEnabled (FALSE);
+
+	return;
+}
+//ClearRecView
+
+@end-code;
+
+@begin-code Code "MainForm::Prototype for ClearRecView (void )"
+
+    public:
+        void ClearRecView (void );
+
+@end-code;
+
+@begin-code Code "MainForm::MainForm_Close"
+
+WBool @CLASSNAME@::MainForm_Close(
+	WObject *   		source,
+	WEventData *		event )
+{
+	WString s;
+
+    //all these settings are not part of user preferences, so must be
+    //  updated here instead of by SettingsDialog.WriteIni below
+	if (GetWindowState() == WWindowStateMaximized)
+	{
+		SetWindowState (WWindowStateNormal);	//to get restored size
+		s = "1";
+	}
+	else
+		s = "0";
+	WAppObject.SetProfileString ("MainWindow", "Maximized", s, "MARCView.INI");
+	
+	WRect r = GetRectangle (TRUE);
+	
+	//debugging
+	//WMessageBox::Messagef (NULL, WMsgBSOk, "Window", "Left: %lu\nTop: %lu\nWidth: %lu\nHeight: %lu", r.x, r.y, r.w, r.h);
+
+	s.Sprintf ("%lu", r.x);
+    WAppObject.SetProfileString ("MainWindow", "Left", s, "MARCView.INI");
+	s.Sprintf ("%lu", r.y);
+	WAppObject.SetProfileString ("MainWindow", "Top", s, "MARCView.INI");
+	s.Sprintf ("%lu", r.w);
+	WAppObject.SetProfileString ("MainWindow", "Width", s, "MARCView.INI");
+	s.Sprintf ("%lu", r.h);
+	WAppObject.SetProfileString ("MainWindow", "Height", s, "MARCView.INI");
+
+   	s.Sprintf ("%lu", NavigationGrid->GetWidth ());
+	WAppObject.SetProfileString ("NavigationGrid", "Width", s, "MARCView.INI");
+
+   	s.Sprintf ("%lu", NavigationGrid->GetColumnWidth (0));
+	WAppObject.SetProfileString ("NavigationGrid", "Col1Width", s, "MARCView.INI");
+   	s.Sprintf ("%lu", NavigationGrid->GetColumnWidth (1));
+	WAppObject.SetProfileString ("NavigationGrid", "Col2Width", s, "MARCView.INI");
+   	s.Sprintf ("%lu", NavigationGrid->GetColumnWidth (2));
+	WAppObject.SetProfileString ("NavigationGrid", "Col3Width", s, "MARCView.INI");
+   	s.Sprintf ("%lu", NavigationGrid->GetColumnWidth (3));
+	WAppObject.SetProfileString ("NavigationGrid", "Col4Width", s, "MARCView.INI");
+	
+	//040725 save recently used files
+	#ifndef LITE
+	for (int i = 0; i < 9; i++)
+	{
+		s.Sprintf ("%lu", i + 1);
+		if (!RecentFiles [i].GetEmpty ())
+			WAppObject.SetProfileString ("RecentFiles", s, RecentFiles [i], "MARCView.INI");
+	}
+	#endif
+	
+	SettingsDialog.WriteIni ();
+	
+    return FALSE;
+}
+
+@end-code;
+
+@begin-code Code "MainForm::MainForm_Create"
+
+//MainForm_Create
+WBool @CLASSNAME@::MainForm_Create(
+	WObject *         		source,
+	WCreateEventData *		event )
+{
+	WRect 			r;
+	WString			s;
+	s = WAppObject.GetProfileString ("MainWindow", "Left", "0", "MARCView.INI");
+	r.x = s.ConvertToInteger ();
+	s = WAppObject.GetProfileString ("MainWindow", "Top", "0", "MARCView.INI");
+	r.y = s.ConvertToInteger ();
+	s = WAppObject.GetProfileString ("MainWindow", "Width", "760", "MARCView.INI");
+	r.w = s.ConvertToInteger ();
+	s = WAppObject.GetProfileString ("MainWindow", "Height", "480", "MARCView.INI");
+	r.h = s.ConvertToInteger ();
+	
+	//970311 sometimes INI gets corrupted and app is offscreen, so check it
+	WRect screen = WAppObject.GetScreenSize ();
+	//030309 separating size from position -- it could be that we move the window to a 
+	//	negative top or left, which is represented by 4 billion
+	if ((r.x > screen.w - 100) ||	//100 is ...
+			(r.x < 0) ||
+			(r.y > screen.h - 100) ||	//...min tracking size
+			(r.y < 0))
+	{
+		r.x = 0;
+		r.y = 0;
+	}
+	if ((r.w < 100) || 
+			(r.w > r.x + screen.w) ||
+			(r.h < 100) || 
+			(r.h > r.y + screen.h))
+	{
+		r.w = 760;
+		r.h = 480;
+	}
+	
+	Move (r);
+	SettingsDialog.ReadIni ();		// gets the Settings dialog options
+	
+	
+	#ifdef MARCONVERT
+		TheProduct = "MARConvert";
+		MCClient.Initialize ();
+		
+		// make local copies for convenience
+		TheClient = MCClient.TheClient;
+		TheHelpFile = MCClient.TheHelpFile;
+		TheRelease = MCClient.TheRelease;
+		TheVersion = MCClient.TheVersion;
+		
+		
+		// MARCONVERT TIMEBOMB
+
+		WLocaleID li;
+		WString bomb;
+		
+		// format will be "4/21/2006"
+		bomb.SetText(li.GetFormatDate(WDateFormatShortDatePicture));
+		WStringArray thedate = bomb.Parse("/");
+		
+		int year = thedate[2].ConvertToInteger();
+		int month = thedate[0].ConvertToInteger();
+		int day = thedate[1].ConvertToInteger();
+		
+		/*071120 removed, but not uploading until check received
+		// PPP expires 12/15/2007 -- meant 11/15 but miscoded
+		else if ((TheClient == PPP) && ((year > 2007) || ((month > 11) && (day > 15))))
+		{
+			WMessageBox::Message  (NULL, 
+								WMsgBSOk | WMsgBSIconError,
+								"Problem",
+								"Internal error, contact Systems Planning");
+			exit(EXIT_FAILURE);
+		}
+		*/
+		
+	#else
+		TheProduct = "MARCView";
+		
+		TheRelease = "3.12.2";
+		TheHelpFile = "MVHelp312.asp";
+		TheState = "";	// such as beta
+		//TheRelease = "4.0";	
+		//TheHelpFile = "MVHelp40.asp";	
+		//TheState = "beta";	// such as beta
+	
+	
+		// MARCVIEW TIMEBOMB -- for betas
+
+		/*
+		WLocaleID li;
+		WString bomb;
+		
+		// format will be like "4/21/2006"
+		bomb.SetText(li.GetFormatDate(WDateFormatShortDatePicture));
+		WStringArray thedate = bomb.Parse("/");
+		
+		// expires 11/30/2006
+		int year = thedate[2].ConvertToInteger();
+		int month = thedate[0].ConvertToInteger();
+		
+		if ((TheState == "beta") && ((year != 2007) || (month > 5)))
+		{
+			WMessageBox::Message    
+					(NULL, 
+					WMsgBSOk | WMsgBSIconError,
+					"Problem",
+					"Sorry, beta version has expired. Please contact Systems Planning for renewal.");
+			return FALSE;
+		}
+		*/
+		
+
+		// for debugging SQL
+		#ifdef _DEBUG
+		// because we cannot set breakpoints in a sub containing a yUtility::yFindData declaration,
+		//		we have to write values to a debug file. we open it here so that it is flushed for
+		//		each run. if we did it in SQLButton_Click it would be flushed for each query
+		FILE* debugfile;
+		if ((debugfile = fopen ("debug.txt", "w")) == NULL)
+		{
+			WMessageBox::Info (NULL, NULL, "Problem opening debug.txt");
+		}
+		fclose (debugfile);
+		#endif
+		
+		#if defined LITE
+			TheVersion = "Lite";
+		#else
+			TheVersion = "";
+		#endif
+	#endif
+	
+	
+	//040725 read the recent files
+	#ifndef LITE
+	for (int i = 0; i < 9; i++)
+	{
+		s.Sprintf ("%d", i + 1);
+		s = WAppObject.GetProfileString ("RecentFiles", s, "", "MARCView.INI");
+		RecentFiles [i] = s;
+	}
+	
+	// add list of recent files to file menu
+	WString menuitemlabel;
+	for (i = 0; i < 9; i++)
+	{
+		if (!RecentFiles [i].GetEmpty ())
+		{
+			WMenuItem* mi = new WMenuItem ();
+			menuitemlabel.Sprintf ("%d  %s", i + 1, RecentFiles [i].GetText ());
+			mi->SetText (menuitemlabel.GetText ());
+			mi->SetEventHandler 
+					(WClickEvent, 
+					this, 
+					(WEventHandler) OpenRecentFile,
+					(void*) RecentFiles [i].GetText ());
+			menu_1_item_File->AddItem (mi, -1, TRUE);
+		}
+	}
+	#endif
+	
+	
+	//040721 we do this here so columns won't be labeled 1, 2, 3, 4 -- the sub uses the MARC21BIB defaults
+	UpdateGridLayout ();
+	
+	
+	#ifdef LITE	//030322 in case user edits INI file
+	BibRec.SetPreferences 
+			(FALSE,
+			"LEADER",
+			TRUE,
+			FALSE,
+			100000);
+	#else
+	BibRec.SetPreferences 
+			(SettingsDialog.Options.NonnumericTags,
+			SettingsDialog.Options.CharsetIn,
+			SettingsDialog.Options.UserWantsHilite,
+			SettingsDialog.Options.SubfieldNewline,
+            	SettingsDialog.Options.MaxRecords);
+	#endif
+
+
+	//030223
+	WIcon mcicon;
+	#ifdef MARCONVERT
+		mcicon = WIcon (WResourceID (MARConvert));
+	#else
+		mcicon = WIcon (WResourceID (MARCView));
+	#endif
+	SetIcon (mcicon);
+
+
+	//update menu and buttons depending on version
+	WMenuItem* result;
+	WPopupMenu* presult;
+	
+	#ifdef LITE
+		//this is how to remove an entire popup
+		//remove all popups -- haven't updated for Edit menu yet
+		presult = menu_1->RemovePopup (3);
+		presult = menu_1->RemovePopup (2);
+		presult = menu_1->RemovePopup (1);
+		presult = menu_1->RemovePopup (0);
+		
+		//add upgrade message
+		FilenameLabel->SetForeColor (WColorRed);
+		FilenameLabel->SetText ("MARCView now reads UNIMARC and MARCXML! Upgrade at www.systemsplanning.com/marc/");
+	#elif defined MARCONVERT
+		/*
+		//this is how to remove a single menu item
+		result = menu_1_item_Convert->RemoveItem (menu_1_item_Import->GetID (), TRUE);
+		*/
+
+		//060105 Unblock no longer in MC unless requested
+		result = menu_1_item_Tools->RemoveItem (menu_1_item_Unblock->GetID (), TRUE);
+
+		menu_1_item_About->SetText ("About MARConvert");
+
+		//051128 remove Edit menu for MC's, which are based on 3.10 or less
+		presult = menu_1->RemovePopup (1);
+	#else
+		//remove File/Convert
+		//this is how to remove a single menu item
+		result = menu_1->RemoveItem (menu_1_item_Convert->GetID (), TRUE);
+
+		// Unblock no longer part of MV, provide in MC if needed
+		result = menu_1_item_Tools->RemoveItem (menu_1_item_Unblock->GetID (), TRUE);
+			
+		// no SQL or reset
+		if (TheRelease.GetCharacter(0) != '4')
+		{
+			result = menu_1_item_Navigate->RemoveItem (menu_1_item_SQL->GetID (), TRUE);
+			result = menu_1_item_Navigate->RemoveItem (menu_1_item_Reset->GetID (), TRUE);
+		}
+		
+		/*this is how to remove an entire popup
+		//remove top-level popup
+		presult = menu_1->RemovePopup (3);	//3 is the Convert menu
+		//for lower level popup
+		presult = menu_1_item_Tools->RemovePopup (2);
+		*/
+	#endif
+	
+	
+	//030223
+	SetText (TheProduct.GetText ());	//PRODUCT);
+	//050106
+	//s = PRODUCT " " VERSION RELEASE STATE;
+	// if no version, then there are two spaces between product and release -- but it looks ok
+	s.Sprintf ("%s %s %s %s", 
+			TheProduct.GetText (),
+			TheVersion.GetText (),
+			TheRelease.GetText (),
+			TheState.GetText ());
+	
+	ReleaseLabel->SetText (s);
+
+	WBool x = UpdateMenu ();	//required after the removes
+	
+    return FALSE;
+}
+//MainForm_Create
+
+@end-code;
+
+@begin-code Code "MainForm::MainForm_Resize"
+
+//MainForm_Resize
+WBool @CLASSNAME@::MainForm_Resize(
+	WObject *         		source,
+	WResizeEventData *		event )
+{
+    	int		i;
+	WRect r = GetClientRectangle ();
+	RecCountLabel->SetLeft (r.w - RecCountLabel->GetWidth () - 2*margin);
+	FilenameLabel->SetLeft ((r.w - FilenameLabel->GetWidth ()) / 2);
+	SPLabel->SetLeft (2*margin);
+	SPLabel->SetTop (r.h - bandHeight + margin);
+	MessageLabel->SetLeft ((r.w - MessageLabel->GetWidth ()) / 2);
+	MessageLabel->SetTop (r.h - bandHeight + margin);
+	CopyrightLabel->SetLeft (r.w - CopyrightLabel->GetWidth () - 2*margin);
+	CopyrightLabel->SetTop (r.h - bandHeight + margin);
+	
+	//the left pane never changes width unless user drags columncontrol
+	NavigationGrid->SetHeight (r.h - (4 * bandHeight) - margin);
+    	RecView->SetWidth (r.w - NavigationGrid->GetWidth () - (2 * margin));
+	RecView->SetHeight (NavigationGrid->GetHeight () + 4);	//030322 4 added
+
+	ColumnControl->SetColumnWidth (1, RecView->GetWidth ());
+	i = ColumnControl->GetColumnWidth (0) + ColumnControl->GetColumnWidth (1);
+	ColumnControl->SetWidth (i);
+		
+	#ifdef MARCONVERT
+		if (TheClient == GGG)
+			SetVisible (FALSE);		// hide console
+		else if (TheClient == BBB)	// option to hide console
+		{
+			WString commLine = WAppObject.GetCommandLine();
+			//040313 check for term after batch-file name
+			WStringArray args = commLine.Parse();
+			if (args.GetCount() > 1)
+				SetVisible (FALSE);
+		}
+ 	#endif
+	
+    return FALSE;
+}
+
+@end-code;
+
+@begin-code Code "MainForm::menu_1_item_About_Click"
+
+//About_Click
+WBool @CLASSNAME@::menu_1_item_About_Click(
+	WObject *   		source,
+	WEventData *		event )
+{
+	AboutBox.SetExitSwitch (FALSE);
+	
+	WString s = TheProduct + "™";
+	AboutBox.SetProduct ((char*) s.GetText ());
+	//s = VERSION RELEASE STATE;
+	s.Sprintf ("%s %s %s", 
+			TheVersion.GetText (),
+			TheRelease.GetText (),
+			TheState.GetText ());
+	s.Trim ();
+	AboutBox.SetVersion ((char*) s.GetText ());
+	
+	WString helpcontact = yUtility::CleanString (MCClient.TheHelpContact, '\\', '\n');
+	AboutBox.SetContact ((char*) helpcontact.GetText ());
+	
+	AboutBox.Create (this);
+    
+    return FALSE;
+}
+//About_Click
+
+@end-code;
+
+@begin-code Code "MainForm::menu_1_item_Again_Click"
+
+//Again_Click
+WBool @CLASSNAME@::menu_1_item_Again_Click(
+	WObject *   		source,
+	WEventData *		event )
+{
+    AgainButton_Click (source, event);
+    
+    return FALSE;
+}
+//Again_Click
+
+@end-code;
+
+@begin-code Code "MainForm::menu_1_item_Convert_Click"
+
+//Convert_Click
+WBool @CLASSNAME@::menu_1_item_Convert_Click(
+	WObject *   		source,
+	WEventData *		event )
+{
+	//clear because we have to close the file to import or export
+	//	-- actually, if user clicks Cancel in dialog, the file is still open altho not visible
+	ClearGrid ();
+	ClearRecView ();
+	
+	if (MCClient.MCType == CONVERT)
+		ConvertDialog.Create ();
+	else if (MCClient.MCType == IMPORT)
+		ImportDialog.Create ();
+	else if (MCClient.MCType == EXPORT)
+		ExportDialog.Create ();
+	else
+		WMessageBox::Info 
+				(NULL, 
+				"MARConvert", 
+				"Conversion type not specified. Contact Systems Planning");
+	
+    return FALSE;
+}
+//Convert_Click
+
+@end-code;
+
+@begin-code Code "MainForm::menu_1_item_Copy_Click"
+
+WBool @CLASSNAME@::menu_1_item_Copy_Click(
+	WObject *   		source,
+	WEventData *		event )
+{
+	WAppObject.EmptyClipboard ();
+	WAppObject.SetClipboardText (RecView->GetSelectedText ());
+    
+    return FALSE;
+}
+
+@end-code;
+
+@begin-code Code "MainForm::menu_1_item_Exit_Click"
+
+//Exit_Click
+WBool @CLASSNAME@::menu_1_item_Exit_Click(
+	WObject *   		source,
+	WEventData *		event )
+{
+    ExitButton_Click (source, event);
+    
+    return FALSE;
+}
+//Exit_Click
+
+@end-code;
+
+@begin-code Code "MainForm::menu_1_item_Find_Click"
+
+//Find_Click
+WBool @CLASSNAME@::menu_1_item_Find_Click(
+	WObject *   		source,
+	WEventData *		event )
+{
+    FindButton_Click (source, event);
+    
+    return FALSE;
+}
+//Find_Click
+
+@end-code;
+
+@begin-code Code "MainForm::menu_1_item_First_Click"
+
+//First_Click
+WBool @CLASSNAME@::menu_1_item_First_Click(
+	WObject *   		source,
+	WEventData *		event )
+{
+    FirstButton_Click (source, event);
+    
+    return FALSE;
+}
+//First_Click
+
+@end-code;
+
+@begin-code Code "MainForm::menu_1_item_Fonts_Click"
+
+//Fonts_Click
+//011104 let user select font
+WBool @CLASSNAME@::menu_1_item_Fonts_Click(
+	WObject *   		source,
+	WEventData *		event )
+{
+	//set default font for when dialog opens
+	WString s = WAppObject.GetProfileString ("Preferences", "Font", "", "MARCView.INI");
+	if (s.GetEmpty ())
+		s = "10.Courier New.400";
+	WFont font;
+	font.SetName (s);
+	FontDialog->SetFont (font);
+	
+    if (FontDialog->Prompt ())
+    {
+		font = FontDialog->GetFont ();
+		
+		//column headers will change font also. no way around this. I asked back in 1997
+		NavigationGrid->SetFont (font);
+		//adding 6 so descenders not cut off. no way to center values vertically
+		NavigationGrid->SetHorizontalHeaderHeight (font.GetHeight () + 6);
+		NavigationGrid->SetDefaultRowHeight (font.GetHeight () + 6);
+		NavigationGrid->Invalidate ();
+		
+		RecView->SetFont (font);
+
+		//save it
+		WString s = font.GetName ();
+		s.Sprintf ("%s.%d", s.GetText (), font.GetWeight ());
+		WAppObject.SetProfileString ("Preferences", "Font", s, "MARCView.INI");
+	}
+    
+    return FALSE;
+}
+//Fonts_Click
+
+@end-code;
+
+@begin-code Code "MainForm::menu_1_item_Goto_Click"
+
+//Goto_Click
+WBool @CLASSNAME@::menu_1_item_Goto_Click(
+	WObject *   		source,
+	WEventData *		event )
+{
+    GotoButton_Click (source, event);
+    
+    return FALSE;
+}
+//Goto_Click
+
+@end-code;
+
+@begin-code Code "MainForm::menu_1_item_HelpSys_Click"
+
+//HelpSys_Click
+WBool @CLASSNAME@::menu_1_item_HelpSys_Click(
+	WObject *   		source,
+	WEventData *		event )
+{
+	yHelp::ShowHelp ();
+    
+    return FALSE;
+}
+//HelpSys_Click
+
+@end-code;
+
+@begin-code Code "MainForm::menu_1_item_Hex_Click"
+
+//Hex_Click
+WBool @CLASSNAME@::menu_1_item_Hex_Click(
+	WObject *   		source,
+	WEventData *		event )
+{
+	yHexForm* hv = new yHexForm();
+	long pos, len, num;
+	long& rpos = pos;
+	long& rlen = len;
+	long& rnum = num;
+	BibRec.GetFileInfo (rpos, rlen, rnum);
+	
+	hv->Setup (FilenameLabel->GetText (), pos, len, num, GetHandle ());
+	hv->Create (NULL);
+	WString s = TheProduct + "™";
+	hv->SetProduct((char*) s.GetText());
+  
+    return FALSE;
+}
+//Hex_Click
+
+@end-code;
+
+@begin-code Code "MainForm::menu_1_item_Last_Click"
+
+//Last_Click
+WBool @CLASSNAME@::menu_1_item_Last_Click(
+	WObject *   		source,
+	WEventData *		event )
+{
+    LastButton_Click (source, event);
+    
+    return FALSE;
+}
+//Last_Click
+
+@end-code;
+
+@begin-code Code "MainForm::menu_1_item_Next_Click"
+
+//Next_Click
+WBool @CLASSNAME@::menu_1_item_Next_Click(
+	WObject *   		source,
+	WEventData *		event )
+{
+    NextButton_Click (source, event);
+    
+    return FALSE;
+}
+//Next_Click
+
+@end-code;
+
+@begin-code Code "MainForm::menu_1_item_Open_Click"
+
+//Open_Click
+WBool @CLASSNAME@::menu_1_item_Open_Click(
+	WObject *   		source,
+	WEventData *		event )
+{
+	WFilePath       filePath;
+	_inFileDlg = TRUE;
+	
+	//000210 get last path from INI
+	WString last_DP = WAppObject.GetProfileString ("RecentFiles", "Folder", "", "MARCView.INI");
+	if (!last_DP.GetEmpty ())
+		FileDialog->SetInitialDirectory (last_DP);
+	
+	if (FileDialog->PromptForOpen ())
+    	{
+        	filePath = FileDialog->GetFilePath ();
+		if (access (filePath, 0) == -1)
+		{
+			WMessageBox::Message 	(NULL, 
+									WMsgBSOk | WMsgBSIconError,
+									"Problem",
+									"File not found or in use by another application");
+			return FALSE;
+		}
+		
+		//000210 save path to INI
+		last_DP = filePath.GetDrive () + filePath.GetDirectory ();
+		WAppObject.SetProfileString ("RecentFiles", "Folder", last_DP, "MARCView.INI");
+		
+		//040725 save in recentlyusedfiles
+		#ifndef LITE	// LITE doesn't have a menu anyway
+		PushRecentFile (filePath);
+		#endif
+		
+		OpenFile (filePath);
+    }
+    
+    return FALSE;
+}
+
+@end-code;
+
+@begin-code Code "MainForm::menu_1_item_Prev_Click"
+
+WBool @CLASSNAME@::menu_1_item_Prev_Click(
+	WObject *   		source,
+	WEventData *		event )
+{
+    PrevButton_Click (source, event);
+    
+    return FALSE;
+}
+
+@end-code;
+
+@begin-code Code "MainForm::menu_1_item_Print_Click"
+
+WBool @CLASSNAME@::menu_1_item_Print_Click(
+	WObject *   		source,
+	WEventData *		event )
+{
+	
+	long			cur, num;
+	long&		rcur = cur;
+	long&		rnum = num;
+	long			selection, first, last;
+	
+	//030317 permit printing more than one record
+	PrintDia.Create (this);
+	
+	if (PrintDia.GetReturnValue () == 1)
+	{
+		BibRec.GetCurrentNum (rcur, rnum);
+		
+	    	if (PrintDialog->Prompt ())
+		{
+			//doesn't help because Display turns it on again//RecView->SetVisible (FALSE);
+			selection = PrintDia.selection;
+			if (selection == 0)	//this record only
+			{
+				first = cur;
+				last = cur;
+			}
+			else if (selection == 1)	//range
+			{
+				first = PrintDia.first;
+				last = PrintDia.last;
+			}
+			else		//entire file
+			{
+				first = 1;
+				last = num;
+			}
+				
+			Print_Guts (first, last);
+			Display (BibRec.ReadRecord (cur));	//return to rec user started from
+			//RecView->SetVisible (TRUE);
+		}
+	}
+    
+	return FALSE;
+}
+
+@end-code;
+
+@begin-code Code "MainForm::menu_1_item_Reset_Click"
+
+WBool @CLASSNAME@::menu_1_item_Reset_Click(
+	WObject *   		source,
+	WEventData *		event )
+{
+	BuildGrid ();
+	
+	// don't turn Again on, let Find do it
+	GotoButton->SetEnabled (TRUE);
+	FindButton->SetEnabled (TRUE);
+	menu_1_item_Goto->SetEnabled (TRUE);
+	menu_1_item_Find->SetEnabled (TRUE);
+    
+    return FALSE;
+}
+
+@end-code;
+
+@begin-code Code "MainForm::menu_1_item_SQL_Click"
+
+WBool @CLASSNAME@::menu_1_item_SQL_Click(
+	WObject *   		source,
+	WEventData *		event )
+{
+    SQLButton_Click (source, event);
+    
+    return FALSE;
+}
+
+@end-code;
+
+@begin-code Code "MainForm::menu_1_item_Settings_Click"
+
+WBool @CLASSNAME@::menu_1_item_Settings_Click(
+	WObject *   		source,
+	WEventData *		event )
+{
+	SettingsDialog.Create (this);
+
+	if (SettingsDialog.GetReturnValue () == 1)
+	{
+		SettingsDialog.WriteIni ();
+		BibRec.SetPreferences 
+				(SettingsDialog.Options.NonnumericTags,
+				SettingsDialog.Options.CharsetIn,
+				SettingsDialog.Options.UserWantsHilite,
+				SettingsDialog.Options.SubfieldNewline,
+                	SettingsDialog.Options.MaxRecords);
+		UpdateGridLayout ();
+	}
+    
+    return FALSE;
+}
+
+@end-code;
+
+@begin-code Code "MainForm::menu_1_item_Statistics_Click"
+
+WBool @CLASSNAME@::menu_1_item_Statistics_Click(
+	WObject *   		source,
+	WEventData *		event )
+{
+	/*
+	if ((BibRec.GetRecordFormat () == MARCXMLBIB) || (BibRec.GetRecordFormat () == MARCXMLAUTH))
+	{
+		WString s = "We wish to determine if Statistics are needed for XML files.\nPlease contact Systems Planning if you need it.";
+		WMessageBox::Info (NULL, PRODUCT " Info", s);
+		return FALSE;
+	}
+	*/
+	
+	WCursor 	cursor = SetCursor (WSCWait);
+	WRect	r = GetRectangle ();
+	
+	MessageLabel->SetText (" Examining file ... ");
+	MessageLabel->SetLeft ((r.w - MessageLabel->GetWidth ()) / 2);
+	Update ();
+
+	StatisticsDialog.Create (this);
+	WString s = TheProduct + "™";
+	StatisticsDialog.SetProduct ((char*) s.GetText ());
+	StatisticsDialog.SetFilepath ((char*) TheFilePath.GetText ());
+
+	SetCursor (cursor);
+	MessageLabel->SetText ("");
+	
+	return FALSE;
+}
+
+@end-code;
+
+@begin-code Code "MainForm::menu_1_item_Unblock_Click"
+
+WBool @CLASSNAME@::menu_1_item_Unblock_Click(
+	WObject *   		source,
+	WEventData *		event )
+{
+    if (UnblockDialog.Create ())
+	{
+		//970913 unblock uses its own file handles, so no need to stop viewing (unlike Export)
+	}
+
+    return FALSE;
+}
+
+@end-code;
+
+@begin-code Code "MainForm::ConvertButton_Click"
+
+WBool @CLASSNAME@::ConvertButton_Click(
+	WObject *   		source,
+	WEventData *		event )
+{
+    menu_1_item_Convert_Click (source, event);
+    
+    return FALSE;
+}
+
+@end-code;
+
+@begin-code Code "MainForm::NavigationGrid_Click"
+
+WBool @CLASSNAME@::NavigationGrid_Click(
+	WObject *       		source,
+	WGridEventData *		event )
+{
+	long			cur, num;
+	long&		rcur = cur;
+	long&		rnum = num;
+	
+	BibRec.GetCurrentNum (rcur, rnum);
+
+	//970316 clicking in header of grid -- pgm seems to think it's a record
+	//also, if first rec shown is 1, value of rowNumber is 4 billion
+	if (event->rowNumber < NavigationGrid->GetTopRowNumber ())
+		return FALSE;
+	if (event->rowNumber > num - 1)
+		return FALSE;
+		
+	//050731 handle button disabling here instead of Display so it applies to SQL result sets also
+	if (event->rowNumber == NavigationGrid->GetTopRowNumber ())
+	{
+		FirstButton->SetEnabled (FALSE);
+		PrevButton->SetEnabled (FALSE);
+		menu_1_item_First->SetEnabled (FALSE);
+		menu_1_item_Prev->SetEnabled (FALSE);
+	}
+	if (event->rowNumber == NavigationGrid->GetRowCount () - 1)
+	{
+		NextButton->SetEnabled (FALSE);
+		LastButton->SetEnabled (FALSE);
+		menu_1_item_Next->SetEnabled (FALSE);
+		menu_1_item_Last->SetEnabled (FALSE);
+	}
+	
+	//030909 2d term added to if so if user changes grid widths w no file open, doesn't try to display a rec
+	/*050201 use record ID to find which record to display
+	if ((event->rowNumber + 1 != cur) && (cur > 0))
+		Display (BibRec.ReadRecord (event->rowNumber + 1));*/
+	if ((NavigationGrid->GetText (event->rowNumber, 0).ConvertToLong () != cur) && (cur > 0))
+		Display (BibRec.ReadRecord (NavigationGrid->GetText (event->rowNumber, 0).ConvertToLong ()));
+    
+    return FALSE;
+}
+
+@end-code;
+
+@begin-code Code "MainForm::NavigationGrid_LeftButtonUp"
+
+// this is only to avoid a bug in Optima that activated the grid when trying to use FileOpen dialog
+WBool @CLASSNAME@::NavigationGrid_LeftButtonUp(
+	WObject *        		source,
+	WMouseEventData *		event )
+{
+    if (_inFileDlg)
+	{
+		_inFileDlg = FALSE;
+		return TRUE;
+	}
+	else
+	    return FALSE;
+}
+
+@end-code;
+
+@begin-code Code "MainForm::NavigationGrid_Select"
+
+WBool @CLASSNAME@::NavigationGrid_Select(
+	WObject *       		source,
+	WGridEventData *		event )
+{
+    NavigationGrid_Click (source, event);
+    
+    return FALSE;
+}
+
+@end-code;
+
+@begin-code Code "MainForm::RecView_LeftButtonUp"
+
+WBool @CLASSNAME@::RecView_LeftButtonUp(
+	WObject *        		source,
+	WMouseEventData *		event )
+{
+	WRange ra = RecView->GetEditSelection ();
+	
+	if ((ra.start == ra.end) || ra.start == -1)
+		menu_1_item_Copy->SetEnabled (FALSE);
+	else
+		menu_1_item_Copy->SetEnabled (TRUE);
+    
+    return FALSE;
+}
+
+@end-code;
+
+@begin-code Code "MainForm::ColumnControl_Change"
+
+WBool @CLASSNAME@::ColumnControl_Change(
+	WObject *                		source,
+	WColumnHeadingEventData *		event )
+{
+	if (event->itemNumber > 0)	//user can't change width of right pane
+		return TRUE;
+		
+	//user changed width of left pane
+	ColumnControl->SetColumnWidth (1, (ColumnControl->GetWidth () - ColumnControl->GetColumnWidth (0)));
+    	ColumnControl->Update( true );
+	NavigationGrid->SetWidth (ColumnControl->GetColumnWidth (0));
+	
+	//031030 change widths of rightmost navgrid column to fit available space
+	NavigationGrid->SetColumnWidth (3, 
+		NavigationGrid->GetWidth () -
+		NavigationGrid->GetColumnWidth (0) - 
+		NavigationGrid->GetColumnWidth (1) -
+		NavigationGrid->GetColumnWidth (2) - 22); 	//040728 subtract constant to ensure it fits
+	
+	RecView->SetLeft (NavigationGrid->GetWidth () + margin);
+	RecView->SetWidth (ColumnControl->GetColumnWidth (1));
+	  
+    return FALSE;
+}
+
+@end-code;
+
+@begin-code Code "MainForm::ColumnControl_Create"
+
+WBool @CLASSNAME@::ColumnControl_Create(
+    WObject *               source,
+    WCreateEventData *      event )
+{
+    ColumnControl->Add( 0, "Navigation Grid", 280, WColumnHeadingCenter);
+    ColumnControl->Add( 1, "MARC Record", 280, WColumnHeadingCenter);
+
+	//this seems like a logical place for initializing positions of controls
+	WRect 			r;
+	WString			s;
+
+	//tried moving to MainForm_Create but caused trouble
+	//030906 open maximized if no INI file -- this allows entire Lite msg to show
+	s = WAppObject.GetProfileString ("MainWindow", "Maximized", "1", "MARCView.INI");
+	if (s.ConvertToInteger () == 1)
+		SetWindowState (WWindowStateMaximized);
+
+	//030322
+	OpenButton->SetTop (2);
+	FirstButton->SetTop (2);
+	PrevButton->SetTop (2);
+	NextButton->SetTop (2);
+	LastButton->SetTop (2);
+	GotoButton->SetTop (2);
+	FindButton->SetTop (2);
+	AgainButton->SetTop (2);
+	SQLButton->SetTop (2);
+	HexviewButton->SetTop (2);
+	PrintButton->SetTop (2);
+	HelpButton->SetTop (2);
+	ExitButton->SetTop (2);
+	
+	OpenButton->SetWidth (buttonWidth);
+	FirstButton->SetWidth (buttonWidth);
+	PrevButton->SetWidth (buttonWidth);
+	NextButton->SetWidth (buttonWidth);
+	LastButton->SetWidth (buttonWidth);
+	GotoButton->SetWidth (buttonWidth);
+	FindButton->SetWidth (buttonWidth);
+	AgainButton->SetWidth (buttonWidth);
+	SQLButton->SetWidth (buttonWidth);
+	HexviewButton->SetWidth (buttonWidth);
+	PrintButton->SetWidth (buttonWidth);
+	HelpButton->SetWidth (buttonWidth);
+	ExitButton->SetWidth (buttonWidth);
+	
+	OpenButton->SetHeight (bandHeight);
+	FirstButton->SetHeight (bandHeight);
+	PrevButton->SetHeight (bandHeight);
+	NextButton->SetHeight (bandHeight);
+	LastButton->SetHeight (bandHeight);
+	GotoButton->SetHeight (bandHeight);
+	FindButton->SetHeight (bandHeight);
+	AgainButton->SetHeight (bandHeight);
+	SQLButton->SetHeight (bandHeight);
+	HexviewButton->SetHeight (bandHeight);
+	PrintButton->SetHeight (bandHeight);
+	HelpButton->SetHeight (bandHeight);
+	ExitButton->SetHeight (bandHeight);
+
+	OpenButton->SetLeft (margin);
+	FirstButton->SetLeft (margin + buttonSpace + buttonWidth);
+	PrevButton->SetLeft (margin + buttonSpace + (2 * buttonWidth));
+	NextButton->SetLeft (margin + buttonSpace + (3 * buttonWidth));
+	LastButton->SetLeft (margin + buttonSpace + (4 * buttonWidth));
+	GotoButton->SetLeft (margin + (2 * buttonSpace) + (5 * buttonWidth));
+	FindButton->SetLeft (margin + (2 * buttonSpace) + (6 * buttonWidth));
+	AgainButton->SetLeft (margin + (2 * buttonSpace) + (7 * buttonWidth));
+	
+	//050801 don't show SQL button for LITE
+	WBool isLite = FALSE;
+	#ifdef LITE
+	isLite = TRUE;
+	#endif
+	
+	if ((TheRelease.GetCharacter(0) < '4') || isLite)	// use this code for Lite after 4.0 released
+	{
+		SQLButton->SetVisible (FALSE);
+		HexviewButton->SetLeft (margin + (3 * buttonSpace) + (8 * buttonWidth));
+		PrintButton->SetLeft (margin + (3 * buttonSpace) + (9 * buttonWidth));
+		HelpButton->SetLeft (margin + (3 * buttonSpace) + (10 * buttonWidth));
+		ExitButton->SetLeft (margin + (4 * buttonSpace) + (11 * buttonWidth));
+	}
+	else		// 4.0 and later
+	{
+		SQLButton->SetLeft (margin + (2 * buttonSpace) + (8 * buttonWidth));
+		HexviewButton->SetLeft (margin + (3 * buttonSpace) + (9 * buttonWidth));
+		PrintButton->SetLeft (margin + (3 * buttonSpace) + (10 * buttonWidth));
+		HelpButton->SetLeft (margin + (3 * buttonSpace) + (11 * buttonWidth));
+		ExitButton->SetLeft (margin + (4 * buttonSpace) + (12 * buttonWidth));
+	}
+
+	#ifdef MARCONVERT
+	ConvertButton->SetLeft (margin);
+	ConvertButton->SetWidth (buttonWidth + 10);
+	ConvertButton->SetTop (2);
+	OpenButton->SetLeft (OpenButton->GetLeft () + buttonWidth + 10 + buttonSpace);
+	FirstButton->SetLeft (FirstButton->GetLeft () + buttonWidth + 10 + buttonSpace);
+	PrevButton->SetLeft (PrevButton->GetLeft () + buttonWidth + 10 + buttonSpace);
+	NextButton->SetLeft (NextButton->GetLeft () + buttonWidth + 10 + buttonSpace);
+	LastButton->SetLeft (LastButton->GetLeft () + buttonWidth + 10 + buttonSpace);
+	GotoButton->SetLeft (GotoButton->GetLeft () + buttonWidth + 10 + buttonSpace);
+	FindButton->SetLeft (FindButton->GetLeft () + buttonWidth + 10 + buttonSpace);
+	AgainButton->SetLeft (AgainButton->GetLeft () + buttonWidth + 10 + buttonSpace);
+	HexviewButton->SetLeft (HexviewButton->GetLeft () + buttonWidth + 10 + buttonSpace);
+	PrintButton->SetLeft (PrintButton->GetLeft () + buttonWidth + 10 + buttonSpace);
+	HelpButton->SetLeft (HelpButton->GetLeft () + buttonWidth + 10 + buttonSpace);
+	ExitButton->SetLeft (ExitButton->GetLeft () + buttonWidth + 10 + buttonSpace);
+	#else
+	ConvertButton->SetEnabled (FALSE);
+	ConvertButton->SetVisible (FALSE);
+	#endif
+	
+	#ifdef LITE	//030322 in case user edits INI file, overwrite it
+	WAppObject.SetProfileString ("MARCRecord", "NonNumericTags", "0", "MARCView.INI");
+	WAppObject.SetProfileString ("Preferences", "HighlightFoundTerms", "1", "MARCView.INI");
+	WAppObject.SetProfileString ("Preferences", "SubfieldNewline", "0", "MARCView.INI");
+	WAppObject.SetProfileString ("MARCRecord", "CharSetIn", "LEADER", "MARCView.INI");
+	WAppObject.SetProfileString ("MARCRecord", "CharSetOut", "LATIN", "MARCView.INI");
+    	WAppObject.SetProfileString ("Preferences", "MaximumRecords", "100000", "MARCView.INI");
+    	WAppObject.SetProfileString ("Preferences", "MaximumGridRecords", "1000", "MARCView.INI");
+	#endif
+	
+	FirstButton->SetEnabled (FALSE);
+	NextButton->SetEnabled (FALSE);
+	PrevButton->SetEnabled (FALSE);
+	LastButton->SetEnabled (FALSE);
+	GotoButton->SetEnabled (FALSE);
+	FindButton->SetEnabled (FALSE);
+	AgainButton->SetEnabled (FALSE);
+	SQLButton->SetEnabled (FALSE);
+	HexviewButton->SetEnabled (FALSE);
+	PrintButton->SetEnabled (FALSE);
+	
+	r = GetClientRectangle ();
+	ReleaseLabel->SetTop (bandHeight + margin + 1);	//030322 added 1
+	ReleaseLabel->SetLeft (margin);
+	RecCountLabel->SetTop (bandHeight + margin + 1);	//030322 added 1
+	RecCountLabel->SetLeft (r.w - RecCountLabel->GetWidth() - 2*margin);
+	RecCountLabel->SetHeight (bandHeight - margin);
+	FilenameLabel->SetTop (bandHeight + margin + 1);	//030322 added 1
+	FilenameLabel->SetHeight (bandHeight - margin);
+
+	ColumnControl->SetLeft (margin);
+	ColumnControl->SetTop ((2 * bandHeight) + 2);	//030323 added 2
+	ColumnControl->SetHeight (bandHeight + margin);
+	
+	//grid as a whole. 980918 -1 added
+	NavigationGrid->SetTop (ColumnControl->GetTop() + ColumnControl->GetHeight() - 1);
+	NavigationGrid->SetLeft (margin);
+   	s = WAppObject.GetProfileString ("NavigationGrid", "Width", "-1", "MARCView.INI");
+	int i = s.ConvertToInteger ();
+	if (i == -1)
+		NavigationGrid->SetWidth (r.w/2 - margin);
+	else
+		NavigationGrid->SetWidth (i);
+		
+		
+	/*doesn't work, spaces index too wide. thanks, optima!
+	//980912 set line spacing of NavigationGrid to that of RecView
+	WFont thefont = GetFont (RecView);
+	long theheight = thefont.VertDUToPixel (thefont.GetHeight ());
+	NavigationGrid->SetDefaultRowHeight (theheight);
+	NavigationGrid->SetHorizontalHeaderHeight ((int) theheight);
+	*/
+
+
+	//grid column widths
+	s = WAppObject.GetProfileString ("NavigationGrid", "Col1Width", "50", "MARCView.INI");
+	i = s.ConvertToInteger ();
+	//030909 don't allow invisible width or user dnk its there
+	if (i < 3)
+		i = 3;
+	//010906 makes sure columns not wider than navgrid or user dnkht resize
+	if (i > NavigationGrid->GetWidth () - 25)
+		NavigationGrid->SetColumnWidth (0, 50);
+	else
+		NavigationGrid->SetColumnWidth (0, i);
+		
+	s = WAppObject.GetProfileString ("NavigationGrid", "Col2Width", "100", "MARCView.INI");
+	i = s.ConvertToInteger ();
+	//030909 don't allow invisible width or user dnk its there
+	if (i < 3)
+		i = 3;
+	//010906 makes sure columns not wider than navgrid or user dnkht resize
+	if (i > NavigationGrid->GetWidth () - 25)
+		NavigationGrid->SetColumnWidth (1, 100);
+	else
+		NavigationGrid->SetColumnWidth (1, i);
+		
+	s = WAppObject.GetProfileString ("NavigationGrid", "Col3Width", "100", "MARCView.INI");
+	i = s.ConvertToInteger ();
+	//030909 don't allow invisible width or user dnk its there
+	if (i < 3)
+		i = 3;
+	//010906 makes sure columns not wider than navgrid or user dnkht resize
+	if (i > NavigationGrid->GetWidth () - 25)
+		NavigationGrid->SetColumnWidth (2, 150);
+	else
+		NavigationGrid->SetColumnWidth (2, i);
+		
+	s = WAppObject.GetProfileString ("NavigationGrid", "Col4Width", "100", "MARCView.INI");
+	i = s.ConvertToInteger ();
+	//030909 don't allow invisible width or user dnk its there
+	if (i < 3)
+		i = 3;
+	//010906 makes sure columns not wider than navgrid or user dnkht resize
+	if (i > NavigationGrid->GetWidth () - 25)
+		NavigationGrid->SetColumnWidth (3, 150);
+	else
+		NavigationGrid->SetColumnWidth (3, i);
+	
+	
+	RecView->SetReadOnly (TRUE);
+	RecView->SetTop (NavigationGrid->GetTop() - 3);
+	
+	i = NavigationGrid->GetWidth();
+    	RecView->SetLeft (i + margin);
+	RecView->SetWidth (r.w - i);
+	
+	ColumnControl->SetWidth (r.w - 2*margin);
+	ColumnControl->SetColumnWidth (0, NavigationGrid->GetWidth());
+	ColumnControl->SetColumnWidth (1, RecView->GetWidth());
+
+	//011104 use font in ini
+	s = WAppObject.GetProfileString ("Preferences", "Font", "", "MARCView.INI");
+	if (s.GetEmpty ())
+		s = "10.Courier New.400";
+	WFont font;
+	font.SetName (s);
+	NavigationGrid->SetFont (font);
+	//adding 6 so descenders not cut off. no way to center values vertically
+	NavigationGrid->SetDefaultRowHeight (font.GetHeight () + 6);
+	NavigationGrid->SetHorizontalHeaderHeight (font.GetHeight () + 6);
+	RecView->SetFont (font);
+
+
+
+	//**************** PROCESS COMMAND LINE ******************
+
+	//purpose varies between MV and MC -- see doc
+    	WString commLine = WAppObject.GetCommandLine();
+	commLine.Trim ();
+	
+	
+	#ifndef MARCONVERT
+	//MV -- open file
+	//	-- this is also how SendTo's are handled
+	WBool ok;	//i guess this was for debugging
+	if (commLine.GetLength () > 0)
+	{
+		//050109 allow spaces in pathname or filename
+		//ok = OpenFile (commLine);
+		WFilePath commpath = commLine;
+		commpath = yUtility::CleanString (commpath, "\"", "");	// conversion to WFilePath surrounds with "s, which don't work
+		ok = OpenFile (commpath);
+	}
+	#else	//MC -- it depends
+
+	#ifdef _DEBUG
+	// open the file as "w" to empty it so later processes can append
+	FILE* debugfile;
+	if ((debugfile = fopen("debug.txt", "w")) == NULL)
+		WMessageBox::Info (NULL, NULL, "Problem opening debug.txt");
+	fclose(debugfile);
+	#endif
+	
+	WFilePath 	infilepath, outfilepath, badfilepath, rptfilepath;
+	
+	//060302 added for FFF, could be used more generally
+	WString 		TheMessage;
+	WString& 		rMessage = TheMessage;
+	int			Result;
+	WStringArray 	args;
+
+
+	// GGG is ONLY command mode, so console opens even if no params
+	//	-- all other clients, if no params the interactive version opens
+	if ((TheClient == GGG) || !commLine.GetEmpty())
+	{
+		SetWindowState (WWindowStateMinimized);
+		pconsole = new WConsole ();
+		WBool success = pconsole->Create();
+		WString buffer, msg;
+		WBool bautoclose=FALSE, boverwrite=FALSE;
+		
+		//070918 we used a bool, but switching to int as it is more generic
+		WBool bcatrun;		// CAT
+		int	runtype = 0;	// default for all other export clients
+	
+	
+		// BRANCH 1
+		// THIS CLIENT SPECIFIES INPUT/OUTPUT/REPORT FILES FOR A SINGLE CONVERSION
+		if (TheClient == GGG)
+		{
+			//parse into 3 values
+			args = commLine.Parse(",");
+			if (args.GetCount() != 3)
+			{
+				cprintf ("MARConvert (tm)\n\n"
+						"Three parameters are required, separated by commas, as follows:\n"
+						"    1. The name of the MARC input file\n"
+						"    2. The name of the MARC output file\n"
+						"    3. The name of the report file\n\n"
+						"Example:\n"
+						"    MARConvert c:\\mydata\\marcin.mar, c:\\mydata\\marcout.mar, c:\\mydata\\report.txt\n\n"
+						" -- See http://www.systemsplanning.com/marc/MC_FDI_Help.asp for Help --\n\n\n"
+						"Press the <Enter> key to try again");
+			}
+			else
+			{
+				Result = ConvertDialog.BatchConvert(pconsole, args[0], args[1], badfilepath, args [2]);
+			}
+		}
+
+
+
+		// BRANCH 2
+		// THESE CLIENTS SPECIFY MULTIPLE CONVERSIONS 
+		// one argument: the command file
+		// a single report file for all conversions in the run
+		// command file specifies whether to overwrite and the report file
+		// for LLL, console closes automatically at end
+		else if (MCClient.MCBatchFiles == MULTIPLE)
+		{
+			char				t_line [100];
+			WStringArray 		elements;
+			
+			//this gets rid of quotes around param file DPNE
+			args = commLine.Parse();
+			
+			//open command file
+			FILE* pfile;
+			if ((pfile = fopen (args[0].GetText(), "r")) == NULL)
+			{
+				cprintf ("Problem opening %s"
+						"\n\nPress the <Enter> key to close this window and try again\n",
+						args[0].GetText());
+				goto abort;
+			}
+				
+				
+			// 1st line is comment
+			fgets (t_line, sizeof(t_line), pfile);
+			
+			
+			// 2d line is overwrite?
+			fgets (t_line, sizeof(t_line), pfile);
+			buffer.SetText (t_line);
+			elements = buffer.Parse();	//tab-separated
+			
+			//050126
+			if (elements.GetCount() < 2)
+			{
+				cprintf("Problem with format of Command File %s\n", args [0].GetText ());
+				cprintf("\nPress the <Enter> key to close this window\n");
+				goto abort;
+			}
+				
+			WString overwrite = elements[1];
+			overwrite.ToLowercase();
+			boverwrite = (overwrite.GetCharacter(0) == 'y');
+			
+			
+			// 3d line is report file path
+			fgets(t_line, sizeof(t_line), pfile);
+			buffer.SetText(t_line);
+			elements = buffer.Parse();	//tab-separated
+			
+			//050126
+			if (elements.GetCount() < 2)
+			{
+				cprintf("Problem with format of Command File %s\n", args [0].GetText ());
+				cprintf("\nPress the <Enter> key to close this window\n");
+				goto abort;
+			}
+				
+			rptfilepath = elements[1];
+			
+			if (!boverwrite)
+			{
+				if (access(rptfilepath, 0) == 0)
+				{
+					cprintf("\nReport file exists, overwrite? (y/n)\n");
+					success = pconsole->Read(buffer);
+					buffer.ToLowercase();
+					if (buffer.GetCharacter(0) != 'y')
+					{
+						pconsole->Destroy ();
+						WAppObject.Quit (TRUE);
+						return FALSE;
+					}
+				}
+			}
+			
+			
+			// 4th line for some clients is runtype
+			if (TheClient == CAT)
+			{
+				// catalog or copy file?
+				fgets (t_line, sizeof(t_line), pfile);
+				buffer.SetText (t_line);
+				elements = buffer.Parse();	//tab-separated
+				
+				if (elements.GetCount() < 2)
+				{
+					cprintf("Problem with format of Command File %s\n", args[0].GetText());
+					cprintf("\nPress the <Enter> key to close this window\n");
+					goto abort;
+				}
+				
+				if (TheClient == CAT)
+				{
+					WString catrun = elements[1];
+					catrun.ToLowercase();
+					bcatrun = (catrun.GetCharacter(0) == 'y');
+				}
+				
+				/* this is how to use the runtype int instead of CAT's bool
+				else if (TheClient == MMM)
+				{
+					WString sruntype = elements[1];
+					sruntype.ToLowercase();
+					if (sruntype.GetCharacter(0) == 'b')	// bib recs
+						runtype = 0;
+					else if (sruntype.GetCharacter(0) == 'o')	// order recs
+						runtype = 1;
+					else
+					{
+						cprintf("Unknown runtype in Command File: %s\n", args[0].GetText());
+						cprintf("\nPress the <Enter> key to close this window\n");
+						goto abort;
+					}
+				}
+				*/
+			}
+			
+			
+			if ((TheClient == AAA) || (TheClient == CCC))	// these convert in two directions
+			{
+				// marc-to-utf or utf-to-marc? -- only the first char matters
+				fgets (t_line, sizeof (t_line), pfile);
+				buffer.SetText (t_line);
+				elements = buffer.Parse ();	//tab-separated
+				
+				if (elements.GetCount () < 2)
+				{
+					cprintf ("Problem with format of Command File %s\n", args [0].GetText ());
+					goto abort;
+				}
+				
+				WString charset = elements [1];
+				charset.ToLowercase ();
+				if (charset.GetCharacter(0) == 'm')
+				{
+					MCClient.MCSourceCharset = ANSEL;
+					MCClient.MCTargetCharset = TOUTF8;
+				}
+				else if (charset.GetCharacter(0) == 'u')
+				{
+					MCClient.MCSourceCharset = UTF8;
+					MCClient.MCTargetCharset = TOANSEL;
+				}
+				else
+				{
+					cprintf ("Unknown Conversion character set in Command File %s\n", args [0].GetText ());
+					goto abort;
+				}
+			}
+			
+			
+			//erase report file in case previously used (since we append to it in BatchConvert)
+			FILE* rfile;
+			if ((rfile = fopen (rptfilepath.GetText (), "w")) != NULL)
+			{
+				msg = yUtility::MakeStartEndMsg(TRUE);
+				fputs(msg.GetText(), rfile);
+				fclose(rfile);
+			}
+			cprintf(msg.GetText());
+
+
+			// load maps
+			if (TheClient == FFF)
+			{
+				Result = ConvertDialog.LoadMaps(rMessage);
+				if (Result != E_PERFECTSUCCESS)	
+				{
+					cprintf(rMessage.GetText ());
+					if ((rfile = fopen (rptfilepath.GetText (), "a")) != NULL)
+					{
+						fputs(rMessage.GetText(), rfile);
+						fclose(rfile);
+					}
+					goto abort;
+				}
+			}
+	
+
+			//070921 for MMM and PPP we need to reset the text output files for the
+			//		run, then append to them during the run
+			//	-- also we put the output in the report directory since the inputs
+			//			might be in mult dirs but still should write to the same outputs
+			//	-- this can't be done in a sub because a given input file may write to
+			//			only some output files
+			WStringArray outputfilenames;
+			if (MCClient.MCExportSQL)
+			{
+				// this should use complexfilenames, but the TT hnb read yet
+				WFilePath fp = rptfilepath;
+				fp.SetExtension("txt");
+				FILE* resetfile;
+				WString temp;
+				
+				if (TheClient == MMM)
+				{
+					outputfilenames.SetCount(4);
+					outputfilenames[0] = "biblio2base";
+					outputfilenames[1] = "var_fields2";
+					outputfilenames[2] = "orders2base";
+					outputfilenames[3] = "link_rec2";
+				
+					//071004 MMM needs a trans to empty db tables
+					ExportDialog.OpenTransaction();
+					
+			
+					//071018 disable indexes before run
+					ExportDialog.DoQuery(rMessage, "alter index all on iiidba disable");
+				}
+				else if (TheClient == PPP)
+				{
+					outputfilenames.SetCount(6);
+					outputfilenames[0] = "main";
+					outputfilenames[1] = "authors";
+					outputfilenames[2] = "related_people";
+					outputfilenames[3] = "topical_subjects";
+					outputfilenames[4] = "geo_subjects";
+					outputfilenames[5] = "related_links";
+				}
+					
+				for (int i = 0; i < outputfilenames.GetCount(); i++)
+				{
+					fp.SetFileName(outputfilenames[i].GetText());
+					if ((resetfile = fopen(fp.GetText(), "w")) == NULL)
+						WMessageBox::Messagef (NULL, WMsgBSOk, "Problem", "Problem opening %s.txt", outputfilenames[i].GetText());
+					fclose(resetfile);
+				
+					if (TheClient == MMM)
+					{
+						if (ExportDialog.TheTransaction)						
+						{
+							temp.Sprintf("delete from %s", outputfilenames[i].GetText());
+							ExportDialog.DoQuery(rMessage, temp);
+						}
+						else
+						{
+							cprintf("ODBC transaction is not open");
+							if ((rfile = fopen(rptfilepath.GetText (), "a")) != NULL)
+							{
+								fputs("ODBC transaction is not open", rfile);
+								fclose(rfile);
+							}
+							goto abort;
+						}
+					}
+				}
+			}
+			
+			
+			//loop thru input filenames
+			WString tempo;
+			WBool firstfile = TRUE;
+			while (!feof(pfile))
+			{
+				fgets(t_line, sizeof(t_line), pfile);
+				if (strcmp(t_line, "\n") && !feof(pfile))	// first condition cks for blank lines at end of command file
+				{
+					buffer.SetText(t_line);
+					elements = buffer.Parse();	// we do this to strip surrounding quotes, if any
+					tempo = elements[0];
+					
+					//070919 MMM can have diff types of files in same run -- type precedes filename
+					if (TheClient == MMM)
+					{
+						tempo = elements[1];
+						
+						WString sruntype = elements[0];
+						sruntype.ToLowercase();
+						if (sruntype.GetCharacter(0) == 'b')	// bib recs
+							runtype = 0;
+						else if (sruntype.GetCharacter(0) == 'o')	// order recs
+							runtype = 1;
+						else
+						{
+							cprintf("Unknown runtype in Command File: %s\n", args[0].GetText());
+							cprintf("\nPress the <Enter> key to close this window\n");
+							goto abort;
+						}
+					}
+					
+					if (tempo.GetLength() > 0)
+					{
+						infilepath = tempo;
+						outfilepath = infilepath;
+						badfilepath = infilepath;
+						badfilepath.SetExtension("BAD");
+						
+						if (MCClient.MCType == CONVERT)
+						{
+							WString extension;
+							// these two can't have a default as they swing both ways
+							if ((TheClient == AAA) || (TheClient == CCC))
+							{
+								if (MCClient.MCTargetCharset == TOUTF8)
+									extension = "UTF";
+								else
+									extension = "M8";
+							}
+							else
+								extension = WAppObject.GetProfileString("Convert", "Extension", "MRC", "MARCView.INI");
+								
+							if (extension.GetEmpty())
+							{
+								// not in INI, use client default (grandfathered, new ones s u ini)
+								if (TheClient == BBB)
+									extension = "UTF";
+								else if (TheClient == FFF)
+									extension = "UNI";
+								//GGG project doesn't have interactive mode
+								else if (TheClient == LLL)
+									extension = "BLK";
+								else if (TheClient == QQQ)
+									extension = "M8";
+								else // default
+									extension = "XXX";
+							}
+							
+							outfilepath.SetExtension(extension.GetText());
+															
+							Result = ConvertDialog.BatchConvert(pconsole, infilepath, outfilepath, badfilepath, rptfilepath, boverwrite);
+						}
+						else if (MCClient.MCType == IMPORT)
+						{
+						 	outfilepath.SetExtension("MRC");
+							// import should receive the outputfilename and badfilename same as the other two
+							Result = ImportDialog.BatchImport(pconsole, infilepath, rptfilepath, boverwrite, bcatrun);
+						}
+						else if (MCClient.MCType == EXPORT)
+						{
+						 	outfilepath.SetExtension("MCX");
+							Result = ExportDialog.BatchExport
+									(pconsole, 
+									infilepath, 
+									outfilepath, 
+									badfilepath, 
+									rptfilepath, 
+									boverwrite,
+									firstfile,
+									runtype);		//070918
+						}
+					}
+				}
+				
+				//070926 these clients want the batch to stop if a file has a bad record
+				if ((MCClient.MCBadRecHaltsBatch) && (Result != E_PERFECTSUCCESS))
+				{
+					msg = "\nBatch halted because file had bad records\n";
+					cprintf(msg.GetText());
+					if ((rfile = fopen(rptfilepath.GetText(), "a")) != NULL)
+					{
+						fputs(msg.GetText(), rfile);
+						fclose(rfile);
+					}
+					break;
+				}
+				
+				firstfile = FALSE;
+			}
+			fclose (pfile);
+					
+				
+			//070928 -- call BCP
+			if (TheClient == MMM)
+			{
+				for (int i = 0; i < outputfilenames.GetCount(); i++)
+				{
+					WString tablename = outputfilenames[i];
+					if (tablename.Position(".") != NOT_FOUND)
+						tablename.Truncate(tablename.Position("."));
+					
+					// output files are where rpt is written
+					WFilePath fp = rptfilepath;
+					WString inputfile_DPNE = fp.GetDrive() + fp.GetDirectory() + outputfilenames[i] + ".txt";
+					WString errfile_DPNE = fp.GetDrive() + fp.GetDirectory() + "bcp_" + tablename + ".err";
+
+					#ifdef _DEBUG
+					if ((debugfile = fopen("debug.txt", "a")) == NULL)
+						WMessageBox::Info (NULL, NULL, "Problem opening debug.txt");
+					fputs(inputfile_DPNE, debugfile);
+					fputs("\n\n", debugfile);
+					fclose(debugfile);
+					#endif
+		
+					msg = ExportDialog.CallBCP("IIIDBA", tablename, inputfile_DPNE, errfile_DPNE);
+					
+					if (!msg.GetEmpty())
+					{
+						if ((rfile = fopen(rptfilepath.GetText(), "a")) != NULL)
+						{
+							fputs(msg.GetText(), rfile);
+							fclose(rfile);
+						}
+						
+						cprintf(msg.GetText());
+						Result = E_GENERAL;
+						break;
+					}
+				}
+			
+				//071018 rebuild indexes
+				ExportDialog.DoQuery(rMessage, "alter index all on iiidba rebuild");
+			}
+			
+			
+			msg = yUtility::MakeStartEndMsg(FALSE);
+			cprintf(msg.GetText());
+			if ((rfile = fopen(rptfilepath.GetText(), "a")) != NULL)
+			{
+				fputs(msg.GetText(), rfile);
+				fclose(rfile);
+			}
+		}
+		
+		
+		
+		// BRANCH 3
+		// THESE CLIENTS CONVERT A SINGLE FILE -- report is started and ended by Batch
+		// arguments are:
+		//		1. the name of the file
+		//		2. (optional) whether to close console automatically
+		//		3. (optional) whether to overwrite
+		else if (MCClient.MCBatchFiles == SINGLE)
+		{
+			//this gets rid of quotes around param file DPNE
+			args = commLine.Parse();
+			infilepath = args[0];
+			
+			//070721 params changed in sub, need to generate these filenames now
+			outfilepath = infilepath;
+			badfilepath = infilepath;
+			badfilepath.SetExtension("BAD");
+			rptfilepath = infilepath;
+			rptfilepath.SetExtension("RPT");
+			
+			if (args.GetCount() > 1)
+			{
+				args[1].ToLowercase();
+				bautoclose = (args[1].GetCharacter(0) == 'y');
+			}
+			
+			if (args.GetCount() > 2)
+			{
+				args[2].ToLowercase();
+				boverwrite = (args[2].GetCharacter(0) == 'y');
+			}
+			
+			if (TheClient == KKK)
+				boverwrite = TRUE;	// always overwrite
+				
+			if (MCClient.MCType == IMPORT)
+			{
+			 	outfilepath.SetExtension("MRC");
+				// import should receive the outputfilename and badfilename same as the other two
+				Result = ImportDialog.BatchImport(pconsole, infilepath, "", boverwrite);
+			}
+			else if (MCClient.MCType == EXPORT)
+			{
+			 	outfilepath.SetExtension("MCX");
+				// this call is untested after we added params for out/bad/rpt files -- need to generate these names before this call
+				Result = ExportDialog.BatchExport
+						(pconsole, 
+						infilepath, 
+						outfilepath, 
+						badfilepath, 
+						rptfilepath, 
+						boverwrite, 
+						TRUE);
+			}
+			else if (MCClient.MCType == CONVERT)
+			{
+				if (TheClient == QQQ)	// currently the only CONVERT with SINGLE
+					outfilepath.SetExtension("M8");
+				//070721 sub hb modified -- we send all filepaths (untested)
+				Result = ConvertDialog.BatchConvert(pconsole, infilepath, outfilepath, badfilepath, rptfilepath, boverwrite);
+			}
+		}
+
+
+
+		// COMMON TO ALL THREE BRANCHES
+		
+		// these clients want console to close automatically at end of run no matter what
+		//	-- however, we don't actually do this, but close only if no error
+		if ((TheClient == FFF) || (TheClient == LLL) || (TheClient == MMM))
+		{
+			//070917 close only if no error
+			if (Result == E_PERFECTSUCCESS)
+			{
+				pconsole->Destroy();
+				WAppObject.Quit(TRUE);
+			}
+		}
+		
+abort:
+		cprintf ("\nPress the <Enter> key to close this window\n");
+		
+		//user enters any key to close console
+		success = pconsole->Read(buffer);
+		pconsole->Destroy();
+		WAppObject.Quit(TRUE);
+	}
+	#endif	// ifdef MARCONVERT
+	
+	yHelp::SetFilename(TheHelpFile.GetText());
+	
+	return FALSE;
+}
+
+@end-code;
+
+@begin-code Code "MainForm::OpenButton_Click"
+
+WBool @CLASSNAME@::OpenButton_Click(
+    WObject *           source,
+    WEventData *        event )
+{
+	menu_1_item_Open_Click (source, event);
+    
+    return FALSE;
+}
+
+
+
+//OpenFile
+//980912 permits getting filename from SendTo
+WBool @CLASSNAME@::OpenFile (WFilePath filePath)
+{
+    	int      		i, j;
+	float		f;
+    	long         	cur, num;
+	long&		rcur = cur;
+	long&		rnum = num;
+    	WString      	s, t;
+	//int		maxgrid = SettingsDialog.Options.MaxGrid;
+	
+	//save for printing
+	TheFilePath = filePath;
+
+	struct stat buf;
+	//buf.st_size = 111;	//debugging
+	stat (filePath, &buf);
+	/*debugging
+	t.Sprintf ("%d bytes", buf.st_size);
+	WMessageBox::Info 
+			(NULL, 
+			filePath, 
+			t);
+	*/
+
+	//050109 hung opening 0-length file
+	if (buf.st_size == 0L)
+	{
+		s = TheProduct + ": VerifyFile Problem";
+		t = "Sorry, this file contains no data";
+		WMessageBox::Info 
+				(NULL, 
+				s, 
+				t);
+		return FALSE;
+	}
+
+	else if (buf.st_size < 0L)	// since it's a long, over 2GB wb neg
+	{
+		s = TheProduct + ": VerifyFile Problem";
+		t.Sprintf ("Sorry, %s cannot open files larger than 2,147,483,647 bytes", TheProduct.GetText ());
+		WMessageBox::Info 
+				(NULL, 
+				s, 
+				t);
+		return FALSE;
+	}
+
+	f = buf.st_size / 30000000L;	//040416 30MB -- this is the threshold size above which we warn
+	
+	/*071001 it now takes only 38 seconds to open 842 MB, so our largest file will be hardly more than a minute
+	if (f > 20)
+	{
+		s.Sprintf ("%s Warning", TheProduct.GetText ());
+		if (WMessageBox::Messagef 	
+						(NULL, WMsgBSYesNo,
+						s, 
+						"It will take up to %.0f minutes to analyze the file. Open it?",
+						f/20 + 1)
+				== WMBReturnNo)
+			return FALSE;
+	}
+	else */
+	if (f > 0)
+	{
+		s.Sprintf ("%s Warning", TheProduct.GetText ());
+		if (WMessageBox::Messagef 	
+						(NULL, WMsgBSYesNo,
+						s, 
+						"It will take up to a minute to analyze the file. Open it?")
+				== WMBReturnNo)
+			return FALSE;
+	}
+
+	s = filePath + " - " + TheProduct.GetText ();
+	
+	SetText (s);
+
+
+	//clear screen even if file can't be opened
+	ClearGrid ();
+	ClearRecView ();
+	inSQL = FALSE;
+	WRect r = GetClientRectangle ();
+	WCursor cursor = SetCursor (WSCWait);
+	MessageLabel->SetText (" Examining file -- do not interrupt ... ");
+	MessageLabel->SetLeft ((r.w - MessageLabel->GetWidth ()) / 2);
+	Update ();
+	
+	
+	i = BibRec.VerifyFile(filePath, &s);
+	#ifdef LITE
+	if ((BibRec.GetRecordFormat() == UNIMARCBIB) || (BibRec.GetRecordFormat() == UNIMARCAUTH))
+	{
+		MessageLabel->SetText ("");
+		s = "Lite version does not read UNIMARC files";
+		t = TheProduct + " Info";
+		WMessageBox::Info (NULL, t, s);
+		return FALSE;
+	}
+
+	//040722
+	if ((BibRec.GetRecordFormat() == MARCXMLBIB) || (BibRec.GetRecordFormat() == MARCXMLAUTH))
+	{
+		MessageLabel->SetText ("");
+		s = "Lite version does not read MARCXML files";
+		t = TheProduct + " Info";
+		WMessageBox::Info (NULL, t, s);
+		return FALSE;
+	}
+	
+	if (!WString::Compare (s, "Maximum records exceeded"))
+		s.Concat (" for Lite version (no limit in full version)");
+	#endif
+	t = TheProduct + ": VerifyFile Problem";
+	switch (i)
+	{
+		case (-1):
+			MessageLabel->SetText ("");
+			WAppObject.Beep (WBeepHand);
+			WMessageBox::Info (NULL, t, s);
+			_inFileDlg = FALSE;
+			SetCursor (cursor);
+			return FALSE;
+		case (0):
+			WAppObject.Beep (WBeepHand);
+			WMessageBox::Info (NULL, t, s);
+			_inFileDlg = FALSE;
+			//NO BREAK!! this is a partially valid file
+		default:	//i == 1
+			_inFileDlg = FALSE;	//was only if num > 3000, but that doesn't make sense
+			#ifdef LITE
+			FilenameLabel->SetForeColor (WColorBrightBlue);	//030322 need to reset, was red for upgrade message
+			#endif
+			FilenameLabel->SetText (filePath);
+			FilenameLabel->SetLeft ((r.w - FilenameLabel->GetWidth ()) / 2);
+			
+
+			j = BibRec.FirstRecord ();
+			if ((j == 1) || (j == 2))
+			{
+				Display ();		//displays first rec for user
+				Update ();	
+				
+				BuildGrid ();
+				
+
+				SetCursor (cursor);
+				FindButton->SetEnabled (TRUE);
+				SQLButton->SetEnabled (TRUE);
+				HexviewButton->SetEnabled (TRUE);
+				menu_1_item_Hex->SetEnabled (TRUE);
+				menu_1_item_Statistics->SetEnabled (TRUE);
+				PrintButton->SetEnabled (TRUE);
+				menu_1_item_Find->SetEnabled (TRUE);
+				menu_1_item_Print->SetEnabled (TRUE);
+				
+				if (TheRelease == "4.0")
+					menu_1_item_SQL->SetEnabled (TRUE);
+			}
+			else
+			{
+				WMessageBox::Info (NULL, TheProduct, "Cannot open first record");
+				SetCursor (cursor);
+			}
+			
+			Update (TRUE);
+	}
+						
+	MessageLabel->SetText ("");
+    
+    return FALSE;
+}
+//OpenFile
+
+
+
+//BuildGrid
+void @CLASSNAME@::BuildGrid ()
+{
+	int 			i;
+    	long         	cur, num;
+	long&		rcur = cur;
+	long&		rnum = num;
+	int			maxgrid = SettingsDialog.Options.MaxGrid;
+	#ifdef LITE
+	maxgrid = 1000;	// override in case user changes ini
+	#endif
+	WString		s, t;
+	WRect 		r = GetClientRectangle ();
+	WCursor 		cursor = SetCursor (WSCWait);
+
+	
+	ClearGrid ();
+	NavigationGrid->SetEnabled (TRUE);	// disabled by ClearGrid
+	NavGridEnabled = TRUE;	//051128
+
+
+	//030903 set tags/sfcs to get (depends on file format)
+	/*051223 refactored
+	WString col2, col3, col4;*/
+	WStringArray cols;
+	cols.SetCount (3);
+	
+	switch (BibRec.GetRecordFormat ())
+	{
+		case MARC21BIB: 
+		case MARCXMLBIB:
+			cols [0] = SettingsDialog.Options.MB_Col2; 
+			cols [1] = SettingsDialog.Options.MB_Col3;
+			cols [2] = SettingsDialog.Options.MB_Col4;
+			break;
+			
+		case MARC21AUTH: 
+		case MARCXMLAUTH:
+			cols [0] = SettingsDialog.Options.MA_Col2;
+			cols [1] = SettingsDialog.Options.MA_Col3;
+			cols [2] = SettingsDialog.Options.MA_Col4;
+			break;
+			
+		case UNIMARCBIB:
+			cols [0] = SettingsDialog.Options.UB_Col2;
+			cols [1] = SettingsDialog.Options.UB_Col3;
+			cols [2] = SettingsDialog.Options.UB_Col4;
+			break;
+			
+		case UNIMARCAUTH:
+			cols [0] = SettingsDialog.Options.UA_Col2;
+			cols [1] = SettingsDialog.Options.UA_Col3;
+			cols [2] = SettingsDialog.Options.UA_Col4;
+			break;
+	}
+
+	UpdateGridLayout ();
+					
+	BibRec.FirstRecord ();	// no need to ck ret value as this rec has already been accessed.
+				// -- this is here so that after a SQL search we bld the grid starting w 1st rec
+	
+	BibRec.GetCurrentNum (rcur, rnum);
+	if (num > maxgrid)
+	{
+		NavGridEnabled = FALSE;	//051128
+		if (maxgrid > 0)	// no need to notify user if set to 0
+		{
+			s = "File too large to build the Navigation Grid";
+			#ifdef LITE
+			s.Concat (" in Lite version (no limit in full version)");
+			#else
+			s.Concat ("\nUse Tools/Settings to change this");
+			#endif
+			t = TheProduct + " Info";
+			WMessageBox::Info (NULL, t, s);
+		}
+	}
+	else
+	{
+		NavigationGrid->SetEnabled (TRUE);	//in case disabled by previous file
+		NavGridEnabled = TRUE;	//051128
+		NavigationGrid->SetRowCount (num);	
+		NavigationGrid->SetVisible (TRUE);
+
+		/*011107 tried filling grid seq number here instead of in BibRec, but still too slow,
+					so restored to BibRec where it makes more sense*/
+					
+		do
+		{
+			if (cur % 100 == 0)	//assumes cur not changed since retrieved
+			{
+				s.Sprintf ("Adding record %lu to Navigation Grid, hold down Ctrl key to interrupt", cur);
+				MessageLabel->SetText (s);
+				MessageLabel->SetLeft ((r.w - MessageLabel->GetWidth ()) / 2);
+				Update ();
+			
+				//010201 check to see if user wants to interrupt
+				if (WApplication::GetKeyboardState () == WMK_CONTROL)
+				{
+					ClearGrid ();		//so leftover grid from previous file not shown
+					break;
+				}
+			}
+			
+			i = BibRec.FillGrid (NavigationGrid, cur, cur, cols);
+			
+			if (i > 0)
+				i = BibRec.NextRecord ();
+				
+			cur++;
+		} while (i > 0);
+		
+		
+		//finished building grid -- or maybe blew up
+		MessageLabel->SetText ("");
+		
+		//if (i < 0)
+		//{
+			/*060118 ignore -1, which is non-numeric tag found. user dn need to know this here
+			switch (i)
+			{
+				case -1: //the most common problem
+					s = "Problem building Navigation Grid.\n"
+							"Possibly non-numeric tags in input file.\n"
+							"Use Tools/Settings to change"; 
+					break;
+				default: 
+			*/
+		if ((i < 0) && (i != -1))
+		{
+			s.Sprintf ("Problem %d building Navigation Grid for record %ld", 
+					i,
+					cur - 1);
+			WMessageBox::Message 	
+					(NULL, WMsgBSOk | WMsgBSIconWarning,
+					TheProduct,
+					s.GetText ());
+			ClearGrid ();
+		}
+		else
+		{
+			//050615 ensure first row is visible first -- shouldn't
+			//		be necessary according to documentation, but without
+			//		this we get an assertion error "GetTopRowNumber()>0"
+			//		on SetSelectedRowNumber
+			NavigationGrid->EnsureRowIsVisible (0);
+			
+			NavigationGrid->SetSelectedRowNumber (0, TRUE, TRUE);
+		}
+		
+		//970118 reset BibRec.CurrRec to 1
+		BibRec.FirstRecord ();
+	}
+
+	SetCursor (cursor);
+	
+	return;
+}
+//BuildGrid
+
+@end-code;
+
+@begin-code Code "MainForm::FirstButton_Click"
+
+//FirstButton_Click
+WBool @CLASSNAME@::FirstButton_Click(
+	WObject *   		source,
+	WEventData *		event )
+{
+	//050731 can't use generalized approach because for large files there is no grid
+	if (inSQL)
+	{
+		NavigationGrid->SetSelectedRowNumber (0, TRUE, TRUE);
+		FirstButton->SetEnabled (FALSE);
+		PrevButton->SetEnabled (FALSE);
+		menu_1_item_First->SetEnabled (FALSE);
+		menu_1_item_Prev->SetEnabled (FALSE);
+	}
+	else
+		Display (BibRec.FirstRecord ());
+   
+    return FALSE;
+}
+
+@end-code;
+
+@begin-code Code "MainForm::PrevButton_Click"
+
+WBool @CLASSNAME@::PrevButton_Click(
+	WObject *   		source,
+	WEventData *		event )
+{
+	//050731 can't use generalized approach because for large files there is no grid
+	if (inSQL)
+	{
+		NavigationGrid->SetSelectedRowNumber (NavigationGrid->GetSelectedRowNumber () - 1, TRUE, TRUE);
+		
+		// turn off button if at beginning
+		if (NavigationGrid->GetSelectedRowNumber () <= 0)
+		{
+			FirstButton->SetEnabled (FALSE);
+			PrevButton->SetEnabled (FALSE);
+			menu_1_item_First->SetEnabled (FALSE);
+			menu_1_item_Prev->SetEnabled (FALSE);
+		}
+	}
+	else
+		Display (BibRec.PrevRecord ());
+
+    return FALSE;
+}
+
+@end-code;
+
+@begin-code Code "MainForm::NextButton_Click"
+
+//NextButton_Click
+WBool @CLASSNAME@::NextButton_Click(
+	WObject *   		source,
+	WEventData *		event )
+{
+	//050731 can't use generalized approach because for large files there is no grid
+	if (inSQL)
+	{
+		NavigationGrid->SetSelectedRowNumber (NavigationGrid->GetSelectedRowNumber () + 1, TRUE, TRUE);
+		
+		// turn off button if at end
+		if (NavigationGrid->GetSelectedRowNumber () >= NavigationGrid->GetRowCount () - 1)
+		{
+			LastButton->SetEnabled (FALSE);
+			NextButton->SetEnabled (FALSE);
+			menu_1_item_Last->SetEnabled (FALSE);
+			menu_1_item_Next->SetEnabled (FALSE);
+		}
+	}
+	else
+		Display (BibRec.NextRecord ());
+    
+    return FALSE;
+}
+
+@end-code;
+
+@begin-code Code "MainForm::LastButton_Click"
+
+WBool @CLASSNAME@::LastButton_Click(
+	WObject *   		source,
+	WEventData *		event )
+{
+	//050731 can't use generalized approach because for large files there is no grid
+	if (inSQL)
+	{
+		NavigationGrid->SetSelectedRowNumber (NavigationGrid->GetRowCount () - 1, TRUE, TRUE);
+		LastButton->SetEnabled (FALSE);
+		NextButton->SetEnabled (FALSE);    
+		menu_1_item_Last->SetEnabled (FALSE);
+		menu_1_item_Next->SetEnabled (FALSE);
+	}
+	else
+		Display (BibRec.LastRecord ());
+	
+    return FALSE;
+}
+
+@end-code;
+
+@begin-code Code "MainForm::GotoButton_Click"
+
+WBool @CLASSNAME@::GotoButton_Click(
+	WObject *   		source,
+	WEventData *		event )
+{
+	long 		i;
+	
+	GotoDialog.Create( this );
+	if (GotoDialog.GetReturnValue () < 1)
+		return FALSE;
+		
+	i = GotoDialog.num;
+	if (i > 0)
+    	{
+		Display (BibRec.ReadRecord (i));
+	}
+    
+    return FALSE;
+}
+
+@end-code;
+
+@begin-code Code "MainForm::FindButton_Click"
+
+WBool @CLASSNAME@::FindButton_Click(
+	WObject *   		source,
+	WEventData *		event )
+{
+	long		cur, rec;
+
+	FindDialog.Create (this);
+	if (FindDialog.GetReturnValue () < 1)
+		return FALSE;
+	
+	cur = BibRec.SaveCurrentNumber ();
+
+	if (FindDialog.firstchecked)
+	{
+		rec = 1;
+		if (!BibRec.FirstRecord ())
+			return FALSE;
+	}
+	else
+		rec = cur;
+
+	return Search_Guts (rec, cur);	// actually Search_Guts always returns FALSE;
+}
+
+
+//Search_Guts 
+// we pass in "rec" just for the progress msg
+// we pass in "cur" so the current rec can be redisplayed if user interrupts
+WBool @CLASSNAME@::Search_Guts (long rec, long cur)
+{
+	int					i, j;
+	WString				msg;
+	WRect				r = GetRectangle();
+	yUtility::yFindData*	pfinddata = &FindDialog.FindData;
+	
+	WCursor cursor = SetCursor(WSCWait);
+
+	j = 1;
+	do
+	{
+		i = BibRec.Find(pfinddata);
+		
+		/* debugging
+		msg.Sprintf ("Return codes in MainForm -- i:::%d:::j:::%d:::", i, j);
+		WMessageBox::Message (NULL, WMsgBSOk, "xxx", msg.GetText ());
+		*/
+		
+		if (i == 0)
+		{
+			j = BibRec.NextRecord();
+
+			rec++;
+			if (rec % 100 == 0)
+			{
+				msg.Sprintf("Searching record %lu, hold down Ctrl key to interrupt", rec);
+				MessageLabel->SetText(msg);
+				MessageLabel->SetLeft((r.w - MessageLabel->GetWidth ()) / 2);
+				Update();
+			
+				//010201 check to see if user wants to interrupt
+				if (WApplication::GetKeyboardState() == WMK_CONTROL)
+				{
+					i = 99;
+					j = 99;
+					break;
+				}
+			}
+		}
+	} while ((i == 0) && ((j == 1) || (j == 2)));	//000620 allow for validation problems//(j == 1));
+	
+	//the only possible outcomes:
+	//	i == 1, j == 1	: hit		//000620 j can also be 2 or 3 for val errors
+	//	i == 0, j == 0	: eof
+	//	i == 0, j < 0	: problem
+	//	i < 0			: problem
+	//010201 new outcome: i and j both = 99
+	
+	if ((i == 99) && (j == 99))	// user interrupted search
+	{
+		MessageLabel->SetText("");
+		SetCursor(cursor);
+		AgainButton->SetEnabled(TRUE);
+		menu_1_item_Again->SetEnabled(TRUE);
+		WAppObject.Beep(WBeepHand);
+		WMessageBox::Message (NULL, WMsgBSOk, "Interrupted", "Search cancelled");
+		BibRec.ReadRecord(cur);	//otherwise record in memory is the last record
+	}
+	
+	if (i == 1)
+	{
+		AgainButton->SetEnabled(TRUE);
+		menu_1_item_Again->SetEnabled(TRUE);
+		MessageLabel->SetText("");
+		SetCursor(cursor);
+		Display ();
+	}
+
+	else if ((i == 0) && (j == 0))
+	{
+		MessageLabel->SetText("");
+		SetCursor(cursor);
+		AgainButton->SetEnabled(FALSE);
+		menu_1_item_Again->SetEnabled(FALSE);
+		WAppObject.Beep(WBeepHand);
+		WMessageBox::Messagef(NULL, WMsgBSOk, "Not Found", "\"" + FindDialog.FindData.term + "\" not found");
+		BibRec.ReadRecord(cur);	//otherwise record in memory is the last record
+	}
+	
+	else if (i < 0)
+		WMessageBox::Messagef 
+				(NULL, 
+				WMsgBSOk, 
+				"Problem", 
+				"Record %lu: Error %i in search (illegal tag?)", rec, i);
+	
+	else if (j < 0)
+		WMessageBox::Messagef
+				(NULL, 
+				WMsgBSOk, 
+				"Problem", 
+				"Record %lu: Error %i in search", rec, i);
+    
+    return FALSE;
+}
+//Search_Guts
+
+@end-code;
+
+@begin-code Code "MainForm::AgainButton_Click"
+
+//AgainButton_Click
+WBool @CLASSNAME@::AgainButton_Click(
+	WObject *   		source,
+	WEventData *		event )
+{
+	WString			msg;
+	WRect			r = GetRectangle ();
+	long 			cur, num;
+	long&			rcur = cur;
+	long&			rnum = num;
+	
+	BibRec.GetCurrentNum (rcur, rnum);
+	
+	if (cur == num)	//at end of file
+		return FALSE;
+
+	cur = BibRec.SaveCurrentNumber ();
+	BibRec.NextRecord ();
+	
+	return Search_Guts (cur, cur);
+}
+
+@end-code;
+
+@begin-code Code "MainForm::HexviewButton_Click"
+
+WBool @CLASSNAME@::HexviewButton_Click(
+	WObject *   		source,
+	WEventData *		event )
+{
+	menu_1_item_Hex_Click (source, event);
+    
+    return FALSE;
+}
+
+@end-code;
+
+@begin-code Code "MainForm::PrintButton_Click"
+
+WBool @CLASSNAME@::PrintButton_Click(
+	WObject *   		source,
+	WEventData *		event )
+{
+	long cur, num;
+	long&	rcur = cur;
+	long&	rnum = num;
+	BibRec.GetCurrentNum (rcur, rnum);
+		
+	if (PrintDialog->Prompt ())
+		Print_Guts (cur, cur);
+	
+	return FALSE;
+}
+
+WBool @CLASSNAME@::Print_Guts (long first, long last)
+{
+	struct CharRange
+	{
+		WLong cpMin;
+		WLong cpMax;
+	};
+	
+	struct FormatRange
+	{
+		WDeviceHandle hdc;
+		WDeviceHandle hdcTarget;
+		RECT rc;
+		RECT rcPage;
+		CharRange crange;
+	};
+	
+	/*030317 does nothing
+	WBool xxx = PrintDialog->SetStyle (WPrintDSNoSelection || WPrintDSPageNums);*/
+	
+	WPrinterCanvas canvas = PrintDialog->GetPrinterCanvas ();	
+
+	#define W_EM_FORMATRANGE (0x400+57)
+	FormatRange fr;
+	fr.hdc = fr.hdcTarget = canvas.GetHandle ();
+	fr.rcPage.left = fr.rcPage.top = 0;
+	
+	//values in twips (1440 twips = 1 inch)
+	fr.rcPage.right = (1440* canvas.QueryCapability (WCCHorizontalPixels)) / canvas.QueryCapability (WCCLogicalPixelsX);
+	fr.rcPage.bottom = (1440* canvas.QueryCapability (WCCVerticalPixels)) / canvas.QueryCapability (WCCLogicalPixelsY);
+	
+	// 1-inch margins
+	fr.rc.left = fr.rcPage.left + 1440;
+	fr.rc.top = fr.rcPage.top + 1440;	
+	fr.rc.right = fr.rcPage.right - 1440;		
+	fr.rc.bottom = fr.rcPage.bottom - 1440;	
+
+	fr.crange.cpMin = 0;	//start at beginning
+	fr.crange.cpMax = -1;	//print entire record -- not allowing user to print a selection
+	WMessage msg (W_EM_FORMATRANGE, TRUE, (WLong) &fr);
+	
+	WString newhdr;
+	
+	WLocaleID li;
+	WString hdr = "Printed from " + TheProduct + "™ on ";
+	hdr.Concat (li.GetFormatDate (WDateFormatShortDatePicture));
+	hdr.Concat (" at ");
+	hdr.Concat (li.GetFormatTime (WTimeFormatForce24hourFormat));
+	hdr = hdr.Left (hdr.GetSize () - 3);	//strip off " AM" or " PM"
+
+	WLong textlen, textdone;
+	
+	for (long i = first; i <= last; i++)
+	{
+		//need to reset for each record (not each page)
+		fr.crange.cpMin = 0;	//start at beginning
+		fr.crange.cpMax = -1;	//print entire record -- not allowing user to print a selection
+		
+		Display (BibRec.ReadRecord (i));
+		
+		textlen = RecView->GetTextLength ();	
+		newhdr.Sprintf ("Record %lu in %s", i, TheFilePath.GetText ());
+		canvas.StartDocument (TheProduct.GetText ());
+		
+		do
+		{
+			canvas.StartPage ();
+
+			//980915 print header
+			//altho everything else is in twips, this is in pixels (600/inch on my printer)
+			canvas.DrawText 
+					(WPoint 
+							(canvas.QueryCapability (WCCLogicalPixelsX), 		//one inch from left
+							.5 * canvas.QueryCapability (WCCLogicalPixelsY)), 	//half inch from top
+					newhdr.GetText ());
+		
+			//need to reset for each page
+			//	-- each page resets this to actual bottom used, so long recs get cut off
+			fr.rc.bottom = fr.rcPage.bottom - 1440;
+		
+			//i guess this does the printing and returns amount printed
+
+			textdone = RecView->SendMessage (msg);
+			
+			if (textdone < textlen)
+				fr.crange.cpMin = textdone;
+
+			//print footer
+			//970203 altho everything else is in twips, this is in pixels (600/inch on my printer)
+			canvas.DrawText 
+					(WPoint 
+							(canvas.QueryCapability (WCCLogicalPixelsX), 		//one inch from left
+							canvas.QueryCapability (WCCVerticalPixels) - 
+									(.5 * canvas.QueryCapability (WCCLogicalPixelsY))),	//half inch from top
+					hdr.GetText ());
+				
+			canvas.EndPage ();
+			
+		} while (textdone < textlen);
+	
+		canvas.EndDocument ();
+	}
+	
+    return FALSE;
+}
+
+@end-code;
+
+@begin-code Code "MainForm::HelpButton_Click"
+
+WBool @CLASSNAME@::HelpButton_Click(
+	WObject *   		source,
+	WEventData *		event )
+{
+	yHelp::ShowHelp ();
+	
+    return FALSE;
+}
+
+@end-code;
+
+@begin-code Code "MainForm::ExitButton_Click"
+
+WBool @CLASSNAME@::ExitButton_Click(
+	WObject *   		source,
+	WEventData *		event )
+{
+	#ifdef LITE
+	AboutBox.SetExitSwitch (TRUE);
+	
+	WString s = TheProduct + "™";
+	AboutBox.SetProduct ((char*) s.GetText ());
+	s.Sprintf ("%s %s %s", 
+			TheVersion.GetText (),
+			TheRelease.GetText (),
+			TheState.GetText ());
+	AboutBox.SetVersion ((char*) s.GetText ());
+	
+	AboutBox.Create (this);
+	if (AboutBox.GetReturnValue () == 1)
+	#endif
+	   	Close();
+   
+    return FALSE;
+}
+
+
+#ifndef LITE
+//PushRecentFile
+void @CLASSNAME@::PushRecentFile (WFilePath filepath)
+{
+	int 		i, j;
+	WBool 	found = FALSE;
+	// if file already in list, move it to top
+	for (i = 0; i < 8; i++)
+	{
+		// we use Compare with FALSE to do case-INsensitive compare
+		if (!WString::Compare (RecentFiles [i], filepath, FALSE))
+		{
+			for (j = i; j > 0; j--)
+				RecentFiles [j] = RecentFiles [j - 1];
+			RecentFiles [0] = filepath;
+			found = TRUE;
+			break;
+		}
+	}
+	
+	if (!found)
+	{
+		for (i = 8; i > 0; i--)
+			RecentFiles [i] = RecentFiles [i - 1];
+		RecentFiles [0] = filepath;
+	}
+
+	// remove previous list from file menu -- it appears we have to do this from the bottom up
+	for (i = 14; i > 4; i--)	// 14 is the 4 permanent menu items plus up to 9 recent files
+		menu_1_item_File->RemoveItem (i);
+	
+	
+	// add list of recent files to file menu
+	WString menuitemlabel;
+	for (i = 0; i < 9; i++)
+	{
+		if (!RecentFiles [i].GetEmpty ())
+		{
+			WMenuItem* mi = new WMenuItem ();
+			menuitemlabel.Sprintf ("%d  %s", i + 1, RecentFiles [i].GetText ());
+			mi->SetText (menuitemlabel.GetText ());
+			mi->SetEventHandler 
+					(WClickEvent, 
+					this, 
+					(WEventHandler) OpenRecentFile,
+					(void*) RecentFiles [i].GetText ());
+			menu_1_item_File->AddItem (mi, -1, TRUE);
+		}
+	}
+	
+	i = j;	//debug -- place to put a break;
+}
+//PushRecentFile
+
+
+
+//OpenRecentFile
+WBool @CLASSNAME@::OpenRecentFile (WObject* source, WEventData* event)
+{
+	WFilePath	filepath;
+	filepath.SetText ((char const*) event->userData);
+
+	// see if file still exists
+	if (access (filepath, 0) == -1)
+	{
+		WMessageBox::Message
+		 		(NULL, 
+				WMsgBSOk | WMsgBSIconError,
+				"Problem",
+				"File not found or in use by another application");
+		return FALSE;
+	}
+	
+	PushRecentFile (filepath);	// rearranges the order
+	OpenFile (filepath);
+	
+	return FALSE;
+}
+//OpenRecentFile
+#endif
+
+@end-code;
+
+@begin-code Code "MainForm::SQLButton_Click"
+
+WBool @CLASSNAME@::SQLButton_Click(
+	WObject *   		source,
+	WEventData *		event )
+{
+	inSQL = TRUE;
+	
+	SQLDialog.Create( this );
+	if (SQLDialog.GetReturnValue () < 1)
+		return FALSE;
+	
+	long ii;
+	
+	WString term, tag, sfc="";		// term and tag are required, sfc is optional
+	WBool casesensitive = FALSE;	// default
+	
+	long 			cur, num;
+	long&			rcur = cur;
+	long&			rnum = num;
+	
+	BibRec.GetCurrentNum (rcur, rnum);
+	
+	int				i, j, k;
+	long				hitcount = 0;
+	WString			msg;
+	WRect			r = GetRectangle ();
+	WLongArray		hits;
+	hits.SetCount (10);
+
+			
+	//030903 set tags/sfcs to get (depends on file format)
+	/*051223 refactored
+	WString col2, col3, col4;*/
+	WStringArray cols;
+	cols.SetCount (3);
+	
+	switch (BibRec.GetRecordFormat ())
+	{
+		case MARC21BIB: 
+		case MARCXMLBIB:
+			cols [0] = SettingsDialog.Options.MB_Col2; 
+			cols [1] = SettingsDialog.Options.MB_Col3;
+			cols [2] = SettingsDialog.Options.MB_Col4;
+			break;
+			
+		case MARC21AUTH: 
+		case MARCXMLAUTH:
+			cols [0] = SettingsDialog.Options.MA_Col2;
+			cols [1] = SettingsDialog.Options.MA_Col3;
+			cols [2] = SettingsDialog.Options.MA_Col4;
+			break;
+			
+		case UNIMARCBIB:
+			cols [0] = SettingsDialog.Options.UB_Col2;
+			cols [1] = SettingsDialog.Options.UB_Col3;
+			cols [2] = SettingsDialog.Options.UB_Col4;
+			break;
+			
+		case UNIMARCAUTH:
+			cols [0] = SettingsDialog.Options.UA_Col2;
+			cols [1] = SettingsDialog.Options.UA_Col3;
+			cols [2] = SettingsDialog.Options.UA_Col4;
+			break;
+	}
+
+	WString sql = SQLDialog.GetSQL ();
+	
+	#ifdef _DEBUG
+	// debugging -- show sql and tokens
+	WStringArray tokens = sql.Parse (NULL, TRUE, WSTRING_DEFAULT_QUOTELIST, FALSE);
+	for (ii = 0; ii < tokens.GetCount (); ii++)
+	{
+		msg.Concat (tokens [ii]);
+		msg.Concat ("\n");
+	}
+	WMessageBox::Info (NULL, sql.GetText (), msg.GetText ());
+
+	// because we cannot set breakpoints in a sub containing a yUtility::yFindData declaration,
+	//		we have to write values to a debug file
+	//	-- we close after each write to find out what's causing hangs
+	FILE* debugfile;
+	WString temp;
+	if ((debugfile = fopen ("debug.txt", "a")) == NULL)
+		WMessageBox::Info (NULL, NULL, "Problem reopening debug.txt");
+	temp.Sprintf ("\n--------------- NEXT QUERY -------------------\nSQL:\t'%s'\n", sql.GetText ());
+	fputs (temp.GetText (), debugfile);
+	temp.Sprintf ("Tokens:\n%s\n", msg.GetText ());
+	fputs (temp.GetText (), debugfile);
+	fclose (debugfile);
+	#endif
+	
+	
+	// in debug mode, if there is a breakpoint anywhere in this routine, and this line is present,
+	//		optima crashes on the breakpoint
+	#define MAXTERMS 3	// maximum number of terms we can handle at present
+	yUtility::yFindData termrecs [MAXTERMS];
+	yUtility::yFindData* ptermrecs = termrecs;
+	
+	
+	/*050713 we used to get one termrec at a time, but to handle parens we need to
+			let SQLDialog rearrange them. so now we pass the address of the array
+			and let SQLDialog fill the whole thing
+	for (i = 0; i < MAXTERMS; i++)
+	{
+		SQLDialog.GetNextTerm (&termrecs [i]);
+		if (termrecs [i].tag == "")
+			break;
+	}
+	*/
+	int numterms = SQLDialog.GetTerms (ptermrecs, MAXTERMS);
+	SQLDialog.DP ("-- numterms returned from GetTerms", numterms);
+	
+	//050730
+	if (numterms == 0)
+	{
+		WMessageBox::Messagef 
+				(NULL, 
+				WMsgBSOk, 
+				"Invalid search", 
+				"Sorry, this search has invalid syntax:\n\n%s", sql.GetText ());
+		return FALSE;
+	}
+	
+	
+	ClearGrid ();
+	NavigationGrid->SetEnabled (TRUE);	// disabled by ClearGrid
+	NavGridEnabled = TRUE;		//051128
+
+
+	// process one record at a time, looking for all terms in each record
+			
+	BibRec.FirstRecord ();		// not checking return code because this rec has already been displayed once
+	long count = 1;
+	WBool found = FALSE;		// set found FALSE in case all terms empty (error situation)
+	while (TRUE)
+	{
+		for (i = 0; i < numterms; i++)
+		{
+			if (termrecs [i].tag == "")
+				break;
+				
+			ii = BibRec.Find (&termrecs [i]);
+			
+			
+			/*050730 first attempt to handle NOT without complex logic.
+				-- we convert any non-success to success and vv; that means that even
+					if the field is not in the record, it's counted as success. the
+					assumption is that if the user says 650<>history, then records
+					with no 650s are wanted, as well as those with 650s that do not
+					have "history" in them. (of course we will also get records with 
+					validation errors, nonmarc records, etc.) */
+			if (termrecs [i].not)
+			{
+				if (ii == E_PERFECTSUCCESS)
+					ii = E_EXCEPTION;			// not found
+				else
+					ii = E_PERFECTSUCCESS;		// found
+			}
+			
+			
+			if (ii == E_PERFECTSUCCESS)
+			{
+				if (i == 0)	// first term
+					found = TRUE;
+				else		// 2d or 3d term
+					found = (termrecs [i].andor) ? (found & TRUE) : TRUE;
+			}
+			else
+			{
+				if (i == 0)	// first term
+					found = FALSE;
+				else		// 2d or 3d term
+					found = (termrecs [i].andor) ? FALSE : (found | FALSE);
+			}
+		}
+		
+		if (found)
+		{
+			SQLDialog.DP ("Hit on record", count);
+			
+			hitcount++;
+			if (hitcount >= hits.GetCount ())
+				hits.SetCount (hitcount + 10);
+			hits [hitcount - 1] = BibRec.SaveCurrentNumber ();
+			
+			NavigationGrid->SetRowCount (NavigationGrid->GetRowCount () + 1);
+			k = BibRec.FillGrid (NavigationGrid, hitcount, hits [hitcount - 1], cols);
+		}
+		
+		j = BibRec.NextRecord ();
+		if ((j < 1) || (j > 2))	// stop at eof or for severe validation problems
+			break;
+			
+		if (count % 100 == 0)	//assumes cur not changed since retrieved
+		{
+			msg.Sprintf (" %lu records examined, %lu found, hold down Ctrl key to interrupt ", count, hitcount);
+			MessageLabel->SetText (msg);
+			MessageLabel->SetLeft ((r.w - MessageLabel->GetWidth ()) / 2);
+			Update ();
+			
+			if (hitcount > 10000)
+			{
+				WMessageBox::Info 
+						(NULL, 
+						"Too many hits", 
+						"Sorry, searches are limited to 10,000 hits\nTry a more specific search");
+				return FALSE;
+			}
+		}
+		
+		//010201 check to see if user wants to interrupt
+		if (WApplication::GetKeyboardState () == WMK_CONTROL)
+		{
+			if (hitcount == 0)
+				ClearGrid ();		//so leftover grid from previous file not shown.
+								// 		if hitcount > 0 we show the partial result set
+			break;
+		}
+			
+		count++;
+	}
+
+
+	// finished with this, we can alter it for display
+	sql = yUtility::CleanString (sql, SQLDialog.ExactlyEqual, "==");
+	
+	if (hitcount > 0)	// otherwise next line hangs
+	{
+		NavigationGrid->SetSelectedRowNumber (0, TRUE, TRUE);
+		NavigationGrid->SetVisible (TRUE);
+		
+		//050730 this shouldn't be necessary since SetSelectedRowNumber should display it,
+		//		but it doesn't when there is a single hit in the result set
+		Display (BibRec.ReadRecord (NavigationGrid->GetText (0, 0).ConvertToLong ()));
+		
+		msg.Sprintf (" %s -- %lu records found. Use Navigation Grid to view records ", sql.GetText (), hitcount);
+	}
+	else
+		msg.Sprintf (" %s -- no records found. Try another query ", sql.GetText ());
+
+	//050729 turn off buttons
+	FirstButton->SetEnabled (FALSE);
+	PrevButton->SetEnabled (FALSE);
+	menu_1_item_First->SetEnabled (FALSE);
+	menu_1_item_Prev->SetEnabled (FALSE);
+	
+	//050731 turn off irrelevant buttons -- these are confusing if user is viewing result set
+	GotoButton->SetEnabled (FALSE);
+	FindButton->SetEnabled (FALSE);
+	AgainButton->SetEnabled (FALSE);
+	menu_1_item_Goto->SetEnabled (FALSE);
+	menu_1_item_Find->SetEnabled (FALSE);
+	menu_1_item_Again->SetEnabled (FALSE);
+	
+	//050729 enable reset menu item
+	menu_1_item_Reset->SetEnabled (TRUE);
+	
+	MessageLabel->SetText (msg.GetText ());
+	MessageLabel->SetLeft ((r.w - MessageLabel->GetWidth ()) / 2);
+    
+    return FALSE;
+}
+
+@end-code;
+@end;

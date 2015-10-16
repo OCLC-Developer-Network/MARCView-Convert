@@ -1,0 +1,28 @@
+MARConvert Translation Table for MMM
+FieldSep	T
+SubfieldSep	"--"
+907a		BIBLIO2BASE.rec_key	text
+008/35-37	BIBLIO2BASE.lang	text
+-		BIBLIO2BASE.skip	num
+998a		BIBLIO2BASE.location	text
+998a		BIBLIO2BASE.copies	num
+998b		BIBLIO2BASE.cat_date	date
+LDR/7		BIBLIO2BASE.bib_lvl	text
+LDR/7		BIBLIO2BASE.bib_lvl_n	num
+LDR/6		BIBLIO2BASE.mat_type	text
+LDR/6		BIBLIO2BASE.mat_type_n	num
+998e		BIBLIO2BASE.bcode3	text
+998e		BIBLIO2BASE.bcode3_n	num
+907a		BIBLIO2BASE.rec_type	text
+907a		BIBLIO2BASE.rec_type_n	num
+907a		BIBLIO2BASE.record_num	text
+LDR/0-4		BIBLIO2BASE.rec_leng	num
+907c		BIBLIO2BASE.created	date
+907b		BIBLIO2BASE.updated	date
+-		BIBLIO2BASE.revisions	num
+-		BIBLIO2BASE.agency	num
+008/15-17	BIBLIO2BASE.country	text
+-		BIBLIO2BASE.pdate	date
+-		BIBLIO2BASE.marctype	text	""
+-		BIBLIO2BASE.marctype_n	num	"0"
+//end of file

@@ -1,0 +1,52 @@
+KKK MARConvert Translation Table
+FieldSep	"T"
+SubfieldSep	" "
+LDR		-
+001		objects/bibid
+035z		objects/objectnumber
+0359		objects/objectnumber
+-		objects/sortnumber
+-		objects/objectcount		"0"
+-		objects/departmentid		"15"
+-		objects/objectstatusid		"1"
+-		objects/classificationid	"0"
+-		objects/subclassid		"0"
+-		objects/type			"0"
+-		objects/loanclassid		"0"
+008/7-10	objects/datebegin
+008/11-14	objects/dateend
+-		objects/objectname
+245f		objects/dated
+260c		objects/dated
+655a		objects/medium
+-		objects/dimensions
+-		objects/dimensionremarks
+520		objects/description
+-		objects/pubreferences
+-		objects/publicaccess		"0"
+-		objects/curatorapproved		"0"
+-		objects/onview			"0"
+-		objects/textsearchid		"0"
+-		objects/loginid			"GRIREG"
+-		objects/entereddate
+-		objects/objectlevelid		"1"
+-		objects/objecttypeid
+-		objects/objectnameid
+-		objects/objectnamealtid
+260ab		objects/histattributions
+001		objtitles/bibid
+-		objtitles/titletypeid
+245abkhc	objtitles/title
+246ab		objtitles/title
+240a		objtitles/title
+-		objtitles/active		"1"
+-		objtitles/loginid		"GRIREG"
+-		objtitles/entereddate
+001		altnums/bibid
+-		altnums/tableid			"108"
+001		altnums/altnum
+0359		altnums/altnum
+-		altnums/description
+-		altnums/loginid			"GRIREG"
+-		altnums/entereddate
+//end of file

@@ -1,0 +1,318 @@
+Save Format v1.3
+@begin Form "yPrintDialog"
+ Exported 0;
+
+ @begin Object "WDialog"
+  WSCaption 1;
+  WSSizeable 1;
+  WSDlgBorder 1;
+  WSSysMenu 1;
+  WSSystemMenu 1;
+  WSMinimizeBox 1;
+  WSMaximizeBox 1;
+  WSGroup 1;
+  WSTabStop 1;
+  WSResizeBorder 1;
+  WSVisible 1;
+  Font "8.MS Sans Serif";
+  FormPositionType "Centered";
+  Text "Print";
+  @begin UserFunction "yPrintDialog()"
+   Compiler 1;
+   GencodeSrcLine 193;
+   FunctionName "yPrintDialog::yPrintDialog()";
+  @end;
+  @begin UserFunction "~yPrintDialog()"
+   Compiler 1;
+   GencodeSrcLine 197;
+   FunctionName "yPrintDialog::~yPrintDialog()";
+  @end;
+  ResID 105;
+  DesignName yPrintDialog;
+  TabIndex 0;
+  DesignRect -807,207,271,157;
+ @end;
+
+ @begin Object "WLabel"
+  WSSLeftNoWordWrap 1;
+  WSSNotify 1;
+  WCCSNoResize 1;
+  WCCSNoParentAlign 1;
+  WSChild 1;
+  WSMinimizeBox 1;
+  WSGroup 1;
+  WSVisible 1;
+  Font "10.MS Sans Serif.Bold";
+  Text "Select Records to Print";
+  ResID 101;
+  DesignName label_1;
+  TabIndex 0;
+  DesignRect 15,15,180,14;
+ @end;
+
+ @begin Object "WOptionButton"
+  WBSAutoRadioButton 1;
+  WCCSTop 1;
+  WCCSNoParentAlign 1;
+  WSChild 1;
+  WSMaximizeBox 1;
+  WSTabStop 1;
+  WSVisible 1;
+  AutoSize "1";
+  Text "Current Record";
+  Checked "1";
+  ResID 102;
+  DesignName CurrentRadio;
+  TabIndex 1;
+  DesignRect 40,35,61,12;
+ @end;
+
+ @begin Object "WOptionButton"
+  WBSAutoRadioButton 1;
+  WCCSTop 1;
+  WCCSNoParentAlign 1;
+  WSChild 1;
+  WSMaximizeBox 1;
+  WSTabStop 1;
+  WSVisible 1;
+  AutoSize "1";
+  Text "Range";
+  ResID 103;
+  DesignName RangeRadio;
+  TabIndex 2;
+  DesignRect 40,55,35,11;
+ @end;
+
+ @begin Object "WTextBox"
+  WTextBoxAutoHScroll 1;
+  WSBorder 1;
+  WSChild 1;
+  WSMaximizeBox 1;
+  WSTabStop 1;
+  WSExClientEdge 1;
+  WSVisible 1;
+  ResID 104;
+  DesignName FirstTextbox;
+  TabIndex 3;
+  DesignRect 130,54,40,15;
+ @end;
+
+ @begin Object "WTextBox"
+  WTextBoxAutoHScroll 1;
+  WSBorder 1;
+  WSChild 1;
+  WSMaximizeBox 1;
+  WSTabStop 1;
+  WSExClientEdge 1;
+  WSVisible 1;
+  ResID 105;
+  DesignName LastTextbox;
+  TabIndex 4;
+  DesignRect 210,54,40,15;
+ @end;
+
+ @begin Object "WOptionButton"
+  WBSAutoRadioButton 1;
+  WCCSTop 1;
+  WCCSNoParentAlign 1;
+  WSChild 1;
+  WSMaximizeBox 1;
+  WSTabStop 1;
+  WSVisible 1;
+  AutoSize "1";
+  Text "Entire File";
+  ResID 106;
+  DesignName EntireRadio;
+  TabIndex 5;
+  DesignRect 40,75,44,12;
+ @end;
+
+ @begin Object "WLabel"
+  WSSLeftNoWordWrap 1;
+  WSSNotify 1;
+  WCCSNoResize 1;
+  WCCSNoParentAlign 1;
+  WSChild 1;
+  WSVisible 1;
+  Text "From";
+  AutoSize "1";
+  ResID 107;
+  DesignName label_3;
+  TabIndex 6;
+  DesignRect 95,56,16,8;
+ @end;
+
+ @begin Object "WLabel"
+  WSSLeftNoWordWrap 1;
+  WSSNotify 1;
+  WCCSNoResize 1;
+  WCCSNoParentAlign 1;
+  WSChild 1;
+  WSVisible 1;
+  Text "To";
+  AutoSize "1";
+  ResID 108;
+  DesignName label_4;
+  TabIndex 7;
+  DesignRect 185,56,9,8;
+ @end;
+
+ @begin Object "WCommandButton"
+  WSChild 1;
+  WSMaximizeBox 1;
+  WSTabStop 1;
+  WSVisible 1;
+  Default "1";
+  Pressed "0";
+  Text "OK";
+  @begin Event "Click"
+   GencodeSrcLine 201;
+   FunctionName "yPrintDialog::OKButton_Click";
+  @end;
+  ResID 109;
+  DesignName OKButton;
+  TabIndex 8;
+  DesignRect 135,115,50,15;
+ @end;
+
+ @begin Object "WCommandButton"
+  WSChild 1;
+  WSMaximizeBox 1;
+  WSTabStop 1;
+  WSVisible 1;
+  Pressed "0";
+  Text "Cancel";
+  Cancel "1";
+  @begin Event "Click"
+   GencodeSrcLine 227;
+   FunctionName "yPrintDialog::CancelButton_Click";
+  @end;
+  ResID 110;
+  DesignName CancelButton;
+  TabIndex 9;
+  DesignRect 201,115,50,15;
+ @end;
+
+ @begin HPPPrefixBlock
+@begin-code HPPPrefix
+
+/*
+Copyright 1992-2009 Systems Planning (www.systemsplanning.com)
+
+Licensed under the Apache License, Version 2.0 (the "License"); 
+you may not use this file except in compliance with the License. 
+You may obtain a copy of the License at 
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software 
+distributed under the License is distributed on an "AS IS" BASIS, 
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. 
+See the License for the specific language governing permissions and 
+limitations under the License.
+*/
+
+// Declarations added here will be included at the top of the .HPP file
+
+@end-code;
+  GencodeSrcLine 10;
+ @end;
+
+ @begin CPPPrefixBlock
+@begin-code CPPPrefix
+
+// Code added here will be included at the top of the .CPP file
+
+//  Include definitions for resources.
+#include "WRes.h"
+
+@end-code;
+  GencodeSrcLine 10;
+ @end;
+
+ @begin ClassContentsBlock
+@begin-code ClassContents
+
+    public:
+        // add your public instance data here
+		long		selection, first, last;
+		
+    private:
+        // add your private instance data here
+    protected:
+        // add your protected instance data here
+
+@end-code;
+  GencodeSrcLine 76;
+ @end;
+
+@begin-code GeneratedClassContents
+
+        yPrintDialog();
+        ~yPrintDialog();
+
+@end-code;
+
+@begin-code Code "yPrintDialog::yPrintDialog()"
+
+@@CLASSNAME@::@CLASSNAME@()
+{
+    
+}
+
+@end-code;
+
+@begin-code Code "yPrintDialog::~yPrintDialog()"
+
+@@CLASSNAME@::~@CLASSNAME@()
+{
+    
+}
+
+@end-code;
+
+@begin-code Code "yPrintDialog::OKButton_Click"
+
+WBool @CLASSNAME@::OKButton_Click(
+	WObject *   		source,
+	WEventData *		event )
+{
+	if (CurrentRadio->GetChecked ())
+	{
+		selection = 0;
+	}
+	else if (RangeRadio->GetChecked ())
+	{
+		selection = 1;
+		first = FirstTextbox->GetText (). ConvertToLong ();
+		last = LastTextbox->GetText (). ConvertToLong ();
+	}
+	else if (EntireRadio->GetChecked ())
+	{
+		selection = 2;
+	}
+	else
+		selection = -1;	//can it happen?
+	
+	
+    Dismiss( TRUE );
+    
+    return FALSE;
+}
+
+@end-code;
+
+@begin-code Code "yPrintDialog::CancelButton_Click"
+
+WBool @CLASSNAME@::CancelButton_Click(
+	WObject *   		source,
+	WEventData *		event )
+{
+	
+    Dismiss (FALSE);
+        
+    return FALSE;
+}
+
+@end-code;
+@end;

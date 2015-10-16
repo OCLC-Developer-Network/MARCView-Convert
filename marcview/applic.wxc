@@ -1,0 +1,275 @@
+Save Format v1.3
+@begin ClassFile "ApplicationClass"
+ Exported 0;
+
+@begin-code BaseClassList
+
+public WExeApplication
+
+@end-code;
+
+ @begin UserFunction "ApplicationClass()"
+  Compiler 1;
+  GencodeFunction 1;
+  GencodeSrcLine 16;
+  FunctionName "ApplicationClass::ApplicationClass()";
+ @end;
+
+ @begin UserFunction "~ApplicationClass()"
+  Compiler 1;
+  GencodeFunction 1;
+  GencodeSrcLine 33;
+  FunctionName "ApplicationClass::~ApplicationClass()";
+ @end;
+
+ @begin UserFunction "__DefaultStartHandler( WObject *, WStartEventData *event )"
+  Compiler 1;
+  GencodeFunction 1;
+  GencodeSrcLine 36;
+  FunctionName "ApplicationClass::__DefaultStartHandler( WObject *, WStartEventData *event )";
+ @end;
+
+ @begin UserFunction "__DefaultRunHandler( WObject *, WRunEventData *event )"
+  Compiler 1;
+  GencodeFunction 1;
+  GencodeSrcLine 49;
+  FunctionName "ApplicationClass::__DefaultRunHandler( WObject *, WRunEventData *event )";
+ @end;
+
+ @begin UserFunction "__DefaultEndHandler( WObject *, WEndEventData *event )"
+  Compiler 1;
+  GencodeFunction 1;
+  GencodeSrcLine 54;
+  FunctionName "ApplicationClass::__DefaultEndHandler( WObject *, WEndEventData *event )";
+ @end;
+
+ @begin UserFunction "StartHandler( WObject *, WStartEventData *event )"
+  Compiler 1;
+  GencodeSrcLine 63;
+  FunctionName "ApplicationClass::StartHandler( WObject *, WStartEventData *event )";
+ @end;
+
+ @begin UserFunction "RunHandler( WObject *, WRunEventData *event )"
+  Compiler 1;
+  GencodeSrcLine 82;
+  FunctionName "ApplicationClass::RunHandler( WObject *, WRunEventData *event )";
+ @end;
+
+ @begin UserFunction "EndHandler( WObject *, WEndEventData *event )"
+  Compiler 1;
+  GencodeSrcLine 90;
+  FunctionName "ApplicationClass::EndHandler( WObject *, WEndEventData *event )";
+ @end;
+
+ @begin HPPPrefixBlock
+@begin-code HPPPrefix
+
+/*
+Copyright 1992-2009 Systems Planning (www.systemsplanning.com)
+
+Licensed under the Apache License, Version 2.0 (the "License"); 
+you may not use this file except in compliance with the License. 
+You may obtain a copy of the License at 
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software 
+distributed under the License is distributed on an "AS IS" BASIS, 
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. 
+See the License for the specific language governing permissions and 
+limitations under the License.
+*/
+
+//060204 moving here from MainForm
+//#define MARCONVERT
+#undef MARCONVERT
+
+#undef LITE	// we no longer have a LITE version
+
+#ifndef MARCONVERT
+#include "Splash.hpp"
+#endif
+
+class Form1;
+
+@end-code;
+  GencodeSrcLine 11;
+ @end;
+
+ @begin CPPPrefixBlock
+@begin-code CPPPrefix
+
+// Code added here will be included at the top of the .CPP file
+
+
+//  Include definitions for resources.
+#include "WRes.h"
+
+@end-code;
+  GencodeSrcLine 11;
+ @end;
+
+ @begin ClassContentsBlock
+@begin-code ClassContents
+
+    public:
+       	// add your public instance data here
+		
+    private:
+        // add your private instance data here
+		#ifndef MARCONVERT
+		ySplash	splash;
+		#endif
+    protected:
+        // add your protected instance data here
+
+@end-code;
+  GencodeSrcLine 65;
+ @end;
+
+@begin-code GeneratedClassContents
+
+        ApplicationClass();
+        ~ApplicationClass();
+        WBool __DefaultStartHandler( WObject *, WStartEventData *event );
+        WBool __DefaultRunHandler( WObject *, WRunEventData *event );
+        WBool __DefaultEndHandler( WObject *, WEndEventData *event );
+        WBool StartHandler( WObject *, WStartEventData *event );
+        WBool RunHandler( WObject *, WRunEventData *event );
+        WBool EndHandler( WObject *, WEndEventData *event );
+        WBool __DefaultStartHandler( WObject *, WStartEventData *event );
+        WBool __DefaultRunHandler( WObject *, WRunEventData *event );
+        WBool __DefaultEndHandler( WObject *, WEndEventData *event );
+        WBool __DefaultStartHandler( WObject *, WStartEventData *event );
+        WBool __DefaultRunHandler( WObject *, WRunEventData *event );
+        WBool __DefaultEndHandler( WObject *, WEndEventData *event );
+        WBool __DefaultStartHandler( WObject *, WStartEventData *event );
+        WBool __DefaultRunHandler( WObject *, WRunEventData *event );
+        WBool __DefaultEndHandler( WObject *, WEndEventData *event );
+        WBool __DefaultStartHandler( WObject *, WStartEventData *event );
+        WBool __DefaultRunHandler( WObject *, WRunEventData *event );
+        WBool __DefaultEndHandler( WObject *, WEndEventData *event );
+        WBool __DefaultStartHandler( WObject *, WStartEventData *event );
+        WBool __DefaultRunHandler( WObject *, WRunEventData *event );
+        WBool __DefaultEndHandler( WObject *, WEndEventData *event );
+
+@end-code;
+
+@begin-code Code "ApplicationClass::ApplicationClass()"
+
+@@CLASSNAME@::@CLASSNAME@()
+{
+    SetEventHandler( WStartEvent, this,
+        (WEventHandler) __DefaultStartHandler );
+    SetEventHandler( WStartEvent, this,
+        (WEventHandler) StartHandler );
+
+    SetEventHandler( WRunEvent, this,
+        (WEventHandler) __DefaultRunHandler );
+    SetEventHandler( WRunEvent, this,
+        (WEventHandler) RunHandler );
+
+    SetEventHandler( WEndEvent, this,
+        (WEventHandler) __DefaultEndHandler );
+    SetEventHandler( WEndEvent, this,
+        (WEventHandler) EndHandler );
+}
+
+@end-code;
+
+@begin-code Code "ApplicationClass::~ApplicationClass()"
+
+@@CLASSNAME@::~@CLASSNAME@()
+{
+}
+
+@end-code;
+
+@begin-code Code "ApplicationClass::__DefaultStartHandler( WObject *, WStartEventData *event )"
+
+WBool @CLASSNAME@::__DefaultStartHandler( WObject *, WStartEventData *event )
+{
+    extern WForm *__MainForm;
+    class MainForm;
+    extern WForm *_CreateMainForm(void);
+
+    __MainForm = _CreateMainForm();
+    if( __MainForm == NULL ) {
+        event->abortRun = TRUE;
+        event->exitCode = -1;
+    }
+    return TRUE;
+}
+
+@end-code;
+
+@begin-code Code "ApplicationClass::__DefaultRunHandler( WObject *, WRunEventData *event )"
+
+WBool @CLASSNAME@::__DefaultRunHandler( WObject *, WRunEventData *event )
+{
+    WCurrentThread::ProcessMessages();
+    return TRUE;
+}
+
+@end-code;
+
+@begin-code Code "ApplicationClass::__DefaultEndHandler( WObject *, WEndEventData *event )"
+
+WBool @CLASSNAME@::__DefaultEndHandler( WObject *, WEndEventData *event )
+{
+    extern WForm *__MainForm;
+    extern void _DeleteMainForm( WForm *);
+
+    _DeleteMainForm( __MainForm );
+    __MainForm = NULL;
+    return TRUE;
+}
+
+@end-code;
+
+@begin-code Code "ApplicationClass::StartHandler( WObject *, WStartEventData *event )"
+
+WBool @CLASSNAME@::StartHandler( WObject *, WStartEventData *event )
+{
+	#ifndef MARCONVERT
+	splash.Create(NULL);
+	WString commLine = WAppObject.GetCommandLine();
+	commLine.Trim();
+	if (!commLine.GetEmpty())	// don't show for normal opening, only for Send-To
+	{
+		splash.SetWidth(350);
+		splash.SetHeight(260);
+		splash.Invalidate(FALSE);
+		splash.Update();
+	}
+	#endif
+	
+	event->abortRun = FALSE;
+    	event->exitCode = 0;
+    	return FALSE;
+}
+
+@end-code;
+
+@begin-code Code "ApplicationClass::RunHandler( WObject *, WRunEventData *event )"
+
+WBool @CLASSNAME@::RunHandler( WObject *, WRunEventData *event )
+{
+	#ifndef MARCONVERT
+	splash.Destroy();
+	#endif
+	
+	return FALSE;
+}
+
+@end-code;
+
+@begin-code Code "ApplicationClass::EndHandler( WObject *, WEndEventData *event )"
+
+WBool @CLASSNAME@::EndHandler( WObject *, WEndEventData *event )
+{
+    return FALSE;
+}
+
+@end-code;
+@end;
